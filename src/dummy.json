@@ -2,7 +2,7 @@
 	{
 	    "id": "1",
 	    "name": "Nose Hill",
-	    "img": ['Nose-Hill.png'],
+	    "img": ["Nose-Hill.png"],
 	    "description": "Nose-Hill Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
 	    "capacity": 10,
 	    "availability": {
@@ -36,7 +36,7 @@
 	{
 	    "id": "2",
 	    "name": "Crowfoot",
-	    "img": ['Crowfoot.jpg'],
+	    "img": ["Crowfoot.jpg"],
 	    "description": "crowfoot-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
 	    "capacity": 20,
 	    "availability": {
@@ -70,7 +70,7 @@
 	{
 	    "id": "3",
 	    "name": "Central",
-	    "img": ['Central.png'],
+	    "img": ["Central.png"],
 	    "description": "Central-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
 	    "capacity": 30,
 	    "availability": {

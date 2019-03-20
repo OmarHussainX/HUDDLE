@@ -11,7 +11,10 @@ import {
 // import './App.css'
 import MediaCard from './MediaCard'
 import MapCard from './MapCard'
-import {places} from './places'
+
+// grab place data from JSON source - will receive
+// an array of Objects
+import placeData from './dummy.json'
 
 
 const styles = theme => ({
@@ -33,8 +36,8 @@ class App extends Component {
     
     clickHandler = (event) => {
         console.log('inside clickHandler')
-        console.log(event.target)
-        console.log(event.currentTarget)
+        console.log(`event.target: ${event.target}`)
+        console.log(`event.currentTarget: ${event.currentTarget}`)
 
     }
 
@@ -43,13 +46,13 @@ class App extends Component {
         const { classes } = this.props
 
         let placeCards = []
-        places.forEach(place => {
+        placeData.forEach(place => {
             placeCards.push(
                 <Grid item key={place.id}>
                     <MediaCard 
                         name={place.name}
-                        image={place.image}
-                        info={place.info}
+                        image={place.img[0]}
+                        info={place.description}
                         lat={place.lat}
                         long={place.long}
                         clickHandler={this.clickHandler}

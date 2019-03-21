@@ -9,6 +9,7 @@ import SearchBtn from './SearchBtn'
 import Nav from './Nav'
 import Menu from './Menu'
 import Login from './Login'
+import TempMenu from './TempMenu'
 
 // Import spaces data from JSON source - will receive an array of Objects
 import spacesData from './dummy.json'
@@ -119,6 +120,8 @@ class App extends Component {
         )}
 
         {this.state.view === 'login' && <Login />}
+
+        {this.state.view === 'menu' && <TempMenu />}
 
       </React.Fragment>
     )

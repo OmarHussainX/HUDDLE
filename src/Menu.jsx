@@ -8,7 +8,6 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
-import MailIcon from '@material-ui/icons/Mail';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 
 const drawerWidth = 240
@@ -44,18 +43,16 @@ const styles = theme => ({
 
 class Menu extends Component {
   state = {
-    mobileOpen: false
+    mobileOpen: true
   };
 
   handleDrawerToggle = () => {
+    console.log('Clicked: inside Menu')
     this.setState(state => ({ mobileOpen: !state.mobileOpen }));
   };
 
   render() {
     const { classes, theme } = this.props;
-    console.log('this.props:',this.props)
-    console.log('classes:',classes)
-    console.log('theme:',theme)
     const drawer = (
       <div>
         <div className={classes.toolbar} />

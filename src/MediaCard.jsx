@@ -23,7 +23,7 @@ class MediaCard extends Component {
         const { classes } = this.props
         return (
             <Card className={classes.card}>
-            <CardActionArea onClick={this.props.clickHandler}>
+            <CardActionArea onClick={this.props.clickHandler} id={'spaceindx'+this.props.id}>
                 <CardMedia
                 className={classes.media}
                 image={`/images/${this.props.image}`}
@@ -42,7 +42,7 @@ class MediaCard extends Component {
                 </CardContent>
             </CardActionArea>
             <CardActions>
-                <Button size="small" color="primary">
+                <Button size="small" color="primary" onClick={this.props.clickHandler}>
                 See details
                 </Button>
             </CardActions>

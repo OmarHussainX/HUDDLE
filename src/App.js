@@ -50,8 +50,9 @@ class App extends Component {
  
     clickHandler = event => {
     console.log('inside clickHandler')
-    // console.log(`event.target: ${event.target}`)
-    // console.log(`event.currentTarget: ${event.currentTarget}`)
+    console.log(`event.target: ${event.target}`)
+    console.log(`event.currentTarget: ${event.currentTarget}`)
+    console.log(`event.currentTarget.id: ${event.currentTarget.id}`)
     }
 
   render() {
@@ -62,6 +63,7 @@ class App extends Component {
       spaceCards.push(
         <Grid item key={space.id}>
           <MediaCard
+            id={space.id}
             name={space.name}
             image={space.img[0]}
             info={space.description}

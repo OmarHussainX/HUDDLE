@@ -1,7 +1,7 @@
 [{
         "id": "1",
         "name": "Township Bar and Grill",
-        "img": ["1.jpg"],
+        "img": ["1Township.jpg"],
         "description": "",
         "venue_type": "Restaurant",
         "capacity": 40,
@@ -37,7 +37,7 @@
         {
             "id": "2",
             "name": "National on 10th",
-            "img": [""],
+            "img": ["2National.jpg"],
             "description": "",
             "venue_type": "Restaurant",
             "capacity": 70,
@@ -72,7 +72,7 @@
         {
             "id": "3",
             "name": "Craft Beer Market",
-            "img":[""],
+            "img":["3Craft.jpg"],
             "description": "",
             "venue_type": "Restaurant",
             "capacity": 70,
@@ -107,7 +107,7 @@
         {
             "id": "4",
             "name": "The Lake House",
-            "img":[""],
+            "img":["4Lake.jpg"],
             "description": "",
             "venue_type": "Restaurant",
             "capacity": 110,
@@ -143,7 +143,7 @@
         {
             "id": "5",
             "name": "Grey Eagle Resort & Casino",
-            "img": [""],
+            "img": ["5Grey.jpg"],
             "description": "",
             "venue_type": "Casino",
             "capacity": 200,
@@ -179,7 +179,7 @@
         {
             "id": "6",
             "name": "Haysboro Community Association",
-            "img": [""],
+            "img": ["6Haysboro.jpg"],
             "description": "",
             "venue_type": "Community",
             "capacity": 40,
@@ -215,7 +215,7 @@
         {
             "id": "7",
             "name": "Canyon Meadows Cinemas",
-            "img":[""],
+            "img":["7Canyon.jpg"],
             "description": "",
             "venue_type": "Cinema",
             "capacity": 400,
@@ -251,7 +251,7 @@
         {
             "id": "8",
             "name": "The Rec Room",
-            "img": [""],
+            "img": ["8Rec.jpg"],
             "description": "",
             "venue_type": "Entertainment",
             "capacity": 40,
@@ -287,7 +287,7 @@
         {
             "id": "9",
             "name": "Village Square Leisure Centre",
-            "img": [""],
+            "img": ["9Village.jpg"],
             "description": "",
             "venue_type": "Entertainment",
             "capacity": 50,
@@ -322,8 +322,8 @@
 
         {
             "id": "10",
-            "name": "cibo",
-            "img": [""],
+            "name": "Cibo",
+            "img": ["10cibo.jpg"],
             "description": "",
             "venue_type": "Restaurant",
             "capacity": 25,
@@ -359,7 +359,7 @@
         {
             "id": "11",
             "name": "ATB Entrepreneur Centre",
-            "img": [""],
+            "img": ["11atb.jpg"],
             "description": "",
             "venue_type": "Office",
             "capacity": 24,
@@ -395,7 +395,7 @@
         {
             "id": "12",
             "name": "Fort Calgary National Historic Site",
-            "img": [""],
+            "img": ["12Fort.jpg"],
             "description": "",
             "venue_type": "Historic Site",
             "capacity": 180,
@@ -430,7 +430,7 @@
         {
             "id": "13",
             "name": "Glenbow Museum",
-            "img": [""],
+            "img": ["13Glenbow.jpg"],
             "description": "",
             "venue_type": "Museum",
             "capacity": 200,
@@ -466,7 +466,7 @@
         {
             "id": "14",
             "name": "University of Calgary",
-            "img": [""],
+            "img": ["14UofC.jpg"],
             "description": "",
             "venue_type": "School",
             "capacity": 80,
@@ -502,7 +502,7 @@
         {
             "id": "15",
             "name": "cSpace King Edward",
-            "img": [""],
+            "img": ["15cSpace.jpg"],
             "description": "",
             "venue_type": "Historic Site",
             "capacity": 40,

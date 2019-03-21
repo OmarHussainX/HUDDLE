@@ -33,12 +33,6 @@ const styles = theme => ({
       width: `calc(100% - ${drawerWidth}px)`,
     },
   },
-  menuButton: {
-    marginRight: 20,
-    [theme.breakpoints.up('sm')]: {
-      display: 'none',
-    },
-  },
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
     width: drawerWidth,
@@ -46,6 +40,10 @@ const styles = theme => ({
   content: {
     flexGrow: 1,
     padding: theme.spacing.unit * 3,
+  },
+  searchBtn: {
+    fontSize: '40px',
+    fontFamily: 'helvetica',
   },
 })
 
@@ -94,13 +92,6 @@ class Nav extends Component {
       <React.Fragment>
         <AppBar position="static">
           <Toolbar>
-            <IconButton
-              color="inherit"
-              aria-label="Menu"
-              className={classes.menuButton}
-              onClick={this.handleDrawerToggle}>
-              <MenuIcon />
-            </IconButton>
 
             <Typography variant="h6" color="inherit" className={classes.grow}>
               <Button color="inherit" id="logo" onClick={this.props.onClick}>

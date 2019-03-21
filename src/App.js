@@ -39,7 +39,7 @@ const styles = theme => ({
     marginTop: '10vh',
     marginLeft: 'auto',
     marginRight: 'auto',
-  }
+  },
 })
 
 class App extends Component {

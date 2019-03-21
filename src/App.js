@@ -101,7 +101,9 @@ class App extends Component {
 
         {this.state.view === 'home' && (
           <div>
+            {/*
             <Menu />
+            */}
             <SearchBtn onClick={this.clickHandler} />
             <Grid container className={classes.spacesGrid} spacing={32}>
               {spaceCards}

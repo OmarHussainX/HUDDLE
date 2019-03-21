@@ -102,6 +102,7 @@ class App extends Component {
           <div>
             {/*
             <Menu />
+            Under development in feat branch: feat/menu
             */}
             <SearchBtn onClick={this.clickHandler} />
             <Grid container className={classes.spacesGrid} spacing={32}>

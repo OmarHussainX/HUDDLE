@@ -42,8 +42,9 @@ const styles = theme => ({
     padding: theme.spacing.unit * 3,
   },
   searchBtn: {
-    fontSize: '40px',
-    fontFamily: 'helvetica',
+    fontSize: '30px',
+    fontFamily: 'Pacifico',
+    textTransform: 'lowercase',
   },
 })
 
@@ -92,10 +93,14 @@ class Nav extends Component {
       <React.Fragment>
         <AppBar position="static">
           <Toolbar>
-
             <Typography variant="h6" color="inherit" className={classes.grow}>
-              <Button color="inherit" id="logo" onClick={this.props.onClick}>
-                HUDDLE
+              <Button
+                color="inherit"
+                id="logo"
+                onClick={this.props.onClick}
+                className={classes.searchBtn}
+              >
+                huddle
               </Button>
             </Typography>
 
@@ -104,36 +109,6 @@ class Nav extends Component {
             </Button>
           </Toolbar>
         </AppBar>
-
-
-        {/*
-        <nav className={classes.drawer}>
-          <Hidden smUp implementation="css">
-            <Drawer
-              container={this.props.container}
-              variant="temporary"
-              anchor={theme.direction === 'rtl' ? 'right' : 'left'}
-              open={this.state.mobileOpen}
-              onClose={this.handleDrawerToggle}
-              classes={{
-                paper: classes.drawerPaper,
-              }}>
-              {drawer}
-            </Drawer>
-          </Hidden>
-          <Hidden xsDown implementation="css">
-            <Drawer
-              classes={{
-                paper: classes.drawerPaper,
-              }}
-              variant="permanent"
-              open>
-              {drawer}
-            </Drawer>
-          </Hidden>
-        </nav>
-
-        */}
       </React.Fragment>
     )
   }

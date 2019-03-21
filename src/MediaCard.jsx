@@ -27,14 +27,14 @@ class MediaCard extends Component {
                 <CardMedia
                 className={classes.media}
                 image={`/images/${this.props.image}`}
-                title="Contemplative Reptile"
+                title=""
                 />
                 <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">
                     {this.props.name}
                 </Typography>
                 <Typography gutterBottom component="p">
-                    {this.props.info}
+                    {(this.props.info.length >= 120 ? this.props.info.substring(0,120)+'...' : this.props.info)} 
                 </Typography>
                 <Typography component="p">
                     Latitude: {this.props.lat}, Longtitude: {this.props.long}

@@ -9,6 +9,8 @@ import SearchBtn from './SearchBtn'
 import Nav from './Nav'
 import Login from './Login'
 import SearchForm from './SearchForm'
+import Paper from '@material-ui/core/Paper'
+import Image from './landing.jpg'
 
 // Import spaces data from JSON source - will receive an array of Objects
 import spacesData from './dummy2.json'
@@ -20,8 +22,8 @@ const styles = theme => ({
     justifyContent: 'center',
   },
   paperContainer: {
-    backgroundImage: `url(${Image})`
-  } 
+    backgroundImage: `url(${Image})`,
+  },
 })
 
 class App extends Component {
@@ -105,18 +107,24 @@ class App extends Component {
 
         {this.state.view === 'home' && (
           <div>
-          <Grid
-                  container
-                  spacing={0}
-                  alignItems="center"
-                  justify="center"
-                  style={{ minHeight: '50vh' }}
-                >
-            <Grid item xs={6}>
-              <SearchForm />
-            </Grid>
-          </Grid>
+            <Paper style={styles.paperContainer}>
+              Some text to fill the Paper Component
+              <Grid
+                container
+                spacing={0}
+                alignItems="center"
+                justify="center"
+                style={{minHeight: '50vh'}}>
+                <Grid item xs={6}>
+                  <SearchForm />
+                </Grid>
+              </Grid>
             <SearchBtn onClick={this.clickHandler} />
+            </Paper>
+            <br />
+            <br />
+            <br />
+            <br />
             <Grid container className={classes.spacesGrid} spacing={32}>
               {spaceCards}
             </Grid>

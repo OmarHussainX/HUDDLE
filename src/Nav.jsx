@@ -34,7 +34,7 @@ class Nav extends Component {
 
           <Typography variant="h6" color="inherit" className={classes.grow}>
             <Button color="inherit"
-              name="logo"
+              id="logo"
               onClick={this.props.onClick}
             >
               HUDDLE
@@ -42,7 +42,7 @@ class Nav extends Component {
           </Typography>
 
           <Button color="inherit"
-            name="login-btn"
+            id="login-btn"
             onClick={this.props.onClick}
           >
             Login

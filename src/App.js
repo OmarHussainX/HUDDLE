@@ -52,13 +52,13 @@ class App extends Component {
     // console.log('inside clickHandler')
     // console.log(`event.target: ${event.target}`)
     // console.log(`event.currentTarget: ${event.currentTarget}`)
-    // console.log(`event.currentTarget.id: ${event.currentTarget.id}`)
+    console.log(`event.currentTarget.id: ${event.currentTarget.id}`)
 
-    if (event.target.name === 'login-btn') {
+    if (event.currentTarget.id === 'login-btn') {
       console.log('============> LOGIN BTN CLICKED')
       this.setState({view: 'login'})
     }
-    if (event.target.name === 'logo') {
+    if (event.currentTarget.id === 'logo') {
       console.log('============> LOGO CLICKED')
       this.setState({
         view:'home'

@@ -9,9 +9,11 @@ import SearchBtn from './SearchBtn'
 import Nav from './Nav'
 import Login from './Login'
 import SearchForm from './SearchForm'
+import Paper from '@material-ui/core/Paper'
+import Image from './landing.jpg'
 
 // Import spaces data from JSON source - will receive an array of Objects
-import spacesData from './dummy.json'
+import spacesData from './dummy2.json'
 
 const styles = theme => ({
   // Top level container for the grid of spaces
@@ -19,6 +21,23 @@ const styles = theme => ({
     flexGrow: 1,
     justifyContent: 'center',
   },
+  paperHeader: {
+    background: `url(${Image}) center center`,
+    backgroundSize: 'cover',
+    padding: '50px',
+    height: '50vh',
+  },
+  container: {
+    background: 'white',
+    padding: '20px',
+    paddingBottom: '30px',
+    borderRadius: '5px',
+    boxShadow: "0 16px 40px rgba(0,0,0,0.12)",
+    width: '20vw',
+    marginTop: '10vh',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+  }
 })
 
 class App extends Component {
@@ -61,7 +80,15 @@ class App extends Component {
     } else if (targetID === 'logo') {
       console.log('============> LOGO CLICKED')
       this.setState({
-        view:'home'
+        view: 'home',
+      })
+    } else if (
+      targetID.includes('spacecrdindx') ||
+      targetID.includes('spacebtnindx')
+    ) {
+      console.log('============> card CLICKED')
+      this.setState({
+        view: 'details',
       })
     } else if ((targetID.includes('spacecrdindx') || targetID.includes('spacebtnindx') )) {
         const arrayIndex = targetID.substring('spacecrdindx'.length)
@@ -103,8 +130,16 @@ class App extends Component {
 
         {this.state.view === 'home' && (
           <div>
-            <SearchForm />
-            <SearchBtn onClick={this.clickHandler} />
+            <Paper className={classes.paperHeader}>
+              <div className={classes.container}>
+                <SearchForm />
+              </div>
+              <SearchBtn onClick={this.clickHandler} />
+            </Paper>
+            <br />
+            <br />
+            <br />
+            <br />
             <Grid container className={classes.spacesGrid} spacing={32}>
               {spaceCards}
             </Grid>
@@ -119,7 +154,6 @@ class App extends Component {
         )}
 
         {this.state.view === 'login' && <Login />}
-
       </React.Fragment>
     )
   }

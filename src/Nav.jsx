@@ -113,8 +113,10 @@ class Nav extends Component {
             </Button>
           </Toolbar>
         </AppBar>
+
+
+        {/*
         <nav className={classes.drawer}>
-          {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
           <Hidden smUp implementation="css">
             <Drawer
               container={this.props.container}
@@ -139,6 +141,8 @@ class Nav extends Component {
             </Drawer>
           </Hidden>
         </nav>
+
+        */}
       </React.Fragment>
     )
   }

@@ -9,9 +9,6 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 
 const styles = {
-  root: {
-    flexGrow: 1,
-  },
   grow: {
     flexGrow: 1,
   },
@@ -24,7 +21,6 @@ const styles = {
 function Nav(props) {
   const { classes } = props;
   return (
-    <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
           <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
@@ -36,7 +32,6 @@ function Nav(props) {
           <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
-    </div>
   );
 }
 

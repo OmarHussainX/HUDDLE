@@ -8,6 +8,7 @@ import MediaCard from './MediaCard'
 import MapCard from './MapCard'
 import SearchBtn from './SearchBtn'
 import Nav from './Nav'
+import Menu from './Menu'
 
 // grab place data from JSON source - will receive
 // an array of Objects
@@ -50,6 +51,7 @@ class App extends Component {
       <React.Fragment>
         <CssBaseline />
         <Nav />
+        <Menu />
         <SearchBtn onClick={this.clickHandler}/>
         <Grid container className={classes.root} justify="center" spacing={32}>
           {placeCards}

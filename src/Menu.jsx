@@ -8,7 +8,6 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
-import MailIcon from '@material-ui/icons/Mail';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 
 const drawerWidth = 240
@@ -44,10 +43,11 @@ const styles = theme => ({
 
 class Menu extends Component {
   state = {
-    mobileOpen: false
+    mobileOpen: true
   };
 
   handleDrawerToggle = () => {
+    console.log('Clicked: inside Menu')
     this.setState(state => ({ mobileOpen: !state.mobileOpen }));
   };
 
@@ -61,18 +61,18 @@ class Menu extends Component {
         <div className={classes.toolbar} />
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+          {['Name', 'Capacity', 'Availability', 'Experience'].map((text, index) => (
             <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+              <ListItemIcon><InboxIcon /></ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
           ))}
         </List>
         <Divider />
         <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
+          {['Test1', 'Test2', 'Test3'].map((text, index) => (
             <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+              <ListItemIcon><InboxIcon /></ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
           ))}

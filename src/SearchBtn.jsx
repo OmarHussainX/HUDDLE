@@ -17,7 +17,7 @@ class SearchBtn extends Component {
         <div style={{textAlign: 'center'}}>
           <Button
             variant="contained"
-            color="primary"
+            color="secondary"
             className={classes.button}
             onClick={this.props.onClick}>
             Search

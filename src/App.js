@@ -3,13 +3,12 @@ import PropTypes from 'prop-types'
 import {withStyles} from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import {Grid} from '@material-ui/core'
-// import './App.css'
 import MediaCard from './MediaCard'
 import MapCard from './MapCard'
 import SearchBtn from './SearchBtn'
 import Nav from './Nav'
-import Menu from './Menu'
 import Login from './Login'
+import SearchForm from './SearchForm'
 
 // Import spaces data from JSON source - will receive an array of Objects
 import spacesData from './dummy.json'
@@ -104,7 +103,7 @@ class App extends Component {
 
         {this.state.view === 'home' && (
           <div>
-            <Menu />
+            <SearchForm />
             <SearchBtn onClick={this.clickHandler} />
             <Grid container className={classes.spacesGrid} spacing={32}>
               {spaceCards}

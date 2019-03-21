@@ -12,10 +12,10 @@ const styles = {
   },
 };
 
-class TempMemu extends React.Component {
+class TempMenu extends React.Component {
   state = {
     // The first commit of Material-UI
-    selectedDate: new Date('2019-04-04T04:20:00'),
+    selectedDate: new Date(),
   };
 
   handleDateChange = date => {
@@ -37,7 +37,13 @@ class TempMemu extends React.Component {
           />
           <TimePicker
             margin="normal"
-            label="Time picker"
+            label="Start"
+            value={selectedDate}
+            onChange={this.handleDateChange}
+          />
+          <TimePicker
+            margin="normal"
+            label="End"
             value={selectedDate}
             onChange={this.handleDateChange}
           />
@@ -47,9 +53,9 @@ class TempMemu extends React.Component {
   }
 }
 
-TempMemu.propTypes = {
+TempMenu.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(TempMemu);
+export default withStyles(styles)(TempMenu);
 

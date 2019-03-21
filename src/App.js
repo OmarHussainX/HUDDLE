@@ -44,7 +44,7 @@ class App extends Component {
       //   'search'    - search panel
       //   'filtered'  - filtered spaces (i.e. search results)
       //   'details'   - detail view for ONE space (selected by user)
-      view: 'menu',
+      view: 'home',
     }
   }
 

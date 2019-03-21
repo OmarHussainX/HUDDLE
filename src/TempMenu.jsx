@@ -31,7 +31,7 @@ class TempMenu extends React.Component {
         <Grid container className={classes.grid} justify="space-around">
           <DatePicker
             margin="normal"
-            label="Date picker"
+            label="Date"
             value={selectedDate}
             onChange={this.handleDateChange}
           />

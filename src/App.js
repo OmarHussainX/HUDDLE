@@ -54,15 +54,22 @@ class App extends Component {
     // console.log(`event.currentTarget: ${event.currentTarget}`)
     console.log(`event.currentTarget.id: ${event.currentTarget.id}`)
 
-    if (event.currentTarget.id === 'login-btn') {
+    const targetID = event.currentTarget.id
+
+    if (targetID === 'login-btn') {
       console.log('============> LOGIN BTN CLICKED')
       this.setState({view: 'login'})
-    }
-    if (event.currentTarget.id === 'logo') {
+    } else if (targetID === 'logo') {
       console.log('============> LOGO CLICKED')
       this.setState({
         view:'home'
       })
+    } else if ((targetID.includes('spacecrdindx') || targetID.includes('spacebtnindx') )) {
+        console.log('============> card CLICKED')
+        this.setState({
+          view:'details'
+        })
+  
     }
   }
 

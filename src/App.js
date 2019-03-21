@@ -20,6 +20,8 @@ const styles = theme => ({
   spacesGrid: {
     flexGrow: 1,
     justifyContent: 'center',
+    width: '100%',
+    margin: 0,
   },
   paperHeader: {
     background: `url(${Image}) center center`,

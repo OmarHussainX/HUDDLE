@@ -61,14 +61,16 @@ class App extends Component {
     } else if (targetID === 'logo') {
       console.log('============> LOGO CLICKED')
       this.setState({
-        view:'home'
+        view: 'home',
       })
-    } else if ((targetID.includes('spacecrdindx') || targetID.includes('spacebtnindx') )) {
-        console.log('============> card CLICKED')
-        this.setState({
-          view:'details'
-        })
-  
+    } else if (
+      targetID.includes('spacecrdindx') ||
+      targetID.includes('spacebtnindx')
+    ) {
+      console.log('============> card CLICKED')
+      this.setState({
+        view: 'details',
+      })
     }
   }
 
@@ -100,7 +102,17 @@ class App extends Component {
 
         {this.state.view === 'home' && (
           <div>
-            <SearchForm />
+          <Grid
+                  container
+                  spacing={0}
+                  alignItems="center"
+                  justify="center"
+                  style={{ minHeight: '50vh' }}
+                >
+            <Grid item xs={6}>
+              <SearchForm />
+            </Grid>
+          </Grid>
             <SearchBtn onClick={this.clickHandler} />
             <Grid container className={classes.spacesGrid} spacing={32}>
               {spaceCards}
@@ -116,7 +128,6 @@ class App extends Component {
         )}
 
         {this.state.view === 'login' && <Login />}
-
       </React.Fragment>
     )
   }

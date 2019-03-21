@@ -27,28 +27,30 @@ class TempMenu extends React.Component {
     const { selectedDate } = this.state;
 
     return (
-      <MuiPickersUtilsProvider utils={DateFnsUtils}>
-        <Grid container className={classes.grid} justify="space-around">
-          <DatePicker
-            margin="normal"
-            label="Date"
-            value={selectedDate}
-            onChange={this.handleDateChange}
-          />
-          <TimePicker
-            margin="normal"
-            label="Start"
-            value={selectedDate}
-            onChange={this.handleDateChange}
-          />
-          <TimePicker
-            margin="normal"
-            label="End"
-            value={selectedDate}
-            onChange={this.handleDateChange}
-          />
-        </Grid>
-      </MuiPickersUtilsProvider>
+      <div>
+        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+          <Grid container className={classes.grid} justify="space-around">
+            <DatePicker
+              margin="normal"
+              label="Date"
+              value={selectedDate}
+              onChange={this.handleDateChange}
+            />
+            <TimePicker
+              margin="normal"
+              label="Start"
+              value={selectedDate}
+              onChange={this.handleDateChange}
+            />
+            <TimePicker
+              margin="normal"
+              label="End"
+              value={selectedDate}
+              onChange={this.handleDateChange}
+            />
+          </Grid>
+        </MuiPickersUtilsProvider>
+      </div>
     );
   }
 }

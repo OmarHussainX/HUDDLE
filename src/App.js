@@ -26,6 +26,7 @@ const styles = theme => ({
     backgroundSize: 'cover',
     padding: '50px',
     height: '50vh',
+    minHeight: '520px',
   },
   container: {
     background: 'white',
@@ -34,6 +35,7 @@ const styles = theme => ({
     borderRadius: '5px',
     boxShadow: "0 16px 40px rgba(0,0,0,0.12)",
     width: '20vw',
+    minWidth: '200px',
     marginTop: '10vh',
     marginLeft: 'auto',
     marginRight: 'auto',

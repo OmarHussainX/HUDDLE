@@ -11,7 +11,7 @@ import Login from './Login'
 import SearchForm from './SearchForm'
 
 // Import spaces data from JSON source - will receive an array of Objects
-import spacesData from './dummy.json'
+import spacesData from './spaces.json'
 
 const styles = theme => ({
   // Top level container for the grid of spaces

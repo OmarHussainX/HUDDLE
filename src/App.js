@@ -65,9 +65,12 @@ class App extends Component {
         view:'home'
       })
     } else if ((targetID.includes('spacecrdindx') || targetID.includes('spacebtnindx') )) {
-        console.log('============> card CLICKED')
+        const arrayIndex = targetID.substring('spacecrdindx'.length)
+        console.log(`============> space ${this.state.spaces[arrayIndex].name} CLICKED`)
+
         this.setState({
-          view:'details'
+            selectedSpace: arrayIndex,
+            view: 'details'
         })
   
     }

@@ -53,9 +53,9 @@ class Menu extends Component {
 
   render() {
     const { classes, theme } = this.props;
-    console.log('this.props:',this.props)
-    console.log('classes:',classes)
-    console.log('theme:',theme)
+    // console.log('this.props:',this.props)
+    // console.log('classes:',classes)
+    // console.log('theme:',theme)
     const drawer = (
       <div>
         <div className={classes.toolbar} />

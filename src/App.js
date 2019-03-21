@@ -9,51 +9,62 @@ import MapCard from './MapCard'
 import SearchBtn from './SearchBtn'
 import Nav from './Nav'
 import Menu from './Menu'
+import Login from './Login'
 
 // Import spaces data from JSON source - will receive an array of Objects
 import spacesData from './dummy.json'
 
 const styles = theme => ({
-    // Top level container for the grid of spaces
-    spacesGrid: {
-        flexGrow: 1,
-        justifyContent: 'center',
-    },
+  // Top level container for the grid of spaces
+  spacesGrid: {
+    flexGrow: 1,
+    justifyContent: 'center',
+  },
 })
 
-
 class App extends Component {
-    constructor() {
-        super();
+  constructor() {
+    super()
 
-        this.state = {
-            // Master collection of ALL available spaces
-            // (array of Objects - see JSON file for Object structure)
-            spaces: spacesData,
+    this.state = {
+      // Master collection of ALL available spaces
+      // (array of Objects - see JSON file for Object structure)
+      spaces: spacesData,
 
-            // Collection of spaces matching the user's search criteria
-            // (array of Objects)
-            filteredSpaces: [],
+      // Collection of spaces matching the user's search criteria
+      // (array of Objects)
+      filteredSpaces: [],
 
-            // Reference to the space selected by the user for detailed view
-            selectedSpace: null,
+      // Reference to the space selected by the user for detailed view
+      selectedSpace: null,
 
-            // Indicates the current 'view' (overall state) of the app
-            // Valid values are:
-            //   'home'      - default (logo, search button, spaces)
-            //   'search'    - search panel
-            //   'filtered'  - filtered spaces (i.e. search results)
-            //   'details'   - detail view for ONE space (selected by user)
-            view: 'home',
-        }
+      // Indicates the current 'view' (overall state) of the app
+      // Valid values are:
+      //   'home'      - default (logo, search button, spaces)
+      //   'search'    - search panel
+      //   'filtered'  - filtered spaces (i.e. search results)
+      //   'details'   - detail view for ONE space (selected by user)
+      view: 'home',
     }
- 
-    clickHandler = event => {
-    console.log('inside clickHandler')
-    console.log(`event.target: ${event.target}`)
-    console.log(`event.currentTarget: ${event.currentTarget}`)
-    console.log(`event.currentTarget.id: ${event.currentTarget.id}`)
+  }
+
+  clickHandler = event => {
+    // console.log('inside clickHandler')
+    // console.log(`event.target: ${event.target}`)
+    // console.log(`event.currentTarget: ${event.currentTarget}`)
+    // console.log(`event.currentTarget.id: ${event.currentTarget.id}`)
+
+    if (event.target.name === 'login-btn') {
+      console.log('============> LOGIN BTN CLICKED')
+      this.setState({view: 'login'})
     }
+    if (event.target.name === 'logo') {
+      console.log('============> LOGO CLICKED')
+      this.setState({
+        view:'home'
+      })
+    }
+  }
 
   render() {
     const {classes} = this.props
@@ -78,22 +89,27 @@ class App extends Component {
     return (
       <React.Fragment>
         <CssBaseline />
-        <Nav />
-        <Menu />
-        <SearchBtn onClick={this.clickHandler}/>
+
+        <Nav onClick={this.clickHandler} />
 
         {this.state.view === 'home' && (
+          <div>
+            <Menu />
+            <SearchBtn onClick={this.clickHandler} />
             <Grid container className={classes.spacesGrid} spacing={32}>
-                {spaceCards}
+              {spaceCards}
             </Grid>
+          </div>
         )}
 
         {this.state.view === 'details' && (
-            <MapCard
-                selectedSpace={this.selectedSpace}
-                clickHandler={this.clickHandler}
-            />
+          <MapCard
+            selectedSpace={this.selectedSpace}
+            clickHandler={this.clickHandler}
+          />
         )}
+
+        {this.state.view === 'login' && <Login />}
 
       </React.Fragment>
     )

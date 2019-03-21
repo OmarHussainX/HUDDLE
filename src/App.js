@@ -21,9 +21,23 @@ const styles = theme => ({
     flexGrow: 1,
     justifyContent: 'center',
   },
-  paperContainer: {
-    backgroundImage: `url(${Image})`,
+  paperHeader: {
+    background: `url(${Image}) center center`,
+    backgroundSize: 'cover',
+    padding: '50px',
+    height: '50vh',
   },
+  container: {
+    background: 'white',
+    padding: '20px',
+    paddingBottom: '30px',
+    borderRadius: '5px',
+    boxShadow: "0 16px 40px rgba(0,0,0,0.12)",
+    width: '20vw',
+    marginTop: '10vh',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+  }
 })
 
 class App extends Component {
@@ -107,19 +121,11 @@ class App extends Component {
 
         {this.state.view === 'home' && (
           <div>
-            <Paper style={styles.paperContainer}>
-              Some text to fill the Paper Component
-              <Grid
-                container
-                spacing={0}
-                alignItems="center"
-                justify="center"
-                style={{minHeight: '50vh'}}>
-                <Grid item xs={6}>
-                  <SearchForm />
-                </Grid>
-              </Grid>
-            <SearchBtn onClick={this.clickHandler} />
+            <Paper className={classes.paperHeader}>
+              <div className={classes.container}>
+                <SearchForm />
+              </div>
+              <SearchBtn onClick={this.clickHandler} />
             </Paper>
             <br />
             <br />

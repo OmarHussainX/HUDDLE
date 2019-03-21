@@ -19,6 +19,9 @@ const styles = theme => ({
     flexGrow: 1,
     justifyContent: 'center',
   },
+  paperContainer: {
+    backgroundImage: `url(${Image})`
+  } 
 })
 
 class App extends Component {

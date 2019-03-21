@@ -2,11 +2,12 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {withStyles} from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
-import {Grid, Typography, Card} from '@material-ui/core'
+import {Grid} from '@material-ui/core'
 // import './App.css'
 import MediaCard from './MediaCard'
 import MapCard from './MapCard'
 import SearchBtn from './SearchBtn'
+import Nav from './Nav'
 
 // grab place data from JSON source - will receive
 // an array of Objects
@@ -48,11 +49,8 @@ class App extends Component {
     return (
       <React.Fragment>
         <CssBaseline />
-        <Typography variant="h3" align="center" gutterBottom>
-          HUDDLE
-        </Typography>
+        <Nav />
         <SearchBtn onClick={this.clickHandler}/>
-
         <Grid container className={classes.root} justify="center" spacing={32}>
           {placeCards}
           <MapCard />

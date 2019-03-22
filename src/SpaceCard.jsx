@@ -6,6 +6,8 @@ import CardActionArea from '@material-ui/core/CardActionArea'
 import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
 import Typography from '@material-ui/core/Typography'
+import Chip from '@material-ui/core/Chip'
+
 
 const styles = {
   card: {
@@ -39,7 +41,7 @@ class SpaceCard extends Component {
                     {this.props.name}
                 </Typography>
                 <Typography>
-                  {this.props.rate === 0 ? 'FREE' : `$${this.props.rate}/hr`}
+                  {this.props.rate === 0 ? <Chip label="FREE" /> : `$${this.props.rate}/hr`}
                   {`Capacity: ${this.props.capacity}`}
                   {`Type: ${this.props.venue_type}`}
                 </Typography>

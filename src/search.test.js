@@ -176,30 +176,151 @@ test('Checking filtering by location (city) FAILURE', () => {
 })
 
 
-test('Checking filtering by price SUCCESS', () => {
+test('Checking filtering by price ($0) SUCCESS', () => {
 
-    const searchValue = '75'    // input by the user
+    const searchValue = 0    // selected by the user
 
     // filteredSpaces is an array of Objects which match the user's
     // search criterion
     let filteredSpaces = spaceSearch.filterByPrice(spaceData, searchValue)
 
-    let priceMatch = false
-    console.log(filteredSpaces.length)
-    // iterate through the filteredSpaces array, checking each object's street address...
-    // ...if any address doesn't include the search term, something is wrong!!
-    priceMatch = filteredSpaces.every(space => {
-        // console.log(`'space.name's that match '${searchString}': ${space.name}`)
-        return space.price <= searchValue})
+    let priceRangeMatch = false
+    console.log(`---matches for rate ${searchValue}: ${filteredSpaces.length}`)
+    filteredSpaces.forEach(space => {
+        console.log(`${space.name}: $${space.rate}`)
+    }); 
+
+    // iterate through the filteredSpaces array, checking each object's rate...
+    // ...if any rate falls outside the desired range, something is wrong!!
+    priceRangeMatch = filteredSpaces.every(space => {
+        return space.rate === 0 })
 
     // NOTE: Calling '.every()' on an empty array returns 'true'!!!
     if (filteredSpaces.length === 0) {
-        priceMatch = false
+        priceRangeMatch = false
     }
 
-    expect(priceMatch).toBeTruthy()
+    expect(priceRangeMatch).toBeTruthy()
     // expect(filteredSpaces.length).toBeTruthy()
     
 })
          
 
+test('Checking filtering by price ($1-25) SUCCESS', () => {
+
+    const searchValue = 25    // selected by the user
+
+    // filteredSpaces is an array of Objects which match the user's
+    // search criterion
+    let filteredSpaces = spaceSearch.filterByPrice(spaceData, searchValue)
+
+    let priceRangeMatch = false
+    console.log(`---matches for rate $1-25: ${filteredSpaces.length}`)
+    filteredSpaces.forEach(space => {
+        console.log(`${space.name}: $${space.rate}`)
+    }); 
+
+    // iterate through the filteredSpaces array, checking each object's rate...
+    // ...if any rate falls outside the desired range, something is wrong!!
+    priceRangeMatch = filteredSpaces.every(space => {
+        return space.rate > 0 && space.rate <= 25 })
+
+    // NOTE: Calling '.every()' on an empty array returns 'true'!!!
+    if (filteredSpaces.length === 0) {
+        priceRangeMatch = false
+    }
+
+    expect(priceRangeMatch).toBeTruthy()
+    // expect(filteredSpaces.length).toBeTruthy()
+    
+})
+         
+
+test('Checking filtering by price ($26-50) SUCCESS', () => {
+
+    const searchValue = 50    // selected by the user
+
+    // filteredSpaces is an array of Objects which match the user's
+    // search criterion
+    let filteredSpaces = spaceSearch.filterByPrice(spaceData, searchValue)
+
+    let priceRangeMatch = false
+    console.log(`---matches for rate $26-50: ${filteredSpaces.length}`)
+    filteredSpaces.forEach(space => {
+        console.log(`${space.name}: $${space.rate}`)
+    }); 
+
+    // iterate through the filteredSpaces array, checking each object's rate...
+    // ...if any rate falls outside the desired range, something is wrong!!
+    priceRangeMatch = filteredSpaces.every(space => {
+        return space.rate > 25 && space.rate <= 50 })
+
+    // NOTE: Calling '.every()' on an empty array returns 'true'!!!
+    if (filteredSpaces.length === 0) {
+        priceRangeMatch = false
+    }
+
+    expect(priceRangeMatch).toBeTruthy()
+    // expect(filteredSpaces.length).toBeTruthy()
+    
+})
+         
+
+test('Checking filtering by price ($51-75) SUCCESS', () => {
+
+    const searchValue = 75    // selected by the user
+
+    // filteredSpaces is an array of Objects which match the user's
+    // search criterion
+    let filteredSpaces = spaceSearch.filterByPrice(spaceData, searchValue)
+
+    let priceRangeMatch = false
+    console.log(`---matches for rate $51-75: ${filteredSpaces.length}`)
+    filteredSpaces.forEach(space => {
+        console.log(`${space.name}: $${space.rate}`)
+    }); 
+
+    // iterate through the filteredSpaces array, checking each object's rate...
+    // ...if any rate falls outside the desired range, something is wrong!!
+    priceRangeMatch = filteredSpaces.every(space => {
+        return space.rate > 50 && space.rate <= 75 })
+
+    // NOTE: Calling '.every()' on an empty array returns 'true'!!!
+    if (filteredSpaces.length === 0) {
+        priceRangeMatch = false
+    }
+
+    expect(priceRangeMatch).toBeTruthy()
+    // expect(filteredSpaces.length).toBeTruthy()
+    
+})
+         
+
+test('Checking filtering by price ($75+) SUCCESS', () => {
+
+    const searchValue = 76    // selected by the user
+
+    // filteredSpaces is an array of Objects which match the user's
+    // search criterion
+    let filteredSpaces = spaceSearch.filterByPrice(spaceData, searchValue)
+
+    let priceRangeMatch = false
+    console.log(`---matches for rate $75+: ${filteredSpaces.length}`)
+    filteredSpaces.forEach(space => {
+        console.log(`${space.name}: $${space.rate}`)
+    }); 
+
+    // iterate through the filteredSpaces array, checking each object's rate...
+    // ...if any rate falls outside the desired range, something is wrong!!
+    priceRangeMatch = filteredSpaces.every(space => {
+        return space.rate > 75 })
+
+    // NOTE: Calling '.every()' on an empty array returns 'true'!!!
+    if (filteredSpaces.length === 0) {
+        priceRangeMatch = false
+    }
+
+    expect(priceRangeMatch).toBeTruthy()
+    // expect(filteredSpaces.length).toBeTruthy()
+    
+})

@@ -24,12 +24,12 @@ class Search {
 
         switch (searchType) {
             case 'quadrant':
-                filteredSpaces = spaceData.filter(space => space.address.quadrant.toUpperCase() === searchOption.toUpperCase())
+            filteredSpaces = spaceData.filter(space => space.address.quadrant.toUpperCase() === searchOption.toUpperCase())
             break
 
             case 'street':
             case 'city':
-                filteredSpaces = spaceData.filter(space => space.address[searchType].toLowerCase().includes(searchOption.toLowerCase()))
+            filteredSpaces = spaceData.filter(space => space.address[searchType].toLowerCase().includes(searchOption.toLowerCase()))
             break
             
 
@@ -42,37 +42,45 @@ class Search {
 
     // filterByPrice takes two parameters:
     // - a reference to a collection of all spaces
-    // - a search value which is guaranteed to be one of:
-    //   25    ( 0-25 range )
+    // - a numeric search value which is guaranteed to be one of:
+    //   0     ( free spaces )
+    //   25    ( 1-25 range )
     //   50    ( 26-50 range )
     //   75    ( 51-75 range )
-    //   76    ( 76-100 range )
+    //   100   ( 76+ range )
 
     filterByPrice(spaceData, searchValue) {
+        searchValue = parseInt(searchValue)
         let filteredSpaces = []
 
         switch (searchValue) {
+            // ( free spaces )
+            case 0:
+            filteredSpaces = spaceData.filter(space => space.rate === 0 )
+            break
+
             // ( 0-25 range )
             case 25:
+            filteredSpaces = spaceData.filter(space => space.rate > 0 && space.rate <= 25)
             break
 
             // ( 26-50 range )
             case 50:
+            filteredSpaces = spaceData.filter(space => space.rate > 25 && space.rate <= 50)
             break
 
             // ( 51-75 range )
             case 75:
+            filteredSpaces = spaceData.filter(space => space.rate > 51 && space.rate <= 75)
             break
 
-            // ( 76-100 range )
+            // ( 76+ range )
             case 76:
+            filteredSpaces = spaceData.filter(space => space.rate > 75)
             break
 
             default:
         }
-
-
-
         return filteredSpaces
     }
 

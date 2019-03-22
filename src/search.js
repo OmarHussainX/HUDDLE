@@ -56,15 +56,15 @@ class Search {
             case 25:
             break
 
-            // 
+            // ( 26-50 range )
             case 50:
             break
 
-            // 
+            // ( 51-75 range )
             case 75:
             break
 
-            // 
+            // ( 76-100 range )
             case 76:
             break
 

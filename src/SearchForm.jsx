@@ -60,7 +60,7 @@ class TempMenu extends React.Component {
           <Grid container className={classes.grid} justify="space-around">
 
             <Typography variant="h5" component="h3">
-              Find a space the perfect spot.
+              Book a meeting room or event space.
             </Typography>
 
 

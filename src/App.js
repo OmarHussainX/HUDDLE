@@ -3,14 +3,14 @@ import PropTypes from 'prop-types'
 import {withStyles} from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import {Grid} from '@material-ui/core'
-import MediaCard from './MediaCard'
-import MapCard from './MapCard'
+import SpaceCard from './SpaceCard'
+import Details from './Details'
 import SearchBtn from './SearchBtn'
 import Nav from './Nav'
 import Login from './Login'
 import SearchForm from './SearchForm'
 import Paper from '@material-ui/core/Paper'
-import Image from './landing.jpg'
+import Image from './landing3.jpg'
 
 // Import spaces data from JSON source - will receive an array of Objects
 import spacesData from './spaces.json'
@@ -20,6 +20,8 @@ const styles = theme => ({
   spacesGrid: {
     flexGrow: 1,
     justifyContent: 'center',
+    width: '100%',
+    margin: 0,
   },
   paperHeader: {
     background: `url(${Image}) center center`,
@@ -33,10 +35,11 @@ const styles = theme => ({
     padding: '20px',
     paddingBottom: '30px',
     borderRadius: '5px',
-    boxShadow: "0 16px 40px rgba(0,0,0,0.12)",
-    width: '20vw',
-    minWidth: '200px',
-    marginTop: '10vh',
+    boxShadow: '0 16px 40px rgba(0,0,0,0.12)',
+    width: '25vw',
+    minWidth: '300px',
+    maxWidth: '250px',
+    marginTop: '1vh',
     marginLeft: 'auto',
     marginRight: 'auto',
   },
@@ -84,23 +87,17 @@ class App extends Component {
       this.setState({
         view: 'home',
       })
-    } else if (
-      targetID.includes('spacecrdindx') ||
-      targetID.includes('spacebtnindx')
-    ) {
-      console.log('============> card CLICKED')
+    } 
+    else if ( targetID.includes('spacecrdindx') || targetID.includes('spacebtnindx')) {
+      const arrayIndex = targetID.substring('spacecrdindx'.length) - 1
+      console.log(
+        `============> space ${this.state.spaces[arrayIndex].name} CLICKED`,
+      )
       this.setState({
+        selectedSpace: this.state.spaces[arrayIndex],
         view: 'details',
       })
-    } else if ((targetID.includes('spacecrdindx') || targetID.includes('spacebtnindx') )) {
-        const arrayIndex = targetID.substring('spacecrdindx'.length)
-        console.log(`============> space ${this.state.spaces[arrayIndex].name} CLICKED`)
-
-        this.setState({
-            selectedSpace: arrayIndex,
-            view: 'details'
-        })
-  
+      console.log(this.state.spaces[arrayIndex])
     }
   }
 
@@ -111,13 +108,13 @@ class App extends Component {
     spacesData.forEach(space => {
       spaceCards.push(
         <Grid item key={space.id}>
-          <MediaCard
+          <SpaceCard
             id={space.id}
             name={space.name}
             image={space.img[0]}
-            info={space.description}
-            lat={space.lat}
-            long={space.long}
+            rate={space.rate}
+            capacity={space.capacity}
+            venue_type={space.venue_type}
             clickHandler={this.clickHandler}
           />
         </Grid>,
@@ -149,8 +146,8 @@ class App extends Component {
         )}
 
         {this.state.view === 'details' && (
-          <MapCard
-            selectedSpace={this.selectedSpace}
+          <Details
+            selectedSpace={this.state.selectedSpace}
             clickHandler={this.clickHandler}
           />
         )}

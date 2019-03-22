@@ -10,7 +10,7 @@ import Nav from './Nav'
 import Login from './Login'
 import SearchForm from './SearchForm'
 import Paper from '@material-ui/core/Paper'
-import Image from './landing.jpg'
+import Image from './landing3.jpg'
 
 // Import spaces data from JSON source - will receive an array of Objects
 import spacesData from './spaces.json'

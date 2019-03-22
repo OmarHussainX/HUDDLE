@@ -15,6 +15,10 @@ const styles = theme => ({
     paddingBottom: theme.spacing.unit * 2,
     minHeight: '400px',
   },
+  media: {
+    minHeight: 150,
+    maxHeight: 150,
+  },
   map: {
     color: 'red',
     padding: theme.spacing.unit * 2,
@@ -54,18 +58,6 @@ class Details extends Component {
               </CardContent>
             </CardActionArea>
           </Card>
-
-          <Card className={classes.card}>
-            <CardMedia
-              className={classes.media}
-              image={`/images/${this.props.selectedSpace.img[0]}`}
-              title=""
-            />
-          </Card>
-
-          <Typography variant="h5" component="h3">
-            {this.props.selectedSpace.img[0]}
-          </Typography>
 
           <div
             id="maptest"

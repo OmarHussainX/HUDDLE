@@ -17,7 +17,7 @@ const styles = theme => ({
   },
 })
 
-class MapCard extends Component {
+class Details extends Component {
   componentDidMount() {
     let map = new window.google.maps.Map(document.getElementById('maptest'), {
       center: {lat: 51.044308, lng: -114.0652801},
@@ -51,8 +51,8 @@ class MapCard extends Component {
   }
 }
 
-MapCard.propTypes = {
+Details.propTypes = {
   classes: PropTypes.object.isRequired,
 }
 
-export default withStyles(styles)(MapCard)
+export default withStyles(styles)(Details)

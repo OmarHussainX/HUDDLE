@@ -111,9 +111,9 @@ class App extends Component {
             id={space.id}
             name={space.name}
             image={space.img[0]}
-            info={space.description}
-            lat={space.lat}
-            long={space.long}
+            rate={space.rate}
+            capacity={space.capacity}
+            venue_type={space.venue_type}
             clickHandler={this.clickHandler}
           />
         </Grid>,

@@ -3,6 +3,10 @@ import PropTypes from 'prop-types'
 import {withStyles} from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
+import Card from '@material-ui/core/Card'
+import CardMedia from '@material-ui/core/CardMedia'
+import CardContent from '@material-ui/core/CardContent'
+import CardActionArea from '@material-ui/core/CardActionArea'
 
 const styles = theme => ({
   root: {
@@ -31,10 +35,38 @@ class Details extends Component {
     return (
       <div>
         <Paper className={classes.root} elevation={1}>
-          <Typography variant="h5" component="h3">
+          <Typography variant="h2" component="h3">
             {this.props.selectedSpace.name}
           </Typography>
-          <Typography component="p">blahh</Typography>
+
+          <Card className={classes.card}>
+            <CardActionArea>
+              <CardMedia
+                className={classes.media}
+                image={`/images/${this.props.selectedSpace.img[0]}`}
+                title=""
+              />
+
+              <CardContent className={classes.cardContent}>
+                <Typography gutterBottom variant="h5" component="h2">
+                  {this.props.name}
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+
+          <Card className={classes.card}>
+            <CardMedia
+              className={classes.media}
+              image={`/images/${this.props.selectedSpace.img[0]}`}
+              title=""
+            />
+          </Card>
+
+          <Typography variant="h5" component="h3">
+            {this.props.selectedSpace.img[0]}
+          </Typography>
+
           <div
             id="maptest"
             style={{
@@ -42,9 +74,8 @@ class Details extends Component {
               width: '300px',
               height: '300px',
               border: '2px dotted green',
-            }}>
-            I can haz map?
-          </div>
+            }}
+          />
         </Paper>
       </div>
     )

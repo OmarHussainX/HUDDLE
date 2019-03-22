@@ -3,18 +3,21 @@ import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardActionArea from '@material-ui/core/CardActionArea'
-import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
-import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 
 const styles = {
   card: {
     maxWidth: 300,
+    minWidth: 300,
+  },
+  cardContent: {
+    minHeight: 150,
   },
   media: {
-    height: 150,
+    minHeight: 150,
+    maxHeight: 150,
   },
 }
 
@@ -24,32 +27,25 @@ class SpaceCard extends Component {
         return (
             <Card className={classes.card}>
             <CardActionArea onClick={this.props.clickHandler} id={'spacecrdindx'+this.props.id}>
+
                 <CardMedia
                 className={classes.media}
                 image={`/images/${this.props.image}`}
                 title=""
                 />
-                <CardContent>
+
+                <CardContent className={classes.cardContent}>
                 <Typography gutterBottom variant="h5" component="h2">
                     {this.props.name}
                 </Typography>
-                <Typography gutterBottom component="p">
-                    {(this.props.info.length >= 120 ? this.props.info.substring(0,120)+'...' : this.props.info)} 
-                </Typography>
-                <Typography component="p">
-                    Latitude: {this.props.lat}, Longtitude: {this.props.long}
+                <Typography>
+                  {this.props.rate === 0 ? 'FREE' : `$${this.props.rate}/hr`}
+                  {`Capacity: ${this.props.capacity}`}
+                  {`Type: ${this.props.venue_type}`}
                 </Typography>
                 </CardContent>
+
             </CardActionArea>
-            <CardActions>
-                <Button 
-                    size="small" 
-                    color="primary" 
-                    onClick={this.props.clickHandler}
-                    id={'spacebtnindx'+this.props.id}
-                    >See details
-                </Button>
-            </CardActions>
             </Card>
         )
     }

@@ -93,9 +93,10 @@ class App extends Component {
         `============> space ${this.state.spaces[arrayIndex].name} CLICKED`,
       )
       this.setState({
-        selectedSpace: arrayIndex,
+        selectedSpace: this.state.spaces[arrayIndex],
         view: 'details',
       })
+      console.log(this.state.spaces[arrayIndex])
     }
   }
 
@@ -145,7 +146,7 @@ class App extends Component {
 
         {this.state.view === 'details' && (
           <Details
-            selectedSpace={this.selectedSpace}
+            selectedSpace={this.state.selectedSpace}
             clickHandler={this.clickHandler}
           />
         )}

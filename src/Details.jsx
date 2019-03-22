@@ -32,7 +32,7 @@ class Details extends Component {
       <div>
         <Paper className={classes.root} elevation={1}>
           <Typography variant="h5" component="h3">
-            Google Maps test...
+            {this.props.selectedSpace.name}
           </Typography>
           <Typography component="p">blahh</Typography>
           <div

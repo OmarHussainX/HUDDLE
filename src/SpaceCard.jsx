@@ -18,7 +18,7 @@ const styles = {
   },
 }
 
-class MediaCard extends Component {
+class SpaceCard extends Component {
     render() {
         const { classes } = this.props
         return (
@@ -55,8 +55,8 @@ class MediaCard extends Component {
     }
 }
 
-MediaCard.propTypes = {
+SpaceCard.propTypes = {
   classes: PropTypes.object.isRequired,
 }
 
-export default withStyles(styles)(MediaCard)
+export default withStyles(styles)(SpaceCard)

@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import {withStyles} from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import {Grid} from '@material-ui/core'
-import MediaCard from './MediaCard'
-import MapCard from './MapCard'
+import SpaceCard from './SpaceCard'
+import Details from './Details'
 import SearchBtn from './SearchBtn'
 import Nav from './Nav'
 import Login from './Login'
@@ -93,9 +93,10 @@ class App extends Component {
         `============> space ${this.state.spaces[arrayIndex].name} CLICKED`,
       )
       this.setState({
-        selectedSpace: arrayIndex,
+        selectedSpace: this.state.spaces[arrayIndex],
         view: 'details',
       })
+      console.log(this.state.spaces[arrayIndex])
     }
   }
 
@@ -106,7 +107,7 @@ class App extends Component {
     spacesData.forEach(space => {
       spaceCards.push(
         <Grid item key={space.id}>
-          <MediaCard
+          <SpaceCard
             id={space.id}
             name={space.name}
             image={space.img[0]}
@@ -144,8 +145,8 @@ class App extends Component {
         )}
 
         {this.state.view === 'details' && (
-          <MapCard
-            selectedSpace={this.selectedSpace}
+          <Details
+            selectedSpace={this.state.selectedSpace}
             clickHandler={this.clickHandler}
           />
         )}

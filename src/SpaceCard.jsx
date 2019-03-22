@@ -21,6 +21,10 @@ const styles = {
     minHeight: 150,
     maxHeight: 150,
   },
+  chip: {
+    cursor: 'pointer',
+    padding: '1px',
+  },
 }
 
 class SpaceCard extends Component {
@@ -41,7 +45,7 @@ class SpaceCard extends Component {
                     {this.props.name}
                 </Typography>
                 <Typography>
-                  {this.props.rate === 0 ? <Chip label="FREE" /> : `$${this.props.rate}/hr`}
+                  {this.props.rate === 0 ? <Chip label="FREE" className={classes.chip}/> : `$${this.props.rate}/hr`}
                   {`Capacity: ${this.props.capacity}`}
                   {`Type: ${this.props.venue_type}`}
                 </Typography>

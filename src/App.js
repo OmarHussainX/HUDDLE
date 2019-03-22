@@ -35,7 +35,7 @@ const styles = theme => ({
     padding: '20px',
     paddingBottom: '30px',
     borderRadius: '5px',
-    boxShadow: "0 16px 40px rgba(0,0,0,0.12)",
+    boxShadow: '0 16px 40px rgba(0,0,0,0.12)',
     width: '20vw',
     minWidth: '200px',
     marginTop: '10vh',
@@ -86,23 +86,16 @@ class App extends Component {
       this.setState({
         view: 'home',
       })
-    } else if (
-      targetID.includes('spacecrdindx') ||
-      targetID.includes('spacebtnindx')
-    ) {
-      console.log('============> card CLICKED')
+    } 
+    else if ( targetID.includes('spacecrdindx') || targetID.includes('spacebtnindx')) {
+      const arrayIndex = targetID.substring('spacecrdindx'.length) - 1
+      console.log(
+        `============> space ${this.state.spaces[arrayIndex].name} CLICKED`,
+      )
       this.setState({
+        selectedSpace: arrayIndex,
         view: 'details',
       })
-    } else if ((targetID.includes('spacecrdindx') || targetID.includes('spacebtnindx') )) {
-        const arrayIndex = targetID.substring('spacecrdindx'.length)
-        console.log(`============> space ${this.state.spaces[arrayIndex].name} CLICKED`)
-
-        this.setState({
-            selectedSpace: arrayIndex,
-            view: 'details'
-        })
-  
     }
   }
 

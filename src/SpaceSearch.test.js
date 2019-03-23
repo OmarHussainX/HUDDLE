@@ -276,7 +276,7 @@ test('Checking filtering by price ($51-75) SUCCESS', () => {
 
 test('Checking filtering by price ($76+) SUCCESS', () => {
 
-    const searchValue = 76    // selected by the user
+    const searchValue = 100    // selected by the user
 
     // filteredSpaces is an array of Objects which match the user's
     // search criterion

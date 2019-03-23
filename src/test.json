@@ -10,10 +10,10 @@
     "availability": {
         "Sunday": false,
         "Monday": true,
-        "Tuesday": true,
+        "Tuesday": false,
         "Wednesday": true,
         "Thursday": true,
-        "Friday": true,
+        "Friday": false,
         "Saturday": false
     },
     "address": {
@@ -79,13 +79,13 @@
         "rate": 0,
         "user_experience": "Patio",
         "availability": {
-            "Sunday": true,
+            "Sunday": false,
             "Monday": true,
-            "Tuesday": true,
+            "Tuesday": false,
             "Wednesday": true,
             "Thursday": true,
             "Friday": true,
-            "Saturday": true
+            "Saturday": false
         },
         "address": {
             "quadrant": "SW",
@@ -115,9 +115,9 @@
         "user_experience": "Lake View",
         "availability": {
             "Sunday": true,
-            "Monday": true,
+            "Monday": false,
             "Tuesday": true,
-            "Wednesday": true,
+            "Wednesday": false,
             "Thursday": true,
             "Friday": true,
             "Saturday": true
@@ -151,12 +151,12 @@
         "user_experience": "Casino",
         "availability": {
             "Sunday": true,
-            "Monday": true,
-            "Tuesday": true,
+            "Monday": false,
+            "Tuesday": false,
             "Wednesday": true,
             "Thursday": true,
-            "Friday": true,
-            "Saturday": true
+            "Friday": false,
+            "Saturday": false
         },
         "address": {
             "quadrant": "SW",
@@ -189,7 +189,7 @@
             "Sunday": true,
             "Monday": true,
             "Tuesday": true,
-            "Wednesday": true,
+            "Wednesday": false,
             "Thursday": true,
             "Friday": true,
             "Saturday": true
@@ -222,10 +222,10 @@
         "rate": 62,
         "user_experience": "Cinema",
         "availability": {
-            "Sunday": true,
-            "Monday": true,
+            "Sunday": false,
+            "Monday": false,
             "Tuesday": true,
-            "Wednesday": true,
+            "Wednesday": false,
             "Thursday": true,
             "Friday": true,
             "Saturday": true
@@ -260,10 +260,10 @@
         "availability": {
             "Sunday": false,
             "Monday": true,
-            "Tuesday": true,
-            "Wednesday": true,
+            "Tuesday": false,
+            "Wednesday": false,
             "Thursday": true,
-            "Friday": true,
+            "Friday": false,
             "Saturday": true
         },
         "address": {
@@ -294,11 +294,11 @@
         "rate": 94,
         "user_experience": "Leisure",
         "availability": {
-            "Sunday": true,
-            "Monday": true,
+            "Sunday": false,
+            "Monday": false,
             "Tuesday": true,
             "Wednesday": true,
-            "Thursday": true,
+            "Thursday": false,
             "Friday": true,
             "Saturday": true
         },
@@ -331,12 +331,12 @@
         "user_experience": "",
         "availability": {
             "Sunday": true,
-            "Monday": true,
+            "Monday": false,
             "Tuesday": true,
-            "Wednesday": true,
+            "Wednesday": false,
             "Thursday": true,
-            "Friday": true,
-            "Saturday": true
+            "Friday": false,
+            "Saturday": false
         },
         "address": {
             "quadrant": "SW",
@@ -371,7 +371,7 @@
             "Tuesday": true,
             "Wednesday": true,
             "Thursday": true,
-            "Friday": true,
+            "Friday": false,
             "Saturday": true
         },
         "address": {
@@ -404,11 +404,11 @@
         "availability": {
             "Sunday": true,
             "Monday": true,
-            "Tuesday": true,
+            "Tuesday": false,
             "Wednesday": true,
-            "Thursday": true,
+            "Thursday": false,
             "Friday": true,
-            "Saturday": true
+            "Saturday": false
         },
         "address": {
             "quadrant": "SE",
@@ -438,12 +438,12 @@
         "user_experience": "Museum",
         "availability": {
             "Sunday": true,
-            "Monday": true,
+            "Monday": false,
             "Tuesday": true,
-            "Wednesday": true,
+            "Wednesday": false,
             "Thursday": true,
             "Friday": true,
-            "Saturday": true
+            "Saturday": false
         },
         "address": {
             "quadrant": "SE",
@@ -473,12 +473,12 @@
         "rate": 25,
         "user_experience": "",
         "availability": {
-            "Sunday": true,
-            "Monday": true,
-            "Tuesday": true,
-            "Wednesday": true,
-            "Thursday": true,
-            "Friday": true,
+            "Sunday": false,
+            "Monday": false,
+            "Tuesday": false,
+            "Wednesday": false,
+            "Thursday": false,
+            "Friday": false,
             "Saturday": true
         },
         "address": {
@@ -510,10 +510,10 @@
         "user_experience": "Historic Site",
         "availability": {
             "Sunday": false,
-            "Monday": true,
-            "Tuesday": true,
+            "Monday": false,
+            "Tuesday": false,
             "Wednesday": true,
-            "Thursday": true,
+            "Thursday": false,
             "Friday": true,
             "Saturday": true
         },

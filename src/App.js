@@ -147,7 +147,9 @@ class App extends Component {
         )}
 
         {this.state.view === 'details' && (
-            <Carousel />
+            <Carousel
+            spaces={this.state.spaces}
+            />
         //   <Details
         //     selectedSpace={this.state.selectedSpace}
         //     clickHandler={this.clickHandler}

@@ -80,6 +80,9 @@ class Carousel extends React.Component {
             </div>
           ))}
         </AutoPlaySwipeableViews>
+
+        {/* Do not render carousel controls if there is only one image */}
+        { maxSteps > 1 && (
         <MobileStepper
           steps={maxSteps}
           position="static"
@@ -98,6 +101,8 @@ class Carousel extends React.Component {
             </Button>
           }
         />
+        )}
+
       </div>
     )
   }

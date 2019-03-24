@@ -9,12 +9,12 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft'
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight'
 import SwipeableViews from 'react-swipeable-views'
 import { autoPlay } from 'react-swipeable-views-utils'
-import red from '@material-ui/core/colors/red';
+import blue from '@material-ui/core/colors/blue';
 import Chip from '@material-ui/core/Chip'
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews)
 
-const color = red[200]
+const freeChipColor = blue[500]
 
 const styles = theme => ({
   root: {
@@ -42,7 +42,9 @@ const styles = theme => ({
     width: '100%',
   },
   chip: {
-    backgroundColor: color,
+    backgroundColor: freeChipColor,
+    // fontWeight: 'bold',
+    color: 'white',
     padding: '1px',
     marginRight: '10px',
   },
@@ -118,8 +120,16 @@ class Carousel extends React.Component {
             )}
             <Typography>
                 {selectedSpace.rate === 0 ? <Chip label="FREE" className={classes.chip} /> : `$${selectedSpace.rate}/hr`}
-                {`Capacity: ${selectedSpace.capacity}`}
-                {`Type: ${selectedSpace.venue_type}`}
+            </Typography>
+            <Typography>
+                {`Capacity: ${selectedSpace.capacity}`} 
+                <em>&nbsp;&nbsp;(venue type: {selectedSpace.venue_type})</em>
+            </Typography>
+            <Typography gutterBottom>
+                {`${selectedSpace.address.street} ${selectedSpace.address.quadrant}, ${selectedSpace.address.postal_code}`}
+            </Typography>
+            <Typography>
+            {selectedSpace.description}
             </Typography>
         </Paper>
       </div>

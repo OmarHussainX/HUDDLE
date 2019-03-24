@@ -56,8 +56,8 @@ class Carousel extends React.Component {
   }
 
   render() {
-    const { classes, theme, spaces } = this.props
-    const space=spaces[0]
+    const { classes, theme, spaces, selectedSpace } = this.props
+    const space=selectedSpace
     const { activeStep } = this.state
     const maxSteps = space.img.length
 

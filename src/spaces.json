@@ -37,7 +37,7 @@
     {
         "id": "2",
         "name": "National on 10th",
-        "img": ["2National.jpg"],
+        "img": ["2National.jpg", "15cSpace.jpg", "14UofC.jpg", "13Glenbow.jpg"],
         "description": "",
         "venue_type": "Restaurant",
         "capacity": 70,

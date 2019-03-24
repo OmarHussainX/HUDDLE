@@ -9,9 +9,12 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft'
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight'
 import SwipeableViews from 'react-swipeable-views'
 import { autoPlay } from 'react-swipeable-views-utils'
+import red from '@material-ui/core/colors/red';
+import Chip from '@material-ui/core/Chip'
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews)
 
+const color = red[200]
 
 const styles = theme => ({
   root: {
@@ -38,6 +41,11 @@ const styles = theme => ({
     overflow: 'hidden',
     width: '100%',
   },
+  chip: {
+    backgroundColor: color,
+    padding: '1px',
+    marginRight: '10px',
+  },
 })
 
 class Carousel extends React.Component {
@@ -62,54 +70,57 @@ class Carousel extends React.Component {
   }
 
   render() {
-    const { classes, theme, spaces, selectedSpace } = this.props
-    const space=selectedSpace
+    const { classes, theme, selectedSpace } = this.props
     const { activeStep } = this.state
-    const maxSteps = space.img.length
+    const maxSteps = selectedSpace.img.length
 
     return (
       <div className={classes.root}>
         <Paper className={classes.base} elevation={1}>
+            <Paper square elevation={0} className={classes.header}>
+            <Typography>{selectedSpace.name}</Typography>
+            </Paper>
+            <AutoPlaySwipeableViews
+            axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+            index={activeStep}
+            onChangeIndex={this.handleStepChange}
+            enableMouseEvents
+            >
+            {selectedSpace.img.map((step, index) => (
+                <div key={step}>
+                {Math.abs(activeStep - index) <= 2 ? (
+                    <img className={classes.img} src={`/images/${step}`} alt={""} />
+                ) : null}
+                </div>
+            ))}
+            </AutoPlaySwipeableViews>
 
-        <Paper square elevation={0} className={classes.header}>
-          <Typography>{space.name}</Typography>
-        </Paper>
-        <AutoPlaySwipeableViews
-          axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-          index={activeStep}
-          onChangeIndex={this.handleStepChange}
-          enableMouseEvents
-        >
-          {space.img.map((step, index) => (
-            <div key={step}>
-              {Math.abs(activeStep - index) <= 2 ? (
-                <img className={classes.img} src={`/images/${step}`} alt={""} />
-              ) : null}
-            </div>
-          ))}
-        </AutoPlaySwipeableViews>
-
-        {/* Do not render carousel controls if there is only one image */}
-        { maxSteps > 1 && (
-        <MobileStepper
-          steps={maxSteps}
-          position="static"
-          activeStep={activeStep}
-          className={classes.mobileStepper}
-          nextButton={
-            <Button size="small" onClick={this.handleNext} disabled={activeStep === maxSteps - 1}>
-              Next
-              {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
-            </Button>
-          }
-          backButton={
-            <Button size="small" onClick={this.handleBack} disabled={activeStep === 0}>
-              {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
-              Back
-            </Button>
-          }
-        />
-        )}
+            {/* Do not render carousel controls if there is only one image */}
+            { maxSteps > 1 && (
+                <MobileStepper
+                    steps={maxSteps}
+                    position="static"
+                    activeStep={activeStep}
+                    className={classes.mobileStepper}
+                    nextButton={
+                        <Button size="small" onClick={this.handleNext} disabled={activeStep === maxSteps - 1}>
+                            Next
+                            {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
+                        </Button>
+                    }
+                    backButton={
+                        <Button size="small" onClick={this.handleBack} disabled={activeStep === 0}>
+                            {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
+                            Back
+                        </Button>
+                    }
+                />
+            )}
+            <Typography>
+                {selectedSpace.rate === 0 ? <Chip label="FREE" className={classes.chip} /> : `$${selectedSpace.rate}/hr`}
+                {`Capacity: ${selectedSpace.capacity}`}
+                {`Type: ${selectedSpace.venue_type}`}
+            </Typography>
         </Paper>
       </div>
     )

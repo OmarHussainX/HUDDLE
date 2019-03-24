@@ -57,13 +57,14 @@ class Carousel extends React.Component {
 
   render() {
     const { classes, theme, spaces } = this.props
+    const space=spaces[0]
     const { activeStep } = this.state
-    const maxSteps = spaces.length
+    const maxSteps = space.img.length
 
     return (
       <div className={classes.root}>
         <Paper square elevation={0} className={classes.header}>
-          <Typography>{spaces[activeStep].name}</Typography>
+          <Typography>{space.name}</Typography>
         </Paper>
         <AutoPlaySwipeableViews
           axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
@@ -71,10 +72,10 @@ class Carousel extends React.Component {
           onChangeIndex={this.handleStepChange}
           enableMouseEvents
         >
-          {spaces.map((step, index) => (
-            <div key={step.name}>
+          {space.img.map((step, index) => (
+            <div key={step}>
               {Math.abs(activeStep - index) <= 2 ? (
-                <img className={classes.img} src={`/images/${step.img[0]}`} alt={step.name} />
+                <img className={classes.img} src={`/images/${step}`} alt={""} />
               ) : null}
             </div>
           ))}

@@ -11,6 +11,7 @@ import Login from './Login'
 import SearchForm from './SearchForm'
 import Paper from '@material-ui/core/Paper'
 import Image from './landing3.jpg'
+import Carousel from './Carousel'
 
 // Import spaces data from JSON source - will receive an array of Objects
 import spacesData from './spaces.json'
@@ -146,10 +147,11 @@ class App extends Component {
         )}
 
         {this.state.view === 'details' && (
-          <Details
-            selectedSpace={this.state.selectedSpace}
-            clickHandler={this.clickHandler}
-          />
+            <Carousel />
+        //   <Details
+        //     selectedSpace={this.state.selectedSpace}
+        //     clickHandler={this.clickHandler}
+        //   />
         )}
 
         {this.state.view === 'login' && <Login />}

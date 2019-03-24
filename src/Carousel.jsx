@@ -18,6 +18,12 @@ const styles = theme => ({
     maxWidth: 400,
     flexGrow: 1,
   },
+  base: {
+    ...theme.mixins.gutters(),
+    paddingTop: theme.spacing.unit * 2,
+    paddingBottom: theme.spacing.unit * 2,
+    minHeight: '400px',
+  },
   header: {
     display: 'flex',
     alignItems: 'center',
@@ -63,6 +69,8 @@ class Carousel extends React.Component {
 
     return (
       <div className={classes.root}>
+        <Paper className={classes.base} elevation={1}>
+
         <Paper square elevation={0} className={classes.header}>
           <Typography>{space.name}</Typography>
         </Paper>
@@ -102,7 +110,7 @@ class Carousel extends React.Component {
           }
         />
         )}
-
+        </Paper>
       </div>
     )
   }

@@ -28,19 +28,15 @@ const styles = theme => ({
         paddingBottom: theme.spacing.unit * 2,
         minHeight: '400px',
     },
-    header: {
-        display: 'flex',
-        alignItems: 'center',
-        height: 50,
-        paddingLeft: theme.spacing.unit * 4,
-        backgroundColor: theme.palette.background.default,
-    },
     img: {
         height: 255,
         display: 'block',
         maxWidth: 400,
         overflow: 'hidden',
         width: '100%',
+    },
+    mobileStepper: {
+        backgroundColor: 'white', 
     },
     chip: {
         float: 'right',
@@ -83,9 +79,6 @@ class Carousel extends React.Component {
     return (
       <div className={classes.root}>
         <Paper className={classes.base} elevation={1}>
-            <Paper square elevation={0} className={classes.header}>
-            <Typography>{selectedSpace.name}</Typography>
-            </Paper>
             <AutoPlaySwipeableViews
             axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
             index={activeStep}
@@ -122,7 +115,7 @@ class Carousel extends React.Component {
                     }
                 />
             )}
-            <br />
+            <Typography variant="h6" gutterBottom>{selectedSpace.name}</Typography>
                 {/* {selectedSpace.rate === 0 ? <Chip label="FREE" className={classes.chip} /> : `$${selectedSpace.rate}/hr `} */}
                 {selectedSpace.rate === 0 ? <Chip label="FREE" className={classes.chip} /> : <Chip label={`$${selectedSpace.rate}/hr `} className={classes.chip} />}
             <Typography>

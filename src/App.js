@@ -4,8 +4,8 @@ import {withStyles} from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import {Grid} from '@material-ui/core'
 import SpaceCard from './SpaceCard'
-import Details from './Details'
-import SearchBtn from './SearchBtn'
+// import Details from './Details'
+// import SearchBtn from './SearchBtn'
 
 import Typography from '@material-ui/core/Typography'
 
@@ -176,10 +176,10 @@ class App extends Component {
                 <Typography variant="h5" gutterBottom className={classes.textlogo}>
                     huddle
                 </Typography>
-                {/* <div className={classes.container}>
+                <div className={classes.container}>
                 <SearchForm />
                 </div>
-                <SearchBtn onClick={this.clickHandler} /> */}
+                {/* <SearchBtn onClick={this.clickHandler} /> */}
             </Paper>
             <br />
             <br />
@@ -192,9 +192,11 @@ class App extends Component {
         )}
 
         {this.state.view === 'details' && (
-            <Carousel
-            selectedSpace={this.state.selectedSpace}
-            />
+            <Grid container className={classes.spacesGrid} spacing={32}>
+                <Carousel
+                selectedSpace={this.state.selectedSpace}
+                />
+            </Grid>
         //   <Details
         //     selectedSpace={this.state.selectedSpace}
         //     clickHandler={this.clickHandler}

@@ -4,9 +4,10 @@ import { withStyles } from '@material-ui/core/styles'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
 import TableCell from '@material-ui/core/TableCell'
-import TableHead from '@material-ui/core/TableHead'
+// import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
-import Paper from '@material-ui/core/Paper'
+// import Paper from '@material-ui/core/Paper'
+import { Place, AccessTime } from '@material-ui/icons'
 
 const styles = theme => ({
     root: {
@@ -37,6 +38,7 @@ function AvailabilityTable(props) {
     for(const day in availability) {
         tableRows.push(
         <TableRow className={classes.tablerow} key={`${day}indx${tableRows.length}`}>
+        {!tableRows.length ? '' : ''}
             <TableCell className={classes.tablecell} align="right" width="100px">{ availability[day] ? day: <span style={{color:'grey'}}>{day}</span> }</TableCell>
             <TableCell className={classes.tablecell} align="left">{ availability[day] ? '9 am - 5 pm' : <em style={{color:'grey'}}>Unavailable</em>}</TableCell>
         </TableRow>

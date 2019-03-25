@@ -10,6 +10,9 @@ import Badge from '@material-ui/core/Badge'
 // import Chip from '@material-ui/core/Chip'
 
 const styles = theme => ({
+    h5: {
+        textShadow: '0px 0px 4px rgba(100,100,100,0.4)',
+    },
     card: {
         width: 300,
     },
@@ -29,6 +32,7 @@ const styles = theme => ({
         left: 0,
         right: 'auto',
         borderRadius: '3px',
+        textShadow: '0px 0px 2px rgba(25,25,25,0.8)',
     },
 })
 
@@ -61,7 +65,7 @@ class SpaceCard extends Component {
                     <Badge classes={{ badge: classes.freeBadge }} badgeContent={badgeText} color="primary">
                         <CardContent className={classes.cardContent}>
                             {/* {rate === 0 ? <Chip label="FREE" className={classes.chip} /> : ''} */}
-                            <Typography gutterBottom variant="h5" component="h2">
+                            <Typography gutterBottom variant="h5" component="h2" className={classes.h5}>
                                 {name}
                             </Typography>
                             <Typography gutterBottom>

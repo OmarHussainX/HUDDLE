@@ -24,6 +24,9 @@ const styles = theme => ({
         maxWidth: 400,
         flexGrow: 1,
     },
+    h6: {
+        textShadow: '0px 0px 4px rgba(100,100,100,0.3)',
+    },
     base: {
         ...theme.mixins.gutters(),
         paddingTop: theme.spacing.unit * 2,
@@ -46,6 +49,7 @@ const styles = theme => ({
         borderRadius: '3px',
         height: '24px',
         color: 'black',
+        textShadow: '0px 0px 2px rgba(25,25,25,0.3)',
         padding: '1px',
         // fontWeight: 'bold',
         // marginRight: '10px',
@@ -138,7 +142,7 @@ class Details extends Component {
                         />
                     )}
 
-                    <Typography variant="h6" gutterBottom>
+                    <Typography variant="h6" gutterBottom className={classes.h6}>
                         {selectedSpace.name}
                     </Typography>
                     

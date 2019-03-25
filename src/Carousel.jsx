@@ -11,6 +11,7 @@ import SwipeableViews from 'react-swipeable-views'
 import { autoPlay } from 'react-swipeable-views-utils'
 import blue from '@material-ui/core/colors/blue';
 import Chip from '@material-ui/core/Chip'
+import AvailabilityTable from './AvailabilityTable'
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews)
 
@@ -131,18 +132,7 @@ class Carousel extends React.Component {
             <Typography gutterBottom>
                 {`${selectedSpace.address.street} ${selectedSpace.address.quadrant}, ${selectedSpace.address.postal_code}`}
             </Typography>
-            <Typography variant="body2" gutterBottom>
-                <table>
-                    <tr><td>Monday</td><td> 9 am - 5 pm</td></tr>
-                    <tr><td>Monday</td><td> 9 am - 5 pm</td></tr>
-                    <tr><td>Monday</td><td> 9 am - 5 pm</td></tr>
-                    <tr><td>Monday</td><td> 9 am - 5 pm</td></tr>
-                    <tr><td>Monday</td><td> 9 am - 5 pm</td></tr>
-                    <tr><td>Monday</td><td> 9 am - 5 pm</td></tr>
-                    <tr><td>Monday</td><td> 9 am - 5 pm</td></tr>
-                    <tr><td>Monday</td><td> 9 am - 5 pm</td></tr>
-                </table>
-            </Typography>
+            <AvailabilityTable />
             <Typography>
             {selectedSpace.description}
             </Typography>

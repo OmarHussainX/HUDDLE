@@ -11,30 +11,33 @@ import Badge from '@material-ui/core/Badge'
 
 const styles = theme => ({
     card: {
-    maxWidth: 300,
-    minWidth: 300,
-  },
-  cardContent: {
-    minHeight: 150,
-  },
-  media: {
-    minHeight: 150,
-    maxHeight: 150,
-  },
-  chip: {
-    // cursor: 'pointer',
-    float: 'right',
-    // padding: '1px',
-  },
-  badge: {
-    margin: theme.spacing.unit * 2,
-  },
+        maxWidth: 300,
+        minWidth: 300,
+    },
+    cardContent: {
+        minHeight: 150,
+    },
+    media: {
+        minHeight: 150,
+        maxHeight: 150,
+    },
+    chip: {
+        // cursor: 'pointer',
+        float: 'right',
+        // padding: '1px',
+    },
+    freeBadge: {
+        position: 'relative',
+        float:'right',
+        // margin: theme.spacing.unit * 2,
+        borderRadius: '3px',
+    },
 })
 
 class SpaceCard extends Component {
     render() {
-        const { classes } = this.props
-        const  badgeText = (this.props.rate === 0) ? 'FREE' : 0
+        const { classes, rate } = this.props
+        const  badgeText = (rate === 0) ? 'FREE' : 0
 
         return (
             <Card className={classes.card}>
@@ -47,17 +50,17 @@ class SpaceCard extends Component {
                 />
 
                 <CardContent className={classes.cardContent}>
-                {/* {this.props.rate === 0 ? <Chip label="FREE" className={classes.chip} /> : ''} */}
-                <Badge className={classes.badge} badgeContent={badgeText} color="primary">
-                    <Typography gutterBottom variant="h5" component="h2">
-                        {this.props.name}
+                    {/* {rate === 0 ? <Chip label="FREE" className={classes.chip} /> : ''} */}
+                    <Badge classes={{ badge: classes.freeBadge}} badgeContent={badgeText} color="primary">
+                        <Typography gutterBottom variant="h5" component="h2">
+                            {this.props.name}
+                        </Typography>
+                    </Badge>
+                    <Typography>
+                        {rate ? `$${rate}/hr `: ''}
+                        {`Capacity: ${this.props.capacity} `}
+                        {`Type: ${this.props.venue_type} `}
                     </Typography>
-                </Badge>
-                <Typography>
-                    {this.props.rate ? `$${this.props.rate}/hr `: ''}
-                    {`Capacity: ${this.props.capacity} `}
-                    {`Type: ${this.props.venue_type} `}
-                </Typography>
                 </CardContent>
 
             </CardActionArea>

@@ -132,7 +132,7 @@ class Carousel extends React.Component {
             <Typography gutterBottom>
                 {`${selectedSpace.address.street} ${selectedSpace.address.quadrant}, ${selectedSpace.address.postal_code}`}
             </Typography>
-            <AvailabilityTable />
+            <AvailabilityTable availability={selectedSpace.availability} />
             <Typography>
             {selectedSpace.description}
             </Typography>

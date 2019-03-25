@@ -9,13 +9,15 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft'
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight'
 import SwipeableViews from 'react-swipeable-views'
 import { autoPlay } from 'react-swipeable-views-utils'
-import blue from '@material-ui/core/colors/blue';
+// import blue from '@material-ui/core/colors/blue';
+import grey from '@material-ui/core/colors/grey'
 import Chip from '@material-ui/core/Chip'
 import DetailsTable from './DetailsTable'
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews)
 
-const freeChipColor = blue[500]
+// const freeChipColor = blue[200]
+const freeChipColor = grey[200]
 
 const styles = theme => ({
     root: {
@@ -43,7 +45,7 @@ const styles = theme => ({
         backgroundColor: freeChipColor,
         borderRadius: '3px',
         height: '24px',
-        color: 'white',
+        color: 'black',
         padding: '1px',
         // fontWeight: 'bold',
         // marginRight: '10px',

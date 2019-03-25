@@ -183,9 +183,9 @@ class App extends Component {
                 Search
             </Fab> */}
             <Paper className={classes.paperHeader}>
-                <Typography variant="h5" gutterBottom className={classes.textlogo}>
+                {/* <Typography variant="h5" gutterBottom className={classes.textlogo}>
                     huddle
-                </Typography>
+                </Typography> */}
                 <div className={classes.container}>
                 <SearchForm />
                 </div>

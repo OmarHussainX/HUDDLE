@@ -17,8 +17,9 @@ const styles = theme => ({
   },
   searchBtn: {
     fontSize: '30px',
-    fontFamily: 'Pacifico',
-    textTransform: 'lowercase',
+    fontFamily: 'Karla',
+    textTransform: 'uppercase',
+    textShadow: '0px 0px 3px rgba(25,25,25,0.5)',
   },
 })
 

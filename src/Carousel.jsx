@@ -43,6 +43,8 @@ const styles = theme => ({
   },
   chip: {
     backgroundColor: freeChipColor,
+    // borderRadius: '5px',
+    // lineHeight: '0.5em',
     // fontWeight: 'bold',
     color: 'white',
     padding: '1px',
@@ -119,7 +121,7 @@ class Carousel extends React.Component {
                 />
             )}
             <Typography>
-                {selectedSpace.rate === 0 ? <Chip label="FREE" className={classes.chip} /> : `$${selectedSpace.rate}/hr`}
+                {selectedSpace.rate === 0 ? <Chip label="FREE" className={classes.chip} /> : `$${selectedSpace.rate}/hr `}
             </Typography>
             <Typography>
                 {`Capacity: ${selectedSpace.capacity}`} 

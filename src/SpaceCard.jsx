@@ -22,8 +22,9 @@ const styles = {
     maxHeight: 150,
   },
   chip: {
-    cursor: 'pointer',
-    padding: '1px',
+    // cursor: 'pointer',
+    float: 'right',
+    // padding: '1px',
   },
 }
 
@@ -41,13 +42,14 @@ class SpaceCard extends Component {
                 />
 
                 <CardContent className={classes.cardContent}>
+                {this.props.rate === 0 ? <Chip label="FREE" className={classes.chip} /> : ''}
                 <Typography gutterBottom variant="h5" component="h2">
                     {this.props.name}
                 </Typography>
-                {this.props.rate === 0 ? <Chip label="FREE" className={classes.chip}/> : `$${this.props.rate}/hr`}
                 <Typography>
-                  {`Capacity: ${this.props.capacity}`}
-                  {`Type: ${this.props.venue_type}`}
+                    {this.props.rate ? `$${this.props.rate}/hr `: ''}
+                    {`Capacity: ${this.props.capacity} `}
+                    {`Type: ${this.props.venue_type} `}
                 </Typography>
                 </CardContent>
 

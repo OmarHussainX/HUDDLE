@@ -164,13 +164,13 @@ class App extends Component {
 
         {this.state.view === 'home' && (
           <div>
-            {/* <Fab color="secondary" aria-label="Search" className={classes.fab}>
+            <Fab color="secondary" aria-label="Search" className={classes.fab}>
                 <Search>Search</Search>
-            </Fab> */}
-            <Fab variant="extended" color="secondary" aria-label="Search" className={classes.fab}>
+            </Fab>
+            {/* <Fab variant="extended" color="secondary" aria-label="Search" className={classes.fab}>
                 <Search className={classes.extendedIcon} />
                 Search
-            </Fab>
+            </Fab> */}
             <Paper className={classes.paperHeader}>
                 <Typography variant="h5" gutterBottom className={classes.textlogo}>
                     huddle

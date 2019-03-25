@@ -148,6 +148,7 @@ class App extends Component {
             name={space.name}
             image={space.img[0]}
             rate={space.rate}
+            address={space.address}
             capacity={space.capacity}
             venue_type={space.venue_type}
             clickHandler={this.clickHandler}

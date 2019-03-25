@@ -6,7 +6,6 @@
     "venue_type": "Restaurant",
     "capacity": 40,
     "rate": 0,
-    "user_experience": "",
     "availability": {
         "Sunday": false,
         "Monday": true,
@@ -42,7 +41,6 @@
         "venue_type": "Restaurant",
         "capacity": 70,
         "rate": 0,
-        "user_experience": "",
         "availability": {
             "Sunday": false,
             "Monday": true,
@@ -77,7 +75,6 @@
         "venue_type": "Restaurant",
         "capacity": 70,
         "rate": 0,
-        "user_experience": "Patio",
         "availability": {
             "Sunday": true,
             "Monday": true,
@@ -112,7 +109,6 @@
         "venue_type": "Restaurant",
         "capacity": 110,
         "rate": 19,
-        "user_experience": "Lake View",
         "availability": {
             "Sunday": true,
             "Monday": true,
@@ -148,7 +144,6 @@
         "venue_type": "Casino",
         "capacity": 200,
         "rate": 15,
-        "user_experience": "Casino",
         "availability": {
             "Sunday": true,
             "Monday": true,
@@ -184,7 +179,6 @@
         "venue_type": "Community",
         "capacity": 40,
         "rate": 5,
-        "user_experience": "",
         "availability": {
             "Sunday": true,
             "Monday": true,
@@ -220,7 +214,6 @@
         "venue_type": "Cinema",
         "capacity": 400,
         "rate": 62,
-        "user_experience": "Cinema",
         "availability": {
             "Sunday": true,
             "Monday": true,
@@ -256,7 +249,6 @@
         "venue_type": "Entertainment",
         "capacity": 40,
         "rate": 12,
-        "user_experience": "",
         "availability": {
             "Sunday": false,
             "Monday": true,
@@ -292,7 +284,6 @@
         "venue_type": "Entertainment",
         "capacity": 50,
         "rate": 94,
-        "user_experience": "Leisure",
         "availability": {
             "Sunday": true,
             "Monday": true,
@@ -328,7 +319,6 @@
         "venue_type": "Restaurant",
         "capacity": 25,
         "rate": 0,
-        "user_experience": "",
         "availability": {
             "Sunday": true,
             "Monday": true,
@@ -364,7 +354,6 @@
         "venue_type": "Office",
         "capacity": 24,
         "rate": 0,
-        "user_experience": "",
         "availability": {
             "Sunday": false,
             "Monday": true,
@@ -397,10 +386,9 @@
         "name": "Fort Calgary National Historic Site",
         "img": ["12Fort.jpg"],
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        "venue_type": "Historic Site",
+        "venue_type": "Historic",
         "capacity": 180,
         "rate": 56,
-        "user_experience": "Historic Site",
         "availability": {
             "Sunday": true,
             "Monday": true,
@@ -435,7 +423,6 @@
         "venue_type": "Museum",
         "capacity": 200,
         "rate": 37,
-        "user_experience": "Museum",
         "availability": {
             "Sunday": true,
             "Monday": true,
@@ -471,7 +458,6 @@
         "venue_type": "School",
         "capacity": 80,
         "rate": 25,
-        "user_experience": "",
         "availability": {
             "Sunday": true,
             "Monday": true,
@@ -504,10 +490,9 @@
         "name": "cSpace King Edward",
         "img": ["15cSpace.jpg"],
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        "venue_type": "Historic Site",
+        "venue_type": "Historic",
         "capacity": 40,
         "rate": 19,
-        "user_experience": "Historic Site",
         "availability": {
             "Sunday": false,
             "Monday": true,

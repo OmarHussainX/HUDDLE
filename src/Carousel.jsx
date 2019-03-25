@@ -17,40 +17,40 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews)
 const freeChipColor = blue[500]
 
 const styles = theme => ({
-  root: {
-    maxWidth: 400,
-    flexGrow: 1,
-  },
-  base: {
-    ...theme.mixins.gutters(),
-    paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit * 2,
-    minHeight: '400px',
-  },
-  header: {
-    display: 'flex',
-    alignItems: 'center',
-    height: 50,
-    paddingLeft: theme.spacing.unit * 4,
-    backgroundColor: theme.palette.background.default,
-  },
-  img: {
-    height: 255,
-    display: 'block',
-    maxWidth: 400,
-    overflow: 'hidden',
-    width: '100%',
-  },
-  chip: {
-    float:'right',
-    backgroundColor: freeChipColor,
-    // borderRadius: '5px',
-    // height: '24px',
-    // fontWeight: 'bold',
-    color: 'white',
-    padding: '1px',
-    // marginRight: '10px',
-  },
+    root: {
+        maxWidth: 400,
+        flexGrow: 1,
+    },
+    base: {
+        ...theme.mixins.gutters(),
+        paddingTop: theme.spacing.unit * 2,
+        paddingBottom: theme.spacing.unit * 2,
+        minHeight: '400px',
+    },
+    header: {
+        display: 'flex',
+        alignItems: 'center',
+        height: 50,
+        paddingLeft: theme.spacing.unit * 4,
+        backgroundColor: theme.palette.background.default,
+    },
+    img: {
+        height: 255,
+        display: 'block',
+        maxWidth: 400,
+        overflow: 'hidden',
+        width: '100%',
+    },
+    chip: {
+        float: 'right',
+        backgroundColor: freeChipColor,
+        borderRadius: '3px',
+        height: '24px',
+        // fontWeight: 'bold',
+        color: 'white',
+        padding: '1px',
+        // marginRight: '10px',
+    },
 })
 
 class Carousel extends React.Component {
@@ -121,13 +121,27 @@ class Carousel extends React.Component {
                     }
                 />
             )}
-                {selectedSpace.rate === 0 ? <Chip label="FREE" className={classes.chip} /> : `$${selectedSpace.rate}/hr `}
+            <br />
+                {/* {selectedSpace.rate === 0 ? <Chip label="FREE" className={classes.chip} /> : `$${selectedSpace.rate}/hr `} */}
+                {selectedSpace.rate === 0 ? <Chip label="FREE" className={classes.chip} /> : <Chip label={`$${selectedSpace.rate}/hr `} className={classes.chip} />}
             <Typography>
                 {`Capacity: ${selectedSpace.capacity}`} 
                 <em>&nbsp;&nbsp;(venue type: {selectedSpace.venue_type})</em>
             </Typography>
             <Typography gutterBottom>
                 {`${selectedSpace.address.street} ${selectedSpace.address.quadrant}, ${selectedSpace.address.postal_code}`}
+            </Typography>
+            <Typography variant="body2" gutterBottom>
+                <table>
+                    <tr><td>Monday</td><td> 9 am - 5 pm</td></tr>
+                    <tr><td>Monday</td><td> 9 am - 5 pm</td></tr>
+                    <tr><td>Monday</td><td> 9 am - 5 pm</td></tr>
+                    <tr><td>Monday</td><td> 9 am - 5 pm</td></tr>
+                    <tr><td>Monday</td><td> 9 am - 5 pm</td></tr>
+                    <tr><td>Monday</td><td> 9 am - 5 pm</td></tr>
+                    <tr><td>Monday</td><td> 9 am - 5 pm</td></tr>
+                    <tr><td>Monday</td><td> 9 am - 5 pm</td></tr>
+                </table>
             </Typography>
             <Typography>
             {selectedSpace.description}

@@ -193,7 +193,6 @@ class App extends Component {
 
         {this.state.view === 'details' && (
             <Carousel
-            spaces={this.state.spaces}
             selectedSpace={this.state.selectedSpace}
             />
         //   <Details

@@ -6,8 +6,9 @@ import TableBody from '@material-ui/core/TableBody'
 import TableCell from '@material-ui/core/TableCell'
 // import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
+import LinkTag from '@material-ui/core/Link';
 // import Paper from '@material-ui/core/Paper'
-import { Place, AccessTime } from '@material-ui/icons'
+import { Place, Link, LocalPhone,  } from '@material-ui/icons'
 
 const styles = theme => ({
     root: {
@@ -27,18 +28,20 @@ const styles = theme => ({
         border: 'none',
         paddingRight: '4px',
         paddingLeft: '4px',
+        // verticalAlign: 'bottom',
     },
 })
 
 
 function AvailabilityTable(props) {
-    const { classes, availability } = props
+    const { classes, address, link, phone, availability } = props
 
     let tableRows = []
     for(const day in availability) {
         tableRows.push(
         <TableRow className={classes.tablerow} key={`${day}indx${tableRows.length}`}>
-            <TableCell className={classes.tablecell} align="right" width="100px">{ availability[day] ? day: <span style={{color:'grey'}}>{day}</span> }</TableCell>
+            <TableCell className={classes.tablecell}></TableCell>
+            <TableCell className={classes.tablecell} align="left" width="90px">{ availability[day] ? day: <span style={{color:'grey'}}>{day}</span> }</TableCell>
             <TableCell className={classes.tablecell} align="left">{ availability[day] ? '9 am - 5 pm' : <em style={{color:'grey'}}>Unavailable</em>}</TableCell>
         </TableRow>
         )
@@ -48,6 +51,28 @@ function AvailabilityTable(props) {
         <div className={classes.root}>
             <Table className={classes.table}>
                 <TableBody>
+                    <TableRow className={classes.tablerow}>
+                        <TableCell className={classes.tablecell} align="left" width="16px">
+                            <Place color="primary">icon</Place>
+                        </TableCell>
+                        <TableCell className={classes.tablecell} colSpan="2">{`${address.street} ${address.quadrant}, ${address.postal_code}`}</TableCell>
+                    </TableRow>
+                    <TableRow className={classes.tablerow}>
+                        <TableCell className={classes.tablecell} align="left" width="16px">
+                            <Link color="primary">icon</Link>
+                        </TableCell>
+                        <TableCell className={classes.tablecell} colSpan="2">
+                            <LinkTag href={link} color="primary">
+                                {link}
+                            </LinkTag>
+                        </TableCell>
+                    </TableRow>
+                    <TableRow className={classes.tablerow}>
+                        <TableCell className={classes.tablecell} align="left" width="16px">
+                            <LocalPhone color="primary">icon</LocalPhone>
+                        </TableCell>
+                        <TableCell className={classes.tablecell} colSpan="2">{phone}</TableCell>
+                    </TableRow>
                     {tableRows}
                 </TableBody>
             </Table>

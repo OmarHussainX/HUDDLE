@@ -53,7 +53,6 @@ const styles = theme => ({
 class Details extends Component {
 
     constructor() {
-        console.log('Details.jsx: constructor()')
         super()
         this.state = {
             activeStep: 0,
@@ -62,11 +61,9 @@ class Details extends Component {
     }
 
     componentDidMount() {
-        console.log('Details.jsx: componentDidMount()')
 
         let latitude = parseFloat(this.props.selectedSpace.lat)
         let longitude = parseFloat(this.props.selectedSpace.long)
-        console.log(`lat, long: ${latitude}, ${longitude}`)
 
         if ( isNaN(latitude) || isNaN(longitude)) {
             latitude = 37.4220041
@@ -97,7 +94,6 @@ class Details extends Component {
     }
 
     render() {
-        console.log('Details.jsx: render()')
         const { classes, theme, selectedSpace } = this.props
         const { activeStep } = this.state
         const maxSteps = selectedSpace.img.length

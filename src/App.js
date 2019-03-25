@@ -4,7 +4,7 @@ import {withStyles} from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import {Grid} from '@material-ui/core'
 import SpaceCard from './SpaceCard'
-// import Details from './Details'
+// import DetailsOld from './DetailsOld'
 // import SearchBtn from './SearchBtn'
 
 import Typography from '@material-ui/core/Typography'
@@ -17,7 +17,7 @@ import Login from './Login'
 import SearchForm from './SearchForm'
 import Paper from '@material-ui/core/Paper'
 import Image from './landing3.jpg'
-import Carousel from './Carousel'
+import Details from './Details'
 
 // Import spaces data from JSON source - will receive an array of Objects
 import spacesData from './spaces.json'
@@ -193,11 +193,11 @@ class App extends Component {
 
         {this.state.view === 'details' && (
             <Grid container className={classes.spacesGrid} spacing={32}>
-                <Carousel
+                <Details
                 selectedSpace={this.state.selectedSpace}
                 />
             </Grid>
-        //   <Details
+        //   <DetailsOld
         //     selectedSpace={this.state.selectedSpace}
         //     clickHandler={this.clickHandler}
         //   />

@@ -1,3 +1,3 @@
 # HUDDLE
 
-Helping people find places *(unpaid & paid)* to huddle!
+Helping people find places to huddle!

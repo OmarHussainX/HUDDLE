@@ -6,52 +6,82 @@ import CardActionArea from '@material-ui/core/CardActionArea'
 import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
 import Typography from '@material-ui/core/Typography'
-import Chip from '@material-ui/core/Chip'
+import Badge from '@material-ui/core/Badge'
+// import Chip from '@material-ui/core/Chip'
 
-
-const styles = {
-  card: {
-    maxWidth: 300,
-    minWidth: 300,
-  },
-  cardContent: {
-    minHeight: 150,
-  },
-  media: {
-    minHeight: 150,
-    maxHeight: 150,
-  },
-  chip: {
-    cursor: 'pointer',
-    padding: '1px',
-  },
-}
+const styles = theme => ({
+    h5: {
+        textShadow: '0px 0px 4px rgba(100,100,100,0.4)',
+    },
+    card: {
+        width: 300,
+    },
+    cardContent: {
+        height: 160,
+        overflow: 'hidden',
+    },
+    media: {
+        height: 150,
+    },
+    chip: {
+        // cursor: 'pointer',
+        float: 'right',
+        // padding: '1px',
+    },
+    freeBadge: {
+        left: 0,
+        right: 'auto',
+        borderRadius: '3px',
+        textShadow: '0px 0px 2px rgba(25,25,25,0.8)',
+    },
+})
 
 class SpaceCard extends Component {
     render() {
-        const { classes } = this.props
+        const {
+            classes,
+            id,
+            name,
+            image,
+            rate,
+            address,
+            capacity,
+            venue_type,
+            clickHandler,
+        } = this.props
+
+        const badgeText = (rate === 0) ? 'FREE' : 0
+
         return (
             <Card className={classes.card}>
-            <CardActionArea onClick={this.props.clickHandler} id={'spacecrdindx'+this.props.id}>
+                <CardActionArea onClick={clickHandler} id={'spacecrdindx' + id}>
 
-                <CardMedia
-                className={classes.media}
-                image={`/images/${this.props.image}`}
-                title=""
-                />
+                    <CardMedia
+                        className={classes.media}
+                        image={`/images/${image}`}
+                        title=""
+                    />
 
-                <CardContent className={classes.cardContent}>
-                <Typography gutterBottom variant="h5" component="h2">
-                    {this.props.name}
-                </Typography>
-                <Typography>
-                  {this.props.rate === 0 ? <Chip label="FREE" className={classes.chip}/> : `$${this.props.rate}/hr`}
-                  {`Capacity: ${this.props.capacity}`}
-                  {`Type: ${this.props.venue_type}`}
-                </Typography>
-                </CardContent>
+                    <Badge classes={{ badge: classes.freeBadge }} badgeContent={badgeText} color="primary">
+                        <CardContent className={classes.cardContent}>
+                            {/* {rate === 0 ? <Chip label="FREE" className={classes.chip} /> : ''} */}
+                            <Typography gutterBottom variant="h5" component="h2" className={classes.h5}>
+                                {name}
+                            </Typography>
+                            <Typography gutterBottom>
+                                <strong>{rate ? `$${rate}/hr ` : ''}</strong>
+                                <em>{`(Venue type: ${venue_type})`}</em>
+                                <br />
+                                {`Capacity: ${capacity} `}
+                            </Typography>
+                            <Typography>
+                                {/* {`${address.street} ${address.quadrant}, ${address.postal_code}`} */}
+                                {`${address.street} ${address.quadrant}`}
+                            </Typography>
+                        </CardContent>
+                    </Badge>
 
-            </CardActionArea>
+                </CardActionArea>
             </Card>
         )
     }

@@ -1,12 +1,11 @@
 [{
     "id": "1",
     "name": "Township Bar and Grill",
-    "img": ["1Township.jpg"],
-    "description": "",
+    "img": ["1Township.jpg", "2National.jpg", "3Craft.jpg"],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     "venue_type": "Restaurant",
     "capacity": 40,
     "rate": 0,
-    "user_experience": "",
     "availability": {
         "Sunday": false,
         "Monday": true,
@@ -18,16 +17,16 @@
     },
     "address": {
         "quadrant": "SW",
-        "street": "181, 250 - 6 Avenue,",
+        "street": "181, 250 - 6 Avenue",
         "city": "Calgary",
         "province": "Alberta",
         "postal_code": "T2P 3H7"
     },
-    "lat": "",
-    "long": "",
+    "lat": "51.0478337",
+    "long": "-114.0683159",
     "contact": {
         "booking_mgr": "",
-        "phone": "403.265.3837",
+        "phone": "403-265-3837",
         "email": "amanda@township24.com"
     }
 },
@@ -37,20 +36,19 @@
     {
         "id": "2",
         "name": "National on 10th",
-        "img": ["2National.jpg"],
-        "description": "",
+        "img": ["2National.jpg", "15cSpace.jpg", "14UofC.jpg", "13Glenbow.jpg"],
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         "venue_type": "Restaurant",
         "capacity": 70,
         "rate": 0,
-        "user_experience": "",
         "availability": {
             "Sunday": false,
             "Monday": true,
-            "Tuesday": true,
+            "Tuesday": false,
             "Wednesday": true,
             "Thursday": true,
             "Friday": true,
-            "Saturday": true
+            "Saturday": false
         },
         "address": {
             "quadrant": "SW",
@@ -59,11 +57,11 @@
             "province": "Alberta",
             "postal_code": "T2R 0A5"
         },
-        "lat": "",
-        "long": "",
+        "lat": "51.0434374",
+        "long": "-114.0723297",
         "contact": {
             "booking_mgr": "",
-            "phone": "403.474.2739",
+            "phone": "403-474-2739",
             "email": ""
         }
 
@@ -73,16 +71,15 @@
         "id": "3",
         "name": "Craft Beer Market",
         "img":["3Craft.jpg"],
-        "description": "",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         "venue_type": "Restaurant",
         "capacity": 70,
         "rate": 0,
-        "user_experience": "Patio",
         "availability": {
             "Sunday": true,
-            "Monday": true,
-            "Tuesday": true,
-            "Wednesday": true,
+            "Monday": false,
+            "Tuesday": false,
+            "Wednesday": false,
             "Thursday": true,
             "Friday": true,
             "Saturday": true
@@ -98,7 +95,7 @@
         "long": "",
         "contact": {
             "booking_mgr": "Kylie McGarvey",
-            "phone": "403.514.2337",
+            "phone": "403-514-2337",
             "email": "kylie.mcgarvey@craftbeermarket.ca"
         }
 
@@ -108,19 +105,18 @@
         "id": "4",
         "name": "The Lake House",
         "img":["4Lake.jpg"],
-        "description": "",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         "venue_type": "Restaurant",
         "capacity": 110,
         "rate": 19,
-        "user_experience": "Lake View",
         "availability": {
             "Sunday": true,
             "Monday": true,
             "Tuesday": true,
             "Wednesday": true,
-            "Thursday": true,
-            "Friday": true,
-            "Saturday": true
+            "Thursday": false,
+            "Friday": false,
+            "Saturday": false
         },
         "address": {
             "quadrant": "SE",
@@ -129,11 +125,11 @@
             "province": "Alberta",
             "postal_code": "T2J 0N2"
         },
-        "lat": "",
-        "long": "",
+        "lat": "50.9429123",
+        "long": "-114.0513326",
         "contact": {
             "booking_mgr": "",
-            "phone": "403.225.6525",
+            "phone": "403-225-6525",
             "email": "lakehouse.events@crmr.com"
         }
 
@@ -144,18 +140,17 @@
         "id": "5",
         "name": "Grey Eagle Resort & Casino",
         "img": ["5Grey.jpg"],
-        "description": "",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         "venue_type": "Casino",
         "capacity": 200,
         "rate": 15,
-        "user_experience": "Casino",
         "availability": {
-            "Sunday": true,
+            "Sunday": false,
             "Monday": true,
-            "Tuesday": true,
+            "Tuesday": false,
             "Wednesday": true,
             "Thursday": true,
-            "Friday": true,
+            "Friday": false,
             "Saturday": true
         },
         "address": {
@@ -169,7 +164,7 @@
         "long": "",
         "contact": {
             "booking_mgr": "",
-            "phone": "844.719.8777",
+            "phone": "844-719-8777",
             "email": ""
         }
 
@@ -180,18 +175,17 @@
         "id": "6",
         "name": "Haysboro Community Association",
         "img": ["6Haysboro.jpg"],
-        "description": "",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         "venue_type": "Community",
         "capacity": 40,
         "rate": 5,
-        "user_experience": "",
         "availability": {
-            "Sunday": true,
-            "Monday": true,
+            "Sunday": false,
+            "Monday": false,
             "Tuesday": true,
             "Wednesday": true,
-            "Thursday": true,
-            "Friday": true,
+            "Thursday": false,
+            "Friday": false,
             "Saturday": true
         },
         "address": {
@@ -205,7 +199,7 @@
         "long": "",
         "contact": {
             "booking_mgr": "",
-            "phone": "403.253.1563",
+            "phone": "403-253-1563",
             "email": "info@haysboro.org"
         }
 
@@ -216,19 +210,18 @@
         "id": "7",
         "name": "Canyon Meadows Cinemas",
         "img":["7Canyon.jpg"],
-        "description": "",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         "venue_type": "Cinema",
         "capacity": 400,
         "rate": 62,
-        "user_experience": "Cinema",
         "availability": {
-            "Sunday": true,
+            "Sunday": false,
             "Monday": true,
             "Tuesday": true,
             "Wednesday": true,
             "Thursday": true,
             "Friday": true,
-            "Saturday": true
+            "Saturday": false
         },
         "address": {
             "quadrant": "SE",
@@ -252,16 +245,15 @@
         "id": "8",
         "name": "The Rec Room",
         "img": ["8Rec.jpg"],
-        "description": "",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         "venue_type": "Entertainment",
         "capacity": 40,
         "rate": 12,
-        "user_experience": "",
         "availability": {
             "Sunday": false,
             "Monday": true,
-            "Tuesday": true,
-            "Wednesday": true,
+            "Tuesday": false,
+            "Wednesday": false,
             "Thursday": true,
             "Friday": true,
             "Saturday": true
@@ -277,7 +269,7 @@
         "long": "",
         "contact": {
             "booking_mgr": "",
-            "phone": "833.256.4159",
+            "phone": "833-256-4159",
             "email": "host.supervisor3002@therecroom.com"
         }
 
@@ -288,19 +280,18 @@
         "id": "9",
         "name": "Village Square Leisure Centre",
         "img": ["9Village.jpg"],
-        "description": "",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         "venue_type": "Entertainment",
         "capacity": 50,
         "rate": 94,
-        "user_experience": "Leisure",
         "availability": {
-            "Sunday": true,
+            "Sunday": false,
             "Monday": true,
             "Tuesday": true,
             "Wednesday": true,
             "Thursday": true,
-            "Friday": true,
-            "Saturday": true
+            "Friday": false,
+            "Saturday": false
         },
         "address": {
             "quadrant": "NE",
@@ -313,7 +304,7 @@
         "long": "",
         "contact": {
             "booking_mgr": "",
-            "phone": "403.366.3900",
+            "phone": "403-366-3900",
             "email": "VSLCbookings@calgary.ca"
         }
 
@@ -324,19 +315,18 @@
         "id": "10",
         "name": "Cibo",
         "img": ["10cibo.jpg"],
-        "description": "",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         "venue_type": "Restaurant",
         "capacity": 25,
         "rate": 0,
-        "user_experience": "",
         "availability": {
             "Sunday": true,
-            "Monday": true,
-            "Tuesday": true,
-            "Wednesday": true,
-            "Thursday": true,
-            "Friday": true,
-            "Saturday": true
+            "Monday": false,
+            "Tuesday": false,
+            "Wednesday": false,
+            "Thursday": false,
+            "Friday": false,
+            "Saturday": false
         },
         "address": {
             "quadrant": "SW",
@@ -349,7 +339,7 @@
         "long": "",
         "contact": {
             "booking_mgr": "",
-            "phone": "403.984.4755",
+            "phone": "403-984-4755",
             "email": "17thave@cibocalgary.com"
         }
 
@@ -360,18 +350,17 @@
         "id": "11",
         "name": "ATB Entrepreneur Centre",
         "img": ["11atb.jpg"],
-        "description": "",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         "venue_type": "Office",
         "capacity": 24,
         "rate": 0,
-        "user_experience": "",
         "availability": {
             "Sunday": false,
             "Monday": true,
-            "Tuesday": true,
-            "Wednesday": true,
+            "Tuesday": false,
+            "Wednesday": false,
             "Thursday": true,
-            "Friday": true,
+            "Friday": false,
             "Saturday": true
         },
         "address": {
@@ -385,7 +374,7 @@
         "long": "",
         "contact": {
             "booking_mgr": "",
-            "phone": "403.974.5380",
+            "phone": "403-974-5380",
             "email": "ecyyc@atb.com"
         }
 
@@ -396,19 +385,18 @@
         "id": "12",
         "name": "Fort Calgary National Historic Site",
         "img": ["12Fort.jpg"],
-        "description": "",
-        "venue_type": "Historic Site",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "venue_type": "Historic",
         "capacity": 180,
         "rate": 56,
-        "user_experience": "Historic Site",
         "availability": {
             "Sunday": true,
-            "Monday": true,
-            "Tuesday": true,
+            "Monday": false,
+            "Tuesday": false,
             "Wednesday": true,
-            "Thursday": true,
+            "Thursday": false,
             "Friday": true,
-            "Saturday": true
+            "Saturday": false
         },
         "address": {
             "quadrant": "SE",
@@ -421,7 +409,7 @@
         "long": "",
         "contact": {
             "booking_mgr": "",
-            "phone": "403.290.1875",
+            "phone": "403-290-1875",
             "email": "info@fortcalgary.com"
         }
 
@@ -431,19 +419,18 @@
         "id": "13",
         "name": "Glenbow Museum",
         "img": ["13Glenbow.jpg"],
-        "description": "",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         "venue_type": "Museum",
         "capacity": 200,
         "rate": 37,
-        "user_experience": "Museum",
         "availability": {
             "Sunday": true,
-            "Monday": true,
+            "Monday": false,
             "Tuesday": true,
-            "Wednesday": true,
+            "Wednesday": false,
             "Thursday": true,
             "Friday": true,
-            "Saturday": true
+            "Saturday": false
         },
         "address": {
             "quadrant": "SE",
@@ -456,7 +443,7 @@
         "long": "",
         "contact": {
             "booking_mgr": "",
-            "phone": "403.268.4110",
+            "phone": "403-268-4110",
             "email": "bookings@glenbow.org"
         }
 
@@ -467,14 +454,13 @@
         "id": "14",
         "name": "University of Calgary",
         "img": ["14UofC.jpg"],
-        "description": "",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         "venue_type": "School",
         "capacity": 80,
         "rate": 25,
-        "user_experience": "",
         "availability": {
-            "Sunday": true,
-            "Monday": true,
+            "Sunday": false,
+            "Monday": false,
             "Tuesday": true,
             "Wednesday": true,
             "Thursday": true,
@@ -503,18 +489,17 @@
         "id": "15",
         "name": "cSpace King Edward",
         "img": ["15cSpace.jpg"],
-        "description": "",
-        "venue_type": "Historic Site",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "venue_type": "Historic",
         "capacity": 40,
         "rate": 19,
-        "user_experience": "Historic Site",
         "availability": {
             "Sunday": false,
             "Monday": true,
-            "Tuesday": true,
+            "Tuesday": false,
             "Wednesday": true,
-            "Thursday": true,
-            "Friday": true,
+            "Thursday": false,
+            "Friday": false,
             "Saturday": true
         },
         "address": {
@@ -528,7 +513,7 @@
         "long": "",
         "contact": {
             "booking_mgr": "",
-            "phone": "403.476.2025",
+            "phone": "403-476-2025",
             "email": "info@cspaceprojects.com"
         }
 

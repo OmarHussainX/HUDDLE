@@ -33,9 +33,9 @@ const styles = theme => ({
         background: `url(${Image}) center center`,
         backgroundSize: 'cover',
         padding: '50px',
-        // height: '250px',
-        // NOTE: for some reason NOT using minHeight causes a gap to appear all
-        // along the right!!
+        // NOTE: for some reason if both height & minHeight aren't set, it causes a
+        // gap to appear all along the right!!
+        height: '200px',
         minHeight: '200px',
     },
     container: {

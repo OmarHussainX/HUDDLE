@@ -74,7 +74,8 @@ class Search extends Component {
         this.state = {
             rate: '',
             capacity: '',
-            selectedDate: new Date('2014-08-18T21:11:54'),
+            selectedDate: new Date('2019-03-25T15:30:00'),
+            selectedEndDate: new Date('2019-03-25T17:45:00'),
         }
     }
 
@@ -92,12 +93,12 @@ class Search extends Component {
         })
     }
     handleDateChange = date => {
+        console.log(`date/time: '${date}'`)
         this.setState({ selectedDate: date })
       }
 
     render() {
         const { classes, theme, filteredSpaces } = this.props
-        const { selectedDate } = this.state
 
         return (
             <div className={classes.root}>
@@ -151,14 +152,21 @@ class Search extends Component {
                             <DatePicker
                                 margin="normal"
                                 label="Booking date"
-                                value={selectedDate}
+                                value={this.state.selectedDate}
                                 onChange={this.handleDateChange}
                             />
                             <TimePicker
                                 margin="normal"
                                 label="Start time"
-                                value={selectedDate}
+                                value={this.state.selectedDate}
                                 onChange={this.handleDateChange}
+                            />
+                             <TimePicker
+                                margin="normal"
+                                label="End time"
+                                value={this.state.selectedEndDate}
+                                onChange={this.handleDateChange}
+                                id='endDatePicker'
                             />
                         </Grid>
                     </MuiPickersUtilsProvider>

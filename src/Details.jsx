@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import MobileStepper from '@material-ui/core/MobileStepper'
@@ -43,106 +43,151 @@ const styles = theme => ({
         backgroundColor: freeChipColor,
         borderRadius: '3px',
         height: '24px',
-        // fontWeight: 'bold',
         color: 'white',
         padding: '1px',
+        // fontWeight: 'bold',
         // marginRight: '10px',
     },
 })
 
-class Details extends React.Component {
-  state = {
-    activeStep: 0,
-  }
+class Details extends Component {
 
-  handleNext = () => {
-    this.setState(prevState => ({
-      activeStep: prevState.activeStep + 1,
-    }))
-  }
+    constructor() {
+        console.log('Details.jsx: constructor()')
+        super()
+        this.state = {
+            activeStep: 0,
+            map: null,
+        }
+    }
 
-  handleBack = () => {
-    this.setState(prevState => ({
-      activeStep: prevState.activeStep - 1,
-    }))
-  }
+    componentDidMount() {
+        console.log('Details.jsx: componentDidMount()')
 
-  handleStepChange = activeStep => {
-    this.setState({ activeStep })
-  }
+        let latitude = parseFloat(this.props.selectedSpace.lat)
+        let longitude = parseFloat(this.props.selectedSpace.long)
+        console.log(`lat, long: ${latitude}, ${longitude}`)
 
-  render() {
-    const { classes, theme, selectedSpace } = this.props
-    const { activeStep } = this.state
-    const maxSteps = selectedSpace.img.length
+        if ( isNaN(latitude) || isNaN(longitude)) {
+            latitude = 37.4220041
+            longitude = -122.0862462
+        }
 
-    return (
-      <div className={classes.root}>
-        <Paper className={classes.base} elevation={1}>
-            <AutoPlaySwipeableViews
-            axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-            index={activeStep}
-            onChangeIndex={this.handleStepChange}
-            enableMouseEvents
-            >
-            {selectedSpace.img.map((step, index) => (
-                <div key={step}>
-                {Math.abs(activeStep - index) <= 2 ? (
-                    <img className={classes.img} src={`/images/${step}`} alt={""} />
-                ) : null}
-                </div>
-            ))}
-            </AutoPlaySwipeableViews>
+        let newMap = new window.google.maps.Map(document.getElementById('mapTest'), {
+            center: { lat: latitude, lng: longitude },
+            zoom: 15,
+        })    
+        this.setState({ map: newMap })
+    }    
 
-            {/* Do not render carousel controls if there is only one image */}
-            { maxSteps > 1 && (
-                <MobileStepper
-                    steps={maxSteps}
-                    position="static"
-                    activeStep={activeStep}
-                    className={classes.mobileStepper}
-                    nextButton={
-                        <Button size="small" onClick={this.handleNext} disabled={activeStep === maxSteps - 1}>
-                            Next
+    handleNext = () => {
+        this.setState(prevState => ({
+            activeStep: prevState.activeStep + 1,
+        }))
+    }
+
+    handleBack = () => {
+        this.setState(prevState => ({
+            activeStep: prevState.activeStep - 1,
+        }))
+    }
+
+    handleStepChange = activeStep => {
+        this.setState({ activeStep })
+    }
+
+    render() {
+        console.log('Details.jsx: render()')
+        const { classes, theme, selectedSpace } = this.props
+        const { activeStep } = this.state
+        const maxSteps = selectedSpace.img.length
+
+        return (
+            <div className={classes.root}>
+                <Paper className={classes.base} elevation={1}>
+                    <AutoPlaySwipeableViews
+                        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+                        index={activeStep}
+                        onChangeIndex={this.handleStepChange}
+                        enableMouseEvents
+                    >
+                        {selectedSpace.img.map((step, index) => (
+                            <div key={step}>
+                                {Math.abs(activeStep - index) <= 2 ? (
+                                    <img className={classes.img} src={`/images/${step}`} alt={""} />
+                                ) : null}
+                            </div>
+                        ))}
+                    </AutoPlaySwipeableViews>
+
+                    {/* Do not render carousel controls if there is only one image */}
+                    {maxSteps > 1 && (
+                        <MobileStepper
+                            steps={maxSteps}
+                            position="static"
+                            activeStep={activeStep}
+                            className={classes.mobileStepper}
+                            nextButton={
+                                <Button size="small" onClick={this.handleNext} disabled={activeStep === maxSteps - 1}>
+                                    Next
                             {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
+                                </Button>
+                            }
+                            backButton={
+                                <Button size="small" onClick={this.handleBack} disabled={activeStep === 0}>
+                                    {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
+                                    Back
                         </Button>
-                    }
-                    backButton={
-                        <Button size="small" onClick={this.handleBack} disabled={activeStep === 0}>
-                            {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
-                            Back
-                        </Button>
-                    }
-                />
-            )}
-            <Typography variant="h6" gutterBottom>{selectedSpace.name}</Typography>
-                {/* {selectedSpace.rate === 0 ? <Chip label="FREE" className={classes.chip} /> : `$${selectedSpace.rate}/hr `} */}
-                {selectedSpace.rate === 0 ? <Chip label="FREE" className={classes.chip} /> : <Chip label={`$${selectedSpace.rate}/hr `} className={classes.chip} />}
-            <Typography>
-                {`Capacity: ${selectedSpace.capacity}`} 
-                <em>&nbsp;&nbsp;(venue type: {selectedSpace.venue_type})</em>
-            </Typography>
-            <Typography gutterBottom>
-                {`${selectedSpace.address.street} ${selectedSpace.address.quadrant}, ${selectedSpace.address.postal_code}`}
-            </Typography>
-            <DetailsTable 
-                address={selectedSpace.address} 
-                link={'www.need-data.com'}
-                phone={selectedSpace.contact.phone} 
-                availability={selectedSpace.availability} 
-            />
-            <Typography>
-            {selectedSpace.description}
-            </Typography>
-        </Paper>
-      </div>
-    )
-  }
+                            }
+                        />
+                    )}
+
+                    <Typography variant="h6" gutterBottom>
+                        {selectedSpace.name}
+                    </Typography>
+                    
+                    {selectedSpace.rate === 0 ? 
+                        <Chip label="FREE" className={classes.chip} /> : 
+                        <Chip label={`$${selectedSpace.rate}/hr `} className={classes.chip} />}
+
+                    <Typography>
+                        {`Capacity: ${selectedSpace.capacity}`}
+                        <em>&nbsp;&nbsp;(venue type: {selectedSpace.venue_type})</em>
+                    </Typography>
+
+                    <Typography gutterBottom>
+                        {`${selectedSpace.address.street} ${selectedSpace.address.quadrant}, ${selectedSpace.address.postal_code}`}
+                    </Typography>
+
+                    <DetailsTable
+                        address={selectedSpace.address}
+                        link={'www.need-data.com'}
+                        phone={selectedSpace.contact.phone}
+                        availability={selectedSpace.availability}
+                    />
+
+                    <Typography>
+                        {selectedSpace.description}
+                    </Typography>
+
+                    <div
+                        id="mapTest"
+                        style={{
+                            color: 'red',
+                            width: '300px',
+                            height: '300px',
+                            border: '2px dotted green',
+                        }}
+                    />
+                </Paper>
+            </div>
+        )
+    }
 }
 
 Details.propTypes = {
-  classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired,
+    classes: PropTypes.object.isRequired,
+    theme: PropTypes.object.isRequired,
 }
 
 export default withStyles(styles, { withTheme: true })(Details)

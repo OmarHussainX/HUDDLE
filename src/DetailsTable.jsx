@@ -34,7 +34,6 @@ const styles = theme => ({
 
 class DetailsTable extends Component {
     render(props) {
-
     
         const { classes, address, link, phone, availability } = this.props
 
@@ -78,7 +77,7 @@ class DetailsTable extends Component {
                         {tableRows}
                     </TableBody>
                 </Table>
-            </div>
+             </div>
         )
     }
 }

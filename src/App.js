@@ -121,7 +121,7 @@ class App extends Component {
         else if (targetID.includes('spacecrdindx') || targetID.includes('spacebtnindx')) {
             const arrayIndex = targetID.substring('spacecrdindx'.length) - 1
             console.log(
-                `============> Space '${this.state.spaces[arrayIndex].name}' CLICKED`,
+                `============> '${this.state.spaces[arrayIndex].name}' CLICKED`,
             )
             this.setState({
                 selectedSpace: this.state.spaces[arrayIndex],

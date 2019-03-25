@@ -11,7 +11,8 @@ import Paper from '@material-ui/core/Paper'
 const styles = theme => ({
     root: {
         width: '100%',
-        marginTop: theme.spacing.unit * 3,
+        marginTop: theme.spacing.unit * 2,
+        marginBottom: theme.spacing.unit * 2,
         overflowX: 'auto',
     },
     table: {
@@ -36,20 +37,20 @@ function AvailabilityTable(props) {
     for(const day in availability) {
         tableRows.push(
         <TableRow className={classes.tablerow} key={`${day}indx${tableRows.length}`}>
-            <TableCell className={classes.tablecell} align="right" width="100px">{day}</TableCell>
-            <TableCell className={classes.tablecell} align="left">{ availability[day] ? '9 am - 5 pm' : <em>unavailable</em>}</TableCell>
+            <TableCell className={classes.tablecell} align="right" width="100px">{ availability[day] ? day: <span style={{color:'grey'}}>{day}</span> }</TableCell>
+            <TableCell className={classes.tablecell} align="left">{ availability[day] ? '9 am - 5 pm' : <em style={{color:'grey'}}>Unavailable</em>}</TableCell>
         </TableRow>
         )
     }
 
     return (
-        <Paper className={classes.root}>
+        <div className={classes.root}>
             <Table className={classes.table}>
                 <TableBody>
                     {tableRows}
                 </TableBody>
             </Table>
-        </Paper>
+        </div>
     )
 }
 

@@ -38,7 +38,6 @@ function AvailabilityTable(props) {
     for(const day in availability) {
         tableRows.push(
         <TableRow className={classes.tablerow} key={`${day}indx${tableRows.length}`}>
-        {!tableRows.length ? '' : ''}
             <TableCell className={classes.tablecell} align="right" width="100px">{ availability[day] ? day: <span style={{color:'grey'}}>{day}</span> }</TableCell>
             <TableCell className={classes.tablecell} align="left">{ availability[day] ? '9 am - 5 pm' : <em style={{color:'grey'}}>Unavailable</em>}</TableCell>
         </TableRow>

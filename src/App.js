@@ -106,35 +106,45 @@ class App extends Component {
     }
   }
 
-  clickHandler = event => {
-    // console.log('inside clickHandler')
-    // console.log(`event.target: ${event.target}`)
-    // console.log(`event.currentTarget: ${event.currentTarget}`)
-    console.log(`event.currentTarget.id: ${event.currentTarget.id}`)
+    clickHandler = event => {
+        const targetID = event.currentTarget.id
 
-    const targetID = event.currentTarget.id
+        // 'Search' FAB was clicked
+        // - switch to search form/view...
+        if (targetID === 'FABsearch') {
+            console.log('============> Search FAB CLICKED')
+            // this.setState({ view: 'login' })
+        }
 
-    if (targetID === 'login-btn') {
-      console.log('============> LOGIN BTN CLICKED')
-      this.setState({view: 'login'})
-    } else if (targetID === 'logo') {
-      console.log('============> LOGO CLICKED')
-      this.setState({
-        view: 'home',
-      })
-    } 
-    else if ( targetID.includes('spacecrdindx') || targetID.includes('spacebtnindx')) {
-      const arrayIndex = targetID.substring('spacecrdindx'.length) - 1
-      console.log(
-        `============> space ${this.state.spaces[arrayIndex].name} CLICKED`,
-      )
-      this.setState({
-        selectedSpace: this.state.spaces[arrayIndex],
-        view: 'details',
-      })
-      console.log(this.state.spaces[arrayIndex])
+        // A space's card was clicked
+        // - switch to details view for the space
+        else if (targetID.includes('spacecrdindx') || targetID.includes('spacebtnindx')) {
+            const arrayIndex = targetID.substring('spacecrdindx'.length) - 1
+            console.log(
+                `============> Space '${this.state.spaces[arrayIndex].name}' CLICKED`,
+            )
+            this.setState({
+                selectedSpace: this.state.spaces[arrayIndex],
+                view: 'details',
+            })
+        }
+
+        // 'Login' in the app header/top nav was clicked
+        // - switch to login view
+        else if (targetID === 'login-btn') {
+            console.log('============> LOGIN CLICKED')
+            this.setState({ view: 'login' })
+        }
+
+        // 'Logo' in the app header/top nav was clicked
+        // - switch to home/default view
+        else if (targetID === 'logo') {
+            console.log('============> LOGO CLICKED')
+            this.setState({
+                view: 'home',
+            })
+        }
     }
-  }
 
   render() {
     const {classes} = this.props
@@ -165,7 +175,7 @@ class App extends Component {
 
         {this.state.view === 'home' && (
           <div>
-            <Fab color="secondary" aria-label="Search" className={classes.fab}>
+            <Fab color="secondary" aria-label="Search" className={classes.fab} onClick={this.clickHandler} id="FABsearch">
                 <Search>Search</Search>
             </Fab>
             {/* <Fab variant="extended" color="secondary" aria-label="Search" className={classes.fab}>

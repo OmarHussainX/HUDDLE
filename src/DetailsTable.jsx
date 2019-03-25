@@ -18,7 +18,6 @@ const styles = theme => ({
         overflowX: 'auto',
     },
     table: {
-        // minWidth: 700,
         padding: 'none',
     },
     tablerow: {
@@ -34,7 +33,6 @@ const styles = theme => ({
 
 
 class DetailsTable extends Component {
-    // function DetailsTable(props) {
     render(props) {
 
     

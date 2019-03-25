@@ -70,11 +70,10 @@ const styles = theme => ({
 
     },
     fab: {
-        // margin: theme.spacing.unit,
         position: 'fixed',
         bottom: theme.spacing.unit * 2,
         right: theme.spacing.unit * 2,
-        zIndex: '1000',
+        zIndex: '1100',
     },
         extendedIcon: {
         marginRight: theme.spacing.unit,
@@ -165,21 +164,21 @@ class App extends Component {
 
         {this.state.view === 'home' && (
           <div>
-                <Fab color="secondary" aria-label="Search" className={classes.fab}>
-                    <Search>Search</Search>
-                </Fab>
+            {/* <Fab color="secondary" aria-label="Search" className={classes.fab}>
+                <Search>Search</Search>
+            </Fab> */}
+            <Fab variant="extended" color="secondary" aria-label="Search" className={classes.fab}>
+                <Search className={classes.extendedIcon} />
+                Search
+            </Fab>
             <Paper className={classes.paperHeader}>
                 <Typography variant="h5" gutterBottom className={classes.textlogo}>
                     huddle
                 </Typography>
                 {/* <div className={classes.container}>
                 <SearchForm />
-                </div> */}
-                <SearchBtn onClick={this.clickHandler} />
-                {/* <Fab variant="extended" aria-label="Delete" className={classes.fab}>
-                    <Search className={classes.extendedIcon} />
-                    Search
-                </Fab> */}
+                </div>
+                <SearchBtn onClick={this.clickHandler} /> */}
             </Paper>
             <br />
             <br />

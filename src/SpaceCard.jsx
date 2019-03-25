@@ -44,8 +44,8 @@ class SpaceCard extends Component {
                 <Typography gutterBottom variant="h5" component="h2">
                     {this.props.name}
                 </Typography>
+                {this.props.rate === 0 ? <Chip label="FREE" className={classes.chip}/> : `$${this.props.rate}/hr`}
                 <Typography>
-                  {this.props.rate === 0 ? <Chip label="FREE" className={classes.chip}/> : `$${this.props.rate}/hr`}
                   {`Capacity: ${this.props.capacity}`}
                   {`Type: ${this.props.venue_type}`}
                 </Typography>

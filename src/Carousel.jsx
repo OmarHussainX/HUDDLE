@@ -42,13 +42,14 @@ const styles = theme => ({
     width: '100%',
   },
   chip: {
+    float:'right',
     backgroundColor: freeChipColor,
     // borderRadius: '5px',
-    // lineHeight: '0.5em',
+    // height: '24px',
     // fontWeight: 'bold',
     color: 'white',
     padding: '1px',
-    marginRight: '10px',
+    // marginRight: '10px',
   },
 })
 
@@ -120,9 +121,7 @@ class Carousel extends React.Component {
                     }
                 />
             )}
-            <Typography>
                 {selectedSpace.rate === 0 ? <Chip label="FREE" className={classes.chip} /> : `$${selectedSpace.rate}/hr `}
-            </Typography>
             <Typography>
                 {`Capacity: ${selectedSpace.capacity}`} 
                 <em>&nbsp;&nbsp;(venue type: {selectedSpace.venue_type})</em>

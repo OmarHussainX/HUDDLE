@@ -6,7 +6,12 @@ import {Grid} from '@material-ui/core'
 import SpaceCard from './SpaceCard'
 import Details from './Details'
 import SearchBtn from './SearchBtn'
-import Typography from '@material-ui/core/Typography';
+
+import Typography from '@material-ui/core/Typography'
+
+import Fab from '@material-ui/core/Fab'
+import { Search } from '@material-ui/icons'
+
 import Nav from './Nav'
 import Login from './Login'
 import SearchForm from './SearchForm'
@@ -63,6 +68,16 @@ const styles = theme => ({
     // -- strong glow
     // textShadow: '0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff'
 
+    },
+    fab: {
+        // margin: theme.spacing.unit,
+        position: 'fixed',
+        bottom: theme.spacing.unit * 2,
+        right: theme.spacing.unit * 2,
+        zIndex: '1000',
+    },
+        extendedIcon: {
+        marginRight: theme.spacing.unit,
     },
 })
 
@@ -150,14 +165,21 @@ class App extends Component {
 
         {this.state.view === 'home' && (
           <div>
+                <Fab color="secondary" aria-label="Search" className={classes.fab}>
+                    <Search>Search</Search>
+                </Fab>
             <Paper className={classes.paperHeader}>
                 <Typography variant="h5" gutterBottom className={classes.textlogo}>
                     huddle
                 </Typography>
-              <div className={classes.container}>
+                {/* <div className={classes.container}>
                 <SearchForm />
-              </div>
-              <SearchBtn onClick={this.clickHandler} />
+                </div> */}
+                <SearchBtn onClick={this.clickHandler} />
+                {/* <Fab variant="extended" aria-label="Delete" className={classes.fab}>
+                    <Search className={classes.extendedIcon} />
+                    Search
+                </Fab> */}
             </Paper>
             <br />
             <br />

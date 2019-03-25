@@ -56,7 +56,6 @@ class Details extends Component {
         super()
         this.state = {
             activeStep: 0,
-            map: null,
         }
     }
 
@@ -74,7 +73,6 @@ class Details extends Component {
             center: { lat: latitude, lng: longitude },
             zoom: 15,
         })    
-        this.setState({ map: newMap })
     }    
 
     handleNext = () => {

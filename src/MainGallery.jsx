@@ -26,19 +26,24 @@ class MainGallery extends React.Component {
     const {classes} = this.props
 
     let compArr = []
-    spaces.forEach(item => {
+    spaces.forEach((item, idx) => {
       compArr.push(
-        <Grow in={true} style={{transformOrigin: '0 0 0'}} {...{timeout: 1000}}>
-          <Grid item key={item.id}>
+        <Grow
+          id={`spaceCrdIdx${item.id}`}
+          onClick={this.props.onClick}
+          key={idx}
+          in={true}
+          style={{transformOrigin: '0 0 0'}}
+          {...{timeout: 1000}}
+        >
+          <Grid item >
             <SpaceCard
-              id={item.id}
               name={item.name}
               image={item.img[0]}
               rate={item.rate}
               address={item.address}
               capacity={item.capacity}
               venue_type={item.venue_type}
-              clickHandler={this.clickHandler}
             />
           </Grid>
         </Grow>,

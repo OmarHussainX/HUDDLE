@@ -112,11 +112,9 @@ class App extends Component {
 
     // A space's card was clicked
     // - switch to details view for the space
-    else if (
-      targetID.includes('spacecrdindx') ||
-      targetID.includes('spacebtnindx')
-    ) {
-      const arrayIndex = targetID.substring('spacecrdindx'.length) - 1
+    else if ( targetID.includes('spaceCrdIdx') || targetID.includes('spacebtnindx')) {
+      console.log('clicked')
+      const arrayIndex = targetID.substring('spaceCrdIdx'.length) - 1
       console.log(
         `============> '${this.state.spaces[arrayIndex].name}' CLICKED`,
       )
@@ -162,7 +160,7 @@ class App extends Component {
               <Search>Search</Search>
             </Fab>
             <Paper className={classes.paperHeader} />
-            <MainGallery />
+            <MainGallery onClick={this.clickHandler}/>
           </div>
         )}
 

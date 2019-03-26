@@ -2,10 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {BrowserRouter, Route, Switch, Link} from 'react-router-dom';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Login from './Login'
 import Contact from './Contact'
 import About from './About'
+import PageNotFound from './PageNotFound'
 
 const routes = (
   <BrowserRouter>
@@ -15,6 +16,7 @@ const routes = (
         <Route path="/login" component={Login} />
         <Route path="/contact" component={Contact} />
         <Route path="/about" component={About} />
+        <Route component={PageNotFound} />
       </Switch>
     </div>
   </BrowserRouter>

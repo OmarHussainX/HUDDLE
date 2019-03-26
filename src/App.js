@@ -5,7 +5,7 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import {Grid} from '@material-ui/core'
 import SpaceCard from './SpaceCard'
 import SearchForm from './SearchForm'
-import SimpleGrow from './SimpleGrow'
+import MainGallery from './MainGallery'
 
 // import Typography from '@material-ui/core/Typography'
 
@@ -201,7 +201,7 @@ class App extends Component {
             <br />
             <br />
             <br />
-            <SimpleGrow />
+            <MainGallery />
           </div>
         )}
 

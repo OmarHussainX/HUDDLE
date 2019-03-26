@@ -3,13 +3,13 @@ import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
-import Button from '@material-ui/core/Button'
+// import Button from '@material-ui/core/Button'
 // import blue from '@material-ui/core/colors/blue'
 import grey from '@material-ui/core/colors/grey'
-import Chip from '@material-ui/core/Chip'
-import Input from '@material-ui/core/Input'
-import OutlinedInput from '@material-ui/core/OutlinedInput'
-import FilledInput from '@material-ui/core/FilledInput'
+// import Chip from '@material-ui/core/Chip'
+// import Input from '@material-ui/core/Input'
+// import OutlinedInput from '@material-ui/core/OutlinedInput'
+// import FilledInput from '@material-ui/core/FilledInput'
 import InputLabel from '@material-ui/core/InputLabel'
 import MenuItem from '@material-ui/core/MenuItem'
 
@@ -19,7 +19,7 @@ import Select from '@material-ui/core/Select'
 import FormLabel from '@material-ui/core/FormLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormHelperText from '@material-ui/core/FormHelperText';
+// import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
 
 
@@ -27,6 +27,7 @@ import Grid from '@material-ui/core/Grid'
 import DateFnsUtils from '@date-io/date-fns'
 import { MuiPickersUtilsProvider, TimePicker, DatePicker } from 'material-ui-pickers'
 
+import TextField from '@material-ui/core/TextField'
 
 
 // const freeChipColor = blue[200]
@@ -85,8 +86,16 @@ const styles = theme => ({
     formLabel: {
         height: 24,
     },
+    checkbox: {
+        height: 24,
+    },
     selectEmpty: {
         marginTop: theme.spacing.unit * 2,
+    },
+    textField: {
+        marginLeft: theme.spacing.unit,
+        marginRight: theme.spacing.unit,
+        width: 120,
     },
 })
 
@@ -106,6 +115,7 @@ class Search extends Component {
             thursday: false,
             friday: false,
             saturday: false,
+            addressInput: '',
         }
     }
 
@@ -116,8 +126,15 @@ class Search extends Component {
     // - deposit/withdrawal amount when deposit/withdrawal is active
     handleChange = event => {
         console.log(`event.target: ${event.target}`)
-        const { name, value } = event.target
+        let { name, value } = event.target
         console.log(`event.target.name, value: '${name}', ${value}`)
+        if (event.currentTarget.id === 'standard-address') {
+            let { name, value } = event.currentTarget
+            console.log(`event.currentTarget.name, value: '${name}', ${value}`)
+            this.setState( prevState => ({
+                [name]: prevState.addressInput + value,
+            }))
+        }
         this.setState({
             [name]: value,
         })
@@ -227,12 +244,21 @@ class Search extends Component {
                     <Grid item xs={6}>
 
                     <FormControl component="fieldset" className={classes.formControl}>
-                            <FormLabel component="legend">Desired day(s)</FormLabel>
+                            <FormLabel component="legend">
+                                <br />&nbsp;
+                            </FormLabel>
                             <FormGroup>
                                 <FormControlLabel
                                     className={classes.formLabel}
                                     control={
-                                        <Checkbox checked={sunday} onChange={this.handleCheckedChange('sunday')} value="sunday" />
+                                        <Checkbox
+                                        classes={{
+                                            root: classes.checkbox,
+                                        }}
+                                        checked={sunday}
+                                        onChange={this.handleCheckedChange('sunday')}
+                                        value="sunday"
+                                        />
                                     }
                                     label="Sunday"
                                 />
@@ -246,43 +272,70 @@ class Search extends Component {
                                 <FormControlLabel
                                     className={classes.formLabel}
                                     control={
-                                        <Checkbox checked={tuesday} onChange={this.handleCheckedChange('tuesday')} value="tuesday" />
+                                        <Checkbox
+                                        classes={{
+                                            root: classes.checkbox,
+                                        }}
+                                        checked={tuesday} onChange={this.handleCheckedChange('tuesday')} value="tuesday" />
                                     }
                                     label="Tuesday"
                                 />
                                 <FormControlLabel
                                     className={classes.formLabel}
                                     control={
-                                        <Checkbox checked={wednesday} onChange={this.handleCheckedChange('wednesday')} value="wednesday" />
+                                        <Checkbox 
+                                        classes={{
+                                            root: classes.checkbox,
+                                        }}
+                                        checked={wednesday} onChange={this.handleCheckedChange('wednesday')} value="wednesday" />
                                     }
                                     label="Wednesday"
                                 />
                                 <FormControlLabel
                                     className={classes.formLabel}
                                     control={
-                                        <Checkbox checked={thursday} onChange={this.handleCheckedChange('thursday')} value="thursday" />
+                                        <Checkbox 
+                                        classes={{
+                                            root: classes.checkbox,
+                                        }}
+                                        checked={thursday} onChange={this.handleCheckedChange('thursday')} value="thursday" />
                                     }
                                     label="Thursday"
                                 />
                                 <FormControlLabel
                                     className={classes.formLabel}
                                     control={
-                                        <Checkbox checked={friday} onChange={this.handleCheckedChange('friday')} value="friday" />
+                                        <Checkbox 
+                                        classes={{
+                                            root: classes.checkbox,
+                                        }}
+                                        checked={friday} onChange={this.handleCheckedChange('friday')} value="friday" />
                                     }
                                     label="Friday"
                                 />
                                 <FormControlLabel
                                     className={classes.formLabel}
                                     control={
-                                        <Checkbox checked={saturday} onChange={this.handleCheckedChange('saturday')} value="saturday" />
+                                        <Checkbox 
+                                        classes={{
+                                            root: classes.checkbox,
+                                        }}
+                                        checked={saturday} onChange={this.handleCheckedChange('saturday')} value="saturday" />
                                     }
                                     label="Saturday"
                                 />
                             </FormGroup>
                         </FormControl>
-
-
-                        {/* <Paper className={classes.paper}>xs=6</Paper> */}
+                    </Grid>
+                    <Grid item xs={12}>
+                            <TextField
+                                id="standard-address"
+                                label="Address"
+                                className={classes.textField}
+                                value={this.state.addressInput}
+                                onChange={this.handleChange}
+                                margin="normal"
+                            />
                     </Grid>
                 </Grid>
             </Paper>

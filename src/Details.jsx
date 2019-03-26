@@ -198,8 +198,8 @@ class Details extends Component {
             style={{
               width: '300px',
               height: '300px',
-              border: '1px solid silver',
-              borderRadius: '3px',
+            //   border: '1px solid silver',
+              borderRadius: '5px',
               margin: '1em auto',
             }}
           />

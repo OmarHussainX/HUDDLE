@@ -82,6 +82,9 @@ const styles = theme => ({
         margin: theme.spacing.unit,
         minWidth: 120,
     },
+    formLabel: {
+        height: 24,
+    },
     selectEmpty: {
         marginTop: theme.spacing.unit * 2,
     },
@@ -191,7 +194,7 @@ class Search extends Component {
                     </Grid>
                     {/* </form> */}
                     <Grid item xs={12}>
-                        <Typography variant='overline' align='center'>--- Availability ---</Typography>
+                        <Typography variant='overline' align='center'>When is the space needed?</Typography>
                     </Grid>
                     <Grid item xs={6}>
 
@@ -199,7 +202,7 @@ class Search extends Component {
                                 <Grid container className={classes.grid} justify="space-around">
                                     <DatePicker
                                         margin="normal"
-                                        label="Booking date"
+                                        label="Date"
                                         value={this.state.selectedDate}
                                         onChange={this.handleDateChange}
                                     />
@@ -227,42 +230,49 @@ class Search extends Component {
                             <FormLabel component="legend">Desired day(s)</FormLabel>
                             <FormGroup>
                                 <FormControlLabel
+                                    className={classes.formLabel}
                                     control={
                                         <Checkbox checked={sunday} onChange={this.handleCheckedChange('sunday')} value="sunday" />
                                     }
                                     label="Sunday"
                                 />
                                 <FormControlLabel
+                                    className={classes.formLabel}
                                     control={
                                         <Checkbox checked={monday} onChange={this.handleCheckedChange('monday')} value="monday" />
                                     }
                                     label="Monday"
                                 />
                                 <FormControlLabel
+                                    className={classes.formLabel}
                                     control={
                                         <Checkbox checked={tuesday} onChange={this.handleCheckedChange('tuesday')} value="tuesday" />
                                     }
                                     label="Tuesday"
                                 />
                                 <FormControlLabel
+                                    className={classes.formLabel}
                                     control={
                                         <Checkbox checked={wednesday} onChange={this.handleCheckedChange('wednesday')} value="wednesday" />
                                     }
                                     label="Wednesday"
                                 />
                                 <FormControlLabel
+                                    className={classes.formLabel}
                                     control={
                                         <Checkbox checked={thursday} onChange={this.handleCheckedChange('thursday')} value="thursday" />
                                     }
                                     label="Thursday"
                                 />
                                 <FormControlLabel
+                                    className={classes.formLabel}
                                     control={
                                         <Checkbox checked={friday} onChange={this.handleCheckedChange('friday')} value="friday" />
                                     }
                                     label="Friday"
                                 />
                                 <FormControlLabel
+                                    className={classes.formLabel}
                                     control={
                                         <Checkbox checked={saturday} onChange={this.handleCheckedChange('saturday')} value="saturday" />
                                     }

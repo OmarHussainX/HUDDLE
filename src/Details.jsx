@@ -196,10 +196,11 @@ class Details extends Component {
           <div
             id="mapTest"
             style={{
-              color: 'red',
               width: '300px',
               height: '300px',
-              border: '2px dotted green',
+              border: '1px solid silver',
+              borderRadius: '3px',
+              margin: '1em auto',
             }}
           />
         </Paper>

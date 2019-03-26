@@ -37,6 +37,12 @@ const styles = theme => ({
         maxWidth: 400,  //needed?
         flexGrow: 1,
     },
+    base: {
+        ...theme.mixins.gutters(),
+        paddingTop: theme.spacing.unit * 2,
+        paddingBottom: theme.spacing.unit * 2,
+        minHeight: '400px',
+      },
     paper: {
         padding: theme.spacing.unit * 2,
         textAlign: 'center',
@@ -128,6 +134,7 @@ class Search extends Component {
 
         return (
             <div className={classes.root}>
+            <Paper className={classes.base} elevation={1}>
                 <Grid container spacing={24}>
                     <Grid item xs={12}>
                         <Typography variant="h6" gutterBottom className={classes.h6}>
@@ -268,6 +275,7 @@ class Search extends Component {
                         {/* <Paper className={classes.paper}>xs=6</Paper> */}
                     </Grid>
                 </Grid>
+            </Paper>
             </div>
       
 

@@ -66,9 +66,6 @@ const styles = theme => ({
   extendedIcon: {
     marginRight: theme.spacing.unit,
   },
-  container: {
-    display: 'flex',
-  },
   paper: {
     margin: theme.spacing.unit,
   },

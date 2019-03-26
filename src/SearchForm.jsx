@@ -116,6 +116,7 @@ class Search extends Component {
             friday: false,
             saturday: false,
             addressInput: '',
+            cityInput: '',
         }
     }
 
@@ -323,11 +324,26 @@ class Search extends Component {
                     </Grid>
                     <Grid item xs={12}>
                             <TextField
-                                id="standard-address"
+                                style={{
+                                    width: '180px',
+                                }}
+                                id="address-search-input"
                                 label="Address"
                                 className={classes.textField}
                                 name='addressInput'
                                 value={this.state.addressInput}
+                                onChange={this.handleChange}
+                                margin="normal"
+                            />
+                            <TextField
+                                style={{
+                                    width: '100px',
+                                }}
+                                id="city-search-input"
+                                label="City"
+                                className={classes.textField}
+                                name='cityInput'
+                                value={this.state.cityInput}
                                 onChange={this.handleChange}
                                 margin="normal"
                             />

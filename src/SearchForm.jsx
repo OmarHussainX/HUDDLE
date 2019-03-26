@@ -116,6 +116,7 @@ class Search extends Component {
             friday: false,
             saturday: false,
             addressInput: '',
+            quadrant: '',
             cityInput: '',
         }
     }
@@ -347,6 +348,33 @@ class Search extends Component {
                                 onChange={this.handleChange}
                                 margin="normal"
                             />
+                            { (this.state.cityInput.toLowerCase() === 'calgary' ||
+                                this.state.cityInput.toLowerCase() === 'edmonton') &&
+                            (<FormControl className={classes.formControl}
+                                style={{
+                                    width: '90px',
+                                    minWidth: '90px'
+                                }}
+                            >
+                                <InputLabel htmlFor="quadrantID">
+                                    Quadrant
+                                </InputLabel>
+                                <Select
+                                    value={this.state.quadrant}
+                                    onChange={this.handleChange}
+                                    inputProps={{
+                                        name: 'quadrant',
+                                        id: 'quadrantID',
+                                    }}
+                                >
+
+                                    <MenuItem value={'NW'}>NW</MenuItem>
+                                    <MenuItem value={'SW'}>SW</MenuItem>
+                                    <MenuItem value={'NE'}>NE</MenuItem>
+                                    <MenuItem value={'SE'}>SE</MenuItem>
+                                </Select>
+                            </FormControl>)}
+
                     </Grid>
                 </Grid>
             </Paper>

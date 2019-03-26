@@ -110,6 +110,19 @@ const styles = theme => ({
       secondaryHeading: {
         fontSize: theme.typography.pxToRem(15),
         color: theme.palette.text.secondary,
+    },
+    expansionpanel: {
+        border: 'none',
+        boxShadow: 'none',
+        '&:not(:last-child)': {
+          borderBottom: 0,
+        },
+        '&:before': {
+          display: 'none',
+        },
+      },
+      expanded: {
+        margin: 'auto',
       },
 })
 
@@ -232,10 +245,13 @@ class Search extends Component {
                     {/* <Grid item xs={12}>
                         <Typography variant='overline' align='center'>When is the space needed?</Typography>
                     </Grid> */}
-                </Grid>
-            </Paper>
-<br/>
-                    <ExpansionPanel expanded={panelExpanded === 'panel1'} onChange={this.handlePanelChange('panel1')}>
+                    <ExpansionPanel 
+                    expanded={panelExpanded === 'panel1'} 
+                    onChange={this.handlePanelChange('panel1')}
+                    classes={{
+                        root: classes.expansionpanel,
+                    }}
+                    >
                     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                     {/* <Typography className={classes.heading}>General settings</Typography> */}
                     <Typography className={classes.secondaryHeading}>Advanced search</Typography>
@@ -411,6 +427,8 @@ class Search extends Component {
                         </Grid>
                         </ExpansionPanelDetails>
                         </ExpansionPanel>
+                </Grid>
+            </Paper>
             </div>
       
 

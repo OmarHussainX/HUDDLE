@@ -232,7 +232,9 @@ class Search extends Component {
                     {/* <Grid item xs={12}>
                         <Typography variant='overline' align='center'>When is the space needed?</Typography>
                     </Grid> */}
-
+                </Grid>
+            </Paper>
+<br/>
                     <ExpansionPanel expanded={panelExpanded === 'panel1'} onChange={this.handlePanelChange('panel1')}>
                     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                     {/* <Typography className={classes.heading}>General settings</Typography> */}
@@ -405,12 +407,10 @@ class Search extends Component {
                                     <MenuItem value={'SE'}>SE</MenuItem>
                                 </Select>
                             </FormControl>)}
-                    </Grid>
-                </Grid>
-                </ExpansionPanelDetails>
-                </ExpansionPanel>
-                </Grid>
-            </Paper>
+                        </Grid>
+                        </Grid>
+                        </ExpansionPanelDetails>
+                        </ExpansionPanel>
             </div>
       
 

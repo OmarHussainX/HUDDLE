@@ -4,13 +4,17 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter, Route, Switch, Link} from 'react-router-dom';
 import Login from './Login'
+import Contact from './Contact'
+import About from './About'
 
 const routes = (
   <BrowserRouter>
     <div>
       <Switch>
         <Route path="/" component={App} exact={true} />
-        <Route path="/login" component={Login} exact={true} />
+        <Route path="/login" component={Login} />
+        <Route path="/contact" component={Contact} />
+        <Route path="/about" component={About} />
       </Switch>
     </div>
   </BrowserRouter>

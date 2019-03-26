@@ -29,6 +29,11 @@ import { MuiPickersUtilsProvider, TimePicker, DatePicker } from 'material-ui-pic
 
 import TextField from '@material-ui/core/TextField'
 
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
 
 // const freeChipColor = blue[200]
 const freeChipColor = grey[200]
@@ -42,7 +47,7 @@ const styles = theme => ({
         ...theme.mixins.gutters(),
         paddingTop: theme.spacing.unit * 2,
         paddingBottom: theme.spacing.unit * 2,
-        minHeight: '400px',
+        // minHeight: '400px',
       },
     paper: {
         padding: theme.spacing.unit * 2,
@@ -97,6 +102,15 @@ const styles = theme => ({
         marginRight: theme.spacing.unit,
         width: 120,
     },
+    heading: {
+        fontSize: theme.typography.pxToRem(15),
+        flexBasis: '33.33%',
+        flexShrink: 0,
+      },
+      secondaryHeading: {
+        fontSize: theme.typography.pxToRem(15),
+        color: theme.palette.text.secondary,
+      },
 })
 
 class Search extends Component {
@@ -106,6 +120,7 @@ class Search extends Component {
         this.state = {
             rate: '',
             capacity: '',
+            panelExpanded: null,
             selectedDate: new Date('2019-03-25T15:30:00'),
             selectedEndDate: new Date('2019-03-25T17:45:00'),
             sunday: false,
@@ -144,9 +159,16 @@ class Search extends Component {
         console.log(`${name}: '${event.target.checked}'`)
         this.setState({ [name]: event.target.checked });
     }
+    handlePanelChange = panel => (event, expanded) => {
+        this.setState({
+            panelExpanded: expanded ? panel : false,
+        })
+    }
+    
+    
     render() {
         const { classes, theme, filteredSpaces } = this.props
-        const {sunday, monday, tuesday, wednesday, thursday, friday, saturday} = this.state
+        const { panelExpanded, sunday, monday, tuesday, wednesday, thursday, friday, saturday } = this.state
 
         return (
             <div className={classes.root}>
@@ -206,9 +228,18 @@ class Search extends Component {
                         {/* <Paper className={classes.paper}>xs=6</Paper> */}
                     </Grid>
                     {/* </form> */}
-                    <Grid item xs={12}>
+
+                    {/* <Grid item xs={12}>
                         <Typography variant='overline' align='center'>When is the space needed?</Typography>
-                    </Grid>
+                    </Grid> */}
+
+                    <ExpansionPanel expanded={panelExpanded === 'panel1'} onChange={this.handlePanelChange('panel1')}>
+                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                    {/* <Typography className={classes.heading}>General settings</Typography> */}
+                    <Typography className={classes.secondaryHeading}>Advanced search</Typography>
+                    </ExpansionPanelSummary>
+                    <ExpansionPanelDetails>
+                    <Grid container spacing={24}>
                     <Grid item xs={6}>
 
                             <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -374,8 +405,10 @@ class Search extends Component {
                                     <MenuItem value={'SE'}>SE</MenuItem>
                                 </Select>
                             </FormControl>)}
-
                     </Grid>
+                </Grid>
+                </ExpansionPanelDetails>
+                </ExpansionPanel>
                 </Grid>
             </Paper>
             </div>

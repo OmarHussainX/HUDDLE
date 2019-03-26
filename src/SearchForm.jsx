@@ -128,13 +128,7 @@ class Search extends Component {
         console.log(`event.target: ${event.target}`)
         let { name, value } = event.target
         console.log(`event.target.name, value: '${name}', ${value}`)
-        if (event.currentTarget.id === 'standard-address') {
-            let { name, value } = event.currentTarget
-            console.log(`event.currentTarget.name, value: '${name}', ${value}`)
-            this.setState( prevState => ({
-                [name]: prevState.addressInput + value,
-            }))
-        }
+
         this.setState({
             [name]: value,
         })
@@ -142,7 +136,7 @@ class Search extends Component {
     handleDateChange = date => {
         console.log(`date/time: '${date}'`)
         this.setState({ selectedDate: date })
-      }
+    }
 
     handleCheckedChange = name => event => {
         console.log(`${name}: '${event.target.checked}'`)
@@ -332,6 +326,7 @@ class Search extends Component {
                                 id="standard-address"
                                 label="Address"
                                 className={classes.textField}
+                                name='addressInput'
                                 value={this.state.addressInput}
                                 onChange={this.handleChange}
                                 margin="normal"

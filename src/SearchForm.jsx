@@ -12,14 +12,21 @@ import OutlinedInput from '@material-ui/core/OutlinedInput'
 import FilledInput from '@material-ui/core/FilledInput'
 import InputLabel from '@material-ui/core/InputLabel'
 import MenuItem from '@material-ui/core/MenuItem'
-import FormHelperText from '@material-ui/core/FormHelperText'
 
 import FormControl from '@material-ui/core/FormControl'
 import Select from '@material-ui/core/Select'
 
+import FormLabel from '@material-ui/core/FormLabel';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import Checkbox from '@material-ui/core/Checkbox';
+
+
 import Grid from '@material-ui/core/Grid'
 import DateFnsUtils from '@date-io/date-fns'
 import { MuiPickersUtilsProvider, TimePicker, DatePicker } from 'material-ui-pickers'
+
 
 
 // const freeChipColor = blue[200]
@@ -27,19 +34,26 @@ const freeChipColor = grey[200]
 
 const styles = theme => ({
     root: {
-        maxWidth: 400,
+        maxWidth: 400,  //needed?
         flexGrow: 1,
     },
+    paper: {
+        padding: theme.spacing.unit * 2,
+        textAlign: 'center',
+        color: theme.palette.text.secondary,
+      },
     h6: {
         textShadow: '0px 0px 4px rgba(100,100,100,0.3)',
         textAlign: 'center',
     },
-    base: {
+
+/*     base: {
         ...theme.mixins.gutters(),
         paddingTop: theme.spacing.unit * 2,
         paddingBottom: theme.spacing.unit * 2,
         minHeight: '400px',
-    },
+    }, */
+
     img: {
         height: 255,
         display: 'block',
@@ -76,6 +90,13 @@ class Search extends Component {
             capacity: '',
             selectedDate: new Date('2019-03-25T15:30:00'),
             selectedEndDate: new Date('2019-03-25T17:45:00'),
+            sunday: false,
+            monday: false,
+            tuesday: false,
+            wednesday: false,
+            thursday: false,
+            friday: false,
+            saturday: false,
         }
     }
 
@@ -97,18 +118,26 @@ class Search extends Component {
         this.setState({ selectedDate: date })
       }
 
+    handleCheckedChange = name => event => {
+        console.log(`${name}: '${event.target.checked}'`)
+        this.setState({ [name]: event.target.checked });
+    }
     render() {
         const { classes, theme, filteredSpaces } = this.props
+        const {sunday, monday, tuesday, wednesday, thursday, friday, saturday} = this.state
 
         return (
             <div className={classes.root}>
-                <Paper className={classes.base} elevation={1}>
-
-                    <Typography variant="h6" gutterBottom className={classes.h6}>
-                        {`${filteredSpaces.length} matches...`}
-                    </Typography>
-                    <form className={classes.root} autoComplete="off">
-                        <FormControl className={classes.formControl}>
+                <Grid container spacing={24}>
+                    <Grid item xs={12}>
+                        <Typography variant="h6" gutterBottom className={classes.h6}>
+                            {`${filteredSpaces.length} matches...`}
+                        </Typography>
+                        {/* <Paper className={classes.paper}>xs=12</Paper> */}
+                    </Grid>
+                    {/* <form className={classes.root} autoComplete="off"> */}
+                    <Grid item xs={6}>
+                    <FormControl className={classes.formControl}>
                             <InputLabel htmlFor="rateID">
                                 Rate
                             </InputLabel>
@@ -128,7 +157,11 @@ class Search extends Component {
                                 <MenuItem value={100}>Over $75</MenuItem>
                             </Select>
                         </FormControl>
-                        <FormControl className={classes.formControl}>
+
+                        {/* <Paper className={classes.paper}>xs=6</Paper> */}
+                    </Grid>
+                    <Grid item xs={6}>
+                    <FormControl className={classes.formControl}>
                             <InputLabel htmlFor="capacityID">
                                 Capacity
                             </InputLabel>
@@ -146,33 +179,105 @@ class Search extends Component {
                                 <MenuItem value={20}>Over 15</MenuItem>
                             </Select>
                         </FormControl>
-                    </form>
-                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                        <Grid container className={classes.grid} justify="space-around">
-                            <DatePicker
-                                margin="normal"
-                                label="Booking date"
-                                value={this.state.selectedDate}
-                                onChange={this.handleDateChange}
-                            />
-                            <TimePicker
-                                margin="normal"
-                                label="Start time"
-                                value={this.state.selectedDate}
-                                onChange={this.handleDateChange}
-                            />
-                             <TimePicker
-                                margin="normal"
-                                label="End time"
-                                value={this.state.selectedEndDate}
-                                onChange={this.handleDateChange}
-                                id='endDatePicker'
-                            />
-                        </Grid>
-                    </MuiPickersUtilsProvider>
-                </Paper>
+
+                        {/* <Paper className={classes.paper}>xs=6</Paper> */}
+                    </Grid>
+                    {/* </form> */}
+                    <Grid item xs={12}>
+                        <Typography variant='overline' align='center'>--- Availability ---</Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+
+                            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                <Grid container className={classes.grid} justify="space-around">
+                                    <DatePicker
+                                        margin="normal"
+                                        label="Booking date"
+                                        value={this.state.selectedDate}
+                                        onChange={this.handleDateChange}
+                                    />
+                                    <TimePicker
+                                        margin="normal"
+                                        label="Start time"
+                                        value={this.state.selectedDate}
+                                        onChange={this.handleDateChange}
+                                    />
+                                    <TimePicker
+                                        margin="normal"
+                                        label="End time"
+                                        value={this.state.selectedEndDate}
+                                        onChange={this.handleDateChange}
+                                        id='endDatePicker'
+                                    />
+                                </Grid>
+                            </MuiPickersUtilsProvider>
+
+                        {/* <Paper className={classes.paper}>xs=6</Paper> */}
+                    </Grid>
+                    <Grid item xs={6}>
+
+                    <FormControl component="fieldset" className={classes.formControl}>
+                            <FormLabel component="legend">Desired day(s)</FormLabel>
+                            <FormGroup>
+                                <FormControlLabel
+                                    control={
+                                        <Checkbox checked={sunday} onChange={this.handleCheckedChange('sunday')} value="sunday" />
+                                    }
+                                    label="Sunday"
+                                />
+                                <FormControlLabel
+                                    control={
+                                        <Checkbox checked={monday} onChange={this.handleCheckedChange('monday')} value="monday" />
+                                    }
+                                    label="Monday"
+                                />
+                                <FormControlLabel
+                                    control={
+                                        <Checkbox checked={tuesday} onChange={this.handleCheckedChange('tuesday')} value="tuesday" />
+                                    }
+                                    label="Tuesday"
+                                />
+                                <FormControlLabel
+                                    control={
+                                        <Checkbox checked={wednesday} onChange={this.handleCheckedChange('wednesday')} value="wednesday" />
+                                    }
+                                    label="Wednesday"
+                                />
+                                <FormControlLabel
+                                    control={
+                                        <Checkbox checked={thursday} onChange={this.handleCheckedChange('thursday')} value="thursday" />
+                                    }
+                                    label="Thursday"
+                                />
+                                <FormControlLabel
+                                    control={
+                                        <Checkbox checked={friday} onChange={this.handleCheckedChange('friday')} value="friday" />
+                                    }
+                                    label="Friday"
+                                />
+                                <FormControlLabel
+                                    control={
+                                        <Checkbox checked={saturday} onChange={this.handleCheckedChange('saturday')} value="saturday" />
+                                    }
+                                    label="Saturday"
+                                />
+                            </FormGroup>
+                        </FormControl>
+
+
+                        {/* <Paper className={classes.paper}>xs=6</Paper> */}
+                    </Grid>
+                </Grid>
             </div>
-        )
+      
+
+
+
+
+
+/*             <div className={classes.root}>
+            </div>
+ */        )
     }
 }
                     

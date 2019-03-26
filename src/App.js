@@ -104,7 +104,7 @@ class App extends Component {
     // - switch to search form/view...
     if (targetID === 'FABsearch') {
       console.log('============> Search FAB CLICKED')
-      // this.setState({ view: 'login' })
+      this.setState({ view: 'search' })
     }
 
     // A space's card was clicked

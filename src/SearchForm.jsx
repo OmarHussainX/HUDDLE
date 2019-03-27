@@ -290,21 +290,16 @@ class Search extends Component {
         
         // when a day of the week is clicked:
         // - if the previous state of the day was false, it's going to be true so
-        //    * search for spaces avaialable on that day and update the matches...
+        //    * search for spaces available on that day and update the matches...
         //    * do other needed stuff?
         //
         // - toggle the state (true/false)
         this.setState(prevState => {
             
             if (!prevState[name]) {
-                console.log(`filtering for spaces open on: ${name}`)
                 
                 const matches = SpaceSearch.filterByAvailability(spaces, name)
-                matches.forEach(space => {
-                    console.log(`${space.name}, open on ${name}: ${space.availability}`)
-                })
-
-
+                console.log(`${matches.length} matches spaces open on: ${name}`)
             }
         })
 

@@ -141,8 +141,9 @@ class SpaceSearch {
     */
     static filterByAvailability(spaceData, day) {
         let filteredSpaces = []
+        day = day.toLowerCase()
 
-        switch (day.toLowerCase) {
+        switch (day) {
             case 'sunday':
             case 'monday':
             case 'tuesday':

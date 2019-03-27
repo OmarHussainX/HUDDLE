@@ -285,6 +285,31 @@ class Search extends Component {
     }
     handleCheckedChange = name => event => {
         console.log(`${name}: '${event.target.checked}'`)
+        const { spaces, rejectedSpaces } = this.state
+
+        
+        // when a day of the week is clicked:
+        // - if the previous state of the day was false, it's going to be true so
+        //    * search for spaces avaialable on that day and update the matches...
+        //    * do other needed stuff?
+        //
+        // - toggle the state (true/false)
+        this.setState(prevState => {
+            
+            if (!prevState[name]) {
+                console.log(`filtering for spaces open on: ${name}`)
+                
+                const matches = SpaceSearch.filterByAvailability(spaces, name)
+                matches.forEach(space => {
+                    console.log(`${space.name}, open on ${name}: ${space.availability}`)
+                })
+
+
+            }
+        })
+
+
+
         this.setState({ [name]: event.target.checked })
     }
     handlePanelChange = panel => (event, expanded) => {
@@ -382,7 +407,7 @@ class Search extends Component {
                                     }}
                                 >
                                     <MenuItem value={0}><em>Free</em></MenuItem>
-                                    <MenuItem value={25}>$0-25</MenuItem>
+                                    <MenuItem value={25}>$1-25</MenuItem>
                                     <MenuItem value={50}>$26-50</MenuItem>
                                     <MenuItem value={75}>$51-75</MenuItem>
                                     <MenuItem value={100}>Over $75</MenuItem>

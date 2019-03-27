@@ -301,22 +301,153 @@ test('Checking filtering by price ($76+) SUCCESS', () => {
 
 
 
+test('Checking filtering by capacity (1-5) SUCCESS', () => {
+
+    const searchValue = 5    // selected by the user
+
+    // filteredSpaces is an array of Objects which match the user's
+    // search criterion
+    const filteredSpaces = SpaceSearch.filterByCapacity(spaceData, searchValue)
+    console.log(`${filteredSpaces.length} spaces with capacity (1-5)`)
+
+    let capacityRangeMatch = false
+
+    // iterate through the filteredSpaces array, checking each object's capacity...
+    // ...if any capacity falls outside the desired range, something is wrong!!
+    capacityRangeMatch = filteredSpaces.every(space => space.capacity < 6)
+
+    // NOTE: Calling '.every()' on an empty array returns 'true'!!!,
+    // and if the filter method worked, filteredSpaces CANNOT be empty
+    if (filteredSpaces.length === 0) capacityRangeMatch = false
+
+    expect(capacityRangeMatch).toBeTruthy()
+
+})
+
+
+
+test('Checking filtering by capacity (6-10) SUCCESS', () => {
+
+    const searchValue = 10    // selected by the user
+
+    // filteredSpaces is an array of Objects which match the user's
+    // search criterion
+    const filteredSpaces = SpaceSearch.filterByCapacity(spaceData, searchValue)
+    console.log(`${filteredSpaces.length} spaces with capacity (6-10)`)
+
+    let capacityRangeMatch = false
+
+    // iterate through the filteredSpaces array, checking each object's capacity...
+    // ...if any capacity falls outside the desired range, something is wrong!!
+    capacityRangeMatch = filteredSpaces.every(space => space.capacity > 5 && space.capacity <= 10)
+
+    // NOTE: Calling '.every()' on an empty array returns 'true'!!!,
+    // and if the filter method worked, filteredSpaces CANNOT be empty
+    if (filteredSpaces.length === 0) capacityRangeMatch = false
+
+    expect(capacityRangeMatch).toBeTruthy()
+
+    // this merely exercises the 'default' case in filterByRate() in order
+    // to achieve 100% coverage
+    SpaceSearch.filterByCapacity(spaceData, 'exercising code')
+})
+
+
+
+test('Checking filtering by capacity (11-15) SUCCESS', () => {
+
+    const searchValue = 15    // selected by the user
+
+    // filteredSpaces is an array of Objects which match the user's
+    // search criterion
+    const filteredSpaces = SpaceSearch.filterByCapacity(spaceData, searchValue)
+    console.log(`${filteredSpaces.length} spaces with capacity (11-15)`)
+
+    let capacityRangeMatch = false
+
+    // iterate through the filteredSpaces array, checking each object's capacity...
+    // ...if any capacity falls outside the desired range, something is wrong!!
+    capacityRangeMatch = filteredSpaces.every(space => space.capacity > 10 && space.capacity <= 15)
+
+    // NOTE: Calling '.every()' on an empty array returns 'true'!!!,
+    // and if the filter method worked, filteredSpaces CANNOT be empty
+    if (filteredSpaces.length === 0) capacityRangeMatch = false
+
+    expect(capacityRangeMatch).toBeTruthy()
+
+})
+
+
+
+test('Checking filtering by capacity (16+) SUCCESS', () => {
+
+    const searchValue = 20    // selected by the user
+
+    // filteredSpaces is an array of Objects which match the user's
+    // search criterion
+    const filteredSpaces = SpaceSearch.filterByCapacity(spaceData, searchValue)
+    console.log(`${filteredSpaces.length} spaces with capacity (16+)`)
+
+    let capacityRangeMatch = false
+
+    // iterate through the filteredSpaces array, checking each object's capacity...
+    // ...if any capacity falls outside the desired range, something is wrong!!
+    capacityRangeMatch = filteredSpaces.every(space => space.capacity > 15)
+
+    // NOTE: Calling '.every()' on an empty array returns 'true'!!!,
+    // and if the filter method worked, filteredSpaces CANNOT be empty
+    if (filteredSpaces.length === 0) capacityRangeMatch = false
+
+    expect(capacityRangeMatch).toBeTruthy()
+
+    // this merely exercises the 'default' case in filterByRate() in order
+    // to achieve 100% coverage
+    SpaceSearch.filterByCapacity(spaceData, 'exercising code')
+})
+
+
+
+test('Checking filtering by availability (for ALL days) SUCCESS', () => {
+
+    // all possible capacity values user can search for (each value maps to a range)
+    const searchValues = [5, 10, 15, 20]
+
+    // store how many 'hits' (i.e. matches) there are for a given capacity
+    const searchHits = []
+
+    // iterate through 'searchValues', do a capacity based search on 'spaceData'
+    // and for each search, store the *number* of matches in 'searchHits'
+    searchValues.forEach(capacity => searchHits.push((SpaceSearch.filterByCapacity(spaceData, capacity)).length))
+
+    searchHits.forEach( (hit, i) => console.log(`${hit} matches for ${searchValues[i]} capacity`))
+
+    // get the total number of hits by adding up the hits for each search
+    const totalHits = searchHits.reduce((acc, cur) => acc + cur, 0)
+
+    // each space must only fall into one and only one capacity range, so the total
+    // number of hits should equal the total number of spaces available! 
+    expect(totalHits).toEqual(spaceData.length)
+
+})
+
+
+
 test('Checking filtering by availability (Sunday) SUCCESS', () => {
 
-    const searchValue = 'Sunday'    // selected by the user
+    const searchValue = 'SuNday'    // selected by the user
 
     // filteredSpaces is an array of Objects which match the user's
     // search criterion
     const filteredSpaces = SpaceSearch.filterByAvailability(spaceData, searchValue)
     
-    console.log(`---spaces available on ${searchValue}: ${filteredSpaces.length}`)
-    filteredSpaces.forEach(space => console.log(`${space.name}: ${space.availability[searchValue]}`)) 
+    console.log(`---spaces available on '${searchValue}': ${filteredSpaces.length}`)
+    filteredSpaces.forEach(space => console.log(`${space.name}: ${space.availability[searchValue.toLowerCase()]}`)) 
 
     let availabilityMatch = false
 
     // iterate through the filteredSpaces array, checking each object's rate...
     // ...if any space is not available on the specified day, something is wrong!!
-    availabilityMatch = filteredSpaces.every(space => space.availability[searchValue])
+    availabilityMatch = filteredSpaces.every(space => space.availability[searchValue.toLowerCase()])
 
     // NOTE: Calling '.every()' on an empty array returns 'true'!!!,
     // and if the filter method worked, filteredSpaces CANNOT be empty

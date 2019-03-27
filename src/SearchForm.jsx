@@ -3,36 +3,38 @@ import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
-// import Button from '@material-ui/core/Button'
 // import blue from '@material-ui/core/colors/blue'
 import grey from '@material-ui/core/colors/grey'
 // import Chip from '@material-ui/core/Chip'
 // import Input from '@material-ui/core/Input'
 // import OutlinedInput from '@material-ui/core/OutlinedInput'
 // import FilledInput from '@material-ui/core/FilledInput'
+
 import InputLabel from '@material-ui/core/InputLabel'
 import MenuItem from '@material-ui/core/MenuItem'
-
 import FormControl from '@material-ui/core/FormControl'
 import Select from '@material-ui/core/Select'
-
 import FormLabel from '@material-ui/core/FormLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 // import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
-
+import TextField from '@material-ui/core/TextField'
 
 import Grid from '@material-ui/core/Grid'
 import DateFnsUtils from '@date-io/date-fns'
 import { MuiPickersUtilsProvider, TimePicker, DatePicker } from 'material-ui-pickers'
 
-import TextField from '@material-ui/core/TextField'
-
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
+import Icon from '@material-ui/core/Icon'
+import Button from '@material-ui/core/Button'
+
+
+
 
 
 // const freeChipColor = blue[200]
@@ -48,24 +50,16 @@ const styles = theme => ({
         paddingTop: theme.spacing.unit * 2,
         paddingBottom: theme.spacing.unit * 2,
         // minHeight: '400px',
-      },
+    },
     paper: {
         padding: theme.spacing.unit * 2,
         textAlign: 'center',
         color: theme.palette.text.secondary,
-      },
+    },
     h6: {
         textShadow: '0px 0px 4px rgba(100,100,100,0.3)',
         textAlign: 'center',
     },
-
-/*     base: {
-        ...theme.mixins.gutters(),
-        paddingTop: theme.spacing.unit * 2,
-        paddingBottom: theme.spacing.unit * 2,
-        minHeight: '400px',
-    }, */
-
     img: {
         height: 255,
         display: 'block',
@@ -106,8 +100,8 @@ const styles = theme => ({
         fontSize: theme.typography.pxToRem(15),
         flexBasis: '33.33%',
         flexShrink: 0,
-      },
-      secondaryHeading: {
+    },
+    secondaryHeading: {
         fontSize: theme.typography.pxToRem(15),
         color: theme.palette.text.secondary,
     },
@@ -115,15 +109,18 @@ const styles = theme => ({
         border: 'none',
         boxShadow: 'none',
         '&:not(:last-child)': {
-          borderBottom: 0,
+            borderBottom: 0,
         },
         '&:before': {
-          display: 'none',
+            display: 'none',
         },
-      },
-      expanded: {
+    },
+    expanded: {
         margin: 'auto',
-      },
+    },
+    leftIcon: {
+        marginRight: theme.spacing.unit,
+    },
 })
 
 class Search extends Component {
@@ -310,7 +307,10 @@ class Search extends Component {
                                 <FormControlLabel
                                     className={classes.formLabel}
                                     control={
-                                        <Checkbox checked={monday} onChange={this.handleCheckedChange('monday')} value="monday" />
+                                        <Checkbox
+                                        classes={{
+                                            root: classes.checkbox,
+                                        }} checked={monday} onChange={this.handleCheckedChange('monday')} value="monday" />
                                     }
                                     label="Monday"
                                 />
@@ -416,7 +416,6 @@ class Search extends Component {
                                         id: 'quadrantID',
                                     }}
                                 >
-
                                     <MenuItem value={'NW'}>NW</MenuItem>
                                     <MenuItem value={'SW'}>SW</MenuItem>
                                     <MenuItem value={'NE'}>NE</MenuItem>
@@ -427,18 +426,24 @@ class Search extends Component {
                         </Grid>
                         </ExpansionPanelDetails>
                         </ExpansionPanel>
+
+                        <Grid item xs={8}>
+                            <Button variant="contained" color="primary" className={classes.button}>
+                                <Icon className={classes.leftIcon}>search</Icon>
+                                Search
+                            </Button>
+                        </Grid>
+                        <Grid item xs={4}>
+                            <Button variant="contained" color="default" className={classes.button}>
+                                <Icon className={classes.leftIcon}>delete</Icon>
+                                {/* <DeleteIcon className={classes.leftIcon} /> */}
+                                Clear
+                            </Button>
+                        </Grid>
                 </Grid>
             </Paper>
             </div>
-      
-
-
-
-
-
-/*             <div className={classes.root}>
-            </div>
- */        )
+        )
     }
 }
                     

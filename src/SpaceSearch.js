@@ -43,7 +43,7 @@ class SpaceSearch {
     
 
     /*
-    filterByPrice takes two parameters:
+    filterByRate takes two parameters:
     - a reference to a collection of all spaces
     - a numeric search value which is guaranteed to be one of:
       0     ( free spaces )
@@ -54,7 +54,7 @@ class SpaceSearch {
 
     returns an array of space Objects whose price matches the specified range
     */
-    static filterByPrice(spaceData, searchValue) {
+    static filterByRate(spaceData, searchValue) {
         searchValue = parseInt(searchValue)
         let filteredSpaces = []
 

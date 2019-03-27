@@ -1,4 +1,6 @@
 import React, {Component} from 'react'
+import {SpaceSearch} from './SpaceSearch'
+
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
@@ -153,16 +155,50 @@ class Search extends Component {
 
 
     handleChange = event => {
-        console.log(`event.target: ${event.target}`)
-        let { name, value } = event.target
+        const { name, value } = event.target
         console.log(`event.target.name, value: '${name}', ${value}`)
 
         this.setState({
             [name]: value,
         })
+
+        // --------------------------------------
+        // ISSUE
+        // If spaces are filtered every time a control is changed, then how 
+        // are results cleared/reset when the same search control is changed
+        // more than once?
+        // E.g. Select rate '$26-50' -> 1 match
+        // Now change rate to any other value -> 0 matches
+        // Could be possible to resolve this using secondary match results, but
+        // am not certain it will work in all scenarios
+        // May be preferable to forego 'live' filtering and instead filter
+        // only when 'Search' button ic clicked.
+        // This also makes the process of clearing results obvious: click the 
+        // 'Clear' button
+        // --------------------------------------
+        // switch(name) {
+            // case 'rate':
+            // First time a rate search is being performed
+            // If rejectedSpaces is not empty, then run the search on it, not on
+            // primaryMatches...
+            // ... yeah, no, this isn't as simple as a two-stage search...
+            // ... have to go for a more standard 'click to search' approach unless
+            // a proper way to perform live filtering is found
+
+            // if (value === '') {
+
+            // }
+            // const matches = SpaceSearch.filterByRate(this.state.primaryMatches, value)
+            // this.setState({
+            //     primaryMatches: matches,
+            // })
+            // break
+
+            // default:
+        // }
     }
     handleDateChange = date => {
-        console.log(`date/time: '${date}'`)
+        // console.log(`date/time: '${date}'`)
         this.setState({ selectedDate: date })
     }
     handleCheckedChange = name => event => {
@@ -175,9 +211,50 @@ class Search extends Component {
         })
     }
     handleClick = event => {
-        console.log(`event.currentTarget: ${event.currentTarget}`)
-        let { id, value } = event.currentTarget
-        console.log(`event.currentTarget.id, value: '${id}', ${value}`)
+        const { id } = event.currentTarget
+        
+        // Clear search results button clicked
+        // - reset all search options and inputs
+        // - reset the arrays of search results
+        switch(id) {
+        case 'clearSearchButton':
+        console.log(`clear search results`)
+        this.setState({
+            spaces: this.props.spaces,
+            primaryMatches: this.props.spaces,
+            rejectedSpaces: [],
+            secondaryMatches: [],
+            rate: '',
+            capacity: '',
+            panelExpanded: null,
+            selectedDate: new Date('2019-03-25T15:30:00'),
+            selectedEndDate: new Date('2019-03-25T17:45:00'),
+            sunday: false,
+            monday: false,
+            tuesday: false,
+            wednesday: false,
+            thursday: false,
+            friday: false,
+            saturday: false,
+            addressInput: '',
+            cityInput: '',
+            quadrant: '',
+        })
+        break
+
+        // Search button clicked
+        // - get search criteria from state
+        // - conduct search (easier said than done! how to search on multiple criteria?)
+        // - update primary, secondary search match arrays
+        // - reset all search options and inputs
+        // - reset the array of primary matches
+        case 'searchButton':
+        console.log(`search!`)
+        break
+
+        default:
+        break
+        }
     }
     
     

@@ -183,7 +183,7 @@ test('Checking filtering by price ($0) SUCCESS', () => {
 
     // filteredSpaces is an array of Objects which match the user's
     // search criterion
-    const filteredSpaces = SpaceSearch.filterByPrice(spaceData, searchValue)
+    const filteredSpaces = SpaceSearch.filterByRate(spaceData, searchValue)
     
     // console.log(`---matches for rate ${searchValue}: ${filteredSpaces.length}`)
     // filteredSpaces.forEach(space => console.log(`${space.name}: $${space.rate}`)) 
@@ -209,7 +209,7 @@ test('Checking filtering by price ($1-25) SUCCESS', () => {
 
     // filteredSpaces is an array of Objects which match the user's
     // search criterion
-    const filteredSpaces = SpaceSearch.filterByPrice(spaceData, searchValue)
+    const filteredSpaces = SpaceSearch.filterByRate(spaceData, searchValue)
 
     let priceRangeMatch = false
 
@@ -233,7 +233,7 @@ test('Checking filtering by price ($26-50) SUCCESS', () => {
 
     // filteredSpaces is an array of Objects which match the user's
     // search criterion
-    const filteredSpaces = SpaceSearch.filterByPrice(spaceData, searchValue)
+    const filteredSpaces = SpaceSearch.filterByRate(spaceData, searchValue)
 
     let priceRangeMatch = false
 
@@ -256,7 +256,7 @@ test('Checking filtering by price ($51-75) SUCCESS', () => {
 
     // filteredSpaces is an array of Objects which match the user's
     // search criterion
-    const filteredSpaces = SpaceSearch.filterByPrice(spaceData, searchValue)
+    const filteredSpaces = SpaceSearch.filterByRate(spaceData, searchValue)
 
     let priceRangeMatch = false
 
@@ -280,7 +280,7 @@ test('Checking filtering by price ($76+) SUCCESS', () => {
 
     // filteredSpaces is an array of Objects which match the user's
     // search criterion
-    const filteredSpaces = SpaceSearch.filterByPrice(spaceData, searchValue)
+    const filteredSpaces = SpaceSearch.filterByRate(spaceData, searchValue)
 
     let priceRangeMatch = false
 
@@ -294,9 +294,9 @@ test('Checking filtering by price ($76+) SUCCESS', () => {
 
     expect(priceRangeMatch).toBeTruthy()
 
-    // this merely exercises the 'default' case in filterByPrice() in order
+    // this merely exercises the 'default' case in filterByRate() in order
     // to achieve 100% coverage
-    SpaceSearch.filterByPrice(spaceData, 'exercising code')
+    SpaceSearch.filterByRate(spaceData, 'exercising code')
 })
 
 

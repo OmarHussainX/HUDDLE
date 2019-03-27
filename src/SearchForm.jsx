@@ -125,9 +125,20 @@ const styles = theme => ({
 
 class Search extends Component {
 
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
+            // Collection of spaces matching the primary search criteria
+            // (array of Objects)
+            primaryMatches: this.props.allSpaces,
+
+            // Collection of spaces which did not meet the last search criterion
+            rejectedSpaces: [],
+
+            // Collection of spaces which meet the secondary search criterion
+            secondaryMatches: [],
+
+            // Search inputs (dropdowns, date/time pickers, checkboxes, textfields)
             rate: '',
             capacity: '',
             panelExpanded: null,
@@ -141,16 +152,12 @@ class Search extends Component {
             friday: false,
             saturday: false,
             addressInput: '',
-            quadrant: '',
             cityInput: '',
+            quadrant: '',
         }
     }
 
 
-    // --> No binding needed when using arrow notation! <--
-    // Ensures state always contains the latest input for:
-    // - account name & balance when account creation is actve
-    // - deposit/withdrawal amount when deposit/withdrawal is active
     handleChange = event => {
         console.log(`event.target: ${event.target}`)
         let { name, value } = event.target
@@ -164,7 +171,6 @@ class Search extends Component {
         console.log(`date/time: '${date}'`)
         this.setState({ selectedDate: date })
     }
-
     handleCheckedChange = name => event => {
         console.log(`${name}: '${event.target.checked}'`)
         this.setState({ [name]: event.target.checked });
@@ -177,271 +183,297 @@ class Search extends Component {
     
     
     render() {
-        const { classes, theme, filteredSpaces } = this.props
-        const { panelExpanded, sunday, monday, tuesday, wednesday, thursday, friday, saturday } = this.state
+        const { classes } = this.props
+        const { panelExpanded, sunday, monday, tuesday, wednesday, thursday, friday, saturday, primaryMatches } = this.state
 
         return (
             <div className={classes.root}>
-            <Paper className={classes.base} elevation={1}>
-                <Grid container spacing={24}>
-                    <Grid item xs={12}>
-                        <Typography variant="h6" gutterBottom className={classes.h6}>
-                            {`${filteredSpaces.length} matches...`}
-                        </Typography>
-                        {/* <Paper className={classes.paper}>xs=12</Paper> */}
-                    </Grid>
-                    {/* <form className={classes.root} autoComplete="off"> */}
-                    <Grid item xs={6}>
-                    <FormControl className={classes.formControl}>
-                            <InputLabel htmlFor="rateID">
-                                Rate
-                            </InputLabel>
-                            <Select
-                                value={this.state.rate}
-                                onChange={this.handleChange}
-                                inputProps={{
-                                    name: 'rate',
-                                    id: 'rateID',
-                                }}
-                            >
+                <Paper className={classes.base} elevation={1}>
 
-                                <MenuItem value={0}><em>Free</em></MenuItem>
-                                <MenuItem value={25}>$0-25</MenuItem>
-                                <MenuItem value={50}>$26-50</MenuItem>
-                                <MenuItem value={75}>$51-75</MenuItem>
-                                <MenuItem value={100}>Over $75</MenuItem>
-                            </Select>
-                        </FormControl>
-
-                        {/* <Paper className={classes.paper}>xs=6</Paper> */}
-                    </Grid>
-                    <Grid item xs={6}>
-                    <FormControl className={classes.formControl}>
-                            <InputLabel htmlFor="capacityID">
-                                Capacity
-                            </InputLabel>
-                            <Select
-                                value={this.state.capacity}
-                                onChange={this.handleChange}
-                                inputProps={{
-                                    name: 'capacity',
-                                    id: 'capacityID',
-                                }}
-                            >
-                                <MenuItem value={5}>1-5</MenuItem>
-                                <MenuItem value={10}>6-10</MenuItem>
-                                <MenuItem value={15}>11-15</MenuItem>
-                                <MenuItem value={20}>Over 15</MenuItem>
-                            </Select>
-                        </FormControl>
-
-                        {/* <Paper className={classes.paper}>xs=6</Paper> */}
-                    </Grid>
-                    {/* </form> */}
-
-                    {/* <Grid item xs={12}>
-                        <Typography variant='overline' align='center'>When is the space needed?</Typography>
-                    </Grid> */}
-                    <ExpansionPanel 
-                    expanded={panelExpanded === 'panel1'} 
-                    onChange={this.handlePanelChange('panel1')}
-                    classes={{
-                        root: classes.expansionpanel,
-                    }}
-                    >
-                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                    {/* <Typography className={classes.heading}>General settings</Typography> */}
-                    <Typography className={classes.secondaryHeading}>Advanced search</Typography>
-                    </ExpansionPanelSummary>
-                    <ExpansionPanelDetails>
+                    {/* ---  Create Grid  --- */}
                     <Grid container spacing={24}>
-                    <Grid item xs={6}>
 
-                            <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                                <Grid container className={classes.grid} justify="space-around">
-                                    <DatePicker
-                                        margin="normal"
-                                        label="Date"
-                                        value={this.state.selectedDate}
-                                        onChange={this.handleDateChange}
-                                    />
-                                    <TimePicker
-                                        margin="normal"
-                                        label="Start time"
-                                        value={this.state.selectedDate}
-                                        onChange={this.handleDateChange}
-                                    />
-                                    <TimePicker
-                                        margin="normal"
-                                        label="End time"
-                                        value={this.state.selectedEndDate}
-                                        onChange={this.handleDateChange}
-                                        id='endDatePicker'
-                                    />
-                                </Grid>
-                            </MuiPickersUtilsProvider>
+                        {/* ---  Full-width row  --- */}
+                        <Grid item xs={12}>
+                            <Typography variant="h6" gutterBottom className={classes.h6}>
+                                {`${primaryMatches.length} matches...`}
+                            </Typography>
+                        </Grid>
+                        {/* <form className={classes.root} autoComplete="off"> */}
 
-                        {/* <Paper className={classes.paper}>xs=6</Paper> */}
-                    </Grid>
-                    <Grid item xs={6}>
-
-                    <FormControl component="fieldset" className={classes.formControl}>
-                            <FormLabel component="legend">
-                                <br />&nbsp;
-                            </FormLabel>
-                            <FormGroup>
-                                <FormControlLabel
-                                    className={classes.formLabel}
-                                    control={
-                                        <Checkbox
-                                        classes={{
-                                            root: classes.checkbox,
-                                        }}
-                                        checked={sunday}
-                                        onChange={this.handleCheckedChange('sunday')}
-                                        value="sunday"
-                                        />
-                                    }
-                                    label="Sunday"
-                                />
-                                <FormControlLabel
-                                    className={classes.formLabel}
-                                    control={
-                                        <Checkbox
-                                        classes={{
-                                            root: classes.checkbox,
-                                        }} checked={monday} onChange={this.handleCheckedChange('monday')} value="monday" />
-                                    }
-                                    label="Monday"
-                                />
-                                <FormControlLabel
-                                    className={classes.formLabel}
-                                    control={
-                                        <Checkbox
-                                        classes={{
-                                            root: classes.checkbox,
-                                        }}
-                                        checked={tuesday} onChange={this.handleCheckedChange('tuesday')} value="tuesday" />
-                                    }
-                                    label="Tuesday"
-                                />
-                                <FormControlLabel
-                                    className={classes.formLabel}
-                                    control={
-                                        <Checkbox 
-                                        classes={{
-                                            root: classes.checkbox,
-                                        }}
-                                        checked={wednesday} onChange={this.handleCheckedChange('wednesday')} value="wednesday" />
-                                    }
-                                    label="Wednesday"
-                                />
-                                <FormControlLabel
-                                    className={classes.formLabel}
-                                    control={
-                                        <Checkbox 
-                                        classes={{
-                                            root: classes.checkbox,
-                                        }}
-                                        checked={thursday} onChange={this.handleCheckedChange('thursday')} value="thursday" />
-                                    }
-                                    label="Thursday"
-                                />
-                                <FormControlLabel
-                                    className={classes.formLabel}
-                                    control={
-                                        <Checkbox 
-                                        classes={{
-                                            root: classes.checkbox,
-                                        }}
-                                        checked={friday} onChange={this.handleCheckedChange('friday')} value="friday" />
-                                    }
-                                    label="Friday"
-                                />
-                                <FormControlLabel
-                                    className={classes.formLabel}
-                                    control={
-                                        <Checkbox 
-                                        classes={{
-                                            root: classes.checkbox,
-                                        }}
-                                        checked={saturday} onChange={this.handleCheckedChange('saturday')} value="saturday" />
-                                    }
-                                    label="Saturday"
-                                />
-                            </FormGroup>
-                        </FormControl>
-                    </Grid>
-                    <Grid item xs={12}>
-                            <TextField
-                                style={{
-                                    width: '180px',
-                                }}
-                                id="address-search-input"
-                                label="Address"
-                                className={classes.textField}
-                                name='addressInput'
-                                value={this.state.addressInput}
-                                onChange={this.handleChange}
-                                margin="normal"
-                            />
-                            <TextField
-                                style={{
-                                    width: '100px',
-                                }}
-                                id="city-search-input"
-                                label="City"
-                                className={classes.textField}
-                                name='cityInput'
-                                value={this.state.cityInput}
-                                onChange={this.handleChange}
-                                margin="normal"
-                            />
-                            { (this.state.cityInput.toLowerCase() === 'calgary' ||
-                                this.state.cityInput.toLowerCase() === 'edmonton') &&
-                            (<FormControl className={classes.formControl}
-                                style={{
-                                    width: '90px',
-                                    minWidth: '90px'
-                                }}
-                            >
-                                <InputLabel htmlFor="quadrantID">
-                                    Quadrant
+                        {/* ---  Half-width row  --- */}
+                        <Grid item xs={6}>
+                            <FormControl className={classes.formControl}>
+                                <InputLabel htmlFor="rateID">
+                                    Rate
                                 </InputLabel>
                                 <Select
-                                    value={this.state.quadrant}
+                                    value={this.state.rate}
                                     onChange={this.handleChange}
                                     inputProps={{
-                                        name: 'quadrant',
-                                        id: 'quadrantID',
+                                        name: 'rate',
+                                        id: 'rateID',
                                     }}
                                 >
-                                    <MenuItem value={'NW'}>NW</MenuItem>
-                                    <MenuItem value={'SW'}>SW</MenuItem>
-                                    <MenuItem value={'NE'}>NE</MenuItem>
-                                    <MenuItem value={'SE'}>SE</MenuItem>
+                                    <MenuItem value={0}><em>Free</em></MenuItem>
+                                    <MenuItem value={25}>$0-25</MenuItem>
+                                    <MenuItem value={50}>$26-50</MenuItem>
+                                    <MenuItem value={75}>$51-75</MenuItem>
+                                    <MenuItem value={100}>Over $75</MenuItem>
                                 </Select>
-                            </FormControl>)}
+                            </FormControl>
                         </Grid>
-                        </Grid>
-                        </ExpansionPanelDetails>
-                        </ExpansionPanel>
 
-                        <Grid item xs={8}>
-                            <Button variant="contained" color="primary" className={classes.button}>
-                                <Icon className={classes.leftIcon}>search</Icon>
-                                Search
-                            </Button>
+                        {/* ---  Half-width row  --- */}
+                        <Grid item xs={6}>
+                            <FormControl className={classes.formControl}>
+                                <InputLabel htmlFor="capacityID">
+                                    Capacity
+                                </InputLabel>
+                                <Select
+                                    value={this.state.capacity}
+                                    onChange={this.handleChange}
+                                    inputProps={{
+                                        name: 'capacity',
+                                        id: 'capacityID',
+                                    }}
+                                >
+                                    <MenuItem value={5}>1-5</MenuItem>
+                                    <MenuItem value={10}>6-10</MenuItem>
+                                    <MenuItem value={15}>11-15</MenuItem>
+                                    <MenuItem value={20}>Over 15</MenuItem>
+                                </Select>
+                            </FormControl>
+
                         </Grid>
-                        <Grid item xs={4}>
-                            <Button variant="contained" color="default" className={classes.button}>
-                                <Icon className={classes.leftIcon}>delete</Icon>
-                                {/* <DeleteIcon className={classes.leftIcon} /> */}
-                                Clear
+                        {/* </form> */}
+
+                        {/* <Grid item xs={12}>
+                        <Typography variant='overline' align='center'>When is the space needed?</Typography>
+                        </Grid> */}
+
+                        {/* ----------------------------------------------------- */}
+                        {/* Hide 'advanced' controls inside an expansion panel */}
+                        <ExpansionPanel
+                            expanded={panelExpanded === 'panel1'}
+                            onChange={this.handlePanelChange('panel1')}
+                            classes={{ root: classes.expansionpanel, }}
+                        >
+                            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                                {/* <Typography className={classes.heading}>General settings</Typography> */}
+                                <Typography className={classes.secondaryHeading}>Advanced search</Typography>
+                            </ExpansionPanelSummary>
+                            <ExpansionPanelDetails>
+                                {/* ---  Create Grid  --- */}
+                                <Grid container spacing={24}>
+
+                                    {/* ---  Half-width row  --- */}
+                                    <Grid item xs={6}>
+                                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                            <Grid container className={classes.grid} justify="space-around">
+                                                <DatePicker
+                                                    margin="normal"
+                                                    label="Date"
+                                                    value={this.state.selectedDate}
+                                                    onChange={this.handleDateChange}
+                                                />
+                                                <TimePicker
+                                                    margin="normal"
+                                                    label="Start time"
+                                                    value={this.state.selectedDate}
+                                                    onChange={this.handleDateChange}
+                                                />
+                                                <TimePicker
+                                                    margin="normal"
+                                                    label="End time"
+                                                    value={this.state.selectedEndDate}
+                                                    onChange={this.handleDateChange}
+                                                    id='endDatePicker'
+                                                />
+                                            </Grid>
+                                        </MuiPickersUtilsProvider>
+
+                                        {/* <Paper className={classes.paper}>xs=6</Paper> */}
+                                    </Grid>
+
+                                    {/* ---  Half-width row  --- */}
+                                    <Grid item xs={6}>
+                                        <FormControl component="fieldset" className={classes.formControl}>
+                                            <FormLabel component="legend">
+                                                <br />&nbsp;
+                                            </FormLabel>
+                                            <FormGroup>
+                                                <FormControlLabel
+                                                    className={classes.formLabel}
+                                                    control={
+                                                        <Checkbox
+                                                            classes={{
+                                                                root: classes.checkbox,
+                                                            }}
+                                                            checked={sunday}
+                                                            onChange={this.handleCheckedChange('sunday')}
+                                                            value="sunday"
+                                                        />
+                                                    }
+                                                    label="Sunday"
+                                                />
+                                                <FormControlLabel
+                                                    className={classes.formLabel}
+                                                    control={
+                                                        <Checkbox
+                                                            classes={{
+                                                                root: classes.checkbox,
+                                                            }} checked={monday} 
+                                                            onChange={this.handleCheckedChange('monday')} 
+                                                            value="monday" />
+                                                    }
+                                                    label="Monday"
+                                                />
+                                                <FormControlLabel
+                                                    className={classes.formLabel}
+                                                    control={
+                                                        <Checkbox
+                                                            classes={{
+                                                                root: classes.checkbox,
+                                                            }}
+                                                            checked={tuesday} 
+                                                            onChange={this.handleCheckedChange('tuesday')} 
+                                                            value="tuesday" />
+                                                    }
+                                                    label="Tuesday"
+                                                />
+                                                <FormControlLabel
+                                                    className={classes.formLabel}
+                                                    control={
+                                                        <Checkbox
+                                                            classes={{
+                                                                root: classes.checkbox,
+                                                            }}
+                                                            checked={wednesday} 
+                                                            onChange={this.handleCheckedChange('wednesday')} 
+                                                            value="wednesday" />
+                                                    }
+                                                    label="Wednesday"
+                                                />
+                                                <FormControlLabel
+                                                    className={classes.formLabel}
+                                                    control={
+                                                        <Checkbox
+                                                            classes={{
+                                                                root: classes.checkbox,
+                                                            }}
+                                                            checked={thursday} 
+                                                            onChange={this.handleCheckedChange('thursday')} 
+                                                            value="thursday" />
+                                                    }
+                                                    label="Thursday"
+                                                />
+                                                <FormControlLabel
+                                                    className={classes.formLabel}
+                                                    control={
+                                                        <Checkbox
+                                                            classes={{
+                                                                root: classes.checkbox,
+                                                            }}
+                                                            checked={friday} 
+                                                            onChange={this.handleCheckedChange('friday')} 
+                                                            value="friday" />
+                                                    }
+                                                    label="Friday"
+                                                />
+                                                <FormControlLabel
+                                                    className={classes.formLabel}
+                                                    control={
+                                                        <Checkbox
+                                                            classes={{
+                                                                root: classes.checkbox,
+                                                            }}
+                                                            checked={saturday} 
+                                                            onChange={this.handleCheckedChange('saturday')} 
+                                                            value="saturday" />
+                                                    }
+                                                    label="Saturday"
+                                                />
+                                            </FormGroup>
+                                        </FormControl>
+                                    </Grid>
+
+                                    {/* ---  Full-width row  --- */}
+                                    <Grid item xs={12}>
+                                        <TextField
+                                            style={{
+                                                width: '180px',
+                                            }}
+                                            id="address-search-input"
+                                            label="Address"
+                                            className={classes.textField}
+                                            name='addressInput'
+                                            margin="normal"
+                                            onChange={this.handleChange}
+                                            value={this.state.addressInput}
+                                        />
+                                        <TextField
+                                            style={{
+                                                width: '100px',
+                                            }}
+                                            id="city-search-input"
+                                            label="City"
+                                            className={classes.textField}
+                                            name='cityInput'
+                                            margin="normal"
+                                            onChange={this.handleChange}
+                                            value={this.state.cityInput}
+                                        />
+                                        {(this.state.cityInput.toLowerCase() === 'calgary' ||
+                                         this.state.cityInput.toLowerCase() === 'edmonton') &&
+                                        (<FormControl className={classes.formControl}
+                                            style={{
+                                                width: '90px',
+                                                minWidth: '90px'
+                                            }}
+                                        >
+                                            <InputLabel htmlFor="quadrantID">
+                                                Quadrant
+                                            </InputLabel>
+                                            <Select
+                                                inputProps={{
+                                                    name: 'quadrant',
+                                                    id: 'quadrantID',
+                                                }}
+                                                onChange={this.handleChange}
+                                                value={this.state.quadrant}
+                                            >
+                                                <MenuItem value={'NW'}>NW</MenuItem>
+                                                <MenuItem value={'SW'}>SW</MenuItem>
+                                                <MenuItem value={'NE'}>NE</MenuItem>
+                                                <MenuItem value={'SE'}>SE</MenuItem>
+                                            </Select>
+                                        </FormControl>)}
+                                    </Grid>
+                                </Grid>
+                            </ExpansionPanelDetails>
+                        </ExpansionPanel>
+                        {/* ----------------------------------------------------- */}
+
+
+                        {/* <Grid container spacing={24} justify="space-between"> */}
+                            <Grid item xs={6}>
+                                <Button variant="contained" color="default" className={classes.button}>
+                                    <Icon className={classes.leftIcon}>delete</Icon>
+                                    Clear
                             </Button>
+                            </Grid>
+                            <Grid item xs={6}>
+                                <div style={{textAlign:'right'}}>
+                                <Button variant="contained" color="secondary" className={classes.button}>
+                                    <Icon className={classes.leftIcon}>search</Icon>
+                                    Search
+                                </Button>
+                                </div>
+                            </Grid>
                         </Grid>
-                </Grid>
-            </Paper>
+                    {/* </Grid> */}
+                </Paper>
             </div>
         )
     }

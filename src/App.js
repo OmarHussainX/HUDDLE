@@ -80,10 +80,6 @@ class App extends Component {
       // (array of Objects - see JSON file for Object structure)
       spaces: space,
 
-      // Collection of spaces matching the user's search criteria
-      // (array of Objects)
-      filteredSpaces: space,
-
       // Reference to the space selected by the user for detailed view
       selectedSpace: null,
 
@@ -170,7 +166,7 @@ class App extends Component {
 
         {this.state.view === 'search' && (
           <Grid container className={classes.spacesGrid} spacing={32}>
-            <SearchForm filteredSpaces={this.state.filteredSpaces} />
+            <SearchForm allSpaces={this.state.spaces} />
           </Grid>
         )}
 

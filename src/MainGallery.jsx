@@ -4,7 +4,6 @@ import {withStyles} from '@material-ui/core/styles'
 import Grow from '@material-ui/core/Grow'
 import {Grid} from '@material-ui/core'
 import SpaceCard from './SpaceCard'
-import spaces from './spaces.json'
 
 const styles = theme => ({
   container: {
@@ -23,7 +22,7 @@ const styles = theme => ({
 
 class MainGallery extends React.Component {
   render() {
-    const {classes} = this.props
+    const {classes, spaces} = this.props
 
     let compArr = []
     spaces.forEach((item, idx) => {
@@ -50,13 +49,11 @@ class MainGallery extends React.Component {
       )
     })
     return (
-      <>
         <div className={classes.container}>
           <Grid container className={classes.spacesGrid} spacing={32}>
             {compArr}
           </Grid>
         </div>
-      </>
     )
   }
 }

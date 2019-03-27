@@ -3,12 +3,7 @@ import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
-// import blue from '@material-ui/core/colors/blue'
 import grey from '@material-ui/core/colors/grey'
-// import Chip from '@material-ui/core/Chip'
-// import Input from '@material-ui/core/Input'
-// import OutlinedInput from '@material-ui/core/OutlinedInput'
-// import FilledInput from '@material-ui/core/FilledInput'
 
 import InputLabel from '@material-ui/core/InputLabel'
 import MenuItem from '@material-ui/core/MenuItem'
@@ -33,11 +28,10 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Icon from '@material-ui/core/Icon'
 import Button from '@material-ui/core/Button'
 
+import MainGallery from './MainGallery'
 
 
 
-
-// const freeChipColor = blue[200]
 const freeChipColor = grey[200]
 
 const styles = theme => ({
@@ -130,7 +124,7 @@ class Search extends Component {
         this.state = {
             // Collection of spaces matching the primary search criteria
             // (array of Objects)
-            primaryMatches: this.props.allSpaces,
+            primaryMatches: this.props.spaces,
 
             // Collection of spaces which did not meet the last search criterion
             rejectedSpaces: [],
@@ -179,6 +173,11 @@ class Search extends Component {
         this.setState({
             panelExpanded: expanded ? panel : false,
         })
+    }
+    handleClick = event => {
+        console.log(`event.currentTarget: ${event.currentTarget}`)
+        let { id, value } = event.currentTarget
+        console.log(`event.currentTarget.id, value: '${id}', ${value}`)
     }
     
     
@@ -458,14 +457,21 @@ class Search extends Component {
 
                         {/* <Grid container spacing={24} justify="space-between"> */}
                             <Grid item xs={6}>
-                                <Button variant="contained" color="default" className={classes.button}>
+                                <Button variant="contained" color="default"
+                                className={classes.button}
+                                onClick={this.handleClick}
+                                id='clearSearchButton'
+                                >
                                     <Icon className={classes.leftIcon}>delete</Icon>
                                     Clear
                             </Button>
                             </Grid>
                             <Grid item xs={6}>
                                 <div style={{textAlign:'right'}}>
-                                <Button variant="contained" color="secondary" className={classes.button}>
+                                <Button variant="contained" color="secondary" className={classes.button}
+                                onClick={this.handleClick}
+                                id='searchButton'
+                                >
                                     <Icon className={classes.leftIcon}>search</Icon>
                                     Search
                                 </Button>
@@ -474,6 +480,10 @@ class Search extends Component {
                         </Grid>
                     {/* </Grid> */}
                 </Paper>
+                <MainGallery 
+                    onClick={this.props.onClick}
+                    spaces={primaryMatches}
+                />
             </div>
         )
     }

@@ -154,7 +154,10 @@ class App extends Component {
               <Search>Search</Search>
             </Fab>
             <Paper className={classes.paperHeader} />
-            <MainGallery onClick={this.clickHandler}/>
+            <MainGallery 
+                onClick={this.clickHandler}
+                spaces={this.state.spaces}
+            />
           </div>
         )}
 
@@ -166,7 +169,10 @@ class App extends Component {
 
         {this.state.view === 'search' && (
           <Grid container className={classes.spacesGrid} spacing={32}>
-            <SearchForm allSpaces={this.state.spaces} />
+            <SearchForm 
+            spaces={this.state.spaces} 
+            onClick={this.clickHandler}
+            />
           </Grid>
         )}
 

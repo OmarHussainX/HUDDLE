@@ -4,7 +4,7 @@
     "img": ["1Township.jpg", "2National.jpg", "3Craft.jpg"],
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     "venue_type": "Restaurant",
-    "capacity": 40,
+    "capacity": 5,
     "rate": 0,
     "availability": {
         "Sunday": false,
@@ -39,7 +39,7 @@
         "img": ["2National.jpg", "15cSpace.jpg", "14UofC.jpg", "13Glenbow.jpg"],
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         "venue_type": "Restaurant",
-        "capacity": 70,
+        "capacity": 7,
         "rate": 0,
         "availability": {
             "Sunday": false,
@@ -107,7 +107,7 @@
         "img":["4Lake.jpg"],
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         "venue_type": "Restaurant",
-        "capacity": 110,
+        "capacity": 21,
         "rate": 19,
         "availability": {
             "Sunday": true,
@@ -177,7 +177,7 @@
         "img": ["6Haysboro.jpg"],
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         "venue_type": "Community",
-        "capacity": 40,
+        "capacity": 23,
         "rate": 5,
         "availability": {
             "Sunday": false,
@@ -247,7 +247,7 @@
         "img": ["8Rec.jpg"],
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         "venue_type": "Entertainment",
-        "capacity": 40,
+        "capacity": 11,
         "rate": 12,
         "availability": {
             "Sunday": false,
@@ -317,7 +317,7 @@
         "img": ["10cibo.jpg"],
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         "venue_type": "Restaurant",
-        "capacity": 25,
+        "capacity": 11,
         "rate": 0,
         "availability": {
             "Sunday": true,
@@ -387,7 +387,7 @@
         "img": ["12Fort.jpg"],
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         "venue_type": "Historic",
-        "capacity": 180,
+        "capacity": 3,
         "rate": 56,
         "availability": {
             "Sunday": true,
@@ -491,7 +491,7 @@
         "img": ["15cSpace.jpg"],
         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         "venue_type": "Historic",
-        "capacity": 40,
+        "capacity": 4,
         "rate": 19,
         "availability": {
             "Sunday": false,

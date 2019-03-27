@@ -40,7 +40,7 @@ class SpaceSearch {
         }
         return filteredSpaces
     }
-    
+
 
     /*
     filterByRate takes two parameters:
@@ -88,7 +88,49 @@ class SpaceSearch {
         }
         return filteredSpaces
     }
-    
+
+
+    /*
+    filterByCapacity takes two parameters:
+    - a reference to a collection of all spaces
+    - a numeric search value which is guaranteed to be one of:
+      5     ( 1-5 range )
+      10    ( 6-10 range )
+      15    ( 11-15 range )
+      20    ( 16+ range )
+
+    returns an array of space Objects whose capacity matches the specified range
+    */
+   static filterByCapacity(spaceData, searchValue) {
+    searchValue = parseInt(searchValue)
+    let filteredSpaces = []
+
+    switch (searchValue) {
+        // ( 1-5 range )
+        case 5:
+        filteredSpaces = spaceData.filter(space => space.capacity <= 5)
+        break
+
+        // ( 6-10 range )
+        case 10:
+        filteredSpaces = spaceData.filter(space => space.capacity > 5 && space.capacity <= 10)
+        break
+
+        // ( 11-15 range )
+        case 15:
+        filteredSpaces = spaceData.filter(space => space.capacity > 10 && space.capacity <= 15)
+        break
+
+        // ( 16+ range )
+        case 20:
+        filteredSpaces = spaceData.filter(space => space.capacity > 15)
+        break
+
+        default:
+    }
+    return filteredSpaces
+}
+
 
     /*
     filterByAvailability takes two parameters:
@@ -100,14 +142,14 @@ class SpaceSearch {
     static filterByAvailability(spaceData, day) {
         let filteredSpaces = []
 
-        switch (day) {
-            case 'Sunday':
-            case 'Monday':
-            case 'Tuesday':
-            case 'Wednesday':
-            case 'Thursday':
-            case 'Friday':
-            case 'Saturday':
+        switch (day.toLowerCase) {
+            case 'sunday':
+            case 'monday':
+            case 'tuesday':
+            case 'wednesday':
+            case 'thursday':
+            case 'friday':
+            case 'saturday':
             filteredSpaces = spaceData.filter(space => space.availability[day])
             break
 

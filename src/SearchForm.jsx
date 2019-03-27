@@ -124,8 +124,11 @@ class Search extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            // Collection of spaces matching the primary search criteria
-            // (array of Objects)
+
+            // Array of all available spaces
+            spaces: this.props.spaces,
+
+            // Array of spaces matching the primary search criterion
             primaryMatches: this.props.spaces,
 
             // Collection of spaces which did not meet the last search criterion
@@ -133,6 +136,9 @@ class Search extends Component {
 
             // Collection of spaces which meet the secondary search criterion
             secondaryMatches: [],
+
+            // Store search criteria for display...
+            searchHistory: [],
 
             // Search inputs (dropdowns, date/time pickers, checkboxes, textfields)
             rate: '',
@@ -147,7 +153,7 @@ class Search extends Component {
             thursday: false,
             friday: false,
             saturday: false,
-            addressInput: '',
+            streetInput: '',
             cityInput: '',
             quadrant: '',
         }
@@ -157,6 +163,8 @@ class Search extends Component {
     handleChange = event => {
         const { name, value } = event.target
         console.log(`event.target.name, value: '${name}', ${value}`)
+
+        const { spaces, rejectedSpaces } = this.state
 
         this.setState({
             [name]: value,
@@ -176,8 +184,11 @@ class Search extends Component {
         // This also makes the process of clearing results obvious: click the 
         // 'Clear' button
         // --------------------------------------
-        // switch(name) {
-            // case 'rate':
+        switch(name) {
+            case 'rate':
+            case 'capacity':
+            const searchType = name === 'rate' ? 'filterByRate' : 'filterByCapacity'
+
             // First time a rate search is being performed
             // If rejectedSpaces is not empty, then run the search on it, not on
             // primaryMatches...
@@ -186,16 +197,87 @@ class Search extends Component {
             // a proper way to perform live filtering is found
 
             // if (value === '') {
+                // if some filtering has already been done, then only perform
+                // a secondary search...
+                if (rejectedSpaces.length) {
+                    const matches = SpaceSearch[searchType](rejectedSpaces, value)
+                    
+                    // rejects are spaces which are not present in 'matches'
+                    // i.e. the difference between the set of all spaces and
+                    // those that are in 'matches'
+                    // let rejects = spaces.filter(o => !matches.some(v => v.id === o.id))
 
-            // }
-            // const matches = SpaceSearch.filterByRate(this.state.primaryMatches, value)
-            // this.setState({
-            //     primaryMatches: matches,
-            // })
-            // break
+                    this.setState(prevState => {
+                        const newHistory = [...prevState.searchHistory]
+                        newHistory.push(`[${name}: ${value}] `)
 
-            // default:
-        // }
+                        return {
+                            secondaryMatches: matches,
+                            // rejectedSpaces: rejects
+                            searchHistory: newHistory
+                        }
+                    })
+
+                // no filtering has been done (not successfully anyway), so perform
+                // a primary search, and update the rejects...
+                } else {
+                    const matches = SpaceSearch[searchType](spaces, value)
+
+                    // rejects are spaces which are not present in 'matches'
+                    // i.e. the difference between the set of all spaces and
+                    // those that are in 'matches'
+                    let rejects = spaces.filter(o => !matches.some(v => v.id === o.id))
+
+                    this.setState(prevState => {
+                        const newHistory = [...prevState.searchHistory]
+                        newHistory.push(`[${name}: ${value}] `)
+
+                        return {
+                            primaryMatches: matches,
+                            rejectedSpaces: rejects,
+                            searchHistory: newHistory
+                        }
+                    })
+                }
+            break
+
+            case 'streetInput':
+            case 'cityInput':
+            const locSearchType = name === 'streetInput' ? 'street' : 'city'
+
+                if (rejectedSpaces.length) {
+                    const matches = SpaceSearch.filterByLocation(rejectedSpaces, locSearchType, value)
+                    
+                    this.setState(prevState => {
+                        const newHistory = [...prevState.searchHistory]
+                        newHistory.push(`[${name}: ${value}] `)
+
+                        return {
+                            secondaryMatches: matches,
+                            searchHistory: newHistory
+                        }
+                    })
+
+                } else {
+                    const matches = SpaceSearch.filterByLocation(spaces, locSearchType, value)
+
+                    let rejects = spaces.filter(o => !matches.some(v => v.id === o.id))
+
+                    this.setState(prevState => {
+                        const newHistory = [...prevState.searchHistory]
+                        newHistory.push(`[${name}: ${value}] `)
+
+                        return {
+                            primaryMatches: matches,
+                            rejectedSpaces: rejects,
+                            searchHistory: newHistory
+                        }
+                    })
+                }
+            break
+
+            default:
+        }
     }
     handleDateChange = date => {
         // console.log(`date/time: '${date}'`)
@@ -203,7 +285,7 @@ class Search extends Component {
     }
     handleCheckedChange = name => event => {
         console.log(`${name}: '${event.target.checked}'`)
-        this.setState({ [name]: event.target.checked });
+        this.setState({ [name]: event.target.checked })
     }
     handlePanelChange = panel => (event, expanded) => {
         this.setState({
@@ -224,6 +306,7 @@ class Search extends Component {
             primaryMatches: this.props.spaces,
             rejectedSpaces: [],
             secondaryMatches: [],
+            searchHistory: [],
             rate: '',
             capacity: '',
             panelExpanded: null,
@@ -236,7 +319,7 @@ class Search extends Component {
             thursday: false,
             friday: false,
             saturday: false,
-            addressInput: '',
+            streetInput: '',
             cityInput: '',
             quadrant: '',
         })
@@ -260,7 +343,7 @@ class Search extends Component {
     
     render() {
         const { classes } = this.props
-        const { panelExpanded, sunday, monday, tuesday, wednesday, thursday, friday, saturday, primaryMatches } = this.state
+        const { panelExpanded, sunday, monday, tuesday, wednesday, thursday, friday, saturday, primaryMatches, secondaryMatches } = this.state
 
         return (
             <div className={classes.root}>
@@ -272,7 +355,14 @@ class Search extends Component {
                         {/* ---  Full-width row  --- */}
                         <Grid item xs={12}>
                             <Typography variant="h6" gutterBottom className={classes.h6}>
-                                {`${primaryMatches.length} matches...`}
+                                {`${primaryMatches.length} matches`}
+                            </Typography>
+                            <Typography gutterBottom className={classes.h6}>
+                                {secondaryMatches.length ? `(${secondaryMatches.length} secondary matches)` : ''}
+                                <br />
+                                SEARCH HISTORY:
+                                <br />
+                                {this.state.searchHistory}
                             </Typography>
                         </Grid>
                         {/* <form className={classes.root} autoComplete="off"> */}
@@ -483,10 +573,10 @@ class Search extends Component {
                                             id="address-search-input"
                                             label="Address"
                                             className={classes.textField}
-                                            name='addressInput'
+                                            name='streetInput'
                                             margin="normal"
                                             onChange={this.handleChange}
-                                            value={this.state.addressInput}
+                                            value={this.state.streetInput}
                                         />
                                         <TextField
                                             style={{
@@ -557,9 +647,19 @@ class Search extends Component {
                         </Grid>
                     {/* </Grid> */}
                 </Paper>
-                <MainGallery 
+                <Typography variant="h6" gutterBottom className={classes.h6}>
+                    {`Primary matches (${primaryMatches.length})`}
+                </Typography>
+                <MainGallery
                     onClick={this.props.onClick}
                     spaces={primaryMatches}
+                />
+                <Typography variant="h6" gutterBottom className={classes.h6}>
+                    {`Secondary matches (${secondaryMatches.length})`}
+                </Typography>
+                <MainGallery
+                    onClick={this.props.onClick}
+                    spaces={secondaryMatches}
                 />
             </div>
         )

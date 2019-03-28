@@ -22,18 +22,20 @@ const styles = theme => ({
     flexGrow: 1,
 
     padding: theme.spacing.unit,
-    [theme.breakpoints.down('sm')]: {
-      // MOBILE
-      backgroundColor: theme.palette.secondary.main,
-    },
-    [theme.breakpoints.up('md')]: {
-      // TABLET
-      backgroundColor: theme.palette.primary.main,
-    },
-    [theme.breakpoints.up('lg')]: {
-      // DESKTOP
-      backgroundColor: green[500],
-    },
+    // TESTING ONLY
+    //
+    // [theme.breakpoints.down('sm')]: {
+    //   // MOBILE
+    //   backgroundColor: theme.palette.secondary.main,
+    // },
+    // [theme.breakpoints.up('md')]: {
+    //   // TABLET
+    //   backgroundColor: theme.palette.primary.main,
+    // },
+    // [theme.breakpoints.up('lg')]: {
+    //   // DESKTOP
+    //   backgroundColor: green[500],
+    // },
   },
   h6: {
     textShadow: '0px 0px 4px rgba(100,100,100,0.3)',
@@ -74,8 +76,9 @@ const styles = theme => ({
     [theme.breakpoints.down('sm')]: {
       // MOBILE
       display: 'flex',
+      marginLeft: 'auto',
+      marginRight: 'auto',
       flexWrap: 'wrap',
-      justifyContent: 'center',
       width: '400px',
       alignItems: 'stretch',
     },

@@ -19,7 +19,7 @@ const freeChipColor = grey[200]
 
 const styles = theme => ({
   root: {
-    width: 800,
+    maxWidth: 400,
     flexGrow: 1,
 
     padding: theme.spacing.unit,
@@ -84,8 +84,7 @@ class Details extends Component {
       latitude = 37.4220041
       longitude = -122.0862462
     }
-
-    let newMap = new window.google.maps.Map(
+    new window.google.maps.Map(
       document.getElementById('mapTest'),
       {
         center: {lat: latitude, lng: longitude},
@@ -117,6 +116,7 @@ class Details extends Component {
 
     return (
       <div className={classes.root}>
+
         <Paper className={classes.base} elevation={1}>
           <AutoPlaySwipeableViews
             axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
@@ -187,7 +187,7 @@ class Details extends Component {
 
           <Typography>
             {`Capacity: ${selectedSpace.capacity}`}
-            <em>&nbsp;&nbsp;(venue type: {selectedSpace.venue_type})</em>
+            <em>&nbsp;&nbsp;({selectedSpace.venue_type})</em>
           </Typography>
 
           <Typography gutterBottom>

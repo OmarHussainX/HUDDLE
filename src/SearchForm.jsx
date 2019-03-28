@@ -283,30 +283,79 @@ class Search extends Component {
         // console.log(`date/time: '${date}'`)
         this.setState({ selectedDate: date })
     }
-    handleCheckedChange = name => event => {
-        console.log(`${name}: '${event.target.checked}'`)
+
+
+    // Handle search logic related to checkboxes, which are all related to the
+    // availability of spaces on particular days of the week
+    handleCheckedChange = checkboxName => event => {
         const { spaces, rejectedSpaces } = this.state
+        const checkboxState = event.target.checked
+        console.log(`'${checkboxName}' checked: '${checkboxState}'`)
 
         
-        // when a day of the week is clicked:
-        // - if the previous state of the day was false, it's going to be true so
-        //    * search for spaces available on that day and update the matches...
-        //    * do other needed stuff?
+        // A day's checkbox has selected - need to search for spaces avaialable
+        // on that day (update the primary matches if no search has been done yet,
+        // otherwise update the secondary results...)
         //
         // - toggle the state (true/false)
-        this.setState(prevState => {
+        if (checkboxState) {
             
-            if (!prevState[name]) {
+            const matchesLog = SpaceSearch.filterByAvailability(spaces, checkboxName)
+            console.log(`${matchesLog.length} matches spaces open on: ${checkboxName}`)
+
+            // A search criteria had already been selected, primary matches were
+            // found, and the rest were added to 'rejects'...
+            // So just need to update secondary matches...
+            if (rejectedSpaces.length) {
+                const matches = SpaceSearch.filterByAvailability(spaces, checkboxName)
                 
-                const matches = SpaceSearch.filterByAvailability(spaces, name)
-                console.log(`${matches.length} matches spaces open on: ${name}`)
+                this.setState(prevState => {
+                    const newHistory = [...prevState.searchHistory]
+                    newHistory.push(`[${checkboxName}: ${checkboxState}] `)
+
+                    return {
+                        secondaryMatches: matches,
+                        // rejectedSpaces: rejects
+                        searchHistory: newHistory
+                    }
+                })
+
+            // no filtering has been done (not successfully anyway), so perform
+            // a primary search, and update the rejects...
+            } else {
+                const matches = SpaceSearch.filterByAvailability(spaces, checkboxName)
+
+                // rejects are spaces which are not present in 'matches'
+                // i.e. the difference between the set of all spaces and
+                // those that are in 'matches'
+                let rejects = spaces.filter(o => !matches.some(v => v.id === o.id))
+
+                this.setState(prevState => {
+                    const newHistory = [...prevState.searchHistory]
+                    newHistory.push(`[${checkboxName}: ${checkboxState}] `)
+
+                    return {
+                        primaryMatches: matches,
+                        rejectedSpaces: rejects,
+                        searchHistory: newHistory
+                    }
+                })
             }
-        })
 
 
 
-        this.setState({ [name]: event.target.checked })
+        // A day's checkbox has been de-selected.... what do we do now!?
+        // - somehow remove it from the search criteria/match results
+        } else {
+            //
+
+        }
+
+        this.setState({ [checkboxName]: checkboxState })
     }
+
+
+
     handlePanelChange = panel => (event, expanded) => {
         this.setState({
             panelExpanded: expanded ? panel : false,

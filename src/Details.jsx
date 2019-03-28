@@ -12,7 +12,7 @@ import {autoPlay} from 'react-swipeable-views-utils'
 import grey from '@material-ui/core/colors/grey'
 import Chip from '@material-ui/core/Chip'
 import DetailsTable from './DetailsTable'
-import green from '@material-ui/core/colors/green';
+import green from '@material-ui/core/colors/green'
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews)
 const freeChipColor = grey[200]
@@ -33,7 +33,7 @@ const styles = theme => ({
     [theme.breakpoints.up('lg')]: {
       // DESKTOP
       backgroundColor: green[500],
-    },    
+    },
   },
   h6: {
     textShadow: '0px 0px 4px rgba(100,100,100,0.3)',
@@ -42,9 +42,12 @@ const styles = theme => ({
     ...theme.mixins.gutters(),
     paddingTop: theme.spacing.unit * 2,
     paddingBottom: theme.spacing.unit * 2,
+    [theme.breakpoints.up('md')]: {
+      height: '100vh',
+    },
     [theme.breakpoints.up('lg')]: {
       height: '100vh',
-    }
+    },
   },
   img: {
     height: 255,
@@ -70,28 +73,35 @@ const styles = theme => ({
   container: {
     [theme.breakpoints.down('sm')]: {
       // MOBILE
-      display:'flex',
-      flexWrap:'wrap',
-      justifyContent:'flex-start',
-      alignItems:'stretch', 
+      display: 'flex',
+      flexWrap: 'wrap',
+      justifyContent: 'center',
+      width: '400px',
+      alignItems: 'stretch',
+    },
+    [theme.breakpoints.up('md')]: {
+      // TABLET
+      display: 'flex',
+      flexWrap: 'nowrap',
     },
     [theme.breakpoints.up('lg')]: {
       // DESKTOP
-      display:'flex',
-      flexWrap:'nowrap',
-    },    
+      display: 'flex',
+      flexWrap: 'nowrap',
+    },
   },
   main: {
     order: 1,
     maxWidth: '400px',
-    flexBasis: '400px',
-    [theme.breakpoints.down('sm')]: {
-      // MOBILE
-      flexBasis: '100%',
-    },
   },
   map: {
-  }
+    order: 2,
+    flexBasis: '100%',
+    [theme.breakpoints.down('sm')]: {
+      // MOBILE
+      height: '500px',
+    },
+  },
 })
 
 class Details extends Component {
@@ -110,13 +120,10 @@ class Details extends Component {
       latitude = 37.4220041
       longitude = -122.0862462
     }
-    new window.google.maps.Map(
-      document.getElementById('map'),
-      {
-        center: {lat: latitude, lng: longitude},
-        zoom: 15,
-      },
-    )
+    new window.google.maps.Map(document.getElementById('map'), {
+      center: {lat: latitude, lng: longitude},
+      zoom: 15,
+    })
   }
 
   handleNext = () => {
@@ -142,7 +149,6 @@ class Details extends Component {
 
     return (
       <div className={classes.root}>
-
         <div className={classes.container}>
           <main className={classes.main}>
             <Paper className={classes.base} elevation={1}>
@@ -236,21 +242,11 @@ class Details extends Component {
           </main>
           <div
             id="map"
+            className={classes.map}
             style={{
-              order: 2,
-              flexBasis: '100%',
-              [theme.breakpoints.down('sm')]: {
-                // MOBILE
-              },
-              [theme.breakpoints.up('lg')]: {
-                // DESKTOP
-                height: '100vh'
-              },    
             }}
           />
-
         </div>
-
       </div>
     )
   }

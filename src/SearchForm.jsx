@@ -129,18 +129,6 @@ class Search extends Component {
             // Array of all available spaces
             spaces: this.props.spaces,
 
-            // Array of spaces matching the primary search criterion
-            primaryMatches: this.props.spaces,
-
-            // Collection of spaces which did not meet the last search criterion
-            rejectedSpaces: [],
-
-            // Collection of spaces which meet the secondary search criterion
-            secondaryMatches: [],
-
-            // Store search criteria for display...
-            searchHistory: [],
-
             // Search inputs (dropdowns, date/time pickers, checkboxes, textfields)
             rate: '',
             capacity: '',
@@ -165,8 +153,6 @@ class Search extends Component {
         const { name, value } = event.target
         console.log(`event.target.name, value: '${name}', ${value}`)
 
-        const { spaces, rejectedSpaces } = this.state
-
         this.setState({
             [name]: value,
         })
@@ -174,7 +160,7 @@ class Search extends Component {
         switch(name) {
             case 'rate':
             case 'capacity':
-            const searchType = name === 'rate' ? 'filterByRate' : 'filterByCapacity'
+            // const searchType = name === 'rate' ? 'filterByRate' : 'filterByCapacity'
 
             // user has specified rate OR capacity search criteria
             const newState = weightedSearch(this.state)
@@ -184,7 +170,7 @@ class Search extends Component {
 
             case 'streetInput':
             case 'cityInput':
-            const locSearchType = name === 'streetInput' ? 'street' : 'city'
+            // const locSearchType = name === 'streetInput' ? 'street' : 'city'
             break
 
             default:
@@ -192,7 +178,6 @@ class Search extends Component {
     }
 
     handleDateChange = date => {
-        // console.log(`date/time: '${date}'`)
         this.setState({ selectedDate: date })
     }
 
@@ -200,68 +185,8 @@ class Search extends Component {
     // Handle search logic related to checkboxes, which are all related to the
     // availability of spaces on particular days of the week
     handleCheckedChange = checkboxName => event => {
-        const { spaces, rejectedSpaces } = this.state
         const checkboxState = event.target.checked
         console.log(`'${checkboxName}' checked: '${checkboxState}'`)
-
-        
-        // A day's checkbox has selected - need to search for spaces avaialable
-        // on that day (update the primary matches if no search has been done yet,
-        // otherwise update the secondary results...)
-        //
-        // - toggle the state (true/false)
-        if (checkboxState) {
-            
-            const matchesLog = SpaceSearch.filterByAvailability(spaces, checkboxName)
-            console.log(`${matchesLog.length} matches spaces open on: ${checkboxName}`)
-
-            // A search criteria had already been selected, primary matches were
-            // found, and the rest were added to 'rejects'...
-            // So just need to update secondary matches...
-            if (rejectedSpaces.length) {
-                const matches = SpaceSearch.filterByAvailability(spaces, checkboxName)
-                
-                this.setState(prevState => {
-                    const newHistory = [...prevState.searchHistory]
-                    newHistory.push(`[${checkboxName}: ${checkboxState}] `)
-
-                    return {
-                        secondaryMatches: matches,
-                        // rejectedSpaces: rejects
-                        searchHistory: newHistory
-                    }
-                })
-
-            // no filtering has been done (not successfully anyway), so perform
-            // a primary search, and update the rejects...
-            } else {
-                const matches = SpaceSearch.filterByAvailability(spaces, checkboxName)
-
-                // rejects are spaces which are not present in 'matches'
-                // i.e. the difference between the set of all spaces and
-                // those that are in 'matches'
-                let rejects = spaces.filter(o => !matches.some(v => v.id === o.id))
-
-                this.setState(prevState => {
-                    const newHistory = [...prevState.searchHistory]
-                    newHistory.push(`[${checkboxName}: ${checkboxState}] `)
-
-                    return {
-                        primaryMatches: matches,
-                        rejectedSpaces: rejects,
-                        searchHistory: newHistory
-                    }
-                })
-            }
-
-
-
-        // A day's checkbox has been de-selected.... what do we do now!?
-        // - somehow remove it from the search criteria/match results
-        } else {
-            //
-
-        }
 
         this.setState({ [checkboxName]: checkboxState })
     }
@@ -273,21 +198,18 @@ class Search extends Component {
             panelExpanded: expanded ? panel : false,
         })
     }
+
+
     handleClick = event => {
         const { id } = event.currentTarget
         
         // Clear search results button clicked
         // - reset all search options and inputs
-        // - reset the arrays of search results
         switch(id) {
         case 'clearSearchButton':
         console.log(`clear search results`)
         this.setState({
             spaces: this.props.spaces,
-            primaryMatches: this.props.spaces,
-            rejectedSpaces: [],
-            secondaryMatches: [],
-            searchHistory: [],
             rate: '',
             capacity: '',
             panelExpanded: null,
@@ -306,12 +228,10 @@ class Search extends Component {
         })
         break
 
-        // Search button clicked
-        // - get search criteria from state
-        // - conduct search (easier said than done! how to search on multiple criteria?)
-        // - update primary, secondary search match arrays
-        // - reset all search options and inputs
-        // - reset the array of primary matches
+        // Search button clicked... is this useful?
+        // - conduct search?
+        // - reset all search options and inputs?
+        // - hide search form & show FAB?
         case 'searchButton':
         console.log(`search!`)
         break
@@ -324,7 +244,7 @@ class Search extends Component {
     
     render() {
         const { classes } = this.props
-        const { panelExpanded, sunday, monday, tuesday, wednesday, thursday, friday, saturday, primaryMatches, secondaryMatches } = this.state
+        const { panelExpanded, sunday, monday, tuesday, wednesday, thursday, friday, saturday} = this.state
 
         return (
             <div className={classes.root}>
@@ -332,21 +252,6 @@ class Search extends Component {
 
                     {/* ---  Create Grid  --- */}
                     <Grid container spacing={24}>
-
-                        {/* ---  Full-width row  --- */}
-                        <Grid item xs={12}>
-                            <Typography variant="h6" gutterBottom className={classes.h6}>
-                                {`${primaryMatches.length} matches`}
-                            </Typography>
-                            <Typography gutterBottom className={classes.h6}>
-                                {secondaryMatches.length ? `(${secondaryMatches.length} secondary matches)` : ''}
-                                <br />
-                                SEARCH HISTORY:
-                                <br />
-                                {this.state.searchHistory}
-                            </Typography>
-                        </Grid>
-                        {/* <form className={classes.root} autoComplete="off"> */}
 
                         {/* ---  Half-width row  --- */}
                         <Grid item xs={6}>

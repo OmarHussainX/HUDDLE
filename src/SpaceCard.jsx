@@ -48,6 +48,7 @@ class SpaceCard extends Component {
             capacity,
             venue_type,
             clickHandler,
+            score
         } = this.props
 
         const badgeText = (rate === 0) ? 'FREE' : 0
@@ -66,7 +67,7 @@ class SpaceCard extends Component {
                         <CardContent className={classes.cardContent}>
                             {/* {rate === 0 ? <Chip label="FREE" className={classes.chip} /> : ''} */}
                             <Typography gutterBottom variant="h5" component="h2" className={classes.h5}>
-                                {name}
+                                [{Math.round(score * 100)}%] {name}
                             </Typography>
                             <Typography gutterBottom>
                                 <strong>{rate ? `$${rate}/hr ` : ''}</strong>

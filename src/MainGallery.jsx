@@ -43,6 +43,7 @@ class MainGallery extends React.Component {
               address={item.address}
               capacity={item.capacity}
               venue_type={item.venue_type}
+              score={item.score}
             />
           </Grid>
         </Grow>,

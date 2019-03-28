@@ -28,7 +28,8 @@
         "booking_mgr": "",
         "phone": "403-265-3837",
         "email": "amanda@township24.com"
-    }
+    },
+    "score": 1
 },
 
 
@@ -63,7 +64,8 @@
             "booking_mgr": "",
             "phone": "403-474-2739",
             "email": ""
-        }
+        },
+        "score": 1
 
     },
 
@@ -97,7 +99,8 @@
             "booking_mgr": "Kylie McGarvey",
             "phone": "403-514-2337",
             "email": "kylie.mcgarvey@craftbeermarket.ca"
-        }
+        },
+        "score": 1
 
     },
 
@@ -131,7 +134,8 @@
             "booking_mgr": "",
             "phone": "403-225-6525",
             "email": "lakehouse.events@crmr.com"
-        }
+        },
+        "score": 1
 
     },
 
@@ -166,7 +170,8 @@
             "booking_mgr": "",
             "phone": "844-719-8777",
             "email": ""
-        }
+        },
+        "score": 1
 
     },
 
@@ -201,7 +206,8 @@
             "booking_mgr": "",
             "phone": "403-253-1563",
             "email": "info@haysboro.org"
-        }
+        },
+        "score": 1
 
     },
 
@@ -236,7 +242,8 @@
             "booking_mgr": "",
             "phone": "",
             "email": "info@cmcinemas.com"
-        }
+        },
+        "score": 1
 
     },
 
@@ -271,7 +278,8 @@
             "booking_mgr": "",
             "phone": "833-256-4159",
             "email": "host.supervisor3002@therecroom.com"
-        }
+        },
+        "score": 1
 
     },
 
@@ -306,7 +314,8 @@
             "booking_mgr": "",
             "phone": "403-366-3900",
             "email": "VSLCbookings@calgary.ca"
-        }
+        },
+        "score": 1
 
     },
 
@@ -341,7 +350,8 @@
             "booking_mgr": "",
             "phone": "403-984-4755",
             "email": "17thave@cibocalgary.com"
-        }
+        },
+        "score": 1
 
     },
 
@@ -376,7 +386,8 @@
             "booking_mgr": "",
             "phone": "403-974-5380",
             "email": "ecyyc@atb.com"
-        }
+        },
+        "score": 1
 
     },
 
@@ -411,7 +422,8 @@
             "booking_mgr": "",
             "phone": "403-290-1875",
             "email": "info@fortcalgary.com"
-        }
+        },
+        "score": 1
 
     },
 
@@ -445,7 +457,8 @@
             "booking_mgr": "",
             "phone": "403-268-4110",
             "email": "bookings@glenbow.org"
-        }
+        },
+        "score": 1
 
     },
 
@@ -480,7 +493,8 @@
             "booking_mgr": "",
             "phone": "",
             "email": ""
-        }
+        },
+        "score": 1
 
     },
 
@@ -515,7 +529,8 @@
             "booking_mgr": "",
             "phone": "403-476-2025",
             "email": "info@cspaceprojects.com"
-        }
+        },
+        "score": 1
 
     }
 ]

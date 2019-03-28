@@ -42,9 +42,9 @@ const styles = theme => ({
     ...theme.mixins.gutters(),
     paddingTop: theme.spacing.unit * 2,
     paddingBottom: theme.spacing.unit * 2,
-    // [theme.breakpoints.up('lg')]: {
-    //   height: '100vh',
-    // }
+    [theme.breakpoints.up('lg')]: {
+      height: '100vh',
+    }
   },
   img: {
     height: 255,
@@ -78,7 +78,7 @@ const styles = theme => ({
     [theme.breakpoints.up('lg')]: {
       // DESKTOP
       display:'flex',
-      flexWrap:'wrap',
+      flexWrap:'nowrap',
     },    
   },
   main: {
@@ -239,7 +239,13 @@ class Details extends Component {
             style={{
               order: 2,
               flexBasis: '100%',
-              height: '500px'
+              [theme.breakpoints.down('sm')]: {
+                // MOBILE
+              },
+              [theme.breakpoints.up('lg')]: {
+                // DESKTOP
+                height: '100vh'
+              },    
             }}
           />
 

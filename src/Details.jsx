@@ -19,7 +19,6 @@ const freeChipColor = grey[200]
 
 const styles = theme => ({
   root: {
-    maxWidth: 400,
     flexGrow: 1,
 
     padding: theme.spacing.unit,
@@ -43,7 +42,9 @@ const styles = theme => ({
     ...theme.mixins.gutters(),
     paddingTop: theme.spacing.unit * 2,
     paddingBottom: theme.spacing.unit * 2,
-    minHeight: '400px',
+    // [theme.breakpoints.up('lg')]: {
+    //   height: '100vh',
+    // }
   },
   img: {
     height: 255,
@@ -66,6 +67,31 @@ const styles = theme => ({
     // fontWeight: 'bold',
     // marginRight: '10px',
   },
+  container: {
+    [theme.breakpoints.down('sm')]: {
+      // MOBILE
+      display:'flex',
+      flexWrap:'wrap',
+      justifyContent:'flex-start',
+      alignItems:'stretch', 
+    },
+    [theme.breakpoints.up('lg')]: {
+      // DESKTOP
+      display:'flex',
+      flexWrap:'wrap',
+    },    
+  },
+  main: {
+    order: 1,
+    maxWidth: '400px',
+    flexBasis: '400px',
+    [theme.breakpoints.down('sm')]: {
+      // MOBILE
+      flexBasis: '100%',
+    },
+  },
+  map: {
+  }
 })
 
 class Details extends Component {
@@ -85,7 +111,7 @@ class Details extends Component {
       longitude = -122.0862462
     }
     new window.google.maps.Map(
-      document.getElementById('mapTest'),
+      document.getElementById('map'),
       {
         center: {lat: latitude, lng: longitude},
         zoom: 15,
@@ -117,105 +143,108 @@ class Details extends Component {
     return (
       <div className={classes.root}>
 
-        <Paper className={classes.base} elevation={1}>
-          <AutoPlaySwipeableViews
-            axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-            index={activeStep}
-            onChangeIndex={this.handleStepChange}
-            enableMouseEvents>
-            {selectedSpace.img.map((step, index) => (
-              <div key={step}>
-                {Math.abs(activeStep - index) <= 2 ? (
-                  <img
-                    className={classes.img}
-                    src={`/images/${step}`}
-                    alt={''}
-                  />
-                ) : null}
-              </div>
-            ))}
-          </AutoPlaySwipeableViews>
+        <div className={classes.container}>
+          <main className={classes.main}>
+            <Paper className={classes.base} elevation={1}>
+              <AutoPlaySwipeableViews
+                axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+                index={activeStep}
+                onChangeIndex={this.handleStepChange}
+                enableMouseEvents>
+                {selectedSpace.img.map((step, index) => (
+                  <div key={step}>
+                    {Math.abs(activeStep - index) <= 2 ? (
+                      <img
+                        className={classes.img}
+                        src={`/images/${step}`}
+                        alt={''}
+                      />
+                    ) : null}
+                  </div>
+                ))}
+              </AutoPlaySwipeableViews>
 
-          {/* Do not render carousel controls if there is only one image */}
-          {maxSteps > 1 && (
-            <MobileStepper
-              steps={maxSteps}
-              position="static"
-              activeStep={activeStep}
-              className={classes.mobileStepper}
-              nextButton={
-                <Button
-                  size="small"
-                  onClick={this.handleNext}
-                  disabled={activeStep === maxSteps - 1}>
-                  Next
-                  {theme.direction === 'rtl' ? (
-                    <KeyboardArrowLeft />
-                  ) : (
-                    <KeyboardArrowRight />
-                  )}
-                </Button>
-              }
-              backButton={
-                <Button
-                  size="small"
-                  onClick={this.handleBack}
-                  disabled={activeStep === 0}>
-                  {theme.direction === 'rtl' ? (
-                    <KeyboardArrowRight />
-                  ) : (
-                    <KeyboardArrowLeft />
-                  )}
-                  Back
-                </Button>
-              }
-            />
-          )}
+              {/* Do not render carousel controls if there is only one image */}
+              {maxSteps > 1 && (
+                <MobileStepper
+                  steps={maxSteps}
+                  position="static"
+                  activeStep={activeStep}
+                  className={classes.mobileStepper}
+                  nextButton={
+                    <Button
+                      size="small"
+                      onClick={this.handleNext}
+                      disabled={activeStep === maxSteps - 1}>
+                      Next
+                      {theme.direction === 'rtl' ? (
+                        <KeyboardArrowLeft />
+                      ) : (
+                        <KeyboardArrowRight />
+                      )}
+                    </Button>
+                  }
+                  backButton={
+                    <Button
+                      size="small"
+                      onClick={this.handleBack}
+                      disabled={activeStep === 0}>
+                      {theme.direction === 'rtl' ? (
+                        <KeyboardArrowRight />
+                      ) : (
+                        <KeyboardArrowLeft />
+                      )}
+                      Back
+                    </Button>
+                  }
+                />
+              )}
 
-          <Typography variant="h6" gutterBottom className={classes.h6}>
-            {selectedSpace.name}
-          </Typography>
+              <Typography variant="h6" gutterBottom className={classes.h6}>
+                {selectedSpace.name}
+              </Typography>
 
-          {selectedSpace.rate === 0 ? (
-            <Chip label="FREE" className={classes.chip} />
-          ) : (
-            <Chip
-              label={`$${selectedSpace.rate}/hr `}
-              className={classes.chip}
-            />
-          )}
+              {selectedSpace.rate === 0 ? (
+                <Chip label="FREE" className={classes.chip} />
+              ) : (
+                <Chip
+                  label={`$${selectedSpace.rate}/hr `}
+                  className={classes.chip}
+                />
+              )}
 
-          <Typography>
-            {`Capacity: ${selectedSpace.capacity}`}
-            <em>&nbsp;&nbsp;({selectedSpace.venue_type})</em>
-          </Typography>
+              <Typography>
+                {`Capacity: ${selectedSpace.capacity}`}
+                <em>&nbsp;&nbsp;({selectedSpace.venue_type})</em>
+              </Typography>
 
-          <Typography gutterBottom>
-            {`${selectedSpace.address.street} ${
-              selectedSpace.address.quadrant
-            }, ${selectedSpace.address.postal_code}`}
-          </Typography>
+              <Typography gutterBottom>
+                {`${selectedSpace.address.street} ${
+                  selectedSpace.address.quadrant
+                }, ${selectedSpace.address.postal_code}`}
+              </Typography>
 
-          <DetailsTable
-            address={selectedSpace.address}
-            link={'www.need-data.com'}
-            phone={selectedSpace.contact.phone}
-            availability={selectedSpace.availability}
-          />
+              <DetailsTable
+                address={selectedSpace.address}
+                link={'www.need-data.com'}
+                phone={selectedSpace.contact.phone}
+                availability={selectedSpace.availability}
+              />
 
-          <Typography>{selectedSpace.description}</Typography>
-
+              <Typography>{selectedSpace.description}</Typography>
+            </Paper>
+          </main>
           <div
-            id="mapTest"
+            id="map"
             style={{
-              width: '300px',
-              height: '300px',
-            //   border: '1px solid silver',
-              borderRadius: '5px',
-              margin: '1em auto',
+              order: 2,
+              flexBasis: '100%',
+              height: '500px'
             }}
           />
-        </Paper>
+
+        </div>
+
       </div>
     )
   }

@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {SpaceSearch} from './SpaceSearch'
+import {weightedSearch} from './WeightedSearch'
 
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
@@ -170,115 +171,26 @@ class Search extends Component {
             [name]: value,
         })
 
-        // --------------------------------------
-        // ISSUE
-        // If spaces are filtered every time a control is changed, then how 
-        // are results cleared/reset when the same search control is changed
-        // more than once?
-        // E.g. Select rate '$26-50' -> 1 match
-        // Now change rate to any other value -> 0 matches
-        // Could be possible to resolve this using secondary match results, but
-        // am not certain it will work in all scenarios
-        // May be preferable to forego 'live' filtering and instead filter
-        // only when 'Search' button ic clicked.
-        // This also makes the process of clearing results obvious: click the 
-        // 'Clear' button
-        // --------------------------------------
         switch(name) {
             case 'rate':
             case 'capacity':
             const searchType = name === 'rate' ? 'filterByRate' : 'filterByCapacity'
 
-            // First time a rate search is being performed
-            // If rejectedSpaces is not empty, then run the search on it, not on
-            // primaryMatches...
-            // ... yeah, no, this isn't as simple as a two-stage search...
-            // ... have to go for a more standard 'click to search' approach unless
-            // a proper way to perform live filtering is found
+            // user has specified rate OR capacity search criteria
+            const newState = weightedSearch(this.state)
+            this.setState({ spaces: newState.spaces })
 
-            // if (value === '') {
-                // if some filtering has already been done, then only perform
-                // a secondary search...
-                if (rejectedSpaces.length) {
-                    const matches = SpaceSearch[searchType](rejectedSpaces, value)
-                    
-                    // rejects are spaces which are not present in 'matches'
-                    // i.e. the difference between the set of all spaces and
-                    // those that are in 'matches'
-                    // let rejects = spaces.filter(o => !matches.some(v => v.id === o.id))
-
-                    this.setState(prevState => {
-                        const newHistory = [...prevState.searchHistory]
-                        newHistory.push(`[${name}: ${value}] `)
-
-                        return {
-                            secondaryMatches: matches,
-                            // rejectedSpaces: rejects
-                            searchHistory: newHistory
-                        }
-                    })
-
-                // no filtering has been done (not successfully anyway), so perform
-                // a primary search, and update the rejects...
-                } else {
-                    const matches = SpaceSearch[searchType](spaces, value)
-
-                    // rejects are spaces which are not present in 'matches'
-                    // i.e. the difference between the set of all spaces and
-                    // those that are in 'matches'
-                    let rejects = spaces.filter(o => !matches.some(v => v.id === o.id))
-
-                    this.setState(prevState => {
-                        const newHistory = [...prevState.searchHistory]
-                        newHistory.push(`[${name}: ${value}] `)
-
-                        return {
-                            primaryMatches: matches,
-                            rejectedSpaces: rejects,
-                            searchHistory: newHistory
-                        }
-                    })
-                }
             break
 
             case 'streetInput':
             case 'cityInput':
             const locSearchType = name === 'streetInput' ? 'street' : 'city'
-
-                if (rejectedSpaces.length) {
-                    const matches = SpaceSearch.filterByLocation(rejectedSpaces, locSearchType, value)
-                    
-                    this.setState(prevState => {
-                        const newHistory = [...prevState.searchHistory]
-                        newHistory.push(`[${name}: ${value}] `)
-
-                        return {
-                            secondaryMatches: matches,
-                            searchHistory: newHistory
-                        }
-                    })
-
-                } else {
-                    const matches = SpaceSearch.filterByLocation(spaces, locSearchType, value)
-
-                    let rejects = spaces.filter(o => !matches.some(v => v.id === o.id))
-
-                    this.setState(prevState => {
-                        const newHistory = [...prevState.searchHistory]
-                        newHistory.push(`[${name}: ${value}] `)
-
-                        return {
-                            primaryMatches: matches,
-                            rejectedSpaces: rejects,
-                            searchHistory: newHistory
-                        }
-                    })
-                }
             break
 
             default:
         }
     }
+
     handleDateChange = date => {
         // console.log(`date/time: '${date}'`)
         this.setState({ selectedDate: date })
@@ -716,20 +628,12 @@ class Search extends Component {
                         </Grid>
                     {/* </Grid> */}
                 </Paper>
-                <Typography variant="h6" gutterBottom className={classes.h6}>
-                    {`Primary matches (${primaryMatches.length})`}
-                </Typography>
+
                 <MainGallery
                     onClick={this.props.onClick}
-                    spaces={primaryMatches}
+                    spaces={this.state.spaces}
                 />
-                <Typography variant="h6" gutterBottom className={classes.h6}>
-                    {`Secondary matches (${secondaryMatches.length})`}
-                </Typography>
-                <MainGallery
-                    onClick={this.props.onClick}
-                    spaces={secondaryMatches}
-                />
+
             </div>
         )
     }

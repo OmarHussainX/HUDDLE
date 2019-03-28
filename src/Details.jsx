@@ -9,20 +9,32 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft'
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight'
 import SwipeableViews from 'react-swipeable-views'
 import {autoPlay} from 'react-swipeable-views-utils'
-// import blue from '@material-ui/core/colors/blue';
 import grey from '@material-ui/core/colors/grey'
 import Chip from '@material-ui/core/Chip'
 import DetailsTable from './DetailsTable'
+import green from '@material-ui/core/colors/green';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews)
-
-// const freeChipColor = blue[200]
 const freeChipColor = grey[200]
 
 const styles = theme => ({
   root: {
-    maxWidth: 400,
+    width: 800,
     flexGrow: 1,
+
+    padding: theme.spacing.unit,
+    [theme.breakpoints.down('sm')]: {
+      // MOBILE
+      backgroundColor: theme.palette.secondary.main,
+    },
+    [theme.breakpoints.up('md')]: {
+      // TABLET
+      backgroundColor: theme.palette.primary.main,
+    },
+    [theme.breakpoints.up('lg')]: {
+      // DESKTOP
+      backgroundColor: green[500],
+    },    
   },
   h6: {
     textShadow: '0px 0px 4px rgba(100,100,100,0.3)',

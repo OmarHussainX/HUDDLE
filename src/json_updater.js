@@ -1,20 +1,20 @@
 const fs = require('fs')
 
-// const path = '/home/omar/Documents/evolveu/huddle/public/images/spaces/'
-const path = '../public/images/spaces/'
-const filenames = fs.readdirSync(path)
+// const pathToImageFolder = '/home/omar/Documents/evolveu/huddle/public/images/spaces/'
+const pathToImageFolder = '../public/images/spaces/'
+const folderNames = fs.readdirSync(pathToImageFolder)
 let count = 0
 
-filenames.forEach(function (name) {
-    if (name === "." || name === "..") {
+folderNames.forEach(function (folder) {
+    if (folder === "." || folder === "..") {
         return
     }
-    if (fs.lstatSync(path + name).isDirectory()) {
-        console.log(`found a folder: ${name}`)
+    if (fs.lstatSync(pathToImageFolder + folder).isDirectory()) {
+        console.log(`found a folder: ${folder}`)
         
-        let files = fs.readdirSync(path + name)
+        let files = fs.readdirSync(pathToImageFolder + folder)
         console.log(files)
-        files.forEach(file => console.log(`${name}->${file}`))
+        files.forEach(file => console.log(`${folder}->${file}`))
 
         count++
     }

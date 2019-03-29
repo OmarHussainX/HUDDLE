@@ -1,11 +1,14 @@
-function weightedSearch(state) {
-    console.log('inside weightedSearch!')
+import {SpaceSearch} from './SpaceSearch'
 
-    let notaCopyOfState = state    //make a copy... NO!
+function weightedSearch(state) {
+    console.log('------------inside weightedSearch!')
+    console.log(`user's 'rate' search criterion: ${state.rate}`)
+
 
     // really make a local copy of state...
     let newState = {...state}
     newState.spaces = [...state.spaces]
+    console.log(`COPIED user's 'rate' search criterion: ${newState.rate}`)
 
     const rateWeight = 0.5
     const capacityWeight = 0.5
@@ -18,11 +21,13 @@ function weightedSearch(state) {
         
         // call rate tester - pretend it returns the correct/desired value
         // this was a match for rate!
-        newScore += (testerRate(space.rate, newState.rate)) * (rateWeight)
+        if (newState.rate !== '')
+            newScore += (SpaceSearch.filterByRate(space, newState.rate)) * (rateWeight)
         
         // call capacity tester - pretend it returns the correct/desired value
         // this was a match for rate!
-        newScore += (testerCapacity(space.capacity, newState.capacity)) * (capacityWeight)
+        if (newState.capacity !== '')
+            newScore += (SpaceSearch.filterByCapacity(space, newState.capacity)) * (capacityWeight)
 
         // assign new score to space
         space.score = newScore
@@ -41,18 +46,6 @@ function weightedSearch(state) {
 
 
     return newState
-}
-
-
-
-
-function testerRate(spaceRate, stateRate) {
-    return Math.round(Math.random())
-}
-
-function testerCapacity(spaceRate, stateRate) {
-    return Math.round(Math.random())
-
 }
 
 export {weightedSearch}

@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import {SpaceSearch} from './SpaceSearch'
 import {weightedSearch} from './WeightedSearch'
 
 import PropTypes from 'prop-types'
@@ -162,8 +161,22 @@ class Search extends Component {
             case 'capacity':
             // const searchType = name === 'rate' ? 'filterByRate' : 'filterByCapacity'
 
+            // create a new search object, copying all search criteria from state
+            // and then update the object with the search criterion from event.target
+            // pass this object (and a reference to all spaces) to weightedSearch
+
+            // weightedSearch will need to be updated to skip those score calculations 
+            // which have a null/invalid search value
+
+            let stateCopy = {...this.state}
+            stateCopy.spaces = [...this.state.spaces]
+
+            stateCopy[name] = value
+
+
+
             // user has specified rate OR capacity search criteria
-            const newState = weightedSearch(this.state)
+            const newState = weightedSearch(stateCopy)
             this.setState({ spaces: newState.spaces })
 
             break

@@ -20,7 +20,7 @@ test('Checking filtering by price ($0) SUCCESS', () => {
 
     // Space object against which search criterion is to be checked
     let testSpace = {...spaceData[0]}
-    testSpace.rate = 45
+    testSpace.rate = 0
 
     let matchValue = 1
 
@@ -30,10 +30,12 @@ test('Checking filtering by price ($0) SUCCESS', () => {
     // Receive: a value indicating how well the space matches the criterion
     matchValue = SpaceSearch.filterByRate(testSpace, searchValue)
     
-    expect(matchValue).toBeFalsy()
-
-    testSpace.rate = 0
-    expect(SpaceSearch.filterByRate(testSpace, searchValue)).toBeTruthy()
+    // space should match the user's criterion!
+    expect(matchValue).toBeTruthy()
+    
+    // space should NOT match the user's criterion!
+    testSpace.rate = 23
+    expect(SpaceSearch.filterByRate(testSpace, searchValue)).toBeFalsy()
 })
 
 test('Checking filtering by price ($1-25)', () => {
@@ -53,8 +55,10 @@ test('Checking filtering by price ($1-25)', () => {
     // Receive: a value indicating how well the space matches the criterion
     matchValue = SpaceSearch.filterByRate(testSpace, searchValue)
     
+    // space should match the user's criterion!
     expect(matchValue).toBeTruthy()
 
+    // space should NOT match the user's criterion!
     testSpace.rate = 26
     expect(SpaceSearch.filterByRate(testSpace, searchValue)).toBeFalsy()
 
@@ -77,8 +81,10 @@ test('Checking filtering by price ($26-50)', () => {
     // Receive: a value indicating how well the space matches the criterion
     matchValue = SpaceSearch.filterByRate(testSpace, searchValue)
     
+    // space should match the user's criterion!
     expect(matchValue).toBeTruthy()
 
+    // space should NOT match the user's criterion!
     testSpace.rate = 2
     expect(SpaceSearch.filterByRate(testSpace, searchValue)).toBeFalsy()
 
@@ -87,7 +93,6 @@ test('Checking filtering by price ($26-50)', () => {
 
 
 
-// --------------------------------------------------
 // testing filterByCapacity
 
 test('Checking filtering by capacity (1-5) SUCCESS', () => {
@@ -97,9 +102,9 @@ test('Checking filtering by capacity (1-5) SUCCESS', () => {
 
     // Space object against which search criterion is to be checked
     let testSpace = {...spaceData[0]}
-    testSpace.capacity = 6
+    testSpace.capacity = 3
 
-    let matchValue = 1
+    let matchValue = 0
 
     // Call the search function with:
     // - a reference to a space object 
@@ -107,8 +112,36 @@ test('Checking filtering by capacity (1-5) SUCCESS', () => {
     // Receive: a value indicating how well the space matches the criterion
     matchValue = SpaceSearch.filterByCapacity(testSpace, searchValue)
     
-    expect(matchValue).toBeFalsy()
-
-    testSpace.rate = 0
-    expect(SpaceSearch.filterByCapacity(testSpace, searchValue)).toBeTruthy()
+    // space should match the user's criterion!
+    expect(matchValue).toBeTruthy()
+    
+    // space should NOT match the user's criterion!
+    testSpace.capacity = 6
+    expect(SpaceSearch.filterByCapacity(testSpace, searchValue)).toBeFalsy()
 })
+
+test('Checking filtering by capacity (6-10) SUCCESS', () => {
+
+    // User-specified search criterion
+    const searchValue = 10
+
+    // Space object against which search criterion is to be checked
+    let testSpace = {...spaceData[0]}
+    testSpace.capacity = 7
+
+    let matchValue = 0
+
+    // Call the search function with:
+    // - a reference to a space object 
+    // - user's search criterion
+    // Receive: a value indicating how well the space matches the criterion
+    matchValue = SpaceSearch.filterByCapacity(testSpace, searchValue)
+    
+    // space should match the user's criterion!
+    expect(matchValue).toBeTruthy()
+    
+    // space should NOT match the user's criterion!
+    testSpace.capacity = 2
+    expect(SpaceSearch.filterByCapacity(testSpace, searchValue)).toBeFalsy()
+})
+// --------------------------------------------------

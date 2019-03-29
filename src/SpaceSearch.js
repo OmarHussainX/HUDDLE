@@ -44,7 +44,7 @@ class SpaceSearch {
 
     /*
     filterByRate takes two parameters:
-    - a reference to a collection of all spaces
+    - a reference to a space object
     - a numeric search value which is guaranteed to be one of:
       0     ( free spaces )
       25    ( 1-25 range )
@@ -52,41 +52,41 @@ class SpaceSearch {
       75    ( 51-75 range )
       100   ( 76+ range )
 
-    returns an array of space Objects whose price matches the specified range
+    returns a value ( 0 or 1) reflecting how well the space matches the specified rate
     */
-    static filterByRate(spaceData, searchValue) {
+    static filterByRate(space, searchValue) {
         searchValue = parseInt(searchValue)
-        let filteredSpaces = []
+        let matchValue = 0
 
         switch (searchValue) {
             // ( free spaces )
             case 0:
-            filteredSpaces = spaceData.filter(space => space.rate === 0 )
+            matchValue = space.rate === 0 ? 1 : 0
             break
 
-            // ( 0-25 range )
+            // ( 1-25 range )
             case 25:
-            filteredSpaces = spaceData.filter(space => space.rate > 0 && space.rate <= 25)
+            matchValue = (space.rate > 0 && space.rate <= 25) ? 1 : 0
             break
 
             // ( 26-50 range )
             case 50:
-            filteredSpaces = spaceData.filter(space => space.rate > 25 && space.rate <= 50)
+            matchValue = (space.rate > 25 && space.rate <= 50) ? 1 : 0
             break
 
             // ( 51-75 range )
             case 75:
-            filteredSpaces = spaceData.filter(space => space.rate > 51 && space.rate <= 75)
+            matchValue = (space.rate > 51 && space.rate <= 75) ? 1 : 0
             break
 
             // ( 76+ range )
             case 100:
-            filteredSpaces = spaceData.filter(space => space.rate > 75)
+            matchValue = (space.rate > 75) ? 1 : 0
             break
 
             default:
         }
-        return filteredSpaces
+        return matchValue
     }
 
 

@@ -1,16 +1,14 @@
 /* ===================================================
  This utility expects:
  
- 1. The following folder structure:
+ 1. The following file/folder structure:
 
  parentFolder
-    .
     .
     |
     |---> 24
     |
     |---> 25
-    .
     .
 
 - 'parentFolder' contains subfolders
@@ -30,36 +28,56 @@
     "moreproperties": "ttttttt"
 }]
 
+
 Given the above, this utility will:
+
 - import the JSON data
 - loop through all subfolders, and for each subfolder:
     - find the Object whose id matches the subfolder name
-    - update the Object's 'img' array with all the files in the sufolder
+    - update the Object's 'img' array with all the files in the subfolder
 - output the JSON data
 ======================================================*/
 
 
 
+
+
+// Import JSON data - 'spaces' is an array of Objects
+const spaces = require('./test.json')
+
+// Path to folder containing all the subfolders
+const pathToFolder = '../public/images/spaces/'
+
+// Load the fs (filesystem) module
 const fs = require('fs')
 
-// const pathToImageFolder = '/home/omar/Documents/evolveu/huddle/public/images/spaces/'
-const pathToImageFolder = '../public/images/spaces/'
-const folderNames = fs.readdirSync(pathToImageFolder)
-let count = 0
+// Obtain an array containing names of all subfolders
+const folderNames = fs.readdirSync(pathToFolder)
 
-folderNames.forEach(folder => {
-    if (folder === "." || folder === "..") {
+// Loop through all subfolders
+folderNames.forEach(subFolder => {
+    // Ignore current & parent folders
+    if (subFolder === "." || subFolder === "..") {
         return
     }
-    if (fs.lstatSync(pathToImageFolder + folder).isDirectory()) {
-        console.log(`found a folder: ${folder}`)
+    // Sanity check: make sure the subfolder *is* in fact a directory, not a file
+    if (fs.lstatSync(pathToFolder + subFolder).isDirectory()) {
+
+        // Obtain an array containing names of all files in the subfolder
+        let files = fs.readdirSync(pathToFolder + subFolder)
+
+        // Find the Object whose id matches the subfolder's name, and update it
+        spaces.forEach(space => {
+            if (space.id === subFolder) {
+                space.img = files
+            }
+        })
         
-        let files = fs.readdirSync(pathToImageFolder + folder)
-        console.log(files)
-        files.forEach(file => console.log(`${folder}->${file}`))
-
-        count++
     }
-
 })
-console.log(`found ${count} folders!`)
+
+// Convert object data to string (with 2-space indents)
+let data = JSON.stringify(spaces, null, 2)
+
+// Output JSON data
+fs.writeFileSync('test.json', data)  

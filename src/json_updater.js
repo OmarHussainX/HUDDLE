@@ -94,23 +94,23 @@ readline.question(`Name of JSON file to update *INCLUDING PATH* (e.g. './spaces.
     }
 
     // Obtain an array containing names of all subfolders
-    const folderNames = fs.readdirSync(pathToFolder)
+    const subfolders = fs.readdirSync(pathToFolder)
 
     // Loop through all subfolders
-    folderNames.forEach(subFolder => {
-        // Ignore current & parent folders
-        if (subFolder === "." || subFolder === "..") {
+    subfolders.forEach(subfolder => {
+        // Ignore current & parent directories
+        if (subfolder === "." || subfolder === "..") {
             return
         }
         // Sanity check: make sure the subfolder *is* in fact a directory, not a file
-        if (fs.lstatSync(pathToFolder + subFolder).isDirectory()) {
+        if (fs.lstatSync(pathToFolder + subfolder).isDirectory()) {
 
             // Obtain an array containing names of all files in the subfolder
-            let files = fs.readdirSync(pathToFolder + subFolder)
+            let files = fs.readdirSync(pathToFolder + subfolder)
 
             // Find the Object whose id matches the subfolder's name, and update it
             spaces.forEach(space => {
-                if (space.id === subFolder) {
+                if (space.id === subfolder) {
                     space.img = files
                 }
             })

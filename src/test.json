@@ -1,12 +1,17 @@
-[{
-    "id": "1",
-    "name": "Township Bar and Grill",
-    "img": ["1Township.jpg", "2National.jpg", "3Craft.jpg"],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    "venue_type": "Restaurant",
-    "capacity": 5,
-    "rate": 0,
-    "availability": {
+[
+    {
+      "id": "1",
+      "name": "Township Bar and Grill",
+      "img": [
+        "1Township.jpg",
+        "2National.jpg",
+        "3Craft.jpg"
+      ],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "venue_type": "Restaurant",
+      "capacity": 5,
+      "rate": 0,
+      "availability": {
         "sunday": false,
         "monday": true,
         "tuesday": true,
@@ -14,523 +19,530 @@
         "thursday": true,
         "friday": true,
         "saturday": false
-    },
-    "address": {
+      },
+      "address": {
         "quadrant": "SW",
         "street": "181, 250 - 6 Avenue",
         "city": "Calgary",
         "province": "Alberta",
         "postal_code": "T2P 3H7"
-    },
-    "lat": "51.0478337",
-    "long": "-114.0683159",
-    "contact": {
+      },
+      "lat": "51.0478337",
+      "long": "-114.0683159",
+      "contact": {
         "booking_mgr": "",
         "phone": "403-265-3837",
         "email": "amanda@township24.com"
+      },
+      "score": 1
     },
-    "score": 1
-},
-
-
-
     {
-        "id": "2",
-        "name": "National on 10th",
-        "img": ["2National.jpg", "15cSpace.jpg", "14UofC.jpg", "13Glenbow.jpg"],
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        "venue_type": "Restaurant",
-        "capacity": 7,
-        "rate": 0,
-        "availability": {
-            "sunday": false,
-            "monday": true,
-            "tuesday": false,
-            "wednesday": true,
-            "thursday": true,
-            "friday": true,
-            "saturday": false
-        },
-        "address": {
-            "quadrant": "SW",
-            "street": "341 - 10 Avenue",
-            "city": "Calgary",
-            "province": "Alberta",
-            "postal_code": "T2R 0A5"
-        },
-        "lat": "51.0434374",
-        "long": "-114.0723297",
-        "contact": {
-            "booking_mgr": "",
-            "phone": "403-474-2739",
-            "email": ""
-        },
-        "score": 1
-
+      "id": "2",
+      "name": "National on 10th",
+      "img": [
+        "2National.jpg",
+        "15cSpace.jpg",
+        "14UofC.jpg",
+        "13Glenbow.jpg"
+      ],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "venue_type": "Restaurant",
+      "capacity": 7,
+      "rate": 0,
+      "availability": {
+        "sunday": false,
+        "monday": true,
+        "tuesday": false,
+        "wednesday": true,
+        "thursday": true,
+        "friday": true,
+        "saturday": false
+      },
+      "address": {
+        "quadrant": "SW",
+        "street": "341 - 10 Avenue",
+        "city": "Calgary",
+        "province": "Alberta",
+        "postal_code": "T2R 0A5"
+      },
+      "lat": "51.0434374",
+      "long": "-114.0723297",
+      "contact": {
+        "booking_mgr": "",
+        "phone": "403-474-2739",
+        "email": ""
+      },
+      "score": 1
     },
-
     {
-        "id": "3",
-        "name": "Craft Beer Market",
-        "img":["3Craft.jpg"],
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        "venue_type": "Restaurant",
-        "capacity": 7,
-        "rate": 0,
-        "availability": {
-            "sunday": true,
-            "monday": false,
-            "tuesday": false,
-            "wednesday": false,
-            "thursday": true,
-            "friday": true,
-            "saturday": true
-        },
-        "address": {
-            "quadrant": "SW",
-            "street": "345 - 10 Avenue",
-            "city": "Calgary",
-            "province": "Alberta",
-            "postal_code": "T2P 0A5"
-        },
-        "lat": "",
-        "long": "",
-        "contact": {
-            "booking_mgr": "Kylie McGarvey",
-            "phone": "403-514-2337",
-            "email": "kylie.mcgarvey@craftbeermarket.ca"
-        },
-        "score": 1
-
+      "id": "3",
+      "name": "Craft Beer Market",
+      "img": [
+        "3Craft.jpg"
+      ],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "venue_type": "Restaurant",
+      "capacity": 7,
+      "rate": 0,
+      "availability": {
+        "sunday": true,
+        "monday": false,
+        "tuesday": false,
+        "wednesday": false,
+        "thursday": true,
+        "friday": true,
+        "saturday": true
+      },
+      "address": {
+        "quadrant": "SW",
+        "street": "345 - 10 Avenue",
+        "city": "Calgary",
+        "province": "Alberta",
+        "postal_code": "T2P 0A5"
+      },
+      "lat": "",
+      "long": "",
+      "contact": {
+        "booking_mgr": "Kylie McGarvey",
+        "phone": "403-514-2337",
+        "email": "kylie.mcgarvey@craftbeermarket.ca"
+      },
+      "score": 1
     },
-
     {
-        "id": "4",
-        "name": "The Lake House",
-        "img":["4Lake.jpg"],
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        "venue_type": "Restaurant",
-        "capacity": 21,
-        "rate": 19,
-        "availability": {
-            "sunday": true,
-            "monday": true,
-            "tuesday": true,
-            "wednesday": true,
-            "thursday": false,
-            "friday": false,
-            "saturday": false
-        },
-        "address": {
-            "quadrant": "SE",
-            "street": "747 Lake Bonavista Drive",
-            "city": "Calgary",
-            "province": "Alberta",
-            "postal_code": "T2J 0N2"
-        },
-        "lat": "50.9429123",
-        "long": "-114.0513326",
-        "contact": {
-            "booking_mgr": "",
-            "phone": "403-225-6525",
-            "email": "lakehouse.events@crmr.com"
-        },
-        "score": 1
-
+      "id": "4",
+      "name": "The Lake House",
+      "img": [
+        "4Lake.jpg"
+      ],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "venue_type": "Restaurant",
+      "capacity": 21,
+      "rate": 19,
+      "availability": {
+        "sunday": true,
+        "monday": true,
+        "tuesday": true,
+        "wednesday": true,
+        "thursday": false,
+        "friday": false,
+        "saturday": false
+      },
+      "address": {
+        "quadrant": "SE",
+        "street": "747 Lake Bonavista Drive",
+        "city": "Calgary",
+        "province": "Alberta",
+        "postal_code": "T2J 0N2"
+      },
+      "lat": "50.9429123",
+      "long": "-114.0513326",
+      "contact": {
+        "booking_mgr": "",
+        "phone": "403-225-6525",
+        "email": "lakehouse.events@crmr.com"
+      },
+      "score": 1
     },
-
-
     {
-        "id": "5",
-        "name": "Grey Eagle Resort & Casino",
-        "img": ["5Grey.jpg"],
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        "venue_type": "Casino",
-        "capacity": 200,
-        "rate": 15,
-        "availability": {
-            "sunday": false,
-            "monday": true,
-            "tuesday": false,
-            "wednesday": true,
-            "thursday": true,
-            "friday": false,
-            "saturday": true
-        },
-        "address": {
-            "quadrant": "SW",
-            "street": "Grey Eagle Drive & Glenmore Trail",
-            "city": "Calgary",
-            "province": "Alberta",
-            "postal_code": ""
-        },
-        "lat": "",
-        "long": "",
-        "contact": {
-            "booking_mgr": "",
-            "phone": "844-719-8777",
-            "email": ""
-        },
-        "score": 1
-
+      "id": "5",
+      "name": "Grey Eagle Resort & Casino",
+      "img": [
+        "5Grey.jpg"
+      ],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "venue_type": "Casino",
+      "capacity": 200,
+      "rate": 15,
+      "availability": {
+        "sunday": false,
+        "monday": true,
+        "tuesday": false,
+        "wednesday": true,
+        "thursday": true,
+        "friday": false,
+        "saturday": true
+      },
+      "address": {
+        "quadrant": "SW",
+        "street": "Grey Eagle Drive & Glenmore Trail",
+        "city": "Calgary",
+        "province": "Alberta",
+        "postal_code": ""
+      },
+      "lat": "",
+      "long": "",
+      "contact": {
+        "booking_mgr": "",
+        "phone": "844-719-8777",
+        "email": ""
+      },
+      "score": 1
     },
-
-
     {
-        "id": "6",
-        "name": "Haysboro Community Association",
-        "img": ["6Haysboro.jpg"],
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        "venue_type": "Community",
-        "capacity": 23,
-        "rate": 5,
-        "availability": {
-            "sunday": false,
-            "monday": false,
-            "tuesday": true,
-            "wednesday": true,
-            "thursday": false,
-            "friday": false,
-            "saturday": true
-        },
-        "address": {
-            "quadrant": "SW",
-            "street": "1204 - 89 Avenue",
-            "city": "Calgary",
-            "province": "Alberta",
-            "postal_code": "T2V 0W4"
-        },
-        "lat": "",
-        "long": "",
-        "contact": {
-            "booking_mgr": "",
-            "phone": "403-253-1563",
-            "email": "info@haysboro.org"
-        },
-        "score": 1
-
+      "id": "6",
+      "name": "Haysboro Community Association",
+      "img": [
+        "6Haysboro.jpg"
+      ],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "venue_type": "Community",
+      "capacity": 23,
+      "rate": 5,
+      "availability": {
+        "sunday": false,
+        "monday": false,
+        "tuesday": true,
+        "wednesday": true,
+        "thursday": false,
+        "friday": false,
+        "saturday": true
+      },
+      "address": {
+        "quadrant": "SW",
+        "street": "1204 - 89 Avenue",
+        "city": "Calgary",
+        "province": "Alberta",
+        "postal_code": "T2V 0W4"
+      },
+      "lat": "",
+      "long": "",
+      "contact": {
+        "booking_mgr": "",
+        "phone": "403-253-1563",
+        "email": "info@haysboro.org"
+      },
+      "score": 1
     },
-
-
     {
-        "id": "7",
-        "name": "Canyon Meadows Cinemas",
-        "img":["7Canyon.jpg"],
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        "venue_type": "Cinema",
-        "capacity": 9,
-        "rate": 62,
-        "availability": {
-            "sunday": false,
-            "monday": true,
-            "tuesday": true,
-            "wednesday": true,
-            "thursday": true,
-            "friday": true,
-            "saturday": false
-        },
-        "address": {
-            "quadrant": "SE",
-            "street": "Bay 110 - 13226 MacLeod Trail",
-            "city": "Calgary",
-            "province": "Alberta",
-            "postal_code": "T2J 7E5"
-        },
-        "lat": "",
-        "long": "",
-        "contact": {
-            "booking_mgr": "",
-            "phone": "",
-            "email": "info@cmcinemas.com"
-        },
-        "score": 1
-
+      "id": "7",
+      "name": "Canyon Meadows Cinemas",
+      "img": [
+        "7Canyon.jpg"
+      ],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "venue_type": "Cinema",
+      "capacity": 9,
+      "rate": 62,
+      "availability": {
+        "sunday": false,
+        "monday": true,
+        "tuesday": true,
+        "wednesday": true,
+        "thursday": true,
+        "friday": true,
+        "saturday": false
+      },
+      "address": {
+        "quadrant": "SE",
+        "street": "Bay 110 - 13226 MacLeod Trail",
+        "city": "Calgary",
+        "province": "Alberta",
+        "postal_code": "T2J 7E5"
+      },
+      "lat": "",
+      "long": "",
+      "contact": {
+        "booking_mgr": "",
+        "phone": "",
+        "email": "info@cmcinemas.com"
+      },
+      "score": 1
     },
-
-    
     {
-        "id": "8",
-        "name": "The Rec Room",
-        "img": ["8Rec.jpg"],
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        "venue_type": "Entertainment",
-        "capacity": 11,
-        "rate": 12,
-        "availability": {
-            "sunday": false,
-            "monday": true,
-            "tuesday": false,
-            "wednesday": false,
-            "thursday": true,
-            "friday": true,
-            "saturday": true
-        },
-        "address": {
-            "quadrant": "NE",
-            "street": "1180 - 901 - 64 Avenue",
-            "city": "Calgary",
-            "province": "Alberta",
-            "postal_code": "T2E 7P4"
-        },
-        "lat": "",
-        "long": "",
-        "contact": {
-            "booking_mgr": "",
-            "phone": "833-256-4159",
-            "email": "host.supervisor3002@therecroom.com"
-        },
-        "score": 1
-
+      "id": "8",
+      "name": "The Rec Room",
+      "img": [
+        "8Rec.jpg"
+      ],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "venue_type": "Entertainment",
+      "capacity": 11,
+      "rate": 12,
+      "availability": {
+        "sunday": false,
+        "monday": true,
+        "tuesday": false,
+        "wednesday": false,
+        "thursday": true,
+        "friday": true,
+        "saturday": true
+      },
+      "address": {
+        "quadrant": "NE",
+        "street": "1180 - 901 - 64 Avenue",
+        "city": "Calgary",
+        "province": "Alberta",
+        "postal_code": "T2E 7P4"
+      },
+      "lat": "",
+      "long": "",
+      "contact": {
+        "booking_mgr": "",
+        "phone": "833-256-4159",
+        "email": "host.supervisor3002@therecroom.com"
+      },
+      "score": 1
     },
-
-
     {
-        "id": "9",
-        "name": "Village Square Leisure Centre",
-        "img": ["9Village.jpg"],
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        "venue_type": "Entertainment",
-        "capacity": 50,
-        "rate": 94,
-        "availability": {
-            "sunday": false,
-            "monday": true,
-            "tuesday": true,
-            "wednesday": true,
-            "thursday": true,
-            "friday": false,
-            "saturday": false
-        },
-        "address": {
-            "quadrant": "NE",
-            "street": "2623 - 56 Street",
-            "city": "Calgary",
-            "province": "Alberta",
-            "postal_code": ""
-        },
-        "lat": "",
-        "long": "",
-        "contact": {
-            "booking_mgr": "",
-            "phone": "403-366-3900",
-            "email": "VSLCbookings@calgary.ca"
-        },
-        "score": 1
-
+      "id": "9",
+      "name": "Village Square Leisure Centre",
+      "img": [
+        "9Village.jpg"
+      ],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "venue_type": "Entertainment",
+      "capacity": 50,
+      "rate": 94,
+      "availability": {
+        "sunday": false,
+        "monday": true,
+        "tuesday": true,
+        "wednesday": true,
+        "thursday": true,
+        "friday": false,
+        "saturday": false
+      },
+      "address": {
+        "quadrant": "NE",
+        "street": "2623 - 56 Street",
+        "city": "Calgary",
+        "province": "Alberta",
+        "postal_code": ""
+      },
+      "lat": "",
+      "long": "",
+      "contact": {
+        "booking_mgr": "",
+        "phone": "403-366-3900",
+        "email": "VSLCbookings@calgary.ca"
+      },
+      "score": 1
     },
-
-
     {
-        "id": "10",
-        "name": "Cibo",
-        "img": ["10cibo.jpg"],
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        "venue_type": "Restaurant",
-        "capacity": 11,
-        "rate": 0,
-        "availability": {
-            "sunday": true,
-            "monday": false,
-            "tuesday": false,
-            "wednesday": false,
-            "thursday": false,
-            "friday": false,
-            "saturday": false
-        },
-        "address": {
-            "quadrant": "SW",
-            "street": "1012 - 17 Avenue",
-            "city": "Deadmonton",
-            "province": "Alberta",
-            "postal_code": ""
-        },
-        "lat": "",
-        "long": "",
-        "contact": {
-            "booking_mgr": "",
-            "phone": "403-984-4755",
-            "email": "17thave@cibocalgary.com"
-        },
-        "score": 1
-
+      "id": "10",
+      "name": "Cibo",
+      "img": [
+        "10cibo.jpg"
+      ],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "venue_type": "Restaurant",
+      "capacity": 11,
+      "rate": 0,
+      "availability": {
+        "sunday": true,
+        "monday": false,
+        "tuesday": false,
+        "wednesday": false,
+        "thursday": false,
+        "friday": false,
+        "saturday": false
+      },
+      "address": {
+        "quadrant": "SW",
+        "street": "1012 - 17 Avenue",
+        "city": "Deadmonton",
+        "province": "Alberta",
+        "postal_code": ""
+      },
+      "lat": "",
+      "long": "",
+      "contact": {
+        "booking_mgr": "",
+        "phone": "403-984-4755",
+        "email": "17thave@cibocalgary.com"
+      },
+      "score": 1
     },
-
-
     {
-        "id": "11",
-        "name": "ATB Entrepreneur Centre",
-        "img": ["11atb.jpg"],
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        "venue_type": "Office",
-        "capacity": 24,
-        "rate": 0,
-        "availability": {
-            "sunday": false,
-            "monday": true,
-            "tuesday": false,
-            "wednesday": false,
-            "thursday": true,
-            "friday": false,
-            "saturday": true
-        },
-        "address": {
-            "quadrant": "SW",
-            "street": "1110 17 Avenue",
-            "city": "Calgary",
-            "province": "Alberta",
-            "postal_code": "T2T 0B4"
-        },
-        "lat": "",
-        "long": "",
-        "contact": {
-            "booking_mgr": "",
-            "phone": "403-974-5380",
-            "email": "ecyyc@atb.com"
-        },
-        "score": 1
-
+      "id": "11",
+      "name": "ATB Entrepreneur Centre",
+      "img": [
+        "11atb.jpg"
+      ],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "venue_type": "Office",
+      "capacity": 24,
+      "rate": 0,
+      "availability": {
+        "sunday": false,
+        "monday": true,
+        "tuesday": false,
+        "wednesday": false,
+        "thursday": true,
+        "friday": false,
+        "saturday": true
+      },
+      "address": {
+        "quadrant": "SW",
+        "street": "1110 17 Avenue",
+        "city": "Calgary",
+        "province": "Alberta",
+        "postal_code": "T2T 0B4"
+      },
+      "lat": "",
+      "long": "",
+      "contact": {
+        "booking_mgr": "",
+        "phone": "403-974-5380",
+        "email": "ecyyc@atb.com"
+      },
+      "score": 1
     },
-
-
     {
-        "id": "12",
-        "name": "Fort Calgary National Historic Site",
-        "img": ["12Fort.jpg"],
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        "venue_type": "Historic",
-        "capacity": 3,
-        "rate": 56,
-        "availability": {
-            "sunday": true,
-            "monday": false,
-            "tuesday": false,
-            "wednesday": true,
-            "thursday": false,
-            "friday": true,
-            "saturday": false
-        },
-        "address": {
-            "quadrant": "SE",
-            "street": "750 - 9 Avenue",
-            "city": "Calgary",
-            "province": "Alberta",
-            "postal_code": "T2G 5E1"
-        },
-        "lat": "",
-        "long": "",
-        "contact": {
-            "booking_mgr": "",
-            "phone": "403-290-1875",
-            "email": "info@fortcalgary.com"
-        },
-        "score": 1
-
+      "id": "12",
+      "name": "Fort Calgary National Historic Site",
+      "img": [
+        "12Fort.jpg"
+      ],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "venue_type": "Historic",
+      "capacity": 3,
+      "rate": 56,
+      "availability": {
+        "sunday": true,
+        "monday": false,
+        "tuesday": false,
+        "wednesday": true,
+        "thursday": false,
+        "friday": true,
+        "saturday": false
+      },
+      "address": {
+        "quadrant": "SE",
+        "street": "750 - 9 Avenue",
+        "city": "Calgary",
+        "province": "Alberta",
+        "postal_code": "T2G 5E1"
+      },
+      "lat": "",
+      "long": "",
+      "contact": {
+        "booking_mgr": "",
+        "phone": "403-290-1875",
+        "email": "info@fortcalgary.com"
+      },
+      "score": 1
     },
-
     {
-        "id": "13",
-        "name": "Glenbow Museum",
-        "img": ["13Glenbow.jpg"],
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        "venue_type": "Museum",
-        "capacity": 6,
-        "rate": 37,
-        "availability": {
-            "sunday": true,
-            "monday": false,
-            "tuesday": true,
-            "wednesday": false,
-            "thursday": true,
-            "friday": true,
-            "saturday": false
-        },
-        "address": {
-            "quadrant": "SE",
-            "street": "130 - 9 Avenue",
-            "city": "Calgary",
-            "province": "Alberta",
-            "postal_code": "T2G 0P3"
-        },
-        "lat": "",
-        "long": "",
-        "contact": {
-            "booking_mgr": "",
-            "phone": "403-268-4110",
-            "email": "bookings@glenbow.org"
-        },
-        "score": 1
-
+      "id": "13",
+      "name": "Glenbow Museum",
+      "img": [
+        "13Glenbow.jpg"
+      ],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "venue_type": "Museum",
+      "capacity": 6,
+      "rate": 37,
+      "availability": {
+        "sunday": true,
+        "monday": false,
+        "tuesday": true,
+        "wednesday": false,
+        "thursday": true,
+        "friday": true,
+        "saturday": false
+      },
+      "address": {
+        "quadrant": "SE",
+        "street": "130 - 9 Avenue",
+        "city": "Calgary",
+        "province": "Alberta",
+        "postal_code": "T2G 0P3"
+      },
+      "lat": "",
+      "long": "",
+      "contact": {
+        "booking_mgr": "",
+        "phone": "403-268-4110",
+        "email": "bookings@glenbow.org"
+      },
+      "score": 1
     },
-
-
     {
-        "id": "14",
-        "name": "University of Calgary",
-        "img": ["14UofC.jpg"],
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        "venue_type": "School",
-        "capacity": 80,
-        "rate": 25,
-        "availability": {
-            "sunday": false,
-            "monday": false,
-            "tuesday": true,
-            "wednesday": true,
-            "thursday": true,
-            "friday": true,
-            "saturday": true
-        },
-        "address": {
-            "quadrant": "NW",
-            "street": "2500 University Drive",
-            "city": "Deadmonton",
-            "province": "Alberta",
-            "postal_code": "T2N 1N4"
-        },
-        "lat": "",
-        "long": "",
-        "contact": {
-            "booking_mgr": "",
-            "phone": "",
-            "email": ""
-        },
-        "score": 1
-
+      "id": "14",
+      "name": "University of Calgary",
+      "img": [
+        "14UofC.jpg"
+      ],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "venue_type": "School",
+      "capacity": 80,
+      "rate": 25,
+      "availability": {
+        "sunday": false,
+        "monday": false,
+        "tuesday": true,
+        "wednesday": true,
+        "thursday": true,
+        "friday": true,
+        "saturday": true
+      },
+      "address": {
+        "quadrant": "NW",
+        "street": "2500 University Drive",
+        "city": "Deadmonton",
+        "province": "Alberta",
+        "postal_code": "T2N 1N4"
+      },
+      "lat": "",
+      "long": "",
+      "contact": {
+        "booking_mgr": "",
+        "phone": "",
+        "email": ""
+      },
+      "score": 1
     },
-
-
     {
-        "id": "15",
-        "name": "cSpace King Edward",
-        "img": ["15cSpace.jpg"],
-        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        "venue_type": "Historic",
-        "capacity": 4,
-        "rate": 19,
-        "availability": {
-            "sunday": false,
-            "monday": true,
-            "tuesday": false,
-            "wednesday": true,
-            "thursday": false,
-            "friday": false,
-            "saturday": true
-        },
-        "address": {
-            "quadrant": "SW",
-            "street": "1721 29 Avenue",
-            "city": "Tdot",
-            "province": "Alberta",
-            "postal_code": "T2T 6T7"
-        },
-        "lat": "",
-        "long": "",
-        "contact": {
-            "booking_mgr": "",
-            "phone": "403-476-2025",
-            "email": "info@cspaceprojects.com"
-        },
-        "score": 1
-
+      "id": "15",
+      "name": "cSpace King Edward",
+      "img": [
+        "15-1.jpg",
+        "15-ddfdfd.gif",
+        "15-gljl.png",
+        "15-kjjkjhg.jpg"
+      ],
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "venue_type": "Historic",
+      "capacity": 4,
+      "rate": 19,
+      "availability": {
+        "sunday": false,
+        "monday": true,
+        "tuesday": false,
+        "wednesday": true,
+        "thursday": false,
+        "friday": false,
+        "saturday": true
+      },
+      "address": {
+        "quadrant": "SW",
+        "street": "1721 29 Avenue",
+        "city": "Tdot",
+        "province": "Alberta",
+        "postal_code": "T2T 6T7"
+      },
+      "lat": "",
+      "long": "",
+      "contact": {
+        "booking_mgr": "",
+        "phone": "403-476-2025",
+        "email": "info@cspaceprojects.com"
+      },
+      "score": 1
+    },
+  
+    {
+        "id": "16",
+        "name": "space 16",
+        "img": [""]
+    },
+  
+    {
+        "id": "17",
+        "name": "space 17",
+        "img": "whoah!"
     }
-]
+  ]
+  

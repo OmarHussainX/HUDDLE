@@ -165,7 +165,7 @@ class Details extends Component {
                     {Math.abs(activeStep - index) <= 2 ? (
                       <img
                         className={classes.img}
-                        src={`/images/${step}`}
+                        src={`/images/spaces/${selectedSpace.id}/${step}`}
                         alt={''}
                       />
                     ) : null}

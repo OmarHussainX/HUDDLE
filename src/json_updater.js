@@ -50,7 +50,7 @@ const pathToFolder = '../public/images/spaces/'
 
 // Default path to JSON file to be updated - user will be prompted for
 // input to override this
-let jsonFile = './test.json'
+let jsonFile = './spaces.json'
 
 // Handle I/O
 const readline = require('readline').createInterface({
@@ -110,7 +110,7 @@ readline.question(`Name of JSON file to update *INCLUDING PATH* (e.g. './spaces.
 
             // Find the Object whose id matches the subfolder's name, and update it
             spaces.forEach(space => {
-                if (space.id === subfolder) {
+                if (space.id === parseInt(subfolder)) {
                     space.img = files
                 }
             })

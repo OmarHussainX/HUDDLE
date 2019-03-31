@@ -106,7 +106,6 @@ class App extends Component {
     // A space's card was clicked
     // - switch to details view for the space
     else if ( targetID.includes('spaceCrdIdx') || targetID.includes('spacebtnindx')) {
-      console.log('clicked')
       const arrayIndex = targetID.substring('spaceCrdIdx'.length) - 1
       console.log(
         `============> '${this.state.spaces[arrayIndex].name}' CLICKED`,

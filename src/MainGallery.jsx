@@ -37,6 +37,7 @@ class MainGallery extends React.Component {
         >
           <Grid item >
             <SpaceCard
+              id={item.id}
               name={item.name}
               image={item.img[0]}
               rate={item.rate}

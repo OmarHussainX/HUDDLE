@@ -70,8 +70,6 @@ class SpaceCard extends Component {
                                 [{Math.round(score * 100)}%] {name}
                             </Typography>
                             <Typography gutterBottom>
-                            <span>{`/images/spaces/${id}/${image}`}</span>
-                            <br />
                                 <strong>{rate ? `$${rate}/hr ` : ''}</strong>
                                 <em>{`(Venue type: ${venue_type})`}</em>
                                 <br />

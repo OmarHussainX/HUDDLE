@@ -38,7 +38,7 @@ class BookConfirm extends React.Component {
                     aria-labelledby="alert-dialog-title"
                     aria-describedby="alert-dialog-description"
                 >
-                    <DialogTitle id="alert-dialog-title">{"Use Google's location service?"}</DialogTitle>
+                    <DialogTitle id="alert-dialog-title">{`Thank you ${this.props.username}`}</DialogTitle>
                     <DialogContent>
                         <DialogContentText id="alert-dialog-description">
                             Your booking request has been sent!

@@ -31,6 +31,9 @@ class BookSpace extends Component {
         super()
         this.state = {
             open: false,
+            name: '',
+            email: '',
+            phoneNumber:'',
             selectedDate: new Date('2019-03-25T15:30:00'),
             selectedEndDate: new Date('2019-03-25T17:45:00'),
         }
@@ -59,7 +62,14 @@ class BookSpace extends Component {
     }
 
     handleClose = () => {
-        this.setState({ open: false })
+        this.setState({ 
+            open: false,
+            name: '',
+            email: '',
+            phoneNumber:'',
+            selectedDate: new Date('2019-03-25T15:30:00'),
+            selectedEndDate: new Date('2019-03-25T17:45:00'),
+         })
     }
 
   render() {
@@ -120,6 +130,7 @@ class BookSpace extends Component {
               autoFocus
               margin="dense"
               id="name"
+              name="name"
               label="Name"
               type="text"
               fullWidth
@@ -128,6 +139,7 @@ class BookSpace extends Component {
              <TextField
               margin="dense"
               id="email"
+              name="email"
               label="Email Address"
               type="email"
               fullWidth
@@ -135,7 +147,8 @@ class BookSpace extends Component {
             />
             <TextField
               margin="dense"
-              id="number"
+              id="phoneNumber"
+              name="phoneNumber"
               label="Phone number"
               type="tel"
               fullWidth
@@ -149,7 +162,7 @@ class BookSpace extends Component {
             </Button>
 
             <BookConfirm
-                // username={this.state.}
+                username={this.state.name}
                 closeParent={this.handleClose} 
             />
 

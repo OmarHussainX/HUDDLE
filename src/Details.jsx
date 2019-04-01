@@ -210,7 +210,7 @@ class Details extends Component {
                 />
               )}
 
-              <Typography variant="h6" gutterBottom className={classes.h6}>
+              <Typography variant="h6" className={classes.h6}>
                 {selectedSpace.name}
               </Typography>
 
@@ -223,20 +223,14 @@ class Details extends Component {
                 />
               )}
 
-              <Typography>
+              <Typography gutterBottom>
                 {`Capacity: ${selectedSpace.capacity}`}
                 <em>&nbsp;&nbsp;({selectedSpace.venue_type})</em>
               </Typography>
 
-              <Typography gutterBottom>
-                {`${selectedSpace.address.street} ${
-                    selectedSpace.address.quadrant
-                }, ${selectedSpace.address.postal_code}`}
-              </Typography>
-
                 {/* Booking button - launches booking modal */}
                 <div style={{textAlign: 'center'}}>
-                    <BookSpace />
+                    <BookSpace selectedSpace={selectedSpace} />
                 </div>
 
               <DetailsTable

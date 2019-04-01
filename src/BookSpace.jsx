@@ -1,4 +1,8 @@
-import React from 'react'
+import React, {Component} from 'react'
+
+import PropTypes from 'prop-types'
+import {withStyles} from '@material-ui/core/styles'
+
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
 import Dialog from '@material-ui/core/Dialog'
@@ -7,41 +11,111 @@ import DialogContent from '@material-ui/core/DialogContent'
 import DialogContentText from '@material-ui/core/DialogContentText'
 import DialogTitle from '@material-ui/core/DialogTitle'
 
+import Grid from '@material-ui/core/Grid'
+import DateFnsUtils from '@date-io/date-fns'
+import { MuiPickersUtilsProvider, TimePicker, DatePicker } from 'material-ui-pickers'
 
-export default class BookSpace extends React.Component {
+import BookConfirm from './BookConfirm'
+
+
+const styles = theme => ({
+    root: {
+    //   flexGrow: 1,
+    //   padding: theme.spacing.unit,
+    },
+  })
+
+
+class BookSpace extends Component {
     constructor() {
         super()
         this.state = {
             open: false,
-            activeStep: 0,
+            selectedDate: new Date('2019-03-25T15:30:00'),
+            selectedEndDate: new Date('2019-03-25T17:45:00'),
         }
       }
-    
 
-  handleClickOpen = () => {
-    this.setState({ open: true })
-  }
+      handleChange = event => {
+        const { name, value } = event.target
+        console.log(`event.target.name, value: '${name}', ${value}`)
 
-  handleClose = () => {
-    this.setState({ open: false })
-  }
+        this.setState({
+            [name]: value,
+        })
+
+    }
+
+
+
+
+    handleDateChange = date => {
+        console.log(`new date/time: ${date}`)
+        this.setState({ selectedDate: date })
+    }
+
+    handleClickOpen = () => {
+        this.setState({ open: true })
+    }
+
+    handleClose = () => {
+        this.setState({ open: false })
+    }
 
   render() {
+    const {classes, selectedSpace} = this.props
+
     return (
       <div>
         <Button variant="contained" color="primary" onClick={this.handleClickOpen}>
           Book space
         </Button>
         <Dialog
-          open={this.state.open}
+         open={this.state.open}
           onClose={this.handleClose}
           aria-labelledby="form-dialog-title"
         >
-          <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+          <DialogTitle id="form-dialog-title">{selectedSpace.name}</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              To book this space, please enter your contact information. Your booking request will be sent to the host, who will contact you directly.
+              Please enter the desired booking date &amp; time, and your contact information.<br/>
+              Your booking request will be sent to the host, who will contact you directly.
             </DialogContentText>
+
+            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <Grid container className={classes.grid} justify="space-evenly">
+                    <DatePicker
+                        style={{
+                            width: '65px',
+                        }}
+                        margin="normal"
+                        label="Date"
+                        format="MMM d"
+                        value={this.state.selectedDate}
+                        onChange={this.handleDateChange}
+                    />
+                    <TimePicker
+                        style={{
+                            width: '75px',
+                        }}
+                        margin="normal"
+                        label="Start time"
+                        value={this.state.selectedDate}
+                        onChange={this.handleDateChange}
+                    />
+                    <TimePicker
+                        style={{
+                            width: '75px',
+                        }}
+                        margin="normal"
+                        label="End time"
+                        value={this.state.selectedEndDate}
+                        onChange={this.handleDateChange}
+                        id='endDatePicker'
+                    />
+                </Grid>
+            </MuiPickersUtilsProvider>
+
             <TextField
               autoFocus
               margin="dense"
@@ -49,13 +123,15 @@ export default class BookSpace extends React.Component {
               label="Name"
               type="text"
               fullWidth
-            />
+              onChange={this.handleChange}
+              />
              <TextField
               margin="dense"
               id="email"
               label="Email Address"
               type="email"
               fullWidth
+              onChange={this.handleChange}
             />
             <TextField
               margin="dense"
@@ -63,18 +139,36 @@ export default class BookSpace extends React.Component {
               label="Phone number"
               type="tel"
               fullWidth
+              onChange={this.handleChange}
             />
           </DialogContent>
+
           <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
+            <Button color="default" onClick={this.handleClose}>
               Cancel
             </Button>
+
+            <BookConfirm
+                // username={this.state.}
+                closeParent={this.handleClose} 
+            />
+
+{/* 
             <Button onClick={this.handleClose} color="primary">
               Submit request
             </Button>
+ */}
+
           </DialogActions>
         </Dialog>
       </div>
     )
   }
 }
+
+BookSpace.propTypes = {
+    classes: PropTypes.object.isRequired,
+    theme: PropTypes.object.isRequired,
+}
+
+export default withStyles(styles, { withTheme: true })(BookSpace)

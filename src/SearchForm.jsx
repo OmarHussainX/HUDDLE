@@ -359,7 +359,9 @@ class Search extends Component {
                                 {/* ---  Create Grid  --- */}
                                 <Grid container spacing={24}>
 
+
                                     {/* ---  Half-width row  --- */}
+{/* 
                                     <Grid item xs={6}>
                                         <MuiPickersUtilsProvider utils={DateFnsUtils}>
                                             <Grid container className={classes.grid} justify="space-around">
@@ -384,12 +386,11 @@ class Search extends Component {
                                                 />
                                             </Grid>
                                         </MuiPickersUtilsProvider>
-
-                                        {/* <Paper className={classes.paper}>xs=6</Paper> */}
                                     </Grid>
+ */}
 
-                                    {/* ---  Half-width row  --- */}
-                                    <Grid item xs={6}>
+                                    {/* ---  Full-width row  --- */}
+                                    <Grid item xs={12}>
                                         <FormControl component="fieldset" className={classes.formControl}>
                                             <FormLabel component="legend">
                                                 <br />&nbsp;

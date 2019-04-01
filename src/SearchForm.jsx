@@ -159,6 +159,9 @@ class Search extends Component {
         switch(name) {
             case 'rateInput':
             case 'capacityInput':
+            case 'streetInput':
+            case 'cityInput':
+            case 'quadrantInput':
 
             // Create a new search object, copying all search criteria from state
             // and then update the object with the search criterion from event.target
@@ -189,11 +192,6 @@ class Search extends Component {
             const newState = weightedScorer(stateCopy)
             this.setState({ spaces: newState.spaces })
 
-            break
-
-            case 'streetInput':
-            case 'cityInput':
-            // const locSearchType = name === 'streetInput' ? 'street' : 'city'
             break
 
             default:

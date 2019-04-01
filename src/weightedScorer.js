@@ -15,6 +15,9 @@ function weightedScorer(searchState) {
     console.log('------------inside weightedScorer!')
     console.log(`user's 'rate' search criterion: ${searchState.rateInput}`)
     console.log(`user's 'capacity' search criterion: ${searchState.capacityInput}`)
+    console.log(`user's 'address' search criterion: ${searchState.streetInput}`)
+    console.log(`user's 'city' search criterion: ${searchState.cityInput}`)
+    console.log(`user's 'quadrant' search criterion: ${searchState.quadrantInput}`)
     console.log(`user's 'day' search criterion:
     monday:     ${searchState.monday}
     tuesday:    ${searchState.tuesday}
@@ -22,8 +25,7 @@ function weightedScorer(searchState) {
     thursday:   ${searchState.thursday}
     friday:     ${searchState.friday}
     saturday:   ${searchState.saturday}
-    sunday:     ${searchState.sunday}
-    `)
+    sunday:     ${searchState.sunday}`)
 
 
     // iterate over all spaces, and for each space:

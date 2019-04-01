@@ -13,10 +13,10 @@ test('Checking data import', () => {
 // --------------------------------------------------
 // testing scoreOnRate
 
-test('Checking filtering by rate ($0) SUCCESS', () => {
+test('Checking scoring on rate ($0) SUCCESS', () => {
 
     // User-specified search criterion
-    const searchValue = {rate: 0}
+    const searchValue = { rate: 0 }
 
     // Space object against which search criterion is to be checked
     let testSpace = {...spaceData[0]}
@@ -38,10 +38,10 @@ test('Checking filtering by rate ($0) SUCCESS', () => {
     expect(ScoreSpaces.scoreOnRate(testSpace, searchValue)).toBeFalsy()
 })
 
-test('Checking filtering by rate ($1-25)', () => {
+test('Checking scoring on rate ($1-25)', () => {
 
     // User-specified search criterion
-    const searchValue = {rate: 25}
+    const searchValue = { rate: 25} 
 
     // Space object against which search criterion is to be checked
     let testSpace = {...spaceData[0]}
@@ -64,10 +64,10 @@ test('Checking filtering by rate ($1-25)', () => {
 
 })
 
-test('Checking filtering by rate ($26-50)', () => {
+test('Checking scoring on rate ($26-50)', () => {
 
     // User-specified search criterion
-    const searchValue = {rate: 50}
+    const searchValue = { rate: 50 }
 
     // Space object against which search criterion is to be checked
     let testSpace = {...spaceData[0]}
@@ -95,10 +95,10 @@ test('Checking filtering by rate ($26-50)', () => {
 
 // testing scoreOnCapacity
 
-test('Checking filtering by capacity (1-5) SUCCESS', () => {
+test('Checking scoring on capacity (1-5) SUCCESS', () => {
 
     // User-specified search criterion
-    const searchValue = {capacity:5}
+    const searchValue = { capacity: 5 }
 
     // Space object against which search criterion is to be checked
     let testSpace = {...spaceData[0]}
@@ -120,10 +120,10 @@ test('Checking filtering by capacity (1-5) SUCCESS', () => {
     expect(ScoreSpaces.scoreOnCapacity(testSpace, searchValue)).toBeFalsy()
 })
 
-test('Checking filtering by capacity (6-10) SUCCESS', () => {
+test('Checking scoring on capacity (6-10) SUCCESS', () => {
 
     // User-specified search criterion
-    const searchValue = {capacity:10}
+    const searchValue = { capacity: 10 }
 
     // Space object against which search criterion is to be checked
     let testSpace = {...spaceData[0]}
@@ -144,4 +144,39 @@ test('Checking filtering by capacity (6-10) SUCCESS', () => {
     testSpace.capacity = 2
     expect(ScoreSpaces.scoreOnCapacity(testSpace, searchValue)).toBeFalsy()
 })
+// --------------------------------------------------
+
+
+
+// testing scoreOnAddress
+
+test('Checking scoring on address', () => {
+
+    // User-specified search criterion
+    const searchValue = { streetInput: 'SAME' }
+
+    // Space object against which search criterion is to be checked
+    let testSpace = {...spaceData[0]}
+    testSpace.address.street = 'How to get to Sesame Street?'
+
+    let matchValue = 0
+
+    // Call the search function with:
+    // - a reference to a space object 
+    // - user's search criterion
+    // Receive: a value indicating how well the space matches the criterion
+    matchValue = ScoreSpaces.scoreOnAddress(testSpace, searchValue)
+    
+    // space should match the user's criterion!
+    expect(matchValue).toBeTruthy()
+    
+    // space should NOT match the user's criterion!
+    testSpace.address.street = 'Nightmare on Elm St'
+    expect(ScoreSpaces.scoreOnCapacity(testSpace, searchValue)).toBeFalsy()
+
+    // space should NOT match the user's criterion!
+    searchValue.streetInput = ''
+    expect(ScoreSpaces.scoreOnCapacity(testSpace, searchValue)).toBeFalsy()
+})
+
 // --------------------------------------------------

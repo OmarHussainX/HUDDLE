@@ -10,7 +10,7 @@ class ScoreSpaces {
       75    ( 51-75 range )
       100   ( 76+ range )
 
-    returns a value (0 or 1) reflecting how well the space matches the specified rate
+    returns a value (0 or 1) reflecting how well the space matches the specified criterion
     */
     static scoreOnRate(space, searchState) {
         const searchValue = parseInt(searchState.rate)
@@ -61,7 +61,7 @@ class ScoreSpaces {
       15    ( 11-15 range )
       20    ( 16+ range )
     
-    returns a value (0 or 1) reflecting how well the space matches the specified rate
+    returns a value (0 or 1) reflecting how well the space matches the specified criterion
     */
     static scoreOnCapacity(space, searchState) {
         const searchValue = parseInt(searchState.capacity)
@@ -98,42 +98,21 @@ class ScoreSpaces {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /*
-    filterByName takes two parameters:
-    - a reference to a collection of all spaces
-    - a string value to search for
-
-    performs a case insensitive search
-    returns an array of space Objects whose name includes the specified string
-    (allowing for partial name searches)
-    */
-    static filterByName(spaceData, searchString) {
-        return spaceData.filter(space => space.name.toLowerCase().includes(searchString.toLowerCase()))
-    }
+    /* --------------------------------
+    searchValue takes two parameters:
+    - a reference to a space object
+    - a searchState object with property 'streetInput' - a string value to search for
     
+    returns a value (0 or 1) reflecting how well the space matches the specified criterion
+    */
+   static scoreOnAddress(space, searchState) {
+    
+    if (searchState.streetInput === '') return 0
+    
+    return space.address.street.toLowerCase().includes(searchState.streetInput.toLowerCase()) ? 1 : 0
+}
+
+
 
     /*
     filterByLocation takes three parameters:
@@ -144,23 +123,50 @@ class ScoreSpaces {
     performs a case insensitive search
     returns an array of space Objects whose location matches the specified criteria
     */
-    static filterByLocation(spaceData, searchType, searchString) {
-        let filteredSpaces = []
+   static filterByLocation(spaceData, searchType, searchString) {
+    let filteredSpaces = []
 
-        switch (searchType) {
-            case 'quadrant':
-            filteredSpaces = spaceData.filter(space => space.address.quadrant.toUpperCase() === searchString.toUpperCase())
-            break
+    switch (searchType) {
+        case 'quadrant':
+        filteredSpaces = spaceData.filter(space => space.address.quadrant.toUpperCase() === searchString.toUpperCase())
+        break
 
-            case 'street':
-            case 'city':
-            filteredSpaces = spaceData.filter(space => space.address[searchType].toLowerCase().includes(searchString.toLowerCase()))
-            break
+        case 'street':
+        case 'city':
+        filteredSpaces = spaceData.filter(space => space.address[searchType].toLowerCase().includes(searchString.toLowerCase()))
+        break
 
-            default:
-        }
-        return filteredSpaces
+        default:
     }
+    return filteredSpaces
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /*
     filterByAvailability takes two parameters:
     - a reference to a collection of all spaces

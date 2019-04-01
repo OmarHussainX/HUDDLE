@@ -15,6 +15,15 @@ function weightedScorer(searchState) {
     console.log('------------inside weightedScorer!')
     console.log(`user's 'rate' search criterion: ${searchState.rateInput}`)
     console.log(`user's 'capacity' search criterion: ${searchState.capacityInput}`)
+    console.log(`user's 'day' search criterion:
+    monday:     ${searchState.monday}
+    tuesday:    ${searchState.tuesday}
+    wednesday:  ${searchState.wednesday}
+    thursday:   ${searchState.thursday}
+    friday:     ${searchState.friday}
+    saturday:   ${searchState.saturday}
+    sunday:     ${searchState.sunday}
+    `)
 
 
     // iterate over all spaces, and for each space:

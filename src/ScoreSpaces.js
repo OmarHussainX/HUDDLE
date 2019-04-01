@@ -205,11 +205,15 @@ class ScoreSpaces {
 const scoreCalculators = [
     {
         function: "scoreOnRate",
-        weight: 0.5
+        weight: 0.4
     },
     {
         function: "scoreOnCapacity",
-        weight: 0.5
+        weight: 0.4
+    },
+    {
+        function: "scoreOnAvailability",
+        weight: 0.2
     },
 ] 
 

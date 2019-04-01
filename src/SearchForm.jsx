@@ -159,14 +159,10 @@ class Search extends Component {
         switch(name) {
             case 'rateInput':
             case 'capacityInput':
-            // const searchType = name === 'rateInput' ? 'scoreOnRate' : 'scoreOnCapacity'
 
-            // create a new search object, copying all search criteria from state
+            // Create a new search object, copying all search criteria from state
             // and then update the object with the search criterion from event.target
             // pass this object (and a reference to all spaces) to weightedScorer
-
-            // weightedScorer will need to be updated to skip those score calculations 
-            // which have a null/invalid search value
 
             // Make a deep copy of state in order to pass search criteria and array
             // of all spaces to weightedScorer
@@ -216,6 +212,19 @@ class Search extends Component {
         console.log(`'${checkboxName}' checked: '${checkboxState}'`)
 
         this.setState({ [checkboxName]: checkboxState })
+
+        // prepare search criteria & collection of spaces for scoring in light
+        // of new search criteria
+        let stateCopy = JSON.parse(JSON.stringify(this.state))
+        stateCopy[checkboxName] = checkboxState
+
+        // update scores with respect to the latest search criteria
+        const newState = weightedScorer(stateCopy)
+        
+        // update state with re-scored collection of spaces, which will automatically
+        // cause the component to render
+        this.setState({ spaces: newState.spaces })
+
     }
 
 

@@ -12,7 +12,8 @@ import {autoPlay} from 'react-swipeable-views-utils'
 import grey from '@material-ui/core/colors/grey'
 import Chip from '@material-ui/core/Chip'
 import DetailsTable from './DetailsTable'
-import green from '@material-ui/core/colors/green'
+import BookSpace from './BookSpace'
+// import green from '@material-ui/core/colors/green'
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews)
 const freeChipColor = grey[200]
@@ -229,9 +230,14 @@ class Details extends Component {
 
               <Typography gutterBottom>
                 {`${selectedSpace.address.street} ${
-                  selectedSpace.address.quadrant
+                    selectedSpace.address.quadrant
                 }, ${selectedSpace.address.postal_code}`}
               </Typography>
+
+                {/* Booking button - launches booking modal */}
+                <div style={{textAlign: 'center'}}>
+                    <BookSpace />
+                </div>
 
               <DetailsTable
                 address={selectedSpace.address}

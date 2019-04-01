@@ -125,7 +125,7 @@ class Search extends Component {
         super(props)
         this.state = {
 
-            // Array of all available spaces
+            // Master array of all available spaces
             spaces: this.props.spaces,
 
             // Search inputs (dropdowns, date/time pickers, checkboxes, textfields)
@@ -168,10 +168,27 @@ class Search extends Component {
             // weightedSearch will need to be updated to skip those score calculations 
             // which have a null/invalid search value
 
-            let stateCopy = {...this.state}
-            stateCopy.spaces = [...this.state.spaces]
-
+            // Make a deep copy of state in order to pass search criteria and array
+            // of all spaces to weightedSearch
+            let stateCopy = JSON.parse(JSON.stringify(this.state))
+            
+            // Make sure the latest user search criterion is saved, since the value in
+            // state is not yet guaranteed to have the valuse saved from this latest
+            // change event
             stateCopy[name] = value
+
+            // (originally performed a 'smart' shallow copy as follows:
+            // 
+            // let stateCopy = {...this.state}
+            // stateCopy.spaces = [...this.state.spaces]
+            //
+            // But somehow, values in the 'this.state.spaces' array were being modified
+            // at some point. Became obvious when scroes would not reset to '1' after
+            // clearing search form (where 'this.state.spaces is reset to 'this.props.spaces')
+
+
+            
+
 
 
 
@@ -220,7 +237,10 @@ class Search extends Component {
         // - reset all search options and inputs
         switch(id) {
         case 'clearSearchButton':
-        console.log(`clear search results`)
+        console.log(`########### clear search results########### `)
+        this.props.spaces.forEach(space =>
+            console.log(`${space.name} has original score ${space.score}`))
+
         this.setState({
             spaces: this.props.spaces,
             rate: '',
@@ -280,8 +300,7 @@ class Search extends Component {
                                         id: 'rateID',
                                     }}
                                 >
-                                    <MenuItem value={0}><em>Free</em></MenuItem>
-                                    <MenuItem value={25}>$1-25</MenuItem>
+                                    <MenuItem value={`Any`}>Any</MenuItem>             <MenuItem value={25}>$1-25</MenuItem>
                                     <MenuItem value={50}>$26-50</MenuItem>
                                     <MenuItem value={75}>$51-75</MenuItem>
                                     <MenuItem value={100}>Over $75</MenuItem>
@@ -303,6 +322,7 @@ class Search extends Component {
                                         id: 'capacityID',
                                     }}
                                 >
+                                    <MenuItem value={`Any`}>Any</MenuItem>
                                     <MenuItem value={5}>1-5</MenuItem>
                                     <MenuItem value={10}>6-10</MenuItem>
                                     <MenuItem value={15}>11-15</MenuItem>

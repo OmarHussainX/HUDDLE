@@ -13,10 +13,10 @@ test('Checking data import', () => {
 // --------------------------------------------------
 // testing filterByRate
 
-test('Checking filtering by price ($0) SUCCESS', () => {
+test('Checking filtering by rate ($0) SUCCESS', () => {
 
     // User-specified search criterion
-    const searchValue = 0
+    const searchValue = {rate: 0}
 
     // Space object against which search criterion is to be checked
     let testSpace = {...spaceData[0]}
@@ -38,10 +38,10 @@ test('Checking filtering by price ($0) SUCCESS', () => {
     expect(SpaceSearch.filterByRate(testSpace, searchValue)).toBeFalsy()
 })
 
-test('Checking filtering by price ($1-25)', () => {
+test('Checking filtering by rate ($1-25)', () => {
 
     // User-specified search criterion
-    const searchValue = 25
+    const searchValue = {rate: 25}
 
     // Space object against which search criterion is to be checked
     let testSpace = {...spaceData[0]}
@@ -59,15 +59,15 @@ test('Checking filtering by price ($1-25)', () => {
     expect(matchValue).toBeTruthy()
 
     // space should NOT match the user's criterion!
-    testSpace.rate = 26
+    testSpace.rate = {rate:26}
     expect(SpaceSearch.filterByRate(testSpace, searchValue)).toBeFalsy()
 
 })
 
-test('Checking filtering by price ($26-50)', () => {
+test('Checking filtering by rate ($26-50)', () => {
 
     // User-specified search criterion
-    const searchValue = 50
+    const searchValue = {rate: 50}
 
     // Space object against which search criterion is to be checked
     let testSpace = {...spaceData[0]}
@@ -98,7 +98,7 @@ test('Checking filtering by price ($26-50)', () => {
 test('Checking filtering by capacity (1-5) SUCCESS', () => {
 
     // User-specified search criterion
-    const searchValue = 5
+    const searchValue = {capacity:5}
 
     // Space object against which search criterion is to be checked
     let testSpace = {...spaceData[0]}
@@ -123,7 +123,7 @@ test('Checking filtering by capacity (1-5) SUCCESS', () => {
 test('Checking filtering by capacity (6-10) SUCCESS', () => {
 
     // User-specified search criterion
-    const searchValue = 10
+    const searchValue = {capacity:10}
 
     // Space object against which search criterion is to be checked
     let testSpace = {...spaceData[0]}

@@ -1,51 +1,64 @@
 import {SpaceSearch} from './SpaceSearch'
+import {rateWeight, capacityWeight} from './SpaceWeights'
 
-function weightedSearch(state) {
+// weightedSearch receives a reference to a state Object from a component
+// NOTE: caller passes a copied Object to weightedSearch, which will be modified
+// and returned
+//
+// The Object contains the user's search criteria, and also a reference to
+// an array of space Objects which are to be scored according to the search
+// criteria
+//
+// Scoring is done via external 'tester' logic (SpaceSearch.js), and weightings
+// for the various tests (SearchWeights.js)
+
+function weightedSearch(searchState) {
     console.log('------------inside weightedSearch!')
-    console.log(`user's 'rate' search criterion: ${state.rate}`)
-
-
-    // really make a local copy of state...
-    let newState = {...state}
-    newState.spaces = [...state.spaces]
-    console.log(`COPIED user's 'rate' search criterion: ${newState.rate}`)
-
-    const rateWeight = 0.5
-    const capacityWeight = 0.5
-    
+    console.log(`user's 'rate' search criterion: ${searchState.rate}`)
 
     // iterate over all spaces, updating the score of each
-    newState.spaces.forEach(space => {
+    searchState.spaces.forEach(space => {
         // reset score
         let newScore = 0
         
-        // call rate tester - pretend it returns the correct/desired value
-        // this was a match for rate!
-        if (newState.rate !== '')
-            newScore += (SpaceSearch.filterByRate(space, newState.rate)) * (rateWeight)
+        // call rate tester 
+        newScore += (SpaceSearch.filterByRate(space, searchState)) * (rateWeight)
         
-        // call capacity tester - pretend it returns the correct/desired value
-        // this was a match for rate!
-        if (newState.capacity !== '')
-            newScore += (SpaceSearch.filterByCapacity(space, newState.capacity)) * (capacityWeight)
+        // call capacity tester 
+        newScore += (SpaceSearch.filterByCapacity(space, searchState)) * (capacityWeight)
 
         // assign new score to space
         space.score = newScore
 
+        const testerObject = [
+            {
+                tester: "filterByRate",
+                weight: 0.5
+            },
+            {
+                tester: "filterByCapacity",
+                weight: 0.5
+            },
+
+        ] 
+
+
+
+
     })
 
     // All spaces have now been assigned updated scores - sort based on score!
-    newState.spaces.sort( (a,b) => b.score - a.score)
+    searchState.spaces.sort( (a,b) => b.score - a.score)
     
     console.log(`----------- weightedSearch() after sorting!!`)
-    newState.spaces.forEach((space, i) => {
+    searchState.spaces.forEach((space, i) => {
         console.log(`------ ${space.name} rate: ${space.score}, index: ${i}`)
     })
 
-    // newState.spaces[0].rate = 456
+    // searchState.spaces[0].rate = 456
 
 
-    return newState
+    return searchState
 }
 
 export {weightedSearch}

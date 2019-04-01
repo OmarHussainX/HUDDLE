@@ -92,10 +92,17 @@ test('Checking scoring on rate ($26-50) & above', () => {
     testSpace.rate = 56
     expect(ScoreSpaces.scoreOnRate(testSpace, { rateInput: 75 })).toBeTruthy()
 
+    // space should NOT match the user's criterion!
+    testSpace.rate = 50
+    expect(ScoreSpaces.scoreOnRate(testSpace, { rateInput: 75 })).toBeFalsy()
+
     // space should match the user's criterion!
     testSpace.rate = 945
     expect(ScoreSpaces.scoreOnRate(testSpace, { rateInput: 100 })).toBeTruthy()
 
+    // space should NOT match the user's criterion!
+    testSpace.rate = 50
+    expect(ScoreSpaces.scoreOnRate(testSpace, { rateInput: 100 })).toBeFalsy()
 
     // exercising code for coverage, this branch does nothing
     testSpace.rate = '23'
@@ -167,6 +174,10 @@ test('Checking scoring on capacity (6-10) & above', () => {
     // space should match the user's criterion!
     testSpace.capacity = 56
     expect(ScoreSpaces.scoreOnCapacity(testSpace, { capacityInput: 20 })).toBeTruthy()
+
+    // space should NOT match the user's criterion!
+    testSpace.capacity = 13
+    expect(ScoreSpaces.scoreOnCapacity(testSpace, { capacityInput: 20 })).toBeFalsy()
 
     // exercising code for coverage, this branch does nothing
     testSpace.capacity = '23'
@@ -286,26 +297,26 @@ test('Checking scoring on quadrant', () => {
 test('Checking scoring on availability', () => {
 
     // User-specified search criterion
-    const searchValue = {
-        monday: false,
-        tuesday: false,
-        wednesday: false,
-        thursday: false,
-        friday: true,
-        saturday: false,
-        sunday: false,
+    let searchValue = {
+        monday:     true,
+        tuesday:    true,
+        wednesday:  false,
+        thursday:   false,
+        friday:     true,
+        saturday:   false,
+        sunday:     false,
     }
 
     // Space object against which search criterion is to be checked
     let testSpace = {...spaceData[0]}
     testSpace.availability = {
-        "monday": true,
-        "tuesday": true,
-        "wednesday": true,
-        "thursday": true,
-        "friday": true,
-        "saturday": false,
-        "sunday": false
+        "monday":       false,
+        "tuesday":      false,
+        "wednesday":    true,
+        "thursday":     true,
+        "friday":       true,
+        "saturday":     false,
+        "sunday":       false,
     }
 
     let matchValue = 0
@@ -317,11 +328,39 @@ test('Checking scoring on availability', () => {
     matchValue = ScoreSpaces.scoreOnAvailability(testSpace, searchValue)
     
     // space should match the user's criterion!
-    expect(matchValue).toBeTruthy()
+    expect(matchValue).toBeCloseTo(1/3)
     
     // space should NOT match the user's criterion!
     testSpace.availability.friday = false
-    expect(ScoreSpaces.scoreOnAvailability(testSpace, searchValue)).toBeFalsy()
+    expect(ScoreSpaces.scoreOnAvailability(testSpace, searchValue)).toEqual(0)
+
+    searchValue = {
+        monday:     false,
+        tuesday:    false,
+        wednesday:  false,
+        thursday:   false,
+        friday:     false,
+        saturday:   false,
+        sunday:     false,
+    }
+    expect(ScoreSpaces.scoreOnAvailability(testSpace, searchValue)).toEqual(0)
+
+    searchValue.monday = true
+    searchValue.tuesday = true
+    searchValue.sunday = true
+
+    testSpace.availability = {
+        "monday":       true,
+        "tuesday":      false,
+        "wednesday":    false,
+        "thursday":     false,
+        "friday":       false,
+        "saturday":     false,
+        "sunday":       true,
+    }
+
+    // space should match the user's criterion!
+    expect(ScoreSpaces.scoreOnAvailability(testSpace, searchValue)).toBeCloseTo(2/3)
 })
 
 // --------------------------------------------------

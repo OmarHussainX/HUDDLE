@@ -151,19 +151,53 @@ class ScoreSpaces {
     - a reference to a space object
     - a searchState object with boolean properties:
 
-            sunday: true|false,
-            monday: true|false,
-            tuesday: true|false,
-            wednesday: true|false,
-            thursday: true|false,
-            friday: true|false,
-            saturday: true|false,
-    
+        monday:     true|false,
+        tuesday:    true|false,
+        wednesday:  true|false,
+        thursday:   true|false,
+        friday:     true|false,
+        saturday:   true|false,
+        sunday:     true|false,
+        
     returns a value (0 or 1) reflecting how well the space matches the specified criterion
     */
     static scoreOnAvailability(space, searchState) {
 
-        return null
+        // number of days selected by the user
+        let daysSelected = 0
+
+        // number of days where the space is available on a *selected* day
+        let daysMatched = 0
+
+        const searchValue = {
+            monday: searchState.monday,
+            tuesday: searchState.tuesday,
+            wednesday: searchState.wednesday,
+            thursday: searchState.thursday,
+            friday: searchState.friday,
+            saturday: searchState.saturday,
+            sunday: searchState.sunday,
+        }
+
+        // - loop through the week, checking each day:
+        //      * if the user has selected a day as a search criterion, increment
+        //          the number of days selected
+        //      * if user has checked a day AND space is available on that day, increment
+        //          the number of days where availability matches
+        Object.keys(searchValue).forEach(day => {
+            if (searchValue[day]) daysSelected +=1
+            
+            if (searchValue[day] && space.availability[day] ) daysMatched += 1
+        })
+
+        // if number of days selected by the user is not 0, return the proportion of days
+        // where availability matches the selection
+        if (daysSelected) {
+            console.log(`going to return ${daysMatched/daysSelected}`)
+            return daysMatched/daysSelected
+        }
+
+        return 0
     }
 }
 

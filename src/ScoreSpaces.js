@@ -1,7 +1,7 @@
-class SpaceSearch {
+class ScoreSpaces {
 
     /* --------------------------------
-    filterByRate takes two parameters:
+    scoreOnRate takes two parameters:
     - a reference to a space object
     - a searchState object with property 'rate', guaranteed to be one of:
       0     ( free spaces )
@@ -12,7 +12,7 @@ class SpaceSearch {
 
     returns a value (0 or 1) reflecting how well the space matches the specified rate
     */
-    static filterByRate(space, searchState) {
+    static scoreOnRate(space, searchState) {
         const searchValue = parseInt(searchState.rate)
         let scoreValue = 0
 
@@ -44,16 +44,16 @@ class SpaceSearch {
 
             // user hasn't set/doesn't care about this criterion
             default:
-            console.log(`==========default case!! searchState.rate: ${searchState.rate}, searchValue: ${searchValue}`)
+            // console.log(`==========default case!! searchState.rate: ${searchState.rate}, searchValue: ${searchValue}`)
         }
-        console.log(`----- Yo! ${space.name} gets a value of ${scoreValue} for 'rate range ${searchValue}'`)
+        // console.log(`----- Yo! ${space.name} gets a value of ${scoreValue} for 'rate range ${searchValue}'`)
         return scoreValue
     }
 
 
 
     /* --------------------------------
-    filterByCapacity takes two parameters:
+    scoreOnCapacity takes two parameters:
     - a reference to a space object
     - a searchState object with property 'capacity', guaranteed to be one of:
       5     ( 1-5 range )
@@ -63,7 +63,7 @@ class SpaceSearch {
     
     returns a value (0 or 1) reflecting how well the space matches the specified rate
     */
-    static filterByCapacity(space, searchState) {
+    static scoreOnCapacity(space, searchState) {
         const searchValue = parseInt(searchState.capacity)
         let scoreValue = 0
 
@@ -90,9 +90,9 @@ class SpaceSearch {
 
             // user hasn't set/doesn't care about this criterion
             default:
-            console.log(`==========default case!! searchState.capacity: ${searchState.capacity}, searchValue: ${searchValue}`)
+            // console.log(`==========default case!! searchState.capacity: ${searchState.capacity}, searchValue: ${searchValue}`)
         }
-        console.log(`----- Yo! ${space.name} gets a value of ${scoreValue} for 'capacity range ${searchValue}'`)
+        // console.log(`----- Yo! ${space.name} gets a value of ${scoreValue} for 'capacity range ${searchValue}'`)
         return scoreValue
     }
 
@@ -189,4 +189,16 @@ class SpaceSearch {
     }
 }
 
-export {SpaceSearch}
+const scoreCalculators = [
+    {
+        function: "scoreOnRate",
+        weight: 0.5
+    },
+    {
+        function: "scoreOnCapacity",
+        weight: 0.5
+    },
+ ] 
+
+
+export {ScoreSpaces, scoreCalculators}

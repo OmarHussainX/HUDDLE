@@ -1,5 +1,5 @@
 import spaceData from './test.json'
-import {SpaceSearch} from './SpaceSearch'
+import {ScoreSpaces} from './ScoreSpaces'
 
 
 
@@ -11,7 +11,7 @@ test('Checking data import', () => {
 
 
 // --------------------------------------------------
-// testing filterByRate
+// testing scoreOnRate
 
 test('Checking filtering by rate ($0) SUCCESS', () => {
 
@@ -28,14 +28,14 @@ test('Checking filtering by rate ($0) SUCCESS', () => {
     // - a reference to a space object 
     // - user's search criterion
     // Receive: a value indicating how well the space matches the criterion
-    matchValue = SpaceSearch.filterByRate(testSpace, searchValue)
+    matchValue = ScoreSpaces.scoreOnRate(testSpace, searchValue)
     
     // space should match the user's criterion!
     expect(matchValue).toBeTruthy()
     
     // space should NOT match the user's criterion!
     testSpace.rate = 23
-    expect(SpaceSearch.filterByRate(testSpace, searchValue)).toBeFalsy()
+    expect(ScoreSpaces.scoreOnRate(testSpace, searchValue)).toBeFalsy()
 })
 
 test('Checking filtering by rate ($1-25)', () => {
@@ -53,14 +53,14 @@ test('Checking filtering by rate ($1-25)', () => {
     // - a reference to a space object 
     // - user's search criterion
     // Receive: a value indicating how well the space matches the criterion
-    matchValue = SpaceSearch.filterByRate(testSpace, searchValue)
+    matchValue = ScoreSpaces.scoreOnRate(testSpace, searchValue)
     
     // space should match the user's criterion!
     expect(matchValue).toBeTruthy()
 
     // space should NOT match the user's criterion!
     testSpace.rate = {rate:26}
-    expect(SpaceSearch.filterByRate(testSpace, searchValue)).toBeFalsy()
+    expect(ScoreSpaces.scoreOnRate(testSpace, searchValue)).toBeFalsy()
 
 })
 
@@ -79,21 +79,21 @@ test('Checking filtering by rate ($26-50)', () => {
     // - a reference to a space object 
     // - user's search criterion
     // Receive: a value indicating how well the space matches the criterion
-    matchValue = SpaceSearch.filterByRate(testSpace, searchValue)
+    matchValue = ScoreSpaces.scoreOnRate(testSpace, searchValue)
     
     // space should match the user's criterion!
     expect(matchValue).toBeTruthy()
 
     // space should NOT match the user's criterion!
     testSpace.rate = 2
-    expect(SpaceSearch.filterByRate(testSpace, searchValue)).toBeFalsy()
+    expect(ScoreSpaces.scoreOnRate(testSpace, searchValue)).toBeFalsy()
 
 })
 // --------------------------------------------------
 
 
 
-// testing filterByCapacity
+// testing scoreOnCapacity
 
 test('Checking filtering by capacity (1-5) SUCCESS', () => {
 
@@ -110,14 +110,14 @@ test('Checking filtering by capacity (1-5) SUCCESS', () => {
     // - a reference to a space object 
     // - user's search criterion
     // Receive: a value indicating how well the space matches the criterion
-    matchValue = SpaceSearch.filterByCapacity(testSpace, searchValue)
+    matchValue = ScoreSpaces.scoreOnCapacity(testSpace, searchValue)
     
     // space should match the user's criterion!
     expect(matchValue).toBeTruthy()
     
     // space should NOT match the user's criterion!
     testSpace.capacity = 6
-    expect(SpaceSearch.filterByCapacity(testSpace, searchValue)).toBeFalsy()
+    expect(ScoreSpaces.scoreOnCapacity(testSpace, searchValue)).toBeFalsy()
 })
 
 test('Checking filtering by capacity (6-10) SUCCESS', () => {
@@ -135,13 +135,13 @@ test('Checking filtering by capacity (6-10) SUCCESS', () => {
     // - a reference to a space object 
     // - user's search criterion
     // Receive: a value indicating how well the space matches the criterion
-    matchValue = SpaceSearch.filterByCapacity(testSpace, searchValue)
+    matchValue = ScoreSpaces.scoreOnCapacity(testSpace, searchValue)
     
     // space should match the user's criterion!
     expect(matchValue).toBeTruthy()
     
     // space should NOT match the user's criterion!
     testSpace.capacity = 2
-    expect(SpaceSearch.filterByCapacity(testSpace, searchValue)).toBeFalsy()
+    expect(ScoreSpaces.scoreOnCapacity(testSpace, searchValue)).toBeFalsy()
 })
 // --------------------------------------------------

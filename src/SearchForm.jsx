@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {weightedSearch} from './WeightedSearch'
+import {weightedScorer} from './WeightedScorer'
 
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
@@ -159,17 +159,17 @@ class Search extends Component {
         switch(name) {
             case 'rate':
             case 'capacity':
-            // const searchType = name === 'rate' ? 'filterByRate' : 'filterByCapacity'
+            // const searchType = name === 'rate' ? 'scoreOnRate' : 'scoreOnCapacity'
 
             // create a new search object, copying all search criteria from state
             // and then update the object with the search criterion from event.target
-            // pass this object (and a reference to all spaces) to weightedSearch
+            // pass this object (and a reference to all spaces) to weightedScorer
 
-            // weightedSearch will need to be updated to skip those score calculations 
+            // weightedScorer will need to be updated to skip those score calculations 
             // which have a null/invalid search value
 
             // Make a deep copy of state in order to pass search criteria and array
-            // of all spaces to weightedSearch
+            // of all spaces to weightedScorer
             let stateCopy = JSON.parse(JSON.stringify(this.state))
             
             // Make sure the latest user search criterion is saved, since the value in
@@ -183,17 +183,14 @@ class Search extends Component {
             // stateCopy.spaces = [...this.state.spaces]
             //
             // But somehow, values in the 'this.state.spaces' array were being modified
-            // at some point. Became obvious when scroes would not reset to '1' after
-            // clearing search form (where 'this.state.spaces is reset to 'this.props.spaces')
+            // at some point. Became obvious when scores would not reset to '1' after
+            // clearing search form ('this.state.spaces is reset to 
+            // 'this.props.spaces' when search form is cleared)
 
 
-            
-
-
-
-
-            // user has specified rate OR capacity search criteria
-            const newState = weightedSearch(stateCopy)
+            // user has specified some new search criterion, and may have specified
+            // other criteria in the past - all criteria saved in state
+            const newState = weightedScorer(stateCopy)
             this.setState({ spaces: newState.spaces })
 
             break

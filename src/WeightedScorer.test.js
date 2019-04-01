@@ -1,5 +1,5 @@
 import spaceData from './test.json'
-import {weightedSearch} from './WeightedSearch'
+import {weightedScorer} from './WeightedScorer'
 
 
 const searchState = {
@@ -30,7 +30,7 @@ const searchState = {
 test('Checking instantiation', () => {
     expect(spaceData).not.toBeNull()
 
-    const newState = weightedSearch(searchState)
+    const newState = weightedScorer(searchState)
     expect(newState).not.toBeNull()
 })
 
@@ -43,7 +43,7 @@ test('Checking score calculation', () => {
     testState.rate = 25
 
 
-    const newState = weightedSearch(testState)
+    const newState = weightedScorer(testState)
     
     console.log(`----------- after sorting based on score in the test file!!!-----------------`)
     newState.spaces.forEach(space => {

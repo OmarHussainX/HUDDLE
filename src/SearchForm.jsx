@@ -260,6 +260,7 @@ class Search extends Component {
         const { panelExpanded, sunday, monday, tuesday, wednesday, thursday, friday, saturday} = this.state
 
         return (
+          <React.Fragment>
             <div className={classes.root}>
                 <Paper className={classes.base} elevation={1}>
 
@@ -546,13 +547,13 @@ class Search extends Component {
                         </Grid>
                     {/* </Grid> */}
                 </Paper>
-
+            </div>
                 <MainGallery
                     onClick={this.props.onClick}
                     spaces={this.state.spaces}
+                    className={classes.gallery}
                 />
-
-            </div>
+          </React.Fragment>
         )
     }
 }

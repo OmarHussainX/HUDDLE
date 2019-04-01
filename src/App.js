@@ -32,9 +32,9 @@ const styles = theme => ({
     padding: '50px',
     // NOTE: for some reason if both height & minHeight aren't set, it causes a
     // gap to appear all along the right!!
-    height: '200px',
-    minHeight: '200px',
-    marginBottom: '70px',
+    height: '300px',
+    minHeight: '300px',
+    marginBottom: '20px',
   },
   container: {
     background: 'white',
@@ -100,12 +100,15 @@ class App extends Component {
     // - switch to search form/view...
     if (targetID === 'FABsearch') {
       console.log('============> Search FAB CLICKED')
-      this.setState({ view: 'search' })
+      this.setState({view: 'search'})
     }
 
     // A space's card was clicked
     // - switch to details view for the space
-    else if ( targetID.includes('spaceCrdIdx') || targetID.includes('spacebtnindx')) {
+    else if (
+      targetID.includes('spaceCrdIdx') ||
+      targetID.includes('spacebtnindx')
+    ) {
       const arrayIndex = targetID.substring('spaceCrdIdx'.length) - 1
       console.log(
         `============> '${this.state.spaces[arrayIndex].name}' CLICKED`,
@@ -136,7 +139,6 @@ class App extends Component {
   render() {
     const {classes} = this.props
 
-
     return (
       <React.Fragment>
         <CssBaseline />
@@ -144,34 +146,20 @@ class App extends Component {
 
         {this.state.view === 'home' && (
           <div>
-            <Fab
-              color="secondary"
-              aria-label="Search"
-              className={classes.fab}
-              onClick={this.clickHandler}
-              id="FABsearch">
-              <Search>Search</Search>
-            </Fab>
-            <Paper className={classes.paperHeader} />
-            <MainGallery 
-                onClick={this.clickHandler}
-                spaces={this.state.spaces}
-            />
+            <Paper className={classes.paperHeader}>
+              <Grid container className={classes.spacesGrid} spacing={32}>
+                <SearchForm
+                  spaces={this.state.spaces}
+                  onClick={this.clickHandler}
+                />
+              </Grid>
+            </Paper>
           </div>
         )}
 
         {this.state.view === 'details' && (
           <Grid container className={classes.spacesGrid} spacing={32}>
             <Details selectedSpace={this.state.selectedSpace} />
-          </Grid>
-        )}
-
-        {this.state.view === 'search' && (
-          <Grid container className={classes.spacesGrid} spacing={32}>
-            <SearchForm 
-            spaces={this.state.spaces} 
-            onClick={this.clickHandler}
-            />
           </Grid>
         )}
 

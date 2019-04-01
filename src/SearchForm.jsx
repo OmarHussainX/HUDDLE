@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {weightedScorer} from './WeightedScorer'
+import {weightedScorer} from './weightedScorer'
 
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'

@@ -1,5 +1,5 @@
 import spaceData from './test.json'
-import {weightedScorer} from './WeightedScorer'
+import {weightedScorer} from './weightedScorer'
 
 
 const searchState = {

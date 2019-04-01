@@ -278,3 +278,50 @@ test('Checking scoring on quadrant', () => {
 })
 
 // --------------------------------------------------
+
+
+
+// testing scoreOnAvailability
+
+test('Checking scoring on availability', () => {
+
+    // User-specified search criterion
+    const searchValue = {
+        monday: false,
+        tuesday: false,
+        wednesday: false,
+        thursday: false,
+        friday: true,
+        saturday: false,
+        sunday: false,
+    }
+
+    // Space object against which search criterion is to be checked
+    let testSpace = {...spaceData[0]}
+    testSpace.availability = {
+        "monday": true,
+        "tuesday": true,
+        "wednesday": true,
+        "thursday": true,
+        "friday": true,
+        "saturday": false,
+        "sunday": false
+    }
+
+    let matchValue = 0
+
+    // Call the search function with:
+    // - a reference to a space object 
+    // - user's search criterion
+    // Receive: a value indicating how well the space matches the criterion
+    matchValue = ScoreSpaces.scoreOnAvailability(testSpace, searchValue)
+    
+    // space should match the user's criterion!
+    expect(matchValue).toBeTruthy()
+    
+    // space should NOT match the user's criterion!
+    testSpace.availability.friday = false
+    expect(ScoreSpaces.scoreOnAvailability(testSpace, searchValue)).toBeFalsy()
+})
+
+// --------------------------------------------------

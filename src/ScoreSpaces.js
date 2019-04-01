@@ -105,12 +105,12 @@ class ScoreSpaces {
     
     returns a value (0 or 1) reflecting how well the space matches the specified criterion
     */
-   static scoreOnAddress(space, searchState) {
-    
-    if (searchState.streetInput === '') return 0
-    
-    return space.address.street.toLowerCase().includes(searchState.streetInput.toLowerCase()) ? 1 : 0
-}
+    static scoreOnAddress(space, searchState) {
+
+        if (searchState.streetInput === '') return 0
+
+        return space.address.street.toLowerCase().includes(searchState.streetInput.toLowerCase()) ? 1 : 0
+    }
 
 
 
@@ -121,12 +121,12 @@ class ScoreSpaces {
     
     returns a value (0 or 1) reflecting how well the space matches the specified criterion
     */
-   static scoreOnCity(space, searchState) {
-    
-    if (searchState.cityInput === '') return 0
-    
-    return space.address.city.toLowerCase().includes(searchState.cityInput.toLowerCase()) ? 1 : 0
-}
+    static scoreOnCity(space, searchState) {
+
+        if (searchState.cityInput === '') return 0
+
+        return space.address.city.toLowerCase().includes(searchState.cityInput.toLowerCase()) ? 1 : 0
+    }
 
 
 
@@ -137,107 +137,36 @@ class ScoreSpaces {
     
     returns a value (0 or 1) reflecting how well the space matches the specified criterion
     */
-   static scoreOnQuadrant(space, searchState) {
-    
-    if (searchState.quadrantInput === '') return 0
-    
-    return space.address.quadrant.toLowerCase().includes(searchState.quadrantInput.toLowerCase()) ? 1 : 0
-}
+    static scoreOnQuadrant(space, searchState) {
 
+        if (searchState.quadrantInput === '') return 0
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /*
-    filterByLocation takes three parameters:
-    - a reference to a collection of all spaces
-    - a string indicating the type of location search needed (quadrant, street, city)
-    - a string value to search for
-
-    performs a case insensitive search
-    returns an array of space Objects whose location matches the specified criteria
-    */
-   static filterByLocation(spaceData, searchType, searchString) {
-    let filteredSpaces = []
-
-    switch (searchType) {
-        case 'quadrant':
-        filteredSpaces = spaceData.filter(space => space.address.quadrant.toUpperCase() === searchString.toUpperCase())
-        break
-
-        case 'street':
-        case 'city':
-        filteredSpaces = spaceData.filter(space => space.address[searchType].toLowerCase().includes(searchString.toLowerCase()))
-        break
-
-        default:
+        return space.address.quadrant.toLowerCase().includes(searchState.quadrantInput.toLowerCase()) ? 1 : 0
     }
-    return filteredSpaces
-}
 
 
 
+    /* --------------------------------
+    scoreOnAvailability takes two parameters:
+    - a reference to a space object
+    - a searchState object with boolean properties:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /*
-    filterByAvailability takes two parameters:
-    - a reference to a collection of all spaces
-    - a search value which is guaranteed to be one of the days of the week
-
-    returns an array of space Objects whose availability matches the specified day
+            sunday: true|false,
+            monday: true|false,
+            tuesday: true|false,
+            wednesday: true|false,
+            thursday: true|false,
+            friday: true|false,
+            saturday: true|false,
+    
+    returns a value (0 or 1) reflecting how well the space matches the specified criterion
     */
-    static filterByAvailability(spaceData, day) {
-        let filteredSpaces = []
-        day = day.toLowerCase()
+    static scoreOnAvailability(space, searchState) {
 
-        switch (day) {
-            case 'sunday':
-            case 'monday':
-            case 'tuesday':
-            case 'wednesday':
-            case 'thursday':
-            case 'friday':
-            case 'saturday':
-            filteredSpaces = spaceData.filter(space => space.availability[day])
-            break
-
-            default:
-        }
-        return filteredSpaces
+        return null
     }
 }
+
 
 const scoreCalculators = [
     {
@@ -248,7 +177,7 @@ const scoreCalculators = [
         function: "scoreOnCapacity",
         weight: 0.5
     },
- ] 
+] 
 
 
 export {ScoreSpaces, scoreCalculators}

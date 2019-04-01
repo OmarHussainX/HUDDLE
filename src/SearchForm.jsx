@@ -134,13 +134,13 @@ class Search extends Component {
             panelExpanded: null,
             selectedDate: new Date('2019-03-25T15:30:00'),
             selectedEndDate: new Date('2019-03-25T17:45:00'),
-            sunday: false,
             monday: false,
             tuesday: false,
             wednesday: false,
             thursday: false,
             friday: false,
             saturday: false,
+            sunday: false,
             streetInput: '',
             cityInput: '',
             quadrantInput: '',
@@ -245,13 +245,13 @@ class Search extends Component {
             panelExpanded: null,
             selectedDate: new Date('2019-03-25T15:30:00'),
             selectedEndDate: new Date('2019-03-25T17:45:00'),
-            sunday: false,
             monday: false,
             tuesday: false,
             wednesday: false,
             thursday: false,
             friday: false,
             saturday: false,
+            sunday: false,
             streetInput: '',
             cityInput: '',
             quadrantInput: '',
@@ -274,7 +274,7 @@ class Search extends Component {
     
     render() {
         const { classes } = this.props
-        const { panelExpanded, sunday, monday, tuesday, wednesday, thursday, friday, saturday} = this.state
+        const { panelExpanded, monday, tuesday, wednesday, thursday, friday, saturday, sunday} = this.state
 
         return (
             <div className={classes.root}>
@@ -297,7 +297,9 @@ class Search extends Component {
                                         id: 'rateID',
                                     }}
                                 >
-                                    <MenuItem value={`Any`}>Any</MenuItem>             <MenuItem value={25}>$1-25</MenuItem>
+                                    <MenuItem value={`Any`}>Any</MenuItem>
+                                    <MenuItem value={0}><em>Free</em></MenuItem>
+                                    <MenuItem value={25}>$1-25</MenuItem>
                                     <MenuItem value={50}>$26-50</MenuItem>
                                     <MenuItem value={75}>$51-75</MenuItem>
                                     <MenuItem value={100}>Over $75</MenuItem>
@@ -391,20 +393,6 @@ class Search extends Component {
                                                         <Checkbox
                                                             classes={{
                                                                 root: classes.checkbox,
-                                                            }}
-                                                            checked={sunday}
-                                                            onChange={this.handleCheckedChange('sunday')}
-                                                            value="sunday"
-                                                        />
-                                                    }
-                                                    label="Sunday"
-                                                />
-                                                <FormControlLabel
-                                                    className={classes.formLabel}
-                                                    control={
-                                                        <Checkbox
-                                                            classes={{
-                                                                root: classes.checkbox,
                                                             }} checked={monday} 
                                                             onChange={this.handleCheckedChange('monday')} 
                                                             value="monday" />
@@ -475,6 +463,20 @@ class Search extends Component {
                                                             value="saturday" />
                                                     }
                                                     label="Saturday"
+                                                />
+                                                <FormControlLabel
+                                                    className={classes.formLabel}
+                                                    control={
+                                                        <Checkbox
+                                                            classes={{
+                                                                root: classes.checkbox,
+                                                            }}
+                                                            checked={sunday}
+                                                            onChange={this.handleCheckedChange('sunday')}
+                                                            value="sunday"
+                                                        />
+                                                    }
+                                                    label="Sunday"
                                                 />
                                             </FormGroup>
                                         </FormControl>

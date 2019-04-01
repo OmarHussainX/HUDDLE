@@ -67,7 +67,7 @@ class SpaceCard extends Component {
                         <CardContent className={classes.cardContent}>
                             {/* {rate === 0 ? <Chip label="FREE" className={classes.chip} /> : ''} */}
                             <Typography gutterBottom variant="h5" component="h2" className={classes.h5}>
-                                [{Math.round(score * 100)}%] {name}
+                              {name}
                             </Typography>
                             <Typography gutterBottom>
                                 <strong>{rate ? `$${rate}/hr ` : ''}</strong>

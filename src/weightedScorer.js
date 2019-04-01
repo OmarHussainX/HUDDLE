@@ -13,8 +13,8 @@ import {ScoreSpaces, scoreCalculators} from './ScoreSpaces'
 
 function weightedScorer(searchState) {
     console.log('------------inside weightedScorer!')
-    console.log(`user's 'rate' search criterion: ${searchState.rate}`)
-    console.log(`user's 'capacity' search criterion: ${searchState.capacity}`)
+    console.log(`user's 'rate' search criterion: ${searchState.rateInput}`)
+    console.log(`user's 'capacity' search criterion: ${searchState.capacityInput}`)
 
 
     // iterate over all spaces, updating the score of each

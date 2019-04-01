@@ -4,12 +4,12 @@ import {weightedScorer} from './weightedScorer'
 
 const searchState = {
 
-    // Array of all available spaces
+    // Master array of all available spaces
     spaces: spaceData,
 
     // Search inputs (dropdowns, date/time pickers, checkboxes, textfields)
-    rate: '',
-    capacity: '',
+    rateInput: '',
+    capacityInput: '',
     panelExpanded: null,
     selectedDate: new Date('2019-03-25T15:30:00'),
     selectedEndDate: new Date('2019-03-25T17:45:00'),
@@ -22,7 +22,7 @@ const searchState = {
     saturday: false,
     streetInput: '',
     cityInput: '',
-    quadrant: '',
+    quadrantInput: '',
 }
 
 
@@ -39,8 +39,8 @@ test('Checking instantiation', () => {
 test('Checking score calculation', () => {
 
     let testState = searchState
-    testState.capacity = 10
-    testState.rate = 25
+    testState.capacityInput = 10
+    testState.rateInput = 25
 
 
     const newState = weightedScorer(testState)
@@ -49,9 +49,6 @@ test('Checking score calculation', () => {
     newState.spaces.forEach(space => {
         console.log(`------ ${space.name} rate: ${space.score}`)
     })
-
-    // expect(newState.spaces[0].rate).toEqual(456)
-    // expect(testState.spaces[0].rate).toEqual(0)
 
 })
 

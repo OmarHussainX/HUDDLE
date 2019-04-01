@@ -129,8 +129,8 @@ class Search extends Component {
             spaces: this.props.spaces,
 
             // Search inputs (dropdowns, date/time pickers, checkboxes, textfields)
-            rate: '',
-            capacity: '',
+            rateInput: '',
+            capacityInput: '',
             panelExpanded: null,
             selectedDate: new Date('2019-03-25T15:30:00'),
             selectedEndDate: new Date('2019-03-25T17:45:00'),
@@ -143,7 +143,7 @@ class Search extends Component {
             saturday: false,
             streetInput: '',
             cityInput: '',
-            quadrant: '',
+            quadrantInput: '',
         }
     }
 
@@ -157,9 +157,9 @@ class Search extends Component {
         })
 
         switch(name) {
-            case 'rate':
-            case 'capacity':
-            // const searchType = name === 'rate' ? 'scoreOnRate' : 'scoreOnCapacity'
+            case 'rateInput':
+            case 'capacityInput':
+            // const searchType = name === 'rateInput' ? 'scoreOnRate' : 'scoreOnCapacity'
 
             // create a new search object, copying all search criteria from state
             // and then update the object with the search criterion from event.target
@@ -240,8 +240,8 @@ class Search extends Component {
 
         this.setState({
             spaces: this.props.spaces,
-            rate: '',
-            capacity: '',
+            rateInput: '',
+            capacityInput: '',
             panelExpanded: null,
             selectedDate: new Date('2019-03-25T15:30:00'),
             selectedEndDate: new Date('2019-03-25T17:45:00'),
@@ -254,7 +254,7 @@ class Search extends Component {
             saturday: false,
             streetInput: '',
             cityInput: '',
-            quadrant: '',
+            quadrantInput: '',
         })
         break
 
@@ -290,10 +290,10 @@ class Search extends Component {
                                     Rate
                                 </InputLabel>
                                 <Select
-                                    value={this.state.rate}
+                                    value={this.state.rateInput}
                                     onChange={this.handleChange}
                                     inputProps={{
-                                        name: 'rate',
+                                        name: 'rateInput',
                                         id: 'rateID',
                                     }}
                                 >
@@ -312,10 +312,10 @@ class Search extends Component {
                                     Capacity
                                 </InputLabel>
                                 <Select
-                                    value={this.state.capacity}
+                                    value={this.state.capacityInput}
                                     onChange={this.handleChange}
                                     inputProps={{
-                                        name: 'capacity',
+                                        name: 'capacityInput',
                                         id: 'capacityID',
                                     }}
                                 >
@@ -519,11 +519,11 @@ class Search extends Component {
                                             </InputLabel>
                                             <Select
                                                 inputProps={{
-                                                    name: 'quadrant',
+                                                    name: 'quadrantInput',
                                                     id: 'quadrantID',
                                                 }}
                                                 onChange={this.handleChange}
-                                                value={this.state.quadrant}
+                                                value={this.state.quadrantInput}
                                             >
                                                 <MenuItem value={'NW'}>NW</MenuItem>
                                                 <MenuItem value={'SW'}>SW</MenuItem>

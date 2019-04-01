@@ -3,7 +3,7 @@ class ScoreSpaces {
     /* --------------------------------
     scoreOnRate takes two parameters:
     - a reference to a space object
-    - a searchState object with property 'rate', guaranteed to be one of:
+    - a searchState object with property 'rateInput', guaranteed to be one of:
       0     ( free spaces )
       25    ( 1-25 range )
       50    ( 26-50 range )
@@ -13,7 +13,7 @@ class ScoreSpaces {
     returns a value (0 or 1) reflecting how well the space matches the specified criterion
     */
     static scoreOnRate(space, searchState) {
-        const searchValue = parseInt(searchState.rate)
+        const searchValue = parseInt(searchState.rateInput)
         let scoreValue = 0
 
         switch (searchValue) {
@@ -44,7 +44,7 @@ class ScoreSpaces {
 
             // user hasn't set/doesn't care about this criterion
             default:
-            // console.log(`==========default case!! searchState.rate: ${searchState.rate}, searchValue: ${searchValue}`)
+            // console.log(`==========default case!! searchState.rateInput: ${searchState.rateInput}, searchValue: ${searchValue}`)
         }
         // console.log(`----- Yo! ${space.name} gets a value of ${scoreValue} for 'rate range ${searchValue}'`)
         return scoreValue
@@ -55,7 +55,7 @@ class ScoreSpaces {
     /* --------------------------------
     scoreOnCapacity takes two parameters:
     - a reference to a space object
-    - a searchState object with property 'capacity', guaranteed to be one of:
+    - a searchState object with property 'capacityInput', guaranteed to be one of:
       5     ( 1-5 range )
       10    ( 6-10 range )
       15    ( 11-15 range )
@@ -64,7 +64,7 @@ class ScoreSpaces {
     returns a value (0 or 1) reflecting how well the space matches the specified criterion
     */
     static scoreOnCapacity(space, searchState) {
-        const searchValue = parseInt(searchState.capacity)
+        const searchValue = parseInt(searchState.capacityInput)
         let scoreValue = 0
 
         switch (searchValue) {
@@ -90,7 +90,7 @@ class ScoreSpaces {
 
             // user hasn't set/doesn't care about this criterion
             default:
-            // console.log(`==========default case!! searchState.capacity: ${searchState.capacity}, searchValue: ${searchValue}`)
+            // console.log(`==========default case!! searchState.capacityInput: ${searchState.capacityInput}, searchValue: ${searchValue}`)
         }
         // console.log(`----- Yo! ${space.name} gets a value of ${scoreValue} for 'capacity range ${searchValue}'`)
         return scoreValue
@@ -99,7 +99,7 @@ class ScoreSpaces {
 
 
     /* --------------------------------
-    searchValue takes two parameters:
+    scoreOnAddress takes two parameters:
     - a reference to a space object
     - a searchState object with property 'streetInput' - a string value to search for
     
@@ -111,6 +111,50 @@ class ScoreSpaces {
     
     return space.address.street.toLowerCase().includes(searchState.streetInput.toLowerCase()) ? 1 : 0
 }
+
+
+
+    /* --------------------------------
+    scoreOnCity takes two parameters:
+    - a reference to a space object
+    - a searchState object with property 'cityInput' - a string value to search for
+    
+    returns a value (0 or 1) reflecting how well the space matches the specified criterion
+    */
+   static scoreOnCity(space, searchState) {
+    
+    if (searchState.cityInput === '') return 0
+    
+    return space.address.city.toLowerCase().includes(searchState.cityInput.toLowerCase()) ? 1 : 0
+}
+
+
+
+    /* --------------------------------
+    scoreOnQuadrant takes two parameters:
+    - a reference to a space object
+    - a searchState object with property 'quadrantInput' - a string value to search for
+    
+    returns a value (0 or 1) reflecting how well the space matches the specified criterion
+    */
+   static scoreOnQuadrant(space, searchState) {
+    
+    if (searchState.quadrantInput === '') return 0
+    
+    return space.address.quadrant.toLowerCase().includes(searchState.quadrantInput.toLowerCase()) ? 1 : 0
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

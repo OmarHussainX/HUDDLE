@@ -35,6 +35,7 @@ const styles = theme => ({
     height: '300px',
     minHeight: '300px',
     marginBottom: '20px',
+    borderRadius: '0px',
   },
   container: {
     background: 'white',

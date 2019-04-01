@@ -32,9 +32,9 @@ const styles = theme => ({
     padding: '50px',
     // NOTE: for some reason if both height & minHeight aren't set, it causes a
     // gap to appear all along the right!!
-    height: '400px',
-    minHeight: '400px',
-    marginBottom: '70px',
+    height: '300px',
+    minHeight: '300px',
+    marginBottom: '20px',
   },
   container: {
     background: 'white',

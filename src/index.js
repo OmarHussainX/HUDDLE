@@ -8,12 +8,14 @@ import Contact from './Contact'
 import About from './About'
 import Details from './Details'
 import PageNotFound from './PageNotFound'
-import Nav from './Nav'
+import PersistentDrawerLeft from './PersistentDrawerLeft'
+import VerticalSpace from './VerticalSpace'
 
 const routes = (
   <BrowserRouter>
     <div>
-      <Nav />
+      <PersistentDrawerLeft />
+      <VerticalSpace />
       <Switch>
         <Route path="/" component={App} exact={true} />
         <Route path="/login" component={Login} />

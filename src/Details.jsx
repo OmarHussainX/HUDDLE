@@ -13,7 +13,6 @@ import grey from '@material-ui/core/colors/grey'
 import Chip from '@material-ui/core/Chip'
 import DetailsTable from './DetailsTable'
 import BookSpace from './BookSpace'
-// import green from '@material-ui/core/colors/green'
 import CssBaseline from '@material-ui/core/CssBaseline'
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews)
@@ -120,31 +119,30 @@ class Details extends Component {
     }
   }
 
-    componentDidMount() {
-        let latitude = parseFloat(this.props.location.state.selectedSpace.lat)
-        let longitude = parseFloat(this.props.location.state.selectedSpace.long)
+  componentDidMount() {
+    let latitude = parseFloat(this.props.location.state.selectedSpace.lat)
+    let longitude = parseFloat(this.props.location.state.selectedSpace.long)
 
-        if (isNaN(latitude) || isNaN(longitude)) {
-            latitude = 37.4220041
-            longitude = -122.0862462
-        }
-
-        let map = new window.google.maps.Map(document.getElementById('map'), {
-            center: { lat: latitude, lng: longitude },
-            zoom: 18,
-        })
-
-        let marker = new window.google.maps.Marker({
-            position: { lat: latitude, lng: longitude },
-            map: map,
-            animation: window.google.maps.Animation.DROP,
-            title: this.props.location.state.selectedSpace.name
-        })
-
-        marker.setMap(map)  //is this needed? Seems OK even without it... :/
+    if (isNaN(latitude) || isNaN(longitude)) {
+      latitude = 37.4220041
+      longitude = -122.0862462
     }
 
-  
+    let map = new window.google.maps.Map(document.getElementById('map'), {
+      center: {lat: latitude, lng: longitude},
+      zoom: 18,
+    })
+
+    let marker = new window.google.maps.Marker({
+      position: {lat: latitude, lng: longitude},
+      map: map,
+      animation: window.google.maps.Animation.DROP,
+      title: this.props.location.state.selectedSpace.name,
+    })
+
+    marker.setMap(map) //is this needed? Seems OK even without it... :/
+  }
+
   handleNext = () => {
     this.setState(prevState => ({
       activeStep: prevState.activeStep + 1,
@@ -168,6 +166,31 @@ class Details extends Component {
     const maxSteps = selectedSpace.img.length
 
     return (
+<<<<<<< HEAD
+      <div>
+        <CssBaseline />
+        <div className={classes.root}>
+          <div className={classes.container}>
+            <main className={classes.main}>
+              <Paper className={classes.base} elevation={1}>
+                <AutoPlaySwipeableViews
+                  axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+                  index={activeStep}
+                  onChangeIndex={this.handleStepChange}
+                  enableMouseEvents>
+                  {selectedSpace.img.map((step, index) => (
+                    <div key={step}>
+                      {Math.abs(activeStep - index) <= 2 ? (
+                        <img
+                          className={classes.img}
+                          src={`/images/spaces/${selectedSpace.id}/${step}`}
+                          alt={''}
+                        />
+                      ) : null}
+                    </div>
+                  ))}
+                </AutoPlaySwipeableViews>
+=======
         <React.Fragment>
         <CssBaseline />
       <div className={classes.root}>
@@ -191,82 +214,82 @@ class Details extends Component {
                   </div>
                 ))}
               </AutoPlaySwipeableViews>
+>>>>>>> master
 
-              {/* Do not render carousel controls if there is only one image */}
-              {maxSteps > 1 && (
-                <MobileStepper
-                  steps={maxSteps}
-                  position="static"
-                  activeStep={activeStep}
-                  className={classes.mobileStepper}
-                  nextButton={
-                    <Button
-                      size="small"
-                      onClick={this.handleNext}
-                      disabled={activeStep === maxSteps - 1}>
-                      Next
-                      {theme.direction === 'rtl' ? (
-                        <KeyboardArrowLeft />
-                      ) : (
-                        <KeyboardArrowRight />
-                      )}
-                    </Button>
-                  }
-                  backButton={
-                    <Button
-                      size="small"
-                      onClick={this.handleBack}
-                      disabled={activeStep === 0}>
-                      {theme.direction === 'rtl' ? (
-                        <KeyboardArrowRight />
-                      ) : (
-                        <KeyboardArrowLeft />
-                      )}
-                      Back
-                    </Button>
-                  }
-                />
-              )}
+                {/* Do not render carousel controls if there is only one image */}
+                {maxSteps > 1 && (
+                  <MobileStepper
+                    steps={maxSteps}
+                    position="static"
+                    activeStep={activeStep}
+                    className={classes.mobileStepper}
+                    nextButton={
+                      <Button
+                        size="small"
+                        onClick={this.handleNext}
+                        disabled={activeStep === maxSteps - 1}>
+                        Next
+                        {theme.direction === 'rtl' ? (
+                          <KeyboardArrowLeft />
+                        ) : (
+                          <KeyboardArrowRight />
+                        )}
+                      </Button>
+                    }
+                    backButton={
+                      <Button
+                        size="small"
+                        onClick={this.handleBack}
+                        disabled={activeStep === 0}>
+                        {theme.direction === 'rtl' ? (
+                          <KeyboardArrowRight />
+                        ) : (
+                          <KeyboardArrowLeft />
+                        )}
+                        Back
+                      </Button>
+                    }
+                  />
+                )}
 
-              <Typography variant="h6" className={classes.h6}>
-                {selectedSpace.name}
-              </Typography>
+                <Typography variant="h6" className={classes.h6}>
+                  {selectedSpace.name}
+                </Typography>
 
-              {selectedSpace.rate === 0 ? (
-                <Chip label="FREE" className={classes.chip} />
-              ) : (
-                <Chip
-                  label={`$${selectedSpace.rate}/hr `}
-                  className={classes.chip}
-                />
-              )}
+                {selectedSpace.rate === 0 ? (
+                  <Chip label="FREE" className={classes.chip} />
+                ) : (
+                  <Chip
+                    label={`$${selectedSpace.rate}/hr `}
+                    className={classes.chip}
+                  />
+                )}
 
-              <Typography gutterBottom>
-                {`Capacity: ${selectedSpace.capacity}`}
-                <em>&nbsp;&nbsp;({selectedSpace.venue_type})</em>
-              </Typography>
+                <Typography gutterBottom>
+                  {`Capacity: ${selectedSpace.capacity}`}
+                  <em>&nbsp;&nbsp;({selectedSpace.venue_type})</em>
+                </Typography>
 
                 {/* Booking button - launches booking modal */}
                 <div style={{textAlign: 'center'}}>
-                    <BookSpace selectedSpace={selectedSpace} />
+                  <BookSpace selectedSpace={selectedSpace} />
                 </div>
 
-              <DetailsTable
-                address={selectedSpace.address}
-                link={selectedSpace.contact.website ? selectedSpace.contact.website : ''}
-                phone={selectedSpace.contact.phone}
-                availability={selectedSpace.availability}
-              />
-
-              <Typography>{selectedSpace.description}</Typography>
-            </Paper>
-          </main>
-          <div
-            id="map"
-            className={classes.map}
-            style={{
-            }}
-          />
+                <DetailsTable
+                  address={selectedSpace.address}
+                  link={
+                    selectedSpace.contact.website
+                      ? selectedSpace.contact.website
+                      : ''
+                  }
+                  phone={selectedSpace.contact.phone}
+                  availability={selectedSpace.availability}
+                />
+                <Typography>{selectedSpace.description}</Typography>
+              </Paper>
+            </main>
+            <div id="map" className={classes.map} style={{}} />
+          </div>
         </div>
       </div>
       </React.Fragment>

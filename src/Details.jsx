@@ -67,7 +67,7 @@ const styles = theme => ({
       marginLeft: 'auto',
       marginRight: 'auto',
       flexWrap: 'wrap',
-      width: '400px',
+      width: '340px',
       alignItems: 'stretch',
     },
     [theme.breakpoints.up('md')]: {
@@ -112,10 +112,18 @@ class Details extends Component {
       latitude = 37.4220041
       longitude = -122.0862462
     }
-    new window.google.maps.Map(document.getElementById('map'), {
+
+    let map = new window.google.maps.Map(document.getElementById('map'), {
       center: {lat: latitude, lng: longitude},
       zoom: 15,
     })
+
+    let marker = new window.google.maps.Marker({
+        position: {lat: latitude, lng: longitude},
+        map: map,
+        animation: window.google.maps.Animation.DROP,
+        title: this.props.selectedSpace.name
+      })
   }
 
   handleNext = () => {

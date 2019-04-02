@@ -34,9 +34,9 @@
     "contact": {
       "phone": "403-716-3636",
       "email": "",
-      "website": ""
+      "website": "http://www.sunlife.ca/E/search/branch/default.aspx?BID=B108"
     },
-    "score": 1
+    "score": 0
   },
   {
     "id": 2,
@@ -49,8 +49,8 @@
     ],
     "description": "Do your best work with tech-powered, professional workspace in downtown Calgary at 3rd Street and 4th Avenue. Situated in a striking two-tower complex, Calgary Place positions you in the city's flourishing downtown core among a vibrant mix of corporations focused in energy, finance and more. It's directly accessible to the Plus 15 walkway connecting you to all of the major office buildings in the city.",
     "venue_type": "Office",
-    "capacity": 40,
-    "rate": 64,
+    "capacity": 32,
+    "rate": 95,
     "availability": {
       "monday": true,
       "tuesday": true,
@@ -68,14 +68,14 @@
       "postal_code": "T2P 0L3",
       "quadrant": "SW"
     },
-    "lat": 51.0488323,
-    "long": -114.1548051,
+    "lat": 51.0478868,
+    "long": -114.0682998,
     "contact": {
       "phone": "587-393-6400",
       "email": "",
-      "website": ""
+      "website": "https://creit.ca/Leasing-Portfolio/CREIT-Properties/Alberta-(WES)/Calgary-Place---Bldg-1.aspx"
     },
-    "score": 1
+    "score": 0
   },
   {
     "id": 3,
@@ -88,8 +88,8 @@
     ],
     "description": "Establish a strong business presence with modern, professional workspace in downtown Calgary. Situated in a prominent 32-storey office tower at 4th Street and 4th Avenue, Altius Centre houses a dynamic mix of companies in industries ranging from communications to energy. Its direct connection to the Plus 15 walkway links you to most major buildings in the central business district giving you easy access to countless amenities and resources within a few miles of your workspace.",
     "venue_type": "Office",
-    "capacity": 32,
-    "rate": 8,
+    "capacity": 69,
+    "rate": 18,
     "availability": {
       "monday": true,
       "tuesday": true,
@@ -112,9 +112,9 @@
     "contact": {
       "phone": "587-393-5200",
       "email": "",
-      "website": ""
+      "website": "https://creit.ca/Leasing-Portfolio/CREIT-Properties/Alberta-(WES)/Altius-Centre.aspx"
     },
-    "score": 1
+    "score": 0
   },
   {
     "id": 4,
@@ -127,8 +127,8 @@
     ],
     "description": "Canada Trust business centre is a premier place for your business in Calgary's commercial core. Companies of all sizes from industries including insurance, banking and oil and gas are all in walking distance. The area nearby C-Train station provides light rail access across the entire city.",
     "venue_type": "Office",
-    "capacity": 85,
-    "rate": 15,
+    "capacity": 70,
+    "rate": 20,
     "availability": {
       "monday": true,
       "tuesday": true,
@@ -153,7 +153,7 @@
       "email": "",
       "website": ""
     },
-    "score": 1
+    "score": 0
   },
   {
     "id": 5,
@@ -166,8 +166,8 @@
     ],
     "description": "Hanson Square is located on the prominent corner position at uptown 17th Avenue SW and 8th Street SW. The center is walking distance to a wide variety of high end restaurants, pubs and coffee shops. Stay in shape with the help of the GoodLife Fitness right across the street, and a variety of health-conscious food establishments within the block. There are multiple bus routes accessing downtown in mere minutes, or you could enjoy a beautiful 15 minute walk to the downtown core.",
     "venue_type": "Office",
-    "capacity": 35,
-    "rate": 70,
+    "capacity": 51,
+    "rate": 29,
     "availability": {
       "monday": true,
       "tuesday": true,
@@ -192,7 +192,7 @@
       "email": "",
       "website": ""
     },
-    "score": 1
+    "score": 0
   },
   {
     "id": 6,
@@ -205,8 +205,8 @@
     ],
     "description": "At the heart of downtown Calgary, this stunning location offers modern designed workspace for your business. Check emails, meet with clients and tackle big projects in private office space or open, coworking space equipped with all the tools your business needs. Calgary is home to a dynamic mix of industries ranging from finance and technology to energy based corporations –making it the perfect place to connect with like-minded professionals.",
     "venue_type": "Office",
-    "capacity": 67,
-    "rate": 85,
+    "capacity": 25,
+    "rate": 95,
     "availability": {
       "monday": true,
       "tuesday": true,
@@ -231,7 +231,7 @@
       "email": "",
       "website": ""
     },
-    "score": 1
+    "score": 0
   },
   {
     "id": 7,
@@ -245,8 +245,8 @@
     ],
     "description": "Located near Mount Royal College with exceptional views of downtown and the Rocky Mountains, Garrison Green is a quick walk away from a variety of shops and restaurants and just a short drive from Marda Loop and Signal Hill Centre.Many of Garrison Green's offices and suites offer access to semi-private outdoor patios.",
     "venue_type": "Office",
-    "capacity": 30,
-    "rate": 58,
+    "capacity": 2,
+    "rate": 91,
     "availability": {
       "monday": true,
       "tuesday": true,
@@ -271,7 +271,7 @@
       "email": "",
       "website": ""
     },
-    "score": 1
+    "score": 0
   },
   {
     "id": 8,
@@ -284,8 +284,8 @@
     ],
     "description": "The complex includes two buildings built in 1973 but recently renovated with new elevators and common areas. The property includes a conference centre seating up to 100 people and boasts one of the best parking ratios in the city. Strategically located just minutes from downtown, the centre offers easy accessibility as it's next to two major roadways and the Chinook Light Rapid Transit station is only two blocks away.",
     "venue_type": "Office",
-    "capacity": 22,
-    "rate": 82,
+    "capacity": 28,
+    "rate": 5,
     "availability": {
       "monday": true,
       "tuesday": true,
@@ -310,7 +310,7 @@
       "email": "",
       "website": ""
     },
-    "score": 1
+    "score": 0
   },
   {
     "id": 9,
@@ -323,8 +323,8 @@
     ],
     "description": "The business centre is in the twin-towers complex that is connected by the Plus 15 skywalk - a climate-controlled covered walkway 15ft above ground that links offices around the city. There is a health club in the east tower, the Calgary Transit station is a block from the building and the airport is only a 20-minute drive away.",
     "venue_type": "Office",
-    "capacity": 87,
-    "rate": 97,
+    "capacity": 53,
+    "rate": 12,
     "availability": {
       "monday": true,
       "tuesday": true,
@@ -349,7 +349,7 @@
       "email": "",
       "website": ""
     },
-    "score": 1
+    "score": 0
   },
   {
     "id": 10,
@@ -362,8 +362,8 @@
     ],
     "description": "Uplifting views of downtown, Nose Hill, Canada Olympic Park and the Rocky Mountains. Offering secure underground parking, the building is right next door to a variety of shops, restaurants and hotels. Clients have access to a large outdoor patio - the perfect place to hold informal meetings and find flashes of inspiration.",
     "venue_type": "Office",
-    "capacity": 94,
-    "rate": 98,
+    "capacity": 13,
+    "rate": 45,
     "availability": {
       "monday": true,
       "tuesday": true,
@@ -388,7 +388,7 @@
       "email": "",
       "website": ""
     },
-    "score": 1
+    "score": 0
   },
   {
     "id": 11,
@@ -401,8 +401,8 @@
     ],
     "description": "The Crowfoot business center offers a suburban NW Calgary location, close to surrounding residential districts and complete with its own surface and underground parking. Within the four-story building, you'll find a mixture of retailers and service businesses, as well as other office users. Just across the street, the Crowfoot Crossing Retail Center puts more than 350 stores and restaurants on your doorstep.",
     "venue_type": "Office",
-    "capacity": 47,
-    "rate": 80,
+    "capacity": 1,
+    "rate": 87,
     "availability": {
       "monday": true,
       "tuesday": true,
@@ -427,7 +427,7 @@
       "email": "",
       "website": ""
     },
-    "score": 1
+    "score": 0
   },
   {
     "id": 12,
@@ -440,8 +440,8 @@
     ],
     "description": "Ten minutes south of Calgary's core near Deerfoot and Glenmore Trail, this prestigious new building resides in an area rapidly emerging as Calgary's premier office and upscale residential community. The Quarry Park centre has lots of free surface parking for your requirements. Right across the street is The Market at Quarry Park, whose many amenities include a YMCA, grocery store, restaurants, coffee shops, daycare, drycleaner and a bank.",
     "venue_type": "Office",
-    "capacity": 24,
-    "rate": 78,
+    "capacity": 43,
+    "rate": 71,
     "availability": {
       "monday": true,
       "tuesday": true,
@@ -466,7 +466,7 @@
       "email": "",
       "website": ""
     },
-    "score": 1
+    "score": 0
   },
   {
     "id": 13,
@@ -479,8 +479,8 @@
     ],
     "description": "Our spacious facilities offer a variety of meeting rooms, most of which are enhanced with natural light. Friendly, experienced staff will ensure that the details you have arranged will be completed just as you have requested.",
     "venue_type": "Hotel",
-    "capacity": 66,
-    "rate": 83,
+    "capacity": 1,
+    "rate": 56,
     "availability": {
       "monday": true,
       "tuesday": true,
@@ -505,7 +505,7 @@
       "email": "info@ramadacalgary.com",
       "website": "https://ramadacalgary.com/meetings/facilities/"
     },
-    "score": 1
+    "score": 0
   },
   {
     "id": 14,
@@ -518,8 +518,8 @@
     ],
     "description": "Stunning venues and superior service for your next meeting or event in Calgary. Delta Hotels Calgary Downtown provides not only a central location, but all of the planning resources necessary for a successful event.",
     "venue_type": "Hotel",
-    "capacity": 57,
-    "rate": 47,
+    "capacity": 1,
+    "rate": 10,
     "availability": {
       "monday": true,
       "tuesday": true,
@@ -544,7 +544,7 @@
       "email": "",
       "website": "https://www.marriott.com/hotels/event-planning/business-meeting/yycbv-delta-hotels-calgary-downtown/"
     },
-    "score": 1
+    "score": 0
   },
   {
     "id": 15,
@@ -556,8 +556,8 @@
     ],
     "description": "More than 19, 000-square-feet of meeting space and 14 function rooms that are designed to meet the needs of 21st century meetings.",
     "venue_type": "Hotel",
-    "capacity": 53,
-    "rate": 99,
+    "capacity": 7,
+    "rate": 83,
     "availability": {
       "monday": true,
       "tuesday": true,
@@ -582,7 +582,7 @@
       "email": "palliserhotel@fairmont.com",
       "website": "https://www.fairmont.com/palliser-calgary/meetings-weddings/meetings/function-rooms/"
     },
-    "score": 1
+    "score": 0
   },
   {
     "id": 16,
@@ -595,8 +595,8 @@
     ],
     "description": "25 state-of-the-art meeting venues encompassing 26,000 square feet of flexible space, can accommodate professional and social events of any size. The Metropolitan Convention Centre is adjacent to the hotel and offers an additional 18,000 square feet for gatherings of impressive proportions.",
     "venue_type": "Hotel",
-    "capacity": 25,
-    "rate": 57,
+    "capacity": 11,
+    "rate": 69,
     "availability": {
       "monday": true,
       "tuesday": true,
@@ -621,7 +621,7 @@
       "email": "",
       "website": "https://www.marriott.com/hotels/event-planning/business-meeting/yycwi-the-westin-calgary/"
     },
-    "score": 1
+    "score": 0
   },
   {
     "id": 17,
@@ -634,8 +634,8 @@
     ],
     "description": "From all-day corporate seminars to weddings and group socials, can accommodate almost any function. Experienced meeting planners can guide you through the many options available, and personalize a package to suit your budget.",
     "venue_type": "Hotel",
-    "capacity": 60,
-    "rate": 29,
+    "capacity": 13,
+    "rate": 63,
     "availability": {
       "monday": true,
       "tuesday": true,
@@ -660,7 +660,7 @@
       "email": "",
       "website": "https://www.sandmanhotels.com/meetings-banquets/"
     },
-    "score": 1
+    "score": 0
   },
   {
     "id": 18,
@@ -673,8 +673,8 @@
     ],
     "description": "Featuring over 33,000 square feet of state-of-the-art function space, elegant venues designed to captivate and motivate your guest. Refined meeting rooms feature high-tech equipment, audiovisual gear, Wi-Fi, modern décor, and a full service business center with print, fax, copy, scan, and shipping services.",
     "venue_type": "Hotel",
-    "capacity": 90,
-    "rate": 4,
+    "capacity": 38,
+    "rate": 63,
     "availability": {
       "monday": true,
       "tuesday": true,
@@ -699,7 +699,7 @@
       "email": "salescalrc@hyatt.com",
       "website": "https://www.hyatt.com/en-US/hotel/canada/hyatt-regency-calgary/calrc/special-events"
     },
-    "score": 1
+    "score": 0
   },
   {
     "id": 19,
@@ -712,8 +712,8 @@
     ],
     "description": "Located in the heart of downtown Calgary, the Calgary Marriott Downtown offers stunning event spaces, newly transformed guest rooms and upscale conveniences.",
     "venue_type": "Hotel",
-    "capacity": 64,
-    "rate": 21,
+    "capacity": 63,
+    "rate": 75,
     "availability": {
       "monday": true,
       "tuesday": true,
@@ -738,7 +738,7 @@
       "email": "",
       "website": "https://www.marriott.com/hotels/event-planning/business-meeting/yycdt-calgary-marriott-downtown-hotel/"
     },
-    "score": 1
+    "score": 0
   },
   {
     "id": 20,
@@ -751,8 +751,8 @@
     ],
     "description": "Hotel Arts fuses style and sophistication to create an extraordinary setting for your next meeting or event. Wide array of conference spaces, artful settings and exceptional culinary options designed to both inspire and delight.",
     "venue_type": "Hotel",
-    "capacity": 37,
-    "rate": 14,
+    "capacity": 38,
+    "rate": 68,
     "availability": {
       "monday": true,
       "tuesday": true,
@@ -777,7 +777,7 @@
       "email": "info@hotelarts.ca",
       "website": "https://www.hotelarts.ca/corporate-meetings/"
     },
-    "score": 1
+    "score": 0
   },
   {
     "id": 21,
@@ -785,7 +785,7 @@
     "img": [
       "1Township.jpg"
     ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...",
+    "description": "One of Calgary's top restaurants, offering a number of Private Dining Rooms to suit your group event needs",
     "venue_type": "Restaurant",
     "capacity": 5,
     "rate": 0,
@@ -811,9 +811,9 @@
     "contact": {
       "phone": "403-265-3837",
       "email": "amanda@township24.com",
-      "website": ""
+      "website": "https://townshipbarandgrill.com/contact-us/"
     },
-    "score": 1
+    "score": 0
   },
   {
     "id": 22,
@@ -822,7 +822,7 @@
       "1606269_597759536973601_213343081_o.jpg",
       "o.jpg"
     ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...",
+    "description": "Smart beer hall featuring craft beers, cocktails & pub grub, plus bowling, foosball & other games.",
     "venue_type": "Restaurant",
     "capacity": 7,
     "rate": 0,
@@ -848,9 +848,9 @@
     "contact": {
       "phone": "403-474-2739",
       "email": "",
-      "website": ""
+      "website": "http://ntnl.ca/national-10th/national-10th/contact-ntnl10"
     },
-    "score": 1
+    "score": 0
   },
   {
     "id": 23,
@@ -859,7 +859,7 @@
       "Craft-Beer-Market-Calgary1.jpg",
       "Craft-Interior.jpg"
     ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...",
+    "description": "Whether joining for lunch, brunch, dinner, drinks or a special occasion, they look forward to hosting you.",
     "venue_type": "Restaurant",
     "capacity": 7,
     "rate": 0,
@@ -885,9 +885,9 @@
     "contact": {
       "phone": "403-514-2337",
       "email": "kylie.mcgarvey@craftbeermarket.ca",
-      "website": ""
+      "website": "https://www.craftbeermarket.ca/calgary/downtown/bookanevent"
     },
-    "score": 1
+    "score": 0
   },
   {
     "id": 24,
@@ -895,7 +895,7 @@
     "img": [
       "4Lake.jpg"
     ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...",
+    "description": "Host your next Calgary event or meeting at The Lake House on Lake Bonavista, with space for up to 250 guests and a scenic view of the water.",
     "venue_type": "Restaurant",
     "capacity": 21,
     "rate": 19,
@@ -921,9 +921,9 @@
     "contact": {
       "phone": "403-225-6525",
       "email": "lakehouse.events@crmr.com",
-      "website": ""
+      "website": "https://lakehousecalgary.com/events/"
     },
-    "score": 1
+    "score": 0
   },
   {
     "id": 25,
@@ -931,7 +931,7 @@
     "img": [
       "5Grey.jpg"
     ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...",
+    "description": "Whether you want to host a course or seminar, a sales conference, a fundraiser, or have another purpose for needing Calgary meeting space, they have excellent conference room facilities, audiovisual equipment, all in a great location. Fantastic team members who can help you plan and orchestrate your event flawlessly.",
     "venue_type": "Casino",
     "capacity": 200,
     "rate": 15,
@@ -957,9 +957,9 @@
     "contact": {
       "phone": "844-719-8777",
       "email": "",
-      "website": ""
+      "website": "https://www.greyeagleresortandcasino.ca/about-us/meeting-rooms-conference-room-space-calgary/"
     },
-    "score": 1
+    "score": 0
   },
   {
     "id": 26,
@@ -967,7 +967,7 @@
     "img": [
       "6Haysboro.jpg"
     ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...",
+    "description": "For rent to Community members as well as the general public. Main Hall, with kitchen and bar is the perfect venue for a banquet, wedding, or any large group event. Also offer smaller meeting rooms and a lounge for smaller events",
     "venue_type": "Community",
     "capacity": 23,
     "rate": 5,
@@ -993,9 +993,9 @@
     "contact": {
       "phone": "403-253-1563",
       "email": "info@haysboro.org",
-      "website": ""
+      "website": "https://haysboro.org/Facility-Rental"
     },
-    "score": 1
+    "score": 0
   },
   {
     "id": 27,
@@ -1003,7 +1003,7 @@
     "img": [
       "7Canyon.jpg"
     ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...",
+    "description": "Birthday parties, special events, and more - experience it at the movies!",
     "venue_type": "Cinema",
     "capacity": 9,
     "rate": 62,
@@ -1029,9 +1029,9 @@
     "contact": {
       "phone": "",
       "email": "info@cmcinemas.com",
-      "website": ""
+      "website": "http://www.canyonmeadowscinemas.ca/information/Party%20Bookings.html"
     },
-    "score": 1
+    "score": 0
   },
   {
     "id": 28,
@@ -1039,7 +1039,7 @@
     "img": [
       "8Rec.jpg"
     ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...",
+    "description": "Flexible space suitable for private meetings, large groups, luncheons, team building, seminars or even exclusive use of the building - your new go-to destination that’ll turn your meeting into an event.",
     "venue_type": "Entertainment",
     "capacity": 11,
     "rate": 12,
@@ -1065,9 +1065,9 @@
     "contact": {
       "phone": "833-256-4159",
       "email": "host.supervisor3002@therecroom.com",
-      "website": ""
+      "website": "https://www.therecroom.com/calgary-deerfoot/groups/meetings"
     },
-    "score": 1
+    "score": 0
   },
   {
     "id": 29,
@@ -1075,7 +1075,7 @@
     "img": [
       "9Village.jpg"
     ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...",
+    "description": "A multi-purpose recreation facility that offers a wide variety of activities and services. ",
     "venue_type": "Entertainment",
     "capacity": 50,
     "rate": 94,
@@ -1101,9 +1101,9 @@
     "contact": {
       "phone": "403-366-3900",
       "email": "VSLCbookings@calgary.ca",
-      "website": ""
+      "website": "http://www.calgary.ca/CSPS/Recreation/Pages/Leisure-centres/Village-Square.aspx"
     },
-    "score": 1
+    "score": 0
   },
   {
     "id": 30,
@@ -1111,9 +1111,9 @@
     "img": [
       "10cibo.jpg"
     ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...",
+    "description": "Located in a beautiful, 1906 brick heritage building on 17th Avenue, Cibo is a stunning venue to host an event - able to accommodate up to 260 guests for a standing, cocktail party or 120 guests for a sit-down dinner.",
     "venue_type": "Restaurant",
-    "capacity": 11,
+    "capacity": 260,
     "rate": 0,
     "availability": {
       "monday": false,
@@ -1137,9 +1137,9 @@
     "contact": {
       "phone": "403-984-4755",
       "email": "17thave@cibocalgary.com",
-      "website": ""
+      "website": "https://cibocalgary.com/17th/2016/02/host-your-wedding-event-at-cibo/"
     },
-    "score": 1
+    "score": 0
   },
   {
     "id": 31,
@@ -1147,7 +1147,7 @@
     "img": [
       "11atb.jpg"
     ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...",
+    "description": "Entrepreneurs can come meet, get advice and collaborate with other entrepreneurs, advisors, and industry experts. The community room is an open concept space with moveable tables and chairs. The room is equipped with a SMARTboard and TV for presentations.",
     "venue_type": "Office",
     "capacity": 24,
     "rate": 0,
@@ -1173,9 +1173,9 @@
     "contact": {
       "phone": "403-974-5380",
       "email": "ecyyc@atb.com",
-      "website": ""
+      "website": "https://atbentrepreneurcentre.com/"
     },
-    "score": 1
+    "score": 0
   },
   {
     "id": 32,
@@ -1183,9 +1183,9 @@
     "img": [
       "12Fort.jpg"
     ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...",
+    "description": "Fort Calgary Barracks are a replica of the historical originals built in 1888. The indoor spaces provide a variety of options to accommodate groups from 10 to 200 and strike a balance between modern convenience and a historical ambience.",
     "venue_type": "Historic",
-    "capacity": 3,
+    "capacity": 200,
     "rate": 56,
     "availability": {
       "monday": false,
@@ -1209,9 +1209,9 @@
     "contact": {
       "phone": "403-290-1875",
       "email": "info@fortcalgary.com",
-      "website": ""
+      "website": "http://www.fortcalgary.com/entertain/venue/"
     },
-    "score": 1
+    "score": 0
   },
   {
     "id": 33,
@@ -1219,7 +1219,7 @@
     "img": [
       "13Glenbow.jpg"
     ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...",
+    "description": "Customizable spaces with capacity anywhere from 5 - 1000 people. Hold a meeting, brainstorming session or workshop surrounded by art and artifacts in their meeting room. Host a formal seated dinner or chic cocktail event in their dramatic lobby spaces. Use the tiered, 225-seat Glenbow theatre for presentations, speaker events or panel discussions.",
     "venue_type": "Museum",
     "capacity": 6,
     "rate": 37,
@@ -1245,9 +1245,9 @@
     "contact": {
       "phone": "403-268-4110",
       "email": "bookings@glenbow.org",
-      "website": ""
+      "website": "https://www.glenbow.org/visiting/eventrentals.cfm"
     },
-    "score": 1
+    "score": 0
   },
   {
     "id": 34,
@@ -1283,7 +1283,7 @@
       "email": "",
       "website": "https://www.ucalgary.ca/cem/our_spaces"
     },
-    "score": 1
+    "score": 0
   },
   {
     "id": 35,
@@ -1319,6 +1319,6 @@
       "email": "info@cspaceprojects.com",
       "website": "http://cspacekingedward.com/meeting-space/"
     },
-    "score": 1
+    "score": 0
   }
 ]

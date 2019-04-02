@@ -116,28 +116,31 @@ class Details extends Component {
     }
   }
 
-  componentDidMount() {
-    let latitude = parseFloat(this.props.selectedSpace.lat)
-    let longitude = parseFloat(this.props.selectedSpace.long)
+    componentDidMount() {
+        let latitude = parseFloat(this.props.selectedSpace.lat)
+        let longitude = parseFloat(this.props.selectedSpace.long)
 
-    if (isNaN(latitude) || isNaN(longitude)) {
-      latitude = 37.4220041
-      longitude = -122.0862462
+        if (isNaN(latitude) || isNaN(longitude)) {
+            latitude = 37.4220041
+            longitude = -122.0862462
+        }
+
+        let map = new window.google.maps.Map(document.getElementById('map'), {
+            center: { lat: latitude, lng: longitude },
+            zoom: 18,
+        })
+
+        let marker = new window.google.maps.Marker({
+            position: { lat: latitude, lng: longitude },
+            map: map,
+            animation: window.google.maps.Animation.DROP,
+            title: this.props.selectedSpace.name
+        })
+
+        marker.setMap(map)  //is this needed? Seems OK even without it... :/
     }
 
-    let map = new window.google.maps.Map(document.getElementById('map'), {
-      center: {lat: latitude, lng: longitude},
-      zoom: 15,
-    })
-
-    let marker = new window.google.maps.Marker({
-        position: {lat: latitude, lng: longitude},
-        map: map,
-        animation: window.google.maps.Animation.DROP,
-        title: this.props.selectedSpace.name
-      })
-  }
-
+  
   handleNext = () => {
     this.setState(prevState => ({
       activeStep: prevState.activeStep + 1,
@@ -243,7 +246,7 @@ class Details extends Component {
 
               <DetailsTable
                 address={selectedSpace.address}
-                link={'www.need-data.com'}
+                link={selectedSpace.contact.website ? selectedSpace.contact.website : ''}
                 phone={selectedSpace.contact.phone}
                 availability={selectedSpace.availability}
               />

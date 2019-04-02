@@ -8,7 +8,7 @@ import TableCell from '@material-ui/core/TableCell'
 import TableRow from '@material-ui/core/TableRow'
 import LinkTag from '@material-ui/core/Link';
 // import Paper from '@material-ui/core/Paper'
-import { Place, Link, LocalPhone,  } from '@material-ui/icons'
+import { Place, Link, LocalPhone, AccessTime } from '@material-ui/icons'
 
 const styles = theme => ({
     root: {
@@ -37,17 +37,17 @@ class DetailsTable extends Component {
     
         const { classes, address, link, phone, availability } = this.props
 
-        let tableRows = []
+        let dayTableRows = []
         for(const day in availability) {
-            tableRows.push(
-            <TableRow className={classes.tablerow} key={`${day}indx${tableRows.length}`}>
-                <TableCell className={classes.tablecell}></TableCell>
-                <TableCell className={classes.tablecell} align="left" width="90px">{ availability[day] ? day: <span style={{color:'grey'}}>{day}</span> }</TableCell>
+            dayTableRows.push(
+            <TableRow className={classes.tablerow} key={`${day}indx${dayTableRows.length}`}>
+                <TableCell className={classes.tablecell}>{dayTableRows.length === 0 ? <AccessTime color="primary" style={{marginBottom:'-10px'}}>icon</AccessTime> : ''}</TableCell>
+                <TableCell className={classes.tablecell} align="left" width="90px">{ availability[day] ? day.charAt(0).toUpperCase() + day.slice(1) : <span style={{color:'grey'}}>{day.charAt(0).toUpperCase() + day.slice(1)}</span> }</TableCell>
                 <TableCell className={classes.tablecell} align="left">{ availability[day] ? '9 am - 5 pm' : <em style={{color:'grey'}}>Unavailable</em>}</TableCell>
             </TableRow>
             )
         }
-
+        
         return (
             <div className={classes.root}>
                 <Table className={classes.table}>
@@ -58,23 +58,23 @@ class DetailsTable extends Component {
                             </TableCell>
                             <TableCell className={classes.tablecell} colSpan="2">{`${address.street} ${address.quadrant}, ${address.postal_code}`}</TableCell>
                         </TableRow>
-                        <TableRow className={classes.tablerow}>
+                        {(link !== '') && (<TableRow className={classes.tablerow}>
                             <TableCell className={classes.tablecell} align="left" width="16px">
                                 <Link color="primary">icon</Link>
                             </TableCell>
-                            <TableCell className={classes.tablecell} colSpan="2">
+                            (<TableCell className={classes.tablecell} colSpan="2">
                                 <LinkTag href={link} color="primary">
-                                    {link}
+                                    {(link.length >= 35 ? link.substring(0,32)+'...' : link)} 
                                 </LinkTag>
-                            </TableCell>
-                        </TableRow>
-                        <TableRow className={classes.tablerow}>
+                            </TableCell>)
+                        </TableRow>)}
+                        {(phone !== '') && (<TableRow className={classes.tablerow}>
                             <TableCell className={classes.tablecell} align="left" width="16px">
                                 <LocalPhone color="primary">icon</LocalPhone>
                             </TableCell>
                             <TableCell className={classes.tablecell} colSpan="2">{phone}</TableCell>
-                        </TableRow>
-                        {tableRows}
+                        </TableRow>)}
+                        {dayTableRows}
                     </TableBody>
                 </Table>
              </div>

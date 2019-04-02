@@ -5,7 +5,8 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import {Grid} from '@material-ui/core'
 import SearchForm from './SearchForm'
 import Paper from '@material-ui/core/Paper'
-import Image from './landing.jpg'
+// import Image from './landing_bar.jpg'
+import Image from './landing_office.png'
 import Details from './Details'
 import Login from './Login'
 import { Redirect } from 'react-router'
@@ -22,11 +23,11 @@ const styles = theme => ({
   paperHeader: {
     background: `url(${Image}) center center`,
     backgroundSize: 'cover',
-    padding: '50px',
+    padding: '20px',
     // NOTE: for some reason if both height & minHeight aren't set, it causes a
     // gap to appear all along the right!!
-    height: '300px',
-    minHeight: '300px',
+    height: '650px',
+    // minHeight: '300px',
     marginBottom: '20px',
     borderRadius: '0px',
   },

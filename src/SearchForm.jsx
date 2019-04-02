@@ -357,6 +357,9 @@ class Search extends Component {
                                         Street address: {streetInput ? streetInput : <em>not set</em>}, 
                                         City: {cityInput ? cityInput : <em>not set</em>}
                                         </Typography>
+                                        <Typography component="p">
+                                        Quadrant: {quadrantInput ? quadrantInput : <em>not set</em>}
+                                        </Typography>
                                     </Paper>
                                     </Grid>
  
@@ -549,6 +552,10 @@ class Search extends Component {
                                             onChange={this.handleChange}
                                             value={this.state.cityInput}
                                         />
+                                    </Grid>
+
+                                    {/* ---  Full-width row  --- */}
+                                    <Grid item xs={12}>
                                         {(this.state.cityInput.toLowerCase() === 'calgary' ||
                                          this.state.cityInput.toLowerCase() === 'edmonton') &&
                                         (<FormControl className={classes.formControl}
@@ -575,6 +582,7 @@ class Search extends Component {
                                             </Select>
                                         </FormControl>)}
                                     </Grid>
+
                                     {/* ---  Full-width row  --- */}
                                     <Grid item xs={12}>
                                         <Button variant="contained" color="default"

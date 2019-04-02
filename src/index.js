@@ -6,7 +6,9 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Login from './Login'
 import Contact from './Contact'
 import About from './About'
+import Details from './Details'
 import PageNotFound from './PageNotFound'
+import Nav from './Nav'
 
 const routes = (
   <BrowserRouter>
@@ -14,6 +16,7 @@ const routes = (
       <Switch>
         <Route path="/" component={App} exact={true} />
         <Route path="/login" component={Login} />
+        <Route path="/details" component={Details} />
         <Route path="/contact" component={Contact} />
         <Route path="/about" component={About} />
         <Route component={PageNotFound} />

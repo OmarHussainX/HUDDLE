@@ -21,22 +21,7 @@ const freeChipColor = grey[200]
 const styles = theme => ({
   root: {
     flexGrow: 1,
-
     padding: theme.spacing.unit,
-    // TESTING ONLY
-    //
-    // [theme.breakpoints.down('sm')]: {
-    //   // MOBILE
-    //   backgroundColor: theme.palette.secondary.main,
-    // },
-    // [theme.breakpoints.up('md')]: {
-    //   // TABLET
-    //   backgroundColor: theme.palette.primary.main,
-    // },
-    // [theme.breakpoints.up('lg')]: {
-    //   // DESKTOP
-    //   backgroundColor: green[500],
-    // },
   },
   h6: {
     textShadow: '0px 0px 4px rgba(100,100,100,0.3)',
@@ -112,13 +97,14 @@ class Details extends Component {
   constructor() {
     super()
     this.state = {
+      selectedSpace: '',
       activeStep: 0,
     }
   }
 
   componentDidMount() {
-    let latitude = parseFloat(this.props.selectedSpace.lat)
-    let longitude = parseFloat(this.props.selectedSpace.long)
+    let latitude = parseFloat(this.props.location.state.selectedSpace.lat)
+    let longitude = parseFloat(this.props.location.state.selectedSpace.long)
 
     if (isNaN(latitude) || isNaN(longitude)) {
       latitude = 37.4220041
@@ -147,7 +133,8 @@ class Details extends Component {
   }
 
   render() {
-    const {classes, theme, selectedSpace} = this.props
+    const {classes, theme} = this.props
+    const selectedSpace = this.props.location.state.selectedSpace
     const {activeStep} = this.state
     const maxSteps = selectedSpace.img.length
 
@@ -228,10 +215,10 @@ class Details extends Component {
                 <em>&nbsp;&nbsp;({selectedSpace.venue_type})</em>
               </Typography>
 
-                {/* Booking button - launches booking modal */}
-                <div style={{textAlign: 'center'}}>
-                    <BookSpace selectedSpace={selectedSpace} />
-                </div>
+              {/* Booking button - launches booking modal */}
+              <div style={{textAlign: 'center'}}>
+                <BookSpace selectedSpace={selectedSpace} />
+              </div>
 
               <DetailsTable
                 address={selectedSpace.address}
@@ -243,12 +230,7 @@ class Details extends Component {
               <Typography>{selectedSpace.description}</Typography>
             </Paper>
           </main>
-          <div
-            id="map"
-            className={classes.map}
-            style={{
-            }}
-          />
+          <div id="map" className={classes.map} style={{}} />
         </div>
       </div>
     )

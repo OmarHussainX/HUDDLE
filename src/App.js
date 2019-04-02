@@ -12,6 +12,8 @@ import Fab from '@material-ui/core/Fab'
 import {Search} from '@material-ui/icons'
 import Nav from './Nav'
 import Login from './Login'
+import { Redirect } from 'react-router'
+
 // import SearchForm from './SearchForm'
 // import Typography from '@material-ui/core/Typography'
 
@@ -91,6 +93,7 @@ class App extends Component {
       //   'filtered'  - filtered spaces (i.e. search results)
       //   'details'   - detail view for ONE space (selected by user)
       view: 'home',
+      redirect: false,
     }
   }
 
@@ -116,7 +119,8 @@ class App extends Component {
       )
       this.setState({
         selectedSpace: this.state.spaces[arrayIndex],
-        view: 'details',
+        // view: 'details',
+        redirect: true,
       })
     }
 
@@ -139,7 +143,13 @@ class App extends Component {
 
   render() {
     const {classes} = this.props
-
+     if (this.state.redirect) {
+       return <Redirect push to={{
+         pathname:'/details',
+         state: {selectedSpace: this.state.selectedSpace}
+       }}
+       />;
+      }
     return (
       <React.Fragment>
         <CssBaseline />

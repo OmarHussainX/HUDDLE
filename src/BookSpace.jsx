@@ -154,8 +154,10 @@ class BookSpace extends Component {
             />
           </DialogContent>
 
-          <DialogActions>
-            <Button color="default" onClick={this.handleClose}>
+          <DialogActions
+          style={{justifyContent : 'space-between'}}
+          >
+            <Button variant="contained" color="default" onClick={this.handleClose}>
               Cancel
             </Button>
 

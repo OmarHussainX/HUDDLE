@@ -32,7 +32,7 @@ class BookConfirm extends React.Component {
         return (
             <div>
                 <Button variant="contained" color="primary" onClick={this.handleClickOpen}>
-                    Submit request
+                    Submit
         </Button>
                 <Dialog
                     open={this.state.open}

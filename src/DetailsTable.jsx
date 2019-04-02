@@ -62,11 +62,11 @@ class DetailsTable extends Component {
                             <TableCell className={classes.tablecell} align="left" width="16px">
                                 <Link color="primary">icon</Link>
                             </TableCell>
-                            (<TableCell className={classes.tablecell} colSpan="2">
+                            <TableCell className={classes.tablecell} colSpan="2">
                                 <LinkTag href={link} color="primary">
                                     {(link.length >= 35 ? link.substring(0,32)+'...' : link)} 
                                 </LinkTag>
-                            </TableCell>)
+                            </TableCell>
                         </TableRow>)}
                         {(phone !== '') && (<TableRow className={classes.tablerow}>
                             <TableCell className={classes.tablecell} align="left" width="16px">

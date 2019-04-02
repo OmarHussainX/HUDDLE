@@ -84,7 +84,7 @@ const styles = theme => ({
       marginLeft: 'auto',
       marginRight: 'auto',
       flexWrap: 'wrap',
-      width: '340px',
+      width: '320px',
       alignItems: 'stretch',
     },
     [theme.breakpoints.up('md')]: {

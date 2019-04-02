@@ -117,8 +117,8 @@ class Details extends Component {
   }
 
     componentDidMount() {
-        let latitude = parseFloat(this.props.selectedSpace.lat)
-        let longitude = parseFloat(this.props.selectedSpace.long)
+        let latitude = parseFloat(this.props.location.state.selectedSpace.lat)
+        let longitude = parseFloat(this.props.location.state.selectedSpace.long)
 
         if (isNaN(latitude) || isNaN(longitude)) {
             latitude = 37.4220041
@@ -134,7 +134,7 @@ class Details extends Component {
             position: { lat: latitude, lng: longitude },
             map: map,
             animation: window.google.maps.Animation.DROP,
-            title: this.props.selectedSpace.name
+            title: this.props.location.state.selectedSpace.name
         })
 
         marker.setMap(map)  //is this needed? Seems OK even without it... :/
@@ -158,7 +158,8 @@ class Details extends Component {
   }
 
   render() {
-    const {classes, theme, selectedSpace} = this.props
+    const {classes, theme} = this.props
+    const selectedSpace = this.props.location.state.selectedSpace
     const {activeStep} = this.state
     const maxSteps = selectedSpace.img.length
 

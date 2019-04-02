@@ -4,7 +4,7 @@ import {withStyles} from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
-import Button from '@material-ui/core/Button'
+import { Link } from 'react-router-dom'
 
 const styles = theme => ({
   grow: {
@@ -20,6 +20,21 @@ const styles = theme => ({
     fontFamily: 'Karla',
     textTransform: 'uppercase',
     textShadow: '0px 0px 4px rgba(25,25,25,0.8)',
+  },
+  logoTxt: {
+    fontSize: '30px',
+    fontFamily: 'Karla',
+    textTransform: 'uppercase',
+    textShadow: '0px 0px 4px rgba(25,25,25,0.8)',
+    textDecoration: 'none',
+    color: 'white',
+  },
+  navLink: {
+    fontSize: '15px',
+    fontFamily: 'Karla',
+    textTransform: 'uppercase',
+    textDecoration: 'none',
+    color: 'white',
   },
 })
 
@@ -40,19 +55,14 @@ class Nav extends Component {
         <AppBar position="static">
           <Toolbar>
             <Typography variant="h6" color="inherit" className={classes.grow}>
-              <Button
-                color="inherit"
-                id="logo"
-                onClick={this.props.onClick}
-                className={classes.searchBtn}
-              >
-                huddle
-              </Button>
+                <Link to="/" className={classes.logoTxt}>
+                  huddle
+                </Link>
             </Typography>
 
-            <Button color="inherit" id="login-btn" onClick={this.props.onClick}>
-              Login
-            </Button>
+            <Link to="/login" className={classes.navLink}>
+              login
+            </Link>
           </Toolbar>
         </AppBar>
       </React.Fragment>

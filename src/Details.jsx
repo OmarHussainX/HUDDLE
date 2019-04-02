@@ -14,6 +14,7 @@ import Chip from '@material-ui/core/Chip'
 import DetailsTable from './DetailsTable'
 import BookSpace from './BookSpace'
 // import green from '@material-ui/core/colors/green'
+import CssBaseline from '@material-ui/core/CssBaseline'
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews)
 const freeChipColor = grey[200]
@@ -167,6 +168,8 @@ class Details extends Component {
     const maxSteps = selectedSpace.img.length
 
     return (
+        <React.Fragment>
+        <CssBaseline />
       <div className={classes.root}>
         <div className={classes.container}>
           <main className={classes.main}>
@@ -266,6 +269,8 @@ class Details extends Component {
           />
         </div>
       </div>
+      </React.Fragment>
+
     )
   }
 }

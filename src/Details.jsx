@@ -83,7 +83,7 @@ const styles = theme => ({
       marginLeft: 'auto',
       marginRight: 'auto',
       flexWrap: 'wrap',
-      width: '340px',
+      width: '320px',
       alignItems: 'stretch',
     },
     [theme.breakpoints.up('md')]: {
@@ -166,6 +166,7 @@ class Details extends Component {
     const maxSteps = selectedSpace.img.length
 
     return (
+<<<<<<< HEAD
       <div>
         <CssBaseline />
         <div className={classes.root}>
@@ -189,6 +190,31 @@ class Details extends Component {
                     </div>
                   ))}
                 </AutoPlaySwipeableViews>
+=======
+        <React.Fragment>
+        <CssBaseline />
+      <div className={classes.root}>
+        <div className={classes.container}>
+          <main className={classes.main}>
+            <Paper className={classes.base} elevation={1}>
+              <AutoPlaySwipeableViews
+                axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+                index={activeStep}
+                onChangeIndex={this.handleStepChange}
+                enableMouseEvents>
+                {selectedSpace.img.map((step, index) => (
+                  <div key={step}>
+                    {Math.abs(activeStep - index) <= 2 ? (
+                      <img
+                        className={classes.img}
+                        src={`/images/spaces/${selectedSpace.id}/${step}`}
+                        alt={''}
+                      />
+                    ) : null}
+                  </div>
+                ))}
+              </AutoPlaySwipeableViews>
+>>>>>>> master
 
                 {/* Do not render carousel controls if there is only one image */}
                 {maxSteps > 1 && (
@@ -266,6 +292,8 @@ class Details extends Component {
           </div>
         </div>
       </div>
+      </React.Fragment>
+
     )
   }
 }

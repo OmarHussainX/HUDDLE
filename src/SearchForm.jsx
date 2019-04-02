@@ -19,8 +19,6 @@ import Checkbox from '@material-ui/core/Checkbox';
 import TextField from '@material-ui/core/TextField'
 
 import Grid from '@material-ui/core/Grid'
-import DateFnsUtils from '@date-io/date-fns'
-import { MuiPickersUtilsProvider, TimePicker, DatePicker } from 'material-ui-pickers'
 
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
@@ -76,9 +74,12 @@ const styles = theme => ({
     },
     formControl: {
         margin: theme.spacing.unit,
-        minWidth: 120,
+        minWidth: 100,
     },
-    formLabel: {
+    formLegend: {
+        marginBottom: 8,
+    },
+    fromControlLabel: {
         height: 24,
     },
     checkbox: {
@@ -359,45 +360,15 @@ class Search extends Component {
                                 {/* ---  Create Grid  --- */}
                                 <Grid container spacing={24}>
 
-
                                     {/* ---  Half-width row  --- */}
-{/* 
                                     <Grid item xs={6}>
-                                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                                            <Grid container className={classes.grid} justify="space-around">
-                                                <DatePicker
-                                                    margin="normal"
-                                                    label="Date"
-                                                    value={this.state.selectedDate}
-                                                    onChange={this.handleDateChange}
-                                                />
-                                                <TimePicker
-                                                    margin="normal"
-                                                    label="Start time"
-                                                    value={this.state.selectedDate}
-                                                    onChange={this.handleDateChange}
-                                                />
-                                                <TimePicker
-                                                    margin="normal"
-                                                    label="End time"
-                                                    value={this.state.selectedEndDate}
-                                                    onChange={this.handleDateChange}
-                                                    id='endDatePicker'
-                                                />
-                                            </Grid>
-                                        </MuiPickersUtilsProvider>
-                                    </Grid>
- */}
-
-                                    {/* ---  Full-width row  --- */}
-                                    <Grid item xs={12}>
                                         <FormControl component="fieldset" className={classes.formControl}>
-                                            <FormLabel component="legend">
-                                                <br />&nbsp;
+                                            <FormLabel component="legend" className={classes.formLegend}>
+                                                Weekdays
                                             </FormLabel>
                                             <FormGroup>
                                                 <FormControlLabel
-                                                    className={classes.formLabel}
+                                                    className={classes.fromControlLabel}
                                                     control={
                                                         <Checkbox
                                                             classes={{
@@ -409,7 +380,7 @@ class Search extends Component {
                                                     label="Monday"
                                                 />
                                                 <FormControlLabel
-                                                    className={classes.formLabel}
+                                                    className={classes.fromControlLabel}
                                                     control={
                                                         <Checkbox
                                                             classes={{
@@ -422,7 +393,7 @@ class Search extends Component {
                                                     label="Tuesday"
                                                 />
                                                 <FormControlLabel
-                                                    className={classes.formLabel}
+                                                    className={classes.fromControlLabel}
                                                     control={
                                                         <Checkbox
                                                             classes={{
@@ -435,7 +406,7 @@ class Search extends Component {
                                                     label="Wednesday"
                                                 />
                                                 <FormControlLabel
-                                                    className={classes.formLabel}
+                                                    className={classes.fromControlLabel}
                                                     control={
                                                         <Checkbox
                                                             classes={{
@@ -448,7 +419,7 @@ class Search extends Component {
                                                     label="Thursday"
                                                 />
                                                 <FormControlLabel
-                                                    className={classes.formLabel}
+                                                    className={classes.fromControlLabel}
                                                     control={
                                                         <Checkbox
                                                             classes={{
@@ -460,8 +431,19 @@ class Search extends Component {
                                                     }
                                                     label="Friday"
                                                 />
+                                            </FormGroup>
+                                        </FormControl>
+                                    </Grid>
+
+                                    {/* ---  Half-width row  --- */}
+                                    <Grid item xs={6}>
+                                        <FormControl component="fieldset" className={classes.formControl}>
+                                            <FormLabel component="legend" className={classes.formLegend}>
+                                                Weekend
+                                            </FormLabel>
+                                            <FormGroup>
                                                 <FormControlLabel
-                                                    className={classes.formLabel}
+                                                    className={classes.fromControlLabel}
                                                     control={
                                                         <Checkbox
                                                             classes={{
@@ -474,7 +456,7 @@ class Search extends Component {
                                                     label="Saturday"
                                                 />
                                                 <FormControlLabel
-                                                    className={classes.formLabel}
+                                                    className={classes.fromControlLabel}
                                                     control={
                                                         <Checkbox
                                                             classes={{
@@ -490,6 +472,7 @@ class Search extends Component {
                                             </FormGroup>
                                         </FormControl>
                                     </Grid>
+
 
                                     {/* ---  Full-width row  --- */}
                                     <Grid item xs={12}>

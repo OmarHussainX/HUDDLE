@@ -26,7 +26,7 @@ const styles = theme => ({
     padding: '20px',
     // NOTE: for some reason if both height & minHeight aren't set, it causes a
     // gap to appear all along the right!!
-    height: '650px',
+    height: '250px',
     // minHeight: '300px',
     marginBottom: '20px',
     borderRadius: '0px',
@@ -142,14 +142,6 @@ class App extends Component {
             </Paper>
           </div>
         )}
-
-        {this.state.view === 'details' && (
-          <Grid container className={classes.spacesGrid} spacing={32}>
-            <Details selectedSpace={this.state.selectedSpace} />
-          </Grid>
-        )}
-
-        {this.state.view === 'login' && <Login />}
       </React.Fragment>
     )
   }

@@ -13,6 +13,7 @@ import Nav from './Nav'
 const routes = (
   <BrowserRouter>
     <div>
+      <Nav />
       <Switch>
         <Route path="/" component={App} exact={true} />
         <Route path="/login" component={Login} />

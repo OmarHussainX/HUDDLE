@@ -4,20 +4,11 @@ import {withStyles} from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import {Grid} from '@material-ui/core'
 import SearchForm from './SearchForm'
-import MainGallery from './MainGallery'
 import Paper from '@material-ui/core/Paper'
 import Image from './landing.jpg'
 import Details from './Details'
-import Fab from '@material-ui/core/Fab'
-import {Search} from '@material-ui/icons'
-import Nav from './Nav'
 import Login from './Login'
 import { Redirect } from 'react-router'
-
-// import SearchForm from './SearchForm'
-// import Typography from '@material-ui/core/Typography'
-
-// Import spaces data from JSON source - will receive an array of Objects
 import space from './spaces.json'
 
 const styles = theme => ({
@@ -123,22 +114,6 @@ class App extends Component {
         redirect: true,
       })
     }
-
-    // 'Login' in the app header/top nav was clicked
-    // - switch to login view
-    else if (targetID === 'login-btn') {
-      console.log('============> LOGIN CLICKED')
-      this.setState({view: 'login'})
-    }
-
-    // 'Logo' in the app header/top nav was clicked
-    // - switch to home/default view
-    else if (targetID === 'logo') {
-      console.log('============> LOGO CLICKED')
-      this.setState({
-        view: 'home',
-      })
-    }
   }
 
   render() {
@@ -153,7 +128,6 @@ class App extends Component {
     return (
       <React.Fragment>
         <CssBaseline />
-        <Nav onClick={this.clickHandler} />
 
         {this.state.view === 'home' && (
           <div>

@@ -13,6 +13,8 @@ import grey from '@material-ui/core/colors/grey'
 import Chip from '@material-ui/core/Chip'
 import DetailsTable from './DetailsTable'
 import BookSpace from './BookSpace'
+import CssBaseline from '@material-ui/core/CssBaseline'
+
 // import green from '@material-ui/core/colors/green'
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews)
@@ -139,7 +141,8 @@ class Details extends Component {
     const maxSteps = selectedSpace.img.length
 
     return (
-      <div className={classes.root}>
+      <div>
+        <CssBaseline />
         <div className={classes.container}>
           <main className={classes.main}>
             <Paper className={classes.base} elevation={1}>

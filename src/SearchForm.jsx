@@ -347,18 +347,45 @@ class Search extends Component {
                                     className={classes.filtersummary} 
                                     >
                                         <Typography variant="h6">
-                                        Current filters
+                                            Current filters
                                         </Typography>
                                         <Typography component="p">
-                                        Rate: {rateInput !== '' ? rateSummaryTxt[rateInput] : <em>not set</em>}, 
-                                        Capacity: {capacityInput ? capacitySummaryTxt[capacityInput] : <em>not set</em>}
+                                            {(rateInput === '' &&
+                                            !capacityInput &&
+                                            !streetInput &&
+                                            !cityInput &&
+                                            !monday &&
+                                            !tuesday &&
+                                            !wednesday &&
+                                            !thursday &&
+                                            !friday &&
+                                            !saturday &&
+                                            !sunday &&
+                                            !quadrantInput) ? <em>No filters set</em> : '' }
                                         </Typography>
                                         <Typography component="p">
-                                        Street address: {streetInput ? streetInput : <em>not set</em>}, 
-                                        City: {cityInput ? cityInput : <em>not set</em>}
+                                            {rateInput !== '' ? `Rate: ${rateSummaryTxt[rateInput]}` : '' }
                                         </Typography>
                                         <Typography component="p">
-                                        Quadrant: {quadrantInput ? quadrantInput : <em>not set</em>}
+                                            {capacityInput ? `Capacity: ${capacitySummaryTxt[capacityInput]}` : '' }
+                                        </Typography>
+                                        <Typography component="p">
+                                            {streetInput ? `Street address: ${streetInput}` : '' }
+                                        </Typography>
+                                        <Typography component="p">
+                                            {cityInput ? `City: ${cityInput}` : '' }
+                                        </Typography>
+                                        <Typography component="p">
+                                            {monday ? 'Mon., ' : ''}
+                                            {tuesday ? 'Tues., ' : ''}
+                                            {wednesday ? 'Wed., ' : ''}
+                                            {thursday ? 'Thurs., ' : ''}
+                                            {friday ? 'Fri., ' : ''}
+                                            {saturday ? 'Sat., ' : ''}
+                                            {sunday ? 'Sun., ' : ''}
+                                        </Typography>
+                                        <Typography component="p">
+                                            {quadrantInput ? `Quadrant: ${quadrantInput}` : ''}
                                         </Typography>
                                     </Paper>
                                     </Grid>
@@ -585,6 +612,7 @@ class Search extends Component {
 
                                     {/* ---  Full-width row  --- */}
                                     <Grid item xs={12}>
+                                        <div style={{textAlign: 'center'}}>
                                         <Button variant="contained" color="default"
                                             className={classes.button}
                                             onClick={this.handleClick}
@@ -593,6 +621,7 @@ class Search extends Component {
                                             <Icon className={classes.leftIcon}>delete</Icon>
                                             Clear filters
                                         </Button>
+                                        </div>
                                     </Grid>
                                 </Grid>
                             </ExpansionPanelDetails>

@@ -42,8 +42,9 @@ function weightedScorer(searchState) {
             ScoreSpaces[test.function](space, searchState) * test.weight)
                 .reduce((acc, cur) => acc + cur, 0)
         
-        // assign new score
-        space.score = newScore
+        // assign new score (divide score by total weight to normalise it)
+        space.score = newScore/scoreCalculators.map(test => test.weight)
+                .reduce((acc, cur) => acc + cur, 0)
     })
 
     // All spaces have now been assigned updated scores - sort based on score, so

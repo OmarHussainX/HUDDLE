@@ -44,6 +44,7 @@ class ScoreSpaces {
 
             // user hasn't set/doesn't care about this criterion
             default:
+            scoreValue = 1
             // console.log(`==========default case!! searchState.rateInput: ${searchState.rateInput}, searchValue: ${searchValue}`)
         }
         // console.log(`----- Yo! ${space.name} gets a value of ${scoreValue} for 'rate range ${searchValue}'`)
@@ -90,6 +91,7 @@ class ScoreSpaces {
 
             // user hasn't set/doesn't care about this criterion
             default:
+            scoreValue = 1
             // console.log(`==========default case!! searchState.capacityInput: ${searchState.capacityInput}, searchValue: ${searchValue}`)
         }
         // console.log(`----- Yo! ${space.name} gets a value of ${scoreValue} for 'capacity range ${searchValue}'`)
@@ -107,7 +109,7 @@ class ScoreSpaces {
     */
     static scoreOnAddress(space, searchState) {
 
-        if (searchState.streetInput === '') return 0
+        if (searchState.streetInput === '') return 1
 
         return space.address.street.toLowerCase().includes(searchState.streetInput.toLowerCase()) ? 1 : 0
     }
@@ -123,7 +125,7 @@ class ScoreSpaces {
     */
     static scoreOnCity(space, searchState) {
 
-        if (searchState.cityInput === '') return 0
+        if (searchState.cityInput === '') return 1
 
         return space.address.city.toLowerCase().includes(searchState.cityInput.toLowerCase()) ? 1 : 0
     }
@@ -139,7 +141,7 @@ class ScoreSpaces {
     */
     static scoreOnQuadrant(space, searchState) {
 
-        if (searchState.quadrantInput === '') return 0
+        if (searchState.quadrantInput === '') return 1
 
         return space.address.quadrant.toLowerCase().includes(searchState.quadrantInput.toLowerCase()) ? 1 : 0
     }
@@ -197,7 +199,7 @@ class ScoreSpaces {
             return daysMatched/daysSelected
         }
 
-        return 0
+        return 1
     }
 }
 
@@ -205,27 +207,27 @@ class ScoreSpaces {
 const scoreCalculators = [
     {
         function: "scoreOnRate",
-        weight: 0.3
+        weight: 50
     },
     {
         function: "scoreOnCapacity",
-        weight: 0.3
+        weight: 30
     },
     {
         function: "scoreOnAddress",
-        weight: 0.1
+        weight: 10
     },
     {
         function: "scoreOnCity",
-        weight: 0.1
+        weight: 100
     },
     {
         function: "scoreOnQuadrant",
-        weight: 0.1
+        weight: 30
     },
     {
         function: "scoreOnAvailability",
-        weight: 0.1
+        weight: 20
     },
 ] 
 

@@ -10,9 +10,11 @@ import Details from './Details'
 import PageNotFound from './PageNotFound'
 import PersistentDrawerLeft from './PersistentDrawerLeft'
 import VerticalSpace from './VerticalSpace'
+import ScrollToTop from './ScrollToTop'
 
 const routes = (
-  <BrowserRouter>
+  <BrowserRouter >
+    <ScrollToTop> 
     <div>
       <PersistentDrawerLeft />
       <VerticalSpace />
@@ -25,6 +27,7 @@ const routes = (
         <Route component={PageNotFound} />
       </Switch>
     </div>
+  </ScrollToTop> 
   </BrowserRouter>
 );
 

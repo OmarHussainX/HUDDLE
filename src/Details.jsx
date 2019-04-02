@@ -22,7 +22,10 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
 
-    padding: theme.spacing.unit,
+    // This was creating a gap around the Details view...
+    // padding: theme.spacing.unit,
+    padding: 0,
+
     // TESTING ONLY
     //
     // [theme.breakpoints.down('sm')]: {

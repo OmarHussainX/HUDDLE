@@ -31,7 +31,7 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>huddle v0.1</title>
+    <title>huddle v0.9</title>
     <!--
         https://stackoverflow.com/a/41610111
     -->
@@ -47,8 +47,17 @@
     </script> -->
 
 </head>
+<!--
+ [2019-04-01 11:57 pm]
+ Not sure why, but Details view has an 8px (computed margin) on all four sides, on its <body>, leading to an unsightly gap around all edges.
 
-<body>
+ Default/home page and Login are fine - no margin on their <body>.
+
+ Setting 'margin : 0' here resolves the issue, but not sure what's causing it in the first place...
+
+ Also setting a background colour here - probably a better place to do so, but... I'm tired. :/
+-->
+<body style="margin: 0; background-color: #c6d7e0;">
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6_9RWW3hgN6ODknvL9FTAvzhyuSVu3gU&callback=initMap"
     async defer></script>
     <noscript>You need to enable JavaScript to run this app.</noscript>

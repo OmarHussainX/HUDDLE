@@ -122,7 +122,7 @@ class Details extends Component {
         position: {lat: latitude, lng: longitude},
         map: map,
         animation: window.google.maps.Animation.DROP,
-        title: this.props.selectedSpace.name
+        title: this.props.location.state.selectedSpace.name
       })
   }
 

@@ -20,8 +20,6 @@ import BookConfirm from './BookConfirm'
 
 const styles = theme => ({
     root: {
-    //   flexGrow: 1,
-    //   padding: theme.spacing.unit,
     },
   })
 
@@ -161,17 +159,15 @@ class BookSpace extends Component {
               Cancel
             </Button>
 
+            {/* Booking confirmation modal
+                - provide reference to this (BookSpace) component's handleClose() 
+                  callback so that the child component (BookConfirm) can close
+                  its parent
+            */}
             <BookConfirm
                 username={this.state.name}
-                parentOpen={this.state.open}
                 closeParent={this.handleClose} 
             />
-
-{/* 
-            <Button onClick={this.handleClose} color="primary">
-              Submit request
-            </Button>
- */}
 
           </DialogActions>
         </Dialog>

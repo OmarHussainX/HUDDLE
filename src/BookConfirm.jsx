@@ -20,11 +20,11 @@ class BookConfirm extends React.Component {
   }
 
   handleClose = () => {
+    // close this modal
     this.setState({ open: false })
-    console.log(`---attempting to call parent fn(): ${this.props.closeParent}---`)
-    this.props.closeParent()
-    console.log(`---called parent fn(): ${this.props.closeParent}!!!---`)
 
+    //close parent modal
+    this.props.closeParent()
   }
 
     render() {

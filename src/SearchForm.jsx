@@ -74,7 +74,7 @@ const styles = theme => ({
     },
     formControl: {
         margin: theme.spacing.unit,
-        minWidth: 120,
+        minWidth: 100,
     },
     formLegend: {
         marginBottom: 8,

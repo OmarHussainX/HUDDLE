@@ -56,10 +56,10 @@ class ScoreSpaces {
     scoreOnCapacity takes two parameters:
     - a reference to a space object
     - a searchState object with property 'capacityInput', guaranteed to be one of:
-      5     ( 1-5 range )
-      10    ( 6-10 range )
-      15    ( 11-15 range )
-      20    ( 16+ range )
+      5     ( 1-25 range )
+      10    ( 26-50 range )
+      15    ( 50-100 range )
+      20    ( 100+ range )
     
     returns a value (0 or 1) reflecting how well the space matches the specified criterion
     */

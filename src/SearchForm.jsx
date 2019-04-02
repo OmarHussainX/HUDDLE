@@ -6,6 +6,7 @@ import { withStyles } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 import grey from '@material-ui/core/colors/grey'
+import blueGrey from '@material-ui/core/colors/blueGrey'
 
 import InputLabel from '@material-ui/core/InputLabel'
 import MenuItem from '@material-ui/core/MenuItem'
@@ -45,10 +46,12 @@ const styles = theme => ({
         paddingBottom: theme.spacing.unit * 2,
         // minHeight: '400px',
     },
-    paper: {
+    filtersummary: {
         padding: theme.spacing.unit * 2,
-        textAlign: 'center',
-        color: theme.palette.text.secondary,
+        // textAlign: 'center',
+        // color: theme.palette.text.secondary,
+        backgroundColor: blueGrey[50],
+        border: '1px solid silver',
     },
     h6: {
         textShadow: '0px 0px 4px rgba(100,100,100,0.3)',
@@ -133,6 +136,7 @@ class Search extends Component {
             rateInput: '',
             capacityInput: '',
             panelExpanded: null,
+            filterButtonText: 'Show filters',
             selectedDate: new Date('2019-03-25T15:30:00'),
             selectedEndDate: new Date('2019-03-25T17:45:00'),
             monday: false,
@@ -231,6 +235,7 @@ class Search extends Component {
     handlePanelChange = panel => (event, expanded) => {
         this.setState({
             panelExpanded: expanded ? panel : false,
+            filterButtonText: (this.state.filterButtonText === 'Show filters') ? 'Hide filters' : 'Show filters',
         })
     }
 
@@ -238,19 +243,17 @@ class Search extends Component {
     handleClick = event => {
         const { id } = event.currentTarget
         
-        // Clear search results button clicked
-        // - reset all search options and inputs
+        // Clear filters button clicked
+        // - reset all filter options and inputs
         switch(id) {
-        case 'clearSearchButton':
-        console.log(`########### clear search results########### `)
-        this.props.spaces.forEach(space =>
-            console.log(`${space.name} has original score ${space.score}`))
 
+        case 'clearFiltersButton':
         this.setState({
             spaces: this.props.spaces,
             rateInput: '',
             capacityInput: '',
-            panelExpanded: null,
+            // panelExpanded: null, // do NOT hide panel
+            filterButtonText: 'Show filters',
             selectedDate: new Date('2019-03-25T15:30:00'),
             selectedEndDate: new Date('2019-03-25T17:45:00'),
             monday: false,
@@ -266,12 +269,8 @@ class Search extends Component {
         })
         break
 
-        // Search button clicked... is this useful?
-        // - conduct search?
-        // - reset all search options and inputs?
-        // - hide search form & show FAB?
-        case 'searchButton':
-        console.log(`search!`)
+        case 'toggleFilters':
+        // No need to do anything! The panel expansion control is sufficient
         break
 
         default:
@@ -282,7 +281,23 @@ class Search extends Component {
     
     render() {
         const { classes } = this.props
-        const { panelExpanded, monday, tuesday, wednesday, thursday, friday, saturday, sunday} = this.state
+        const { filterButtonText, panelExpanded, rateInput, capacityInput, streetInput, cityInput, quadrantInput, monday, tuesday, wednesday, thursday, friday, saturday, sunday} = this.state
+
+        const rateSummaryTxt = {
+            Any : "Any",
+            0   : "Free",
+            25  : "$1-25",
+            50  : "$26-50",
+            75  : "$51-75",
+            100 : "Over $75"
+        }
+        const capacitySummaryTxt = {
+            Any : "Any",
+            5   : "1-5",
+            10  : "6-10",
+            15  : "11-15",
+            20  : "Over 15"
+        }
 
         return (
           <React.Fragment>
@@ -292,73 +307,107 @@ class Search extends Component {
                     {/* ---  Create Grid  --- */}
                     <Grid container spacing={24}>
 
-                        {/* ---  Half-width row  --- */}
-                        <Grid item xs={6}>
-                            <FormControl className={classes.formControl}>
-                                <InputLabel htmlFor="rateID">
-                                    Rate
-                                </InputLabel>
-                                <Select
-                                    value={this.state.rateInput}
-                                    onChange={this.handleChange}
-                                    inputProps={{
-                                        name: 'rateInput',
-                                        id: 'rateID',
-                                    }}
-                                >
-                                    <MenuItem value={`Any`}>Any</MenuItem>
-                                    <MenuItem value={0}><em>Free</em></MenuItem>
-                                    <MenuItem value={25}>$1-25</MenuItem>
-                                    <MenuItem value={50}>$26-50</MenuItem>
-                                    <MenuItem value={75}>$51-75</MenuItem>
-                                    <MenuItem value={100}>Over $75</MenuItem>
-                                </Select>
-                            </FormControl>
-                        </Grid>
-
-                        {/* ---  Half-width row  --- */}
-                        <Grid item xs={6}>
-                            <FormControl className={classes.formControl}>
-                                <InputLabel htmlFor="capacityID">
-                                    Capacity
-                                </InputLabel>
-                                <Select
-                                    value={this.state.capacityInput}
-                                    onChange={this.handleChange}
-                                    inputProps={{
-                                        name: 'capacityInput',
-                                        id: 'capacityID',
-                                    }}
-                                >
-                                    <MenuItem value={`Any`}>Any</MenuItem>
-                                    <MenuItem value={5}>1-5</MenuItem>
-                                    <MenuItem value={10}>6-10</MenuItem>
-                                    <MenuItem value={15}>11-15</MenuItem>
-                                    <MenuItem value={20}>Over 15</MenuItem>
-                                </Select>
-                            </FormControl>
-
-                        </Grid>
-                        {/* </form> */}
 
                         {/* <Grid item xs={12}>
                         <Typography variant='overline' align='center'>When is the space needed?</Typography>
                         </Grid> */}
 
                         {/* ----------------------------------------------------- */}
-                        {/* Hide 'advanced' controls inside an expansion panel */}
+                        {/* Hide filter controls inside an expansion panel */}
                         <ExpansionPanel
-                            expanded={panelExpanded === 'panel1'}
-                            onChange={this.handlePanelChange('panel1')}
+                            expanded={panelExpanded === 'filter_panel'}
+                            onChange={this.handlePanelChange('filter_panel')}
                             classes={{ root: classes.expansionpanel, }}
                         >
                             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                                 {/* <Typography className={classes.heading}>General settings</Typography> */}
-                                <Typography className={classes.secondaryHeading}>Advanced search</Typography>
+
+                                {/* <Typography className={classes.secondaryHeading}>
+                                    <Icon className={classes.leftIcon}>filter_list</Icon>
+                                    Show filters
+                                    </Typography> */}
+
+                                <Button variant="contained" color="secondary" className={classes.button}
+                                onClick={this.handleClick}
+                                id='toggleFilters'
+                                >
+                                    <Icon className={classes.leftIcon}>filter_list</Icon>
+                                    {filterButtonText}
+                                </Button>
+ 
                             </ExpansionPanelSummary>
                             <ExpansionPanelDetails>
                                 {/* ---  Create Grid  --- */}
                                 <Grid container spacing={24}>
+
+
+                                    {/* ---  Full-width row  --- */}
+                                    <Grid item xs={12}>
+                                    <Paper elevation={0}
+                                    className={classes.filtersummary} 
+                                    >
+                                        <Typography variant="h6">
+                                        Current filters
+                                        </Typography>
+                                        <Typography component="p">
+                                        Rate: {rateInput !== '' ? rateSummaryTxt[rateInput] : <em>not set</em>}, 
+                                        Capacity: {capacityInput ? capacitySummaryTxt[capacityInput] : <em>not set</em>}
+                                        </Typography>
+                                        <Typography component="p">
+                                        Street address: {streetInput ? streetInput : <em>not set</em>}, 
+                                        City: {cityInput ? cityInput : <em>not set</em>}
+                                        </Typography>
+                                    </Paper>
+                                    </Grid>
+ 
+
+                                    {/* ---  Half-width row  --- */}
+                                    <Grid item xs={6}>
+                                        <FormControl className={classes.formControl}>
+                                            <InputLabel htmlFor="rateID">
+                                                Rate
+                                            </InputLabel>
+                                            <Select
+                                                value={this.state.rateInput}
+                                                onChange={this.handleChange}
+                                                inputProps={{
+                                                    name: 'rateInput',
+                                                    id: 'rateID',
+                                                }}
+                                            >
+                                                <MenuItem value={`Any`}>Any</MenuItem>
+                                                <MenuItem value={0}><em>Free</em></MenuItem>
+                                                <MenuItem value={25}>$1-25</MenuItem>
+                                                <MenuItem value={50}>$26-50</MenuItem>
+                                                <MenuItem value={75}>$51-75</MenuItem>
+                                                <MenuItem value={100}>Over $75</MenuItem>
+                                            </Select>
+                                        </FormControl>
+                                    </Grid>
+
+                                    {/* ---  Half-width row  --- */}
+                                    <Grid item xs={6}>
+                                        <FormControl className={classes.formControl}>
+                                            <InputLabel htmlFor="capacityID">
+                                                Capacity
+                                            </InputLabel>
+                                            <Select
+                                                value={this.state.capacityInput}
+                                                onChange={this.handleChange}
+                                                inputProps={{
+                                                    name: 'capacityInput',
+                                                    id: 'capacityID',
+                                                }}
+                                            >
+                                                <MenuItem value={`Any`}>Any</MenuItem>
+                                                <MenuItem value={5}>1-5</MenuItem>
+                                                <MenuItem value={10}>6-10</MenuItem>
+                                                <MenuItem value={15}>11-15</MenuItem>
+                                                <MenuItem value={20}>Over 15</MenuItem>
+                                            </Select>
+                                        </FormControl>
+
+                                    </Grid>
 
                                     {/* ---  Half-width row  --- */}
                                     <Grid item xs={6}>
@@ -526,36 +575,22 @@ class Search extends Component {
                                             </Select>
                                         </FormControl>)}
                                     </Grid>
+                                    {/* ---  Full-width row  --- */}
+                                    <Grid item xs={12}>
+                                        <Button variant="contained" color="default"
+                                            className={classes.button}
+                                            onClick={this.handleClick}
+                                            id='clearFiltersButton'
+                                        >
+                                            <Icon className={classes.leftIcon}>delete</Icon>
+                                            Clear filters
+                                        </Button>
+                                    </Grid>
                                 </Grid>
                             </ExpansionPanelDetails>
                         </ExpansionPanel>
                         {/* ----------------------------------------------------- */}
-
-
-                        {/* <Grid container spacing={24} justify="space-between"> */}
-                            <Grid item xs={6}>
-                                <Button variant="contained" color="default"
-                                className={classes.button}
-                                onClick={this.handleClick}
-                                id='clearSearchButton'
-                                >
-                                    <Icon className={classes.leftIcon}>delete</Icon>
-                                    Clear
-                            </Button>
-                            </Grid>
-                            <Grid item xs={6}>
-                                <div style={{textAlign:'right'}}>
-                                <Button variant="contained" color="secondary" className={classes.button}
-                                onClick={this.handleClick}
-                                id='searchButton'
-                                >
-                                    <Icon className={classes.leftIcon}>search</Icon>
-                                    Search
-                                </Button>
-                                </div>
-                            </Grid>
                         </Grid>
-                    {/* </Grid> */}
                 </Paper>
             </div>
                 <MainGallery

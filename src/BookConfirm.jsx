@@ -21,10 +21,13 @@ class BookConfirm extends React.Component {
 
   handleClose = () => {
     this.setState({ open: false })
+    console.log(`---attempting to call parent fn(): ${this.props.closeParent}---`)
+    this.props.closeParent()
+    console.log(`---called parent fn(): ${this.props.closeParent}!!!---`)
+
   }
 
     render() {
-        const closeParentModal = this.props.closeParent
 
         return (
             <div>
@@ -33,8 +36,8 @@ class BookConfirm extends React.Component {
         </Button>
                 <Dialog
                     open={this.state.open}
-                    // onClose={this.handleClose}
-                    onClose={closeParentModal}
+                    onClose={this.handleClose}
+                    // onClose={closeParentModal}
                     aria-labelledby="alert-dialog-title"
                     aria-describedby="alert-dialog-description"
                 >
@@ -42,13 +45,14 @@ class BookConfirm extends React.Component {
                     <DialogContent>
                         <DialogContentText id="alert-dialog-description">
                             Your booking request has been sent!
-            </DialogContentText>
+                        </DialogContentText>
                     </DialogContent>
                     <DialogActions>
                         <Button 
                         color="primary" 
                         autoFocus
-                        onClick={closeParentModal} 
+                        onClick={this.handleClose}
+                        // onClick={closeParentModal} 
                         >
                             OK
                         </Button>

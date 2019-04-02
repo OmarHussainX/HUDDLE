@@ -163,6 +163,7 @@ class BookSpace extends Component {
 
             <BookConfirm
                 username={this.state.name}
+                parentOpen={this.state.open}
                 closeParent={this.handleClose} 
             />
 

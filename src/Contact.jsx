@@ -5,6 +5,7 @@ class Contact extends Component {
   render() {
     return (
       <React.Fragment>
+
         <CssBaseline />
             <Typography variant="h1" color="inherit">
               This is the contact page.

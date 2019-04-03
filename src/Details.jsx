@@ -25,21 +25,6 @@ const styles = theme => ({
     // This was creating a gap around the Details view...
     // padding: theme.spacing.unit,
     padding: 0,
-
-    // TESTING ONLY
-    //
-    // [theme.breakpoints.down('sm')]: {
-    //   // MOBILE
-    //   backgroundColor: theme.palette.secondary.main,
-    // },
-    // [theme.breakpoints.up('md')]: {
-    //   // TABLET
-    //   backgroundColor: theme.palette.primary.main,
-    // },
-    // [theme.breakpoints.up('lg')]: {
-    //   // DESKTOP
-    //   backgroundColor: green[500],
-    // },
   },
   h6: {
     textShadow: '0px 0px 4px rgba(100,100,100,0.3)',
@@ -83,7 +68,7 @@ const styles = theme => ({
       marginLeft: 'auto',
       marginRight: 'auto',
       flexWrap: 'wrap',
-      width: '320px',
+      width: '100vw',
       alignItems: 'stretch',
     },
     [theme.breakpoints.up('md')]: {
@@ -99,7 +84,7 @@ const styles = theme => ({
   },
   main: {
     order: 1,
-    maxWidth: '400px',
+    maxWidth: '450px',
   },
   map: {
     order: 2,

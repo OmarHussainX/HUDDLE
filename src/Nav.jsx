@@ -12,13 +12,21 @@ import {fade} from '@material-ui/core/styles/colorManipulator'
 import {withStyles} from '@material-ui/core/styles'
 import MenuIcon from '@material-ui/icons/Menu'
 import AccountCircle from '@material-ui/icons/AccountCircle'
-import MailIcon from '@material-ui/icons/Mail'
 import NotificationsIcon from '@material-ui/icons/Notifications'
 import MoreIcon from '@material-ui/icons/MoreVert'
 import Drawer from '@material-ui/core/Drawer'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import {Link} from 'react-router-dom'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemIcon from '@material-ui/core/ListItemIcon'
+import ListItemText from '@material-ui/core/ListItemText'
+import Divider from '@material-ui/core/Divider'
+import List from '@material-ui/core/List'
+import AboutIcon from '@material-ui/icons/Info'
+import MailIcon from '@material-ui/icons/Mail'
+import HelpIcon from '@material-ui/icons/Help'
+import ContactIcon from '@material-ui/icons/Face'
 
 const drawerWidth = 240
 
@@ -185,24 +193,17 @@ class Nav extends React.Component {
         transformOrigin={{vertical: 'top', horizontal: 'right'}}
         open={isMenuOpen}
         onClose={this.handleMenuClose}>
-
-        <MenuItem
-          onClick={this.handleMenuClose}
-        >
-            <Link to="/profile" className={classes.drawerTxt}>
-              profile
-            </Link>
+        <MenuItem onClick={this.handleMenuClose}>
+          <Link to="/profile" className={classes.drawerTxt}>
+            profile
+          </Link>
         </MenuItem>
 
-        <MenuItem
-          onClick={this.handleMenuClose}
-        >
-            <Link to="/account" className={classes.drawerTxt}>
-              account
-            </Link>
+        <MenuItem onClick={this.handleMenuClose}>
+          <Link to="/account" className={classes.drawerTxt}>
+            account
+          </Link>
         </MenuItem>
-
-
       </Menu>
     )
 
@@ -289,7 +290,6 @@ class Nav extends React.Component {
             </div>
           </Toolbar>
         </AppBar>
-
         <Drawer
           className={classes.drawer}
           variant="persistent"
@@ -307,30 +307,30 @@ class Nav extends React.Component {
               )}
             </IconButton>
           </div>
-          <Typography
-            variant="h6"
-            color="inherit"
-            onClick={this.handleDrawerClose}>
-            <Link to="/" className={classes.drawerTxt}>
-              home
-            </Link>
-          </Typography>
-          <Typography
-            variant="h6"
-            color="inherit"
-            onClick={this.handleDrawerClose}>
-            <Link to="/about" className={classes.drawerTxt}>
-              about
-            </Link>
-          </Typography>
-          <Typography
-            variant="h6"
-            color="inherit"
-            onClick={this.handleDrawerClose}>
-            <Link to="/contact" className={classes.drawerTxt}>
-              contact
-            </Link>
-          </Typography>
+          <Divider />
+          <List>
+              <ListItem button key='about'>
+                <ListItemIcon>
+                  <AboutIcon />
+                </ListItemIcon>
+                <ListItemText primary='About' />
+              </ListItem>
+              <ListItem button key='contact'>
+                <ListItemIcon>
+                  <ContactIcon />
+                </ListItemIcon>
+                <ListItemText primary='Contact' />
+              </ListItem>
+          </List>
+          <Divider />
+          <List>
+              <ListItem button key='help'>
+                <ListItemIcon>
+                  <HelpIcon />
+                </ListItemIcon>
+                <ListItemText primary='Help' />
+              </ListItem>
+          </List>
         </Drawer>
         {renderMenu}
         {renderMobileMenu}

@@ -7,10 +7,13 @@ import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
 import Typography from '@material-ui/core/Typography'
 import Chip from '@material-ui/core/Chip'
+import grey from '@material-ui/core/colors/grey'
+import { relative } from 'path'
 
 const styles = theme => ({
-    h5: {
-        textShadow: '0px 0px 4px rgba(100,100,100,0.4)',
+    spacename: {
+        // textShadow: '0px 0px 2px rgba(100,100,100,0.3)',
+        marginBottom: '4px'
     },
     card: {
         width: 300,
@@ -18,25 +21,39 @@ const styles = theme => ({
     cardContent: {
         height: 160,
         overflow: 'hidden',
+        paddingTop: '8px',  //default 16px
     },
     media: {
         height: 150,
     },
     scorechip: {
-        float:'right',
+        position: 'absolute',
+        right: '0px',
+        top: '0px',
         fontSize: '1rem',
         borderRadius: '3px',
         // color: 'white',
         textShadow: '0px 0px 3px rgba(125,125,125,0.9)',
         margin: theme.spacing.unit,
     },
+    availability: {
+        display: 'inline-block',
+        width: '20px',
+        minWidth: '20px',
+        padding:'3px',
+        marginRight: '2px',
+        // border: '1px dotted silver',
+        borderRadius: '3px',
+        backgroundColor: grey[200],
+        textAlign: 'center',
+    }
 })
 
 
 // https://stackoverflow.com/questions/17525215/calculate-color-values-from-green-to-red
-function percentageToHsl(percentage, hue0, hue1) {
-    let hue = (percentage * (hue1 - hue0)) + hue0;
-    return 'hsl(' + hue + ', 70%, 60%)';
+function percentageToHsl(percentage, hue0, hue1, sat, bright) {
+    let hue = (percentage * (hue1 - hue0)) + hue0
+    return `hsl(${hue}, ${sat}%, ${bright}%)`
 }
 
 
@@ -51,6 +68,7 @@ class SpaceCard extends Component {
             rate,
             address,
             capacity,
+            availability,
             venue_type,
             clickHandler,
             score
@@ -58,7 +76,8 @@ class SpaceCard extends Component {
 
         // Determine text and background colour for space's score <Chip>
         const chipText = Math.round(score * 100)
-        const chipBackground = percentageToHsl(score, 0, 80)
+        const chipBackground = percentageToHsl(score, 0, 80, 70, 60)
+        const chipBorder = percentageToHsl(score, 0, 80, 70, 40)
 
         return (
             <Card className={classes.card}>
@@ -69,15 +88,20 @@ class SpaceCard extends Component {
                         image={`/images/spaces/${id}/${image}`}
                         title=""
                     />
+                    <div style={{position:relative}}>
                     <Chip 
                         label={`${chipText}%`} 
                         className={classes.scorechip} 
-                        style={{backgroundColor:chipBackground}}
+                        style={{backgroundColor:chipBackground, border: `1px solid ${chipBorder}`}}
                     />
+                    </div>
 
                         <CardContent className={classes.cardContent}>
-                            <Typography gutterBottom variant="h5" component="h2" className={classes.h5}>
-                                {name}
+                            <Typography gutterBottom variant="h6" className={classes.spacename}>
+                                {(name.length >= 25 ? name.substring(0,22)+'...' : name)} 
+                            </Typography>
+                            <Typography gutterBottom>
+                                {`${address.street} ${address.quadrant},  ${address.city}`}
                             </Typography>
                             <Typography gutterBottom>
                                 <strong>{rate ? `$${rate}/hr ` : 'FREE '}</strong>
@@ -86,8 +110,41 @@ class SpaceCard extends Component {
                                 {`Capacity: ${capacity} `}
                             </Typography>
                             <Typography>
-                                {/* {`${address.street} ${address.quadrant}, ${address.postal_code}`} */}
-                                {`${address.street} ${address.quadrant}`}
+                                <span 
+                                className={classes.availability}
+                                style={{color: (availability.monday ? 'black' : 'silver')}}
+                                >M
+                                </span>
+                                <span 
+                                className={classes.availability}
+                                style={{color: (availability.tuesday ? 'black' : 'silver')}}
+                                >T
+                                </span>
+                                <span 
+                                className={classes.availability}
+                                style={{color: (availability.wednesday ? 'black' : 'silver')}}
+                                >W
+                                </span>
+                                <span 
+                                className={classes.availability}
+                                style={{color: (availability.thursday ? 'black' : 'silver')}}
+                                >R
+                                </span>
+                                <span 
+                                className={classes.availability}
+                                style={{color: (availability.friday ? 'black' : 'silver')}}
+                                >F
+                                </span>
+                                <span 
+                                className={classes.availability}
+                                style={{color: (availability.saturday ? 'black' : 'silver')}}
+                                >S
+                                </span>
+                                <span 
+                                className={classes.availability}
+                                style={{color: (availability.sunday ? 'black' : 'silver')}}
+                                >U
+                                </span>
                             </Typography>
                         </CardContent>
 

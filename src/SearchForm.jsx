@@ -558,6 +558,7 @@ class Search extends Component {
                                         <TextField
                                             style={{
                                                 width: '180px',
+                                                marginTop:0,
                                             }}
                                             id="address-search-input"
                                             label="Address"
@@ -570,6 +571,7 @@ class Search extends Component {
                                         <TextField
                                             style={{
                                                 width: '100px',
+                                                marginTop:0,
                                             }}
                                             id="city-search-input"
                                             label="City"
@@ -579,16 +581,13 @@ class Search extends Component {
                                             onChange={this.handleChange}
                                             value={this.state.cityInput}
                                         />
-                                    </Grid>
-
-                                    {/* ---  Full-width row  --- */}
-                                    <Grid item xs={12}>
                                         {(this.state.cityInput.toLowerCase() === 'calgary' ||
                                          this.state.cityInput.toLowerCase() === 'edmonton') &&
                                         (<FormControl className={classes.formControl}
                                             style={{
                                                 width: '90px',
-                                                minWidth: '90px'
+                                                minWidth: '90px',
+                                                marginTop:0,
                                             }}
                                         >
                                             <InputLabel htmlFor="quadrantID">
@@ -609,6 +608,7 @@ class Search extends Component {
                                             </Select>
                                         </FormControl>)}
                                     </Grid>
+
 
                                     {/* ---  Full-width row  --- */}
                                     <Grid item xs={12}>

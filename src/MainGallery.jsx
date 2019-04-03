@@ -44,6 +44,7 @@ class MainGallery extends React.Component {
               rate={item.rate}
               address={item.address}
               capacity={item.capacity}
+              availability={item.availability}
               venue_type={item.venue_type}
               score={item.score}
             />

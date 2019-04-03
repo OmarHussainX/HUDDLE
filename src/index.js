@@ -11,12 +11,13 @@ import PageNotFound from './PageNotFound'
 import PersistentDrawerLeft from './PersistentDrawerLeft'
 import VerticalSpace from './VerticalSpace'
 import ScrollToTop from './ScrollToTop'
+import Nav from './Nav'
 
 const routes = (
   <BrowserRouter >
     <ScrollToTop> 
     <div>
-      <PersistentDrawerLeft />
+      <Nav />
       <VerticalSpace />
       <Switch>
         <Route path="/" component={App} exact={true} />

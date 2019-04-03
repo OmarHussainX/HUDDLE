@@ -6,18 +6,11 @@ import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import { Link } from 'react-router-dom'
 
 const drawerWidth = 240;
@@ -129,8 +122,11 @@ class PersistentDrawerLeft extends React.Component {
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="h6" color="inherit" className={classes.grow}>
-                <Link to="/" className={classes.logoTxt}>
+            <Typography variant="h6" color="inherit" className={classes.grow} onClick={this.handleDrawerClose}>
+              <Link
+                to="/"
+                className={classes.logoTxt}
+              >
                   huddle
                 </Link>
             </Typography>
@@ -150,17 +146,17 @@ class PersistentDrawerLeft extends React.Component {
               {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
             </IconButton>
           </div>
-          <Typography variant="h6" color="inherit" className={classes.grow}>
+          <Typography variant="h6" color="inherit" className={classes.grow} onClick={this.handleDrawerClose}>
               <Link to="/" className={classes.drawerTxt}>
                 home
               </Link>
           </Typography>
-          <Typography variant="h6" color="inherit" className={classes.grow}>
+          <Typography variant="h6" color="inherit" className={classes.grow} onClick={this.handleDrawerClose}>
               <Link to="/about" className={classes.drawerTxt}>
                 about
               </Link>
           </Typography>
-          <Typography variant="h6" color="inherit" className={classes.grow}>
+          <Typography variant="h6" color="inherit" className={classes.grow} onClick={this.handleDrawerClose}>
               <Link to="/contact" className={classes.drawerTxt}>
                 contact
               </Link>

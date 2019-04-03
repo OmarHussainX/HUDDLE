@@ -216,14 +216,6 @@ class Nav extends React.Component {
         onClose={this.handleMenuClose}>
         <MenuItem onClick={this.handleMobileMenuClose}>
           <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <MailIcon />
-            </Badge>
-          </IconButton>
-          <p>Messages</p>
-        </MenuItem>
-        <MenuItem onClick={this.handleMobileMenuClose}>
-          <IconButton color="inherit">
             <Badge badgeContent={11} color="secondary">
               <NotificationsIcon />
             </Badge>
@@ -262,11 +254,6 @@ class Nav extends React.Component {
             </Typography>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
-              <IconButton color="inherit">
-                <Badge badgeContent={1} color="secondary">
-                  <MailIcon />
-                </Badge>
-              </IconButton>
               <IconButton color="inherit">
                 <Badge badgeContent={2} color="secondary">
                   <NotificationsIcon />

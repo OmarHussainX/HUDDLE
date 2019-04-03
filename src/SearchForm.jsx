@@ -132,6 +132,9 @@ class Search extends Component {
             // Master array of all available spaces
             spaces: this.props.spaces,
 
+            // flag to control display of scores
+            showScores: false,
+
             // Search inputs (dropdowns, date/time pickers, checkboxes, textfields)
             rateInput: '',
             capacityInput: '',
@@ -159,6 +162,7 @@ class Search extends Component {
 
         this.setState({
             [name]: value,
+            showScores: true  //show scores as soon as the user sets any filter
         })
 
         switch(name) {
@@ -214,7 +218,10 @@ class Search extends Component {
         const checkboxState = event.target.checked
         console.log(`'${checkboxName}' checked: '${checkboxState}'`)
 
-        this.setState({ [checkboxName]: checkboxState })
+        this.setState({ 
+            [checkboxName]: checkboxState,
+            showScores: true  //show scores as soon as the user sets any filter
+        })
 
         // prepare search criteria & collection of spaces for scoring in light
         // of new search criteria
@@ -250,6 +257,7 @@ class Search extends Component {
         case 'clearFiltersButton':
         this.setState({
             spaces: this.props.spaces,
+            showScores: false,  //hide scores
             rateInput: '',
             capacityInput: '',
             // panelExpanded: null, // do NOT hide panel
@@ -286,9 +294,9 @@ class Search extends Component {
         const rateSummaryTxt = {
             Any : "Any",
             0   : "Free",
-            25  : "$1-25",
-            50  : "$26-50",
-            75  : "$51-75",
+            25  : "$25 or less",
+            50  : "$50 or less",
+            75  : "$75 or less",
             100 : "Over $75"
         }
         const capacitySummaryTxt = {
@@ -407,9 +415,9 @@ class Search extends Component {
                                             >
                                                 <MenuItem value={`Any`}>Any</MenuItem>
                                                 <MenuItem value={0}><em>Free</em></MenuItem>
-                                                <MenuItem value={25}>$1-25</MenuItem>
-                                                <MenuItem value={50}>$26-50</MenuItem>
-                                                <MenuItem value={75}>$51-75</MenuItem>
+                                                <MenuItem value={25}>$25 or less</MenuItem>
+                                                <MenuItem value={50}>$50 or less</MenuItem>
+                                                <MenuItem value={75}>$75 or less</MenuItem>
                                                 <MenuItem value={100}>Over $75</MenuItem>
                                             </Select>
                                         </FormControl>
@@ -558,6 +566,7 @@ class Search extends Component {
                                         <TextField
                                             style={{
                                                 width: '180px',
+                                                marginTop:0,
                                             }}
                                             id="address-search-input"
                                             label="Address"
@@ -570,6 +579,7 @@ class Search extends Component {
                                         <TextField
                                             style={{
                                                 width: '100px',
+                                                marginTop:0,
                                             }}
                                             id="city-search-input"
                                             label="City"
@@ -579,16 +589,13 @@ class Search extends Component {
                                             onChange={this.handleChange}
                                             value={this.state.cityInput}
                                         />
-                                    </Grid>
-
-                                    {/* ---  Full-width row  --- */}
-                                    <Grid item xs={12}>
                                         {(this.state.cityInput.toLowerCase() === 'calgary' ||
                                          this.state.cityInput.toLowerCase() === 'edmonton') &&
                                         (<FormControl className={classes.formControl}
                                             style={{
                                                 width: '90px',
-                                                minWidth: '90px'
+                                                minWidth: '90px',
+                                                marginTop:0,
                                             }}
                                         >
                                             <InputLabel htmlFor="quadrantID">
@@ -609,6 +616,7 @@ class Search extends Component {
                                             </Select>
                                         </FormControl>)}
                                     </Grid>
+
 
                                     {/* ---  Full-width row  --- */}
                                     <Grid item xs={12}>
@@ -634,6 +642,7 @@ class Search extends Component {
                     onClick={this.props.onClick}
                     spaces={this.state.spaces}
                     className={classes.gallery}
+                    showScores={this.state.showScores}
                 />
           </React.Fragment>
         )

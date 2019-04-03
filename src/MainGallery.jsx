@@ -8,7 +8,7 @@ import SpaceCard from './SpaceCard'
 const styles = theme => ({
   container: {
     display: 'flex',
-    marginTop:   '50px',
+    marginTop:   '200px',
   },
   paper: {
     margin: theme.spacing.unit,
@@ -23,7 +23,7 @@ const styles = theme => ({
 
 class MainGallery extends React.Component {
   render() {
-    const {classes, spaces} = this.props
+    const {classes, spaces, showScores} = this.props
 
     let compArr = []
     spaces.forEach((item, idx) => {
@@ -44,8 +44,10 @@ class MainGallery extends React.Component {
               rate={item.rate}
               address={item.address}
               capacity={item.capacity}
+              availability={item.availability}
               venue_type={item.venue_type}
               score={item.score}
+              showScores={showScores}
             />
           </Grid>
         </Grow>,

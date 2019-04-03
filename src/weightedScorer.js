@@ -12,7 +12,8 @@ import {ScoreSpaces, scoreCalculators} from './ScoreSpaces'
 // for the various tests (see 'ScoreSpaces.js')
 
 function weightedScorer(searchState) {
-    console.log('------------inside weightedScorer!')
+
+/*     console.log('------------inside weightedScorer!')
     console.log(`user's 'rate' search criterion: ${searchState.rateInput}`)
     console.log(`user's 'capacity' search criterion: ${searchState.capacityInput}`)
     console.log(`user's 'address' search criterion: ${searchState.streetInput}`)
@@ -26,7 +27,7 @@ function weightedScorer(searchState) {
     friday:     ${searchState.friday}
     saturday:   ${searchState.saturday}
     sunday:     ${searchState.sunday}`)
-
+ */
 
     // iterate over all spaces, and for each space:
     //  - reset the score

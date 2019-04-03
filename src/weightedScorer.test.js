@@ -45,6 +45,10 @@ test('Checking score calculation', () => {
 
     const newState = weightedScorer(testState)
     
+    expect(newState.spaces[0].score).toEqual(1)
+    expect(newState.spaces[2].score).toBeCloseTo(0.83)
+    expect(newState.spaces[15].score).toBeCloseTo(0.67)
+
     console.log(`----------- after sorting based on score in the test file!!!-----------------`)
     newState.spaces.forEach(space => {
         console.log(`------ ${space.name} rate: ${space.score}`)

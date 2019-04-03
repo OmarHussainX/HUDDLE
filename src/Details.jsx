@@ -14,6 +14,8 @@ import Chip from '@material-ui/core/Chip'
 import DetailsTable from './DetailsTable'
 import BookSpace from './BookSpace'
 import CssBaseline from '@material-ui/core/CssBaseline'
+import ScrollUpButton from "./ScrollUpButton"; //Add this line Here
+
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews)
 const freeChipColor = grey[200]
@@ -25,21 +27,6 @@ const styles = theme => ({
     // This was creating a gap around the Details view...
     // padding: theme.spacing.unit,
     padding: 0,
-
-    // TESTING ONLY
-    //
-    // [theme.breakpoints.down('sm')]: {
-    //   // MOBILE
-    //   backgroundColor: theme.palette.secondary.main,
-    // },
-    // [theme.breakpoints.up('md')]: {
-    //   // TABLET
-    //   backgroundColor: theme.palette.primary.main,
-    // },
-    // [theme.breakpoints.up('lg')]: {
-    //   // DESKTOP
-    //   backgroundColor: green[500],
-    // },
   },
   h6: {
     textShadow: '0px 0px 4px rgba(100,100,100,0.3)',
@@ -49,10 +36,12 @@ const styles = theme => ({
     paddingTop: theme.spacing.unit * 2,
     paddingBottom: theme.spacing.unit * 2,
     [theme.breakpoints.up('md')]: {
-      height: '100vh',
+      // TABLET
+      height: 'calc(100vh - 56px)', // navbar height is 56px
     },
     [theme.breakpoints.up('lg')]: {
-      height: '100vh',
+      // DESKTOP
+      height: 'calc(100vh - 64px)', // navbar height is 64px
     },
   },
   img: {
@@ -83,7 +72,7 @@ const styles = theme => ({
       marginLeft: 'auto',
       marginRight: 'auto',
       flexWrap: 'wrap',
-      width: '320px',
+      width: '100vw',
       alignItems: 'stretch',
     },
     [theme.breakpoints.up('md')]: {
@@ -99,7 +88,9 @@ const styles = theme => ({
   },
   main: {
     order: 1,
-    maxWidth: '400px',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    maxWidth: '420px'
   },
   map: {
     order: 2,
@@ -168,6 +159,7 @@ class Details extends Component {
     return (
       <React.Fragment>
         <CssBaseline />
+        <ScrollUpButton />
         <div className={classes.root}>
           <div className={classes.container}>
             <main className={classes.main}>
@@ -262,7 +254,7 @@ class Details extends Component {
                 <Typography>{selectedSpace.description}</Typography>
               </Paper>
             </main>
-            <div id="map" className={classes.map} style={{}} />
+            <div id="map" className={classes.map} />
           </div>
         </div>
       </React.Fragment>

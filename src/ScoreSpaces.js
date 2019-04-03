@@ -5,10 +5,10 @@ class ScoreSpaces {
     - a reference to a space object
     - a searchState object with property 'rateInput', guaranteed to be one of:
       0     ( free spaces )
-      25    ( 1-25 range )
-      50    ( 26-50 range )
-      75    ( 51-75 range )
-      100   ( 76+ range )
+      25    ( $25 or less )
+      50    ( $50 or less )
+      75    ( $75 or less )
+      100   ( Over $75 )
 
     returns a value (0 or 1) reflecting how well the space matches the specified criterion
     */
@@ -19,28 +19,28 @@ class ScoreSpaces {
         switch (searchValue) {
             // ( free spaces )
             case 0:
-                scoreValue = space.rate === 0 ? 1 : 0
-                break
-
-            // ( 1-25 range )
+            scoreValue = space.rate === 0 ? 1 : 0
+            break
+            
+            // ( $25 or less )
             case 25:
-                scoreValue = (space.rate > 0 && space.rate <= 25) ? 1 : 0
-                break
-
-            // ( 26-50 range )
+            scoreValue = (space.rate <= 25) ? 1 : 0
+            break
+            
+            // ( $50 or less )
             case 50:
-                scoreValue = (space.rate > 25 && space.rate <= 50) ? 1 : 0
-                break
+            scoreValue = (space.rate <= 50) ? 1 : 0
+            break
 
-            // ( 51-75 range )
+            // ( $75 or less )
             case 75:
-                scoreValue = (space.rate > 51 && space.rate <= 75) ? 1 : 0
-                break
-
-            // ( 76+ range )
+            scoreValue = (space.rate <= 75) ? 1 : 0
+            break
+            
+            // ( Over $75 )
             case 100:
-                scoreValue = (space.rate > 75) ? 1 : 0
-                break
+            scoreValue = (space.rate > 75) ? 1 : 0
+            break
 
             // user hasn't set/doesn't care about this criterion
             default:
@@ -195,7 +195,7 @@ class ScoreSpaces {
         // if number of days selected by the user is not 0, return the proportion of days
         // where availability matches the selection
         if (daysSelected) {
-            console.log(`going to return ${daysMatched/daysSelected}`)
+            // console.log(`going to return ${daysMatched/daysSelected}`)
             return daysMatched/daysSelected
         }
 
@@ -207,27 +207,27 @@ class ScoreSpaces {
 const scoreCalculators = [
     {
         function: "scoreOnRate",
-        weight: 50
+        weight: 1
     },
     {
         function: "scoreOnCapacity",
-        weight: 30
+        weight: 1
     },
     {
         function: "scoreOnAddress",
-        weight: 10
+        weight: 1
     },
     {
         function: "scoreOnCity",
-        weight: 100
+        weight: 1
     },
     {
         function: "scoreOnQuadrant",
-        weight: 30
+        weight: 1
     },
     {
         function: "scoreOnAvailability",
-        weight: 20
+        weight: 1
     },
 ] 
 

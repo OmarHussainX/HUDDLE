@@ -10,11 +10,11 @@ const styles = theme => ({
   spacer: {
     [theme.breakpoints.down('sm')]: {
       // MOBILE
-      height: '48px',
+      height: '64px',
     },
     [theme.breakpoints.up('md')]: {
       // TABLET
-      height: '56px',
+      height: '64px',
     },
     [theme.breakpoints.up('lg')]: {
       // DESKTOP

@@ -85,7 +85,7 @@ test('Checking scoring on rate ($26-50) & above', () => {
     expect(matchValue).toBeTruthy()
 
     // space should NOT match the user's criterion!
-    testSpace.rate = 2
+    testSpace.rate = 52
     expect(ScoreSpaces.scoreOnRate(testSpace, searchValue)).toBeFalsy()
 
     // space should match the user's criterion!
@@ -93,7 +93,7 @@ test('Checking scoring on rate ($26-50) & above', () => {
     expect(ScoreSpaces.scoreOnRate(testSpace, { rateInput: 75 })).toBeTruthy()
 
     // space should NOT match the user's criterion!
-    testSpace.rate = 50
+    testSpace.rate = 76
     expect(ScoreSpaces.scoreOnRate(testSpace, { rateInput: 75 })).toBeFalsy()
 
     // space should match the user's criterion!
@@ -215,7 +215,7 @@ test('Checking scoring on address', () => {
 
     // space should NOT match the user's criterion!
     searchValue.streetInput = ''
-    expect(ScoreSpaces.scoreOnAddress(testSpace, searchValue)).toBeFalsy()
+    expect(ScoreSpaces.scoreOnAddress(testSpace, searchValue)).toEqual(1)
 })
 
 // --------------------------------------------------
@@ -250,7 +250,7 @@ test('Checking scoring on city', () => {
 
     // space should NOT match the user's criterion!
     searchValue.cityInput = ''
-    expect(ScoreSpaces.scoreOnCity(testSpace, searchValue)).toBeFalsy()
+    expect(ScoreSpaces.scoreOnCity(testSpace, searchValue)).toEqual(1)
 })
 
 // --------------------------------------------------
@@ -285,7 +285,7 @@ test('Checking scoring on quadrant', () => {
 
     // space should NOT match the user's criterion!
     searchValue.quadrantInput = ''
-    expect(ScoreSpaces.scoreOnQuadrant(testSpace, searchValue)).toBeFalsy()
+    expect(ScoreSpaces.scoreOnQuadrant(testSpace, searchValue)).toEqual(1)
 })
 
 // --------------------------------------------------
@@ -343,7 +343,7 @@ test('Checking scoring on availability', () => {
         saturday:   false,
         sunday:     false,
     }
-    expect(ScoreSpaces.scoreOnAvailability(testSpace, searchValue)).toEqual(0)
+    expect(ScoreSpaces.scoreOnAvailability(testSpace, searchValue)).toEqual(1)
 
     searchValue.monday = true
     searchValue.tuesday = true

@@ -1,17 +1,16 @@
 import React, {Component} from "react"
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Typography from '@material-ui/core/Typography';
-class Contact extends Component {
+class Profile extends Component {
   render() {
     return (
       <React.Fragment>
-
         <CssBaseline />
-            <Typography variant="h1" color="inherit">
-              This is the contact page.
-            </Typography>
+          <Typography variant="h1" color="inherit">
+            This is the Profile page.
+          </Typography>
       </React.Fragment>
     )
   }
-}
-export default Contact
+} export default Profile
+

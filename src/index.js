@@ -8,13 +8,17 @@ import Contact from './Contact'
 import About from './About'
 import Details from './Details'
 import PageNotFound from './PageNotFound'
-import PersistentDrawerLeft from './PersistentDrawerLeft'
 import VerticalSpace from './VerticalSpace'
+import ScrollToTop from './ScrollToTop'
+import Nav from './Nav'
+import Account from './Account'
+import Profile from './Profile'
 
 const routes = (
-  <BrowserRouter>
+  <BrowserRouter >
+    <ScrollToTop> 
     <div>
-      <PersistentDrawerLeft />
+      <Nav />
       <VerticalSpace />
       <Switch>
         <Route path="/" component={App} exact={true} />
@@ -22,9 +26,12 @@ const routes = (
         <Route path="/details" component={Details} />
         <Route path="/contact" component={Contact} />
         <Route path="/about" component={About} />
+        <Route path="/account" component={Account} />
+        <Route path="/profile" component={Profile} />
         <Route component={PageNotFound} />
       </Switch>
     </div>
+  </ScrollToTop> 
   </BrowserRouter>
 );
 

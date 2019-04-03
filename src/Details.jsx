@@ -84,7 +84,9 @@ const styles = theme => ({
   },
   main: {
     order: 1,
-    maxWidth: '450px',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    maxWidth: '420px'
   },
   map: {
     order: 2,

@@ -207,27 +207,27 @@ class ScoreSpaces {
 const scoreCalculators = [
     {
         function: "scoreOnRate",
-        weight: 50
+        weight: 1
     },
     {
         function: "scoreOnCapacity",
-        weight: 30
+        weight: 1
     },
     {
         function: "scoreOnAddress",
-        weight: 10
+        weight: 1
     },
     {
         function: "scoreOnCity",
-        weight: 100
+        weight: 1
     },
     {
         function: "scoreOnQuadrant",
-        weight: 30
+        weight: 1
     },
     {
         function: "scoreOnAvailability",
-        weight: 20
+        weight: 1
     },
 ] 
 

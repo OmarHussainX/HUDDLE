@@ -251,7 +251,7 @@ class Details extends Component {
                 <Typography>{selectedSpace.description}</Typography>
               </Paper>
             </main>
-            <div id="map" className={classes.map} style={{}} />
+            <div id="map" className={classes.map} />
           </div>
         </div>
       </React.Fragment>

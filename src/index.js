@@ -11,6 +11,8 @@ import PageNotFound from './PageNotFound'
 import VerticalSpace from './VerticalSpace'
 import ScrollToTop from './ScrollToTop'
 import Nav from './Nav'
+import Account from './Account'
+import Profile from './Profile'
 
 const routes = (
   <BrowserRouter >
@@ -24,6 +26,8 @@ const routes = (
         <Route path="/details" component={Details} />
         <Route path="/contact" component={Contact} />
         <Route path="/about" component={About} />
+        <Route path="/account" component={Account} />
+        <Route path="/profile" component={Profile} />
         <Route component={PageNotFound} />
       </Switch>
     </div>

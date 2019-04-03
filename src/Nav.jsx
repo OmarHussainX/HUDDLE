@@ -185,8 +185,24 @@ class Nav extends React.Component {
         transformOrigin={{vertical: 'top', horizontal: 'right'}}
         open={isMenuOpen}
         onClose={this.handleMenuClose}>
-        <MenuItem onClick={this.handleMenuClose}>Profile</MenuItem>
-        <MenuItem onClick={this.handleMenuClose}>My account</MenuItem>
+
+        <MenuItem
+          onClick={this.handleMenuClose}
+        >
+            <Link to="/profile" className={classes.drawerTxt}>
+              profile
+            </Link>
+        </MenuItem>
+
+        <MenuItem
+          onClick={this.handleMenuClose}
+        >
+            <Link to="/account" className={classes.drawerTxt}>
+              account
+            </Link>
+        </MenuItem>
+
+
       </Menu>
     )
 

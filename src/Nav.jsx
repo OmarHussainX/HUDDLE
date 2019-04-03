@@ -20,7 +20,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import {Link} from 'react-router-dom'
 
-const drawerWidth = 240;
+const drawerWidth = 240
 
 const styles = theme => ({
   root: {
@@ -137,7 +137,6 @@ const styles = theme => ({
     textDecoration: 'none',
     color: 'black',
   },
-
 })
 
 class Nav extends React.Component {
@@ -200,6 +199,14 @@ class Nav extends React.Component {
         onClose={this.handleMenuClose}>
         <MenuItem onClick={this.handleMobileMenuClose}>
           <IconButton color="inherit">
+            <Badge badgeContent={4} color="secondary">
+              <MailIcon />
+            </Badge>
+          </IconButton>
+          <p>Messages</p>
+        </MenuItem>
+        <MenuItem onClick={this.handleMobileMenuClose}>
+          <IconButton color="inherit">
             <Badge badgeContent={11} color="secondary">
               <NotificationsIcon />
             </Badge>
@@ -228,21 +235,23 @@ class Nav extends React.Component {
               <MenuIcon />
             </IconButton>
             <Typography
-              className={classes.title}
               variant="h6"
               color="inherit"
-              noWrap>
-              HUDDLE
+              className={classes.grow}
+              onClick={this.handleDrawerClose}>
+              <Link to="/" className={classes.logoTxt}>
+                huddle
+              </Link>
             </Typography>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
               <IconButton color="inherit">
-                <Badge badgeContent={4} color="secondary">
+                <Badge badgeContent={1} color="secondary">
                   <MailIcon />
                 </Badge>
               </IconButton>
               <IconButton color="inherit">
-                <Badge badgeContent={17} color="secondary">
+                <Badge badgeContent={2} color="secondary">
                   <NotificationsIcon />
                 </Badge>
               </IconButton>
@@ -264,6 +273,7 @@ class Nav extends React.Component {
             </div>
           </Toolbar>
         </AppBar>
+
         <Drawer
           className={classes.drawer}
           variant="persistent"
@@ -281,24 +291,31 @@ class Nav extends React.Component {
               )}
             </IconButton>
           </div>
-          <Typography variant="h6" color="inherit" onClick={this.handleDrawerClose}>
-              <Link to="/" className={classes.drawerTxt}>
-                home
-              </Link>
+          <Typography
+            variant="h6"
+            color="inherit"
+            onClick={this.handleDrawerClose}>
+            <Link to="/" className={classes.drawerTxt}>
+              home
+            </Link>
           </Typography>
-          <Typography variant="h6" color="inherit" onClick={this.handleDrawerClose}>
-              <Link to="/about" className={classes.drawerTxt}>
-                about
-              </Link>
+          <Typography
+            variant="h6"
+            color="inherit"
+            onClick={this.handleDrawerClose}>
+            <Link to="/about" className={classes.drawerTxt}>
+              about
+            </Link>
           </Typography>
-          <Typography variant="h6" color="inherit" onClick={this.handleDrawerClose}>
-              <Link to="/contact" className={classes.drawerTxt}>
-                contact
-              </Link>
+          <Typography
+            variant="h6"
+            color="inherit"
+            onClick={this.handleDrawerClose}>
+            <Link to="/contact" className={classes.drawerTxt}>
+              contact
+            </Link>
           </Typography>
-
         </Drawer>
-
         {renderMenu}
         {renderMobileMenu}
       </div>

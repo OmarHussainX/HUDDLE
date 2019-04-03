@@ -6,7 +6,7 @@ import {Grid} from '@material-ui/core'
 import SearchForm from './SearchForm'
 import Paper from '@material-ui/core/Paper'
 import Image from './landing_office.png'
-import { Redirect } from 'react-router'
+import {Redirect} from 'react-router'
 import space from './spaces.json'
 
 const styles = theme => ({
@@ -75,13 +75,6 @@ class App extends Component {
       // Reference to the space selected by the user for detailed view
       selectedSpace: null,
 
-      // Indicates the current 'view' (overall state) of the app
-      // Valid values are:
-      //   'home'      - default (logo, search button, spaces)
-      //   'search'    - search panel
-      //   'filtered'  - filtered spaces (i.e. search results)
-      //   'details'   - detail view for ONE space (selected by user)
-      view: 'home',
       redirect: false,
     }
   }
@@ -89,16 +82,9 @@ class App extends Component {
   clickHandler = event => {
     const targetID = event.currentTarget.id
 
-    // 'Search' FAB was clicked
-    // - switch to search form/view...
-    if (targetID === 'FABsearch') {
-      console.log('============> Search FAB CLICKED')
-      this.setState({view: 'search'})
-    }
-
     // A space's card was clicked
     // - switch to details view for the space
-    else if (
+    if (
       targetID.includes('spaceCrdIdx') ||
       targetID.includes('spacebtnindx')
     ) {
@@ -108,7 +94,6 @@ class App extends Component {
       )
       this.setState({
         selectedSpace: this.state.spaces[arrayIndex],
-        // view: 'details',
         redirect: true,
       })
     }
@@ -116,29 +101,28 @@ class App extends Component {
 
   render() {
     const {classes} = this.props
-     if (this.state.redirect) {
-       return <Redirect push to={{
-         pathname:'/details',
-         state: {selectedSpace: this.state.selectedSpace}
-       }}
-       />;
-      }
+    if (this.state.redirect) {
+      return (
+        <Redirect
+          push
+          to={{
+            pathname: '/details',
+            state: {selectedSpace: this.state.selectedSpace},
+          }}
+        />
+      )
+    }
     return (
       <React.Fragment>
         <CssBaseline />
-
-        {this.state.view === 'home' && (
-          <div>
-            <Paper className={classes.paperHeader}>
-              <Grid container className={classes.spacesGrid} spacing={32}>
-                <SearchForm
-                  spaces={this.state.spaces}
-                  onClick={this.clickHandler}
-                />
-              </Grid>
-            </Paper>
-          </div>
-        )}
+        <Paper className={classes.paperHeader}>
+          <Grid container className={classes.spacesGrid} spacing={32}>
+            <SearchForm
+              spaces={this.state.spaces}
+              onClick={this.clickHandler}
+            />
+          </Grid>
+        </Paper>
       </React.Fragment>
     )
   }

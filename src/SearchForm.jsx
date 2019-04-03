@@ -286,9 +286,9 @@ class Search extends Component {
         const rateSummaryTxt = {
             Any : "Any",
             0   : "Free",
-            25  : "$1-25",
-            50  : "$26-50",
-            75  : "$51-75",
+            25  : "$25 or less",
+            50  : "$50 or less",
+            75  : "$75 or less",
             100 : "Over $75"
         }
         const capacitySummaryTxt = {
@@ -407,9 +407,9 @@ class Search extends Component {
                                             >
                                                 <MenuItem value={`Any`}>Any</MenuItem>
                                                 <MenuItem value={0}><em>Free</em></MenuItem>
-                                                <MenuItem value={25}>$1-25</MenuItem>
-                                                <MenuItem value={50}>$26-50</MenuItem>
-                                                <MenuItem value={75}>$51-75</MenuItem>
+                                                <MenuItem value={25}>$25 or less</MenuItem>
+                                                <MenuItem value={50}>$50 or less</MenuItem>
+                                                <MenuItem value={75}>$75 or less</MenuItem>
                                                 <MenuItem value={100}>Over $75</MenuItem>
                                             </Select>
                                         </FormControl>

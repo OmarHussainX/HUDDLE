@@ -23,7 +23,7 @@ const styles = theme => ({
 
 class MainGallery extends React.Component {
   render() {
-    const {classes, spaces} = this.props
+    const {classes, spaces, showScores} = this.props
 
     let compArr = []
     spaces.forEach((item, idx) => {
@@ -47,6 +47,7 @@ class MainGallery extends React.Component {
               availability={item.availability}
               venue_type={item.venue_type}
               score={item.score}
+              showScores={showScores}
             />
           </Grid>
         </Grow>,

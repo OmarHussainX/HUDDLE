@@ -72,7 +72,8 @@ class SpaceCard extends Component {
             availability,
             venue_type,
             clickHandler,
-            score
+            score,
+            showScores
         } = this.props
 
         // Determine text and background colour for space's score <Chip>
@@ -89,13 +90,14 @@ class SpaceCard extends Component {
                         image={`/images/spaces/${id}/${image}`}
                         title=""
                     />
-                    <div style={{position:relative}}>
+                    
+                    {showScores && (<div style={{position:relative}}>
                     <Chip 
                         label={`${chipText}%`} 
                         className={classes.scorechip} 
                         style={{backgroundColor:chipBackground, border: `1px solid ${chipBorder}`}}
                     />
-                    </div>
+                    </div>)}
 
                         <CardContent className={classes.cardContent}>
                             <Typography gutterBottom variant="h6" className={classes.spacename}>

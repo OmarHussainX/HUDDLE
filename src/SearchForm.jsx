@@ -132,6 +132,9 @@ class Search extends Component {
             // Master array of all available spaces
             spaces: this.props.spaces,
 
+            // flag to control display of scores
+            showScores: false,
+
             // Search inputs (dropdowns, date/time pickers, checkboxes, textfields)
             rateInput: '',
             capacityInput: '',
@@ -159,6 +162,7 @@ class Search extends Component {
 
         this.setState({
             [name]: value,
+            showScores: true  //show scores as soon as the user sets any filter
         })
 
         switch(name) {
@@ -214,7 +218,10 @@ class Search extends Component {
         const checkboxState = event.target.checked
         console.log(`'${checkboxName}' checked: '${checkboxState}'`)
 
-        this.setState({ [checkboxName]: checkboxState })
+        this.setState({ 
+            [checkboxName]: checkboxState,
+            showScores: true  //show scores as soon as the user sets any filter
+        })
 
         // prepare search criteria & collection of spaces for scoring in light
         // of new search criteria
@@ -250,6 +257,7 @@ class Search extends Component {
         case 'clearFiltersButton':
         this.setState({
             spaces: this.props.spaces,
+            showScores: false,  //hide scores
             rateInput: '',
             capacityInput: '',
             // panelExpanded: null, // do NOT hide panel
@@ -634,6 +642,7 @@ class Search extends Component {
                     onClick={this.props.onClick}
                     spaces={this.state.spaces}
                     className={classes.gallery}
+                    showScores={this.state.showScores}
                 />
           </React.Fragment>
         )

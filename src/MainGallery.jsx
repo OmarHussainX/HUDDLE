@@ -8,7 +8,7 @@ import SpaceCard from './SpaceCard'
 const styles = theme => ({
   container: {
     display: 'flex',
-    marginTop:   '50px',
+    marginTop:   '200px',
   },
   paper: {
     margin: theme.spacing.unit,

@@ -42,10 +42,11 @@ const styles = theme => ({
         minWidth: '20px',
         padding:'3px',
         marginRight: '2px',
-        // border: '1px dotted silver',
         borderRadius: '3px',
         backgroundColor: grey[200],
         textAlign: 'center',
+        fontSize: '0.8rem',
+        // fontWeight: 500,
     }
 })
 

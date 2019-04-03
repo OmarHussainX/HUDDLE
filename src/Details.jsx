@@ -14,6 +14,8 @@ import Chip from '@material-ui/core/Chip'
 import DetailsTable from './DetailsTable'
 import BookSpace from './BookSpace'
 import CssBaseline from '@material-ui/core/CssBaseline'
+import ScrollUpButton from "./ScrollUpButton"; //Add this line Here
+
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews)
 const freeChipColor = grey[200]
@@ -157,6 +159,7 @@ class Details extends Component {
     return (
       <React.Fragment>
         <CssBaseline />
+        <ScrollUpButton />
         <div className={classes.root}>
           <div className={classes.container}>
             <main className={classes.main}>

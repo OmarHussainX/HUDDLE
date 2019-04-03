@@ -8,6 +8,7 @@ import Paper from '@material-ui/core/Paper'
 import Image from './landing_office.png'
 import {Redirect} from 'react-router'
 import space from './spaces.json'
+import ScrollUpButton from "./ScrollUpButton"; //Add this line Here
 
 const styles = theme => ({
   // Top level container for the grid of spaces
@@ -115,6 +116,7 @@ class App extends Component {
     return (
       <React.Fragment>
         <CssBaseline />
+        <ScrollUpButton />
         <Paper className={classes.paperHeader}>
           <Grid container className={classes.spacesGrid} spacing={32}>
             <SearchForm

@@ -25,6 +25,9 @@ const drawerWidth = 240;
 const styles = theme => ({
   root: {
     width: '100%',
+    top: 0,
+    position: 'fixed',
+    zIndex: 1100,
   },
   grow: {
     flexGrow: 1,
@@ -278,17 +281,17 @@ class Nav extends React.Component {
               )}
             </IconButton>
           </div>
-          <Typography variant="h6" color="inherit" className={classes.grow} onClick={this.handleDrawerClose}>
+          <Typography variant="h6" color="inherit" onClick={this.handleDrawerClose}>
               <Link to="/" className={classes.drawerTxt}>
                 home
               </Link>
           </Typography>
-          <Typography variant="h6" color="inherit" className={classes.grow} onClick={this.handleDrawerClose}>
+          <Typography variant="h6" color="inherit" onClick={this.handleDrawerClose}>
               <Link to="/about" className={classes.drawerTxt}>
                 about
               </Link>
           </Typography>
-          <Typography variant="h6" color="inherit" className={classes.grow} onClick={this.handleDrawerClose}>
+          <Typography variant="h6" color="inherit" onClick={this.handleDrawerClose}>
               <Link to="/contact" className={classes.drawerTxt}>
                 contact
               </Link>

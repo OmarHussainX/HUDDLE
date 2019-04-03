@@ -34,10 +34,12 @@ const styles = theme => ({
     paddingTop: theme.spacing.unit * 2,
     paddingBottom: theme.spacing.unit * 2,
     [theme.breakpoints.up('md')]: {
-      height: '100vh',
+      // TABLET
+      height: 'calc(100vh - 56px)', // navbar height is 56px
     },
     [theme.breakpoints.up('lg')]: {
-      height: '100vh',
+      // DESKTOP
+      height: 'calc(100vh - 64px)', // navbar height is 64px
     },
   },
   img: {

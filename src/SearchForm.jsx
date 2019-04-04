@@ -31,9 +31,12 @@ import Button from '@material-ui/core/Button'
 
 import MainGallery from './MainGallery'
 
-
+// Declare cities with quadrants (NE, NW, SE, SW) - when such cities are
+// entered as a filter criteria by the user, display quadrant-filtering option
+const citiesWithQuadrants = ['calgary', 'edmonton']
 
 const freeChipColor = grey[200]
+
 
 const styles = theme => ({
     root: {
@@ -589,8 +592,7 @@ class Search extends Component {
                                             onChange={this.handleChange}
                                             value={this.state.cityInput}
                                         />
-                                        {(this.state.cityInput.toLowerCase() === 'calgary' ||
-                                         this.state.cityInput.toLowerCase() === 'edmonton') &&
+                                        {(citiesWithQuadrants.includes(this.state.cityInput.toLowerCase())) &&
                                         (<FormControl className={classes.formControl}
                                             style={{
                                                 width: '90px',

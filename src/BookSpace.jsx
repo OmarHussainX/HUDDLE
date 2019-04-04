@@ -74,7 +74,8 @@ class BookSpace extends Component {
       <div>
         <Button
           variant="contained"
-          color="primary"
+          size="large"
+          color="secondary"
           onClick={this.handleClickOpen}>
           Book space
         </Button>

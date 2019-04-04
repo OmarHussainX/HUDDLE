@@ -56,7 +56,7 @@ class DetailsTable extends Component {
                             <TableCell className={classes.tablecell} align="left" width="16px">
                                 <Place color="primary">icon</Place>
                             </TableCell>
-                            <TableCell className={classes.tablecell} colSpan="2">{`${address.street} ${address.quadrant}, ${address.postal_code}`}</TableCell>
+                            <TableCell className={classes.tablecell} colSpan="2">{address.street + (address.quadrant ? ' ' + address.quadrant: '' ) + ', ' + address.postal_code}</TableCell>
                         </TableRow>
                         {(link !== '') && (<TableRow className={classes.tablerow}>
                             <TableCell className={classes.tablecell} align="left" width="16px">

@@ -233,11 +233,11 @@ class Details extends Component {
 
                 <Typography gutterBottom>
                   {`Capacity: ${selectedSpace.capacity}`}
-                  <em>&nbsp;&nbsp;({selectedSpace.venue_type})</em>
+                  <em>&nbsp;&nbsp;{`(Venue type: ${selectedSpace.venue_type})`}</em>
                 </Typography>
 
                 {/* Booking button - launches booking modal */}
-                <div style={{textAlign: 'center'}}>
+                <div style={{textAlign: 'center', paddingTop: '15px'}}>
                   <BookSpace selectedSpace={selectedSpace} />
                 </div>
 

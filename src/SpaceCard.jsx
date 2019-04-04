@@ -104,11 +104,12 @@ class SpaceCard extends Component {
                                 {(name.length >= 25 ? name.substring(0,22)+'...' : name)} 
                             </Typography>
                             <Typography gutterBottom>
-                                {`${address.street} ${address.quadrant},  ${address.city}`}
+                                {/* {`${address.street} ${address.quadrant},  ${address.city}`} */}
+                                {address.street + (address.quadrant ? ' ' + address.quadrant: '' ) + ', ' + address.postal_code}
                             </Typography>
                             <Typography gutterBottom>
                                 <strong>{rate ? `$${rate}/hr ` : 'FREE '}</strong>
-                                <em>{`(Venue type: ${venue_type})`}</em>
+                                <em>&nbsp;&nbsp;{`(Venue type: ${venue_type})`}</em>
                                 <br />
                                 {`Capacity: ${capacity} `}
                             </Typography>

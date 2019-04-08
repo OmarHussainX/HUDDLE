@@ -31,6 +31,8 @@ import Button from '@material-ui/core/Button'
 
 import MainGallery from './MainGallery'
 
+import { palette } from '@material-ui/system'
+
 // Declare cities with quadrants (NE, NW, SE, SW) - when such cities are
 // entered as a filter criteria by the user, display quadrant-filtering option
 const citiesWithQuadrants = ['calgary', 'edmonton']
@@ -136,6 +138,19 @@ const styles = theme => ({
         top: 0,
         left: 0,
         // transform: `translate(-50%, -$50%)`,
+    },
+    dayControl: {
+        display: 'inline-block',
+        width: '25px',
+        minWidth: '25px',
+        padding:'5px',
+        marginRight: '5px',
+        borderRadius: '3px',
+        backgroundColor: grey[200],
+        textAlign: 'center',
+        // fontSize: '1rem',
+        // fontWeight: 500,
+        cursor: 'pointer',
     }
 })
 
@@ -228,31 +243,29 @@ class Search extends Component {
     }
 
 
-    // Handle search logic related to checkboxes, which are all related to the
+    // Handle search logic related to the
     // availability of spaces on particular days of the week
-    handleCheckedChange = checkboxName => event => {
-        const checkboxState = event.target.checked
-        console.log(`'${checkboxName}' checked: '${checkboxState}'`)
-
-        this.setState({ 
-            [checkboxName]: checkboxState,
-            showScores: true  //show scores as soon as the user sets any filter
-        })
+    handleDayChange = day => event => {
+        // console.log(`'${day}' old status: '${this.state[day]}', new status: '${!this.state[day]}'`)
 
         // prepare search criteria & collection of spaces for scoring in light
         // of new search criteria
+        // (set the clicked day's availability to the opposite of what it currently is...)
         let stateCopy = JSON.parse(JSON.stringify(this.state))
-        stateCopy[checkboxName] = checkboxState
+        stateCopy[day] = !this.state[day]
 
         // update scores with respect to the latest search criteria
         const newState = weightedScorer(stateCopy)
-        
+
         // update state with re-scored collection of spaces, which will automatically
         // cause the component to render
-        this.setState({ spaces: newState.spaces })
-
+        this.setState(prevState => ({
+            [day]: !prevState[day],
+            showScores: true,  //show scores as soon as the user sets any filter
+            spaces: newState.spaces
+          }))
+        
     }
-
 
 
     handlePanelChange = panel => (event, expanded) => {
@@ -352,7 +365,7 @@ class Search extends Component {
                                     </Typography> */}
 
                                 <Button variant="contained" color="secondary" className={classes.button}
-                                style={{width:180}}
+                                style={{width:200}}
                                 onClick={this.handleClick}
                                 id='toggleFilters'
                                 >
@@ -414,7 +427,6 @@ class Search extends Component {
                                         </Typography>
                                     </Paper>
                                     </Grid>
- 
 
                                     {/* ---  Half-width row  --- */}
                                     <Grid item xs={6}>
@@ -461,125 +473,79 @@ class Search extends Component {
                                                 <MenuItem value={20}>Over 15</MenuItem>
                                             </Select>
                                         </FormControl>
-
-                                    </Grid>
-
-                                    {/* ---  Half-width row  --- */}
-                                    <Grid item xs={6}>
-                                        <FormControl component="fieldset" className={classes.formControl}>
-                                            <FormLabel component="legend" className={classes.formLegend}>
-                                                Weekdays
-                                            </FormLabel>
-                                            <FormGroup>
-                                                <FormControlLabel
-                                                    className={classes.fromControlLabel}
-                                                    control={
-                                                        <Checkbox
-                                                            classes={{
-                                                                root: classes.checkbox,
-                                                            }} checked={monday} 
-                                                            onChange={this.handleCheckedChange('monday')} 
-                                                            value="monday" />
-                                                    }
-                                                    label="Monday"
-                                                />
-                                                <FormControlLabel
-                                                    className={classes.fromControlLabel}
-                                                    control={
-                                                        <Checkbox
-                                                            classes={{
-                                                                root: classes.checkbox,
-                                                            }}
-                                                            checked={tuesday} 
-                                                            onChange={this.handleCheckedChange('tuesday')} 
-                                                            value="tuesday" />
-                                                    }
-                                                    label="Tuesday"
-                                                />
-                                                <FormControlLabel
-                                                    className={classes.fromControlLabel}
-                                                    control={
-                                                        <Checkbox
-                                                            classes={{
-                                                                root: classes.checkbox,
-                                                            }}
-                                                            checked={wednesday} 
-                                                            onChange={this.handleCheckedChange('wednesday')} 
-                                                            value="wednesday" />
-                                                    }
-                                                    label="Wednesday"
-                                                />
-                                                <FormControlLabel
-                                                    className={classes.fromControlLabel}
-                                                    control={
-                                                        <Checkbox
-                                                            classes={{
-                                                                root: classes.checkbox,
-                                                            }}
-                                                            checked={thursday} 
-                                                            onChange={this.handleCheckedChange('thursday')} 
-                                                            value="thursday" />
-                                                    }
-                                                    label="Thursday"
-                                                />
-                                                <FormControlLabel
-                                                    className={classes.fromControlLabel}
-                                                    control={
-                                                        <Checkbox
-                                                            classes={{
-                                                                root: classes.checkbox,
-                                                            }}
-                                                            checked={friday} 
-                                                            onChange={this.handleCheckedChange('friday')} 
-                                                            value="friday" />
-                                                    }
-                                                    label="Friday"
-                                                />
-                                            </FormGroup>
-                                        </FormControl>
-                                    </Grid>
-
-                                    {/* ---  Half-width row  --- */}
-                                    <Grid item xs={6}>
-                                        <FormControl component="fieldset" className={classes.formControl}>
-                                            <FormLabel component="legend" className={classes.formLegend}>
-                                                Weekend
-                                            </FormLabel>
-                                            <FormGroup>
-                                                <FormControlLabel
-                                                    className={classes.fromControlLabel}
-                                                    control={
-                                                        <Checkbox
-                                                            classes={{
-                                                                root: classes.checkbox,
-                                                            }}
-                                                            checked={saturday} 
-                                                            onChange={this.handleCheckedChange('saturday')} 
-                                                            value="saturday" />
-                                                    }
-                                                    label="Saturday"
-                                                />
-                                                <FormControlLabel
-                                                    className={classes.fromControlLabel}
-                                                    control={
-                                                        <Checkbox
-                                                            classes={{
-                                                                root: classes.checkbox,
-                                                            }}
-                                                            checked={sunday}
-                                                            onChange={this.handleCheckedChange('sunday')}
-                                                            value="sunday"
-                                                        />
-                                                    }
-                                                    label="Sunday"
-                                                />
-                                            </FormGroup>
-                                        </FormControl>
                                     </Grid>
 
 
                                     {/* ---  Full-width row  --- */}
                                     <Grid item xs={12}>
+                                        <Typography>
+                                            <span 
+                                            className={classes.dayControl}
+                                            style={{color: (monday ? 'white' : 'black'),
+                                            backgroundColor: (monday ? '#f50057' : grey[200])}}
+                                            id='monCtrl'
+                                            onClick={this.handleDayChange('monday')}
+                                            >M
+                                            </span>
+                                            <span 
+                                            className={classes.dayControl}
+                                            style={{
+                                                color: (tuesday ? 'white' : 'black'),
+                                                backgroundColor: (tuesday ? '#f50057' : grey[200])}}
+                                            id='tueCtrl'
+                                            onClick={this.handleDayChange('tuesday')}
+                                            >T
+                                            </span>
+                                            <span 
+                                            className={classes.dayControl}
+                                            style={{color: (wednesday ? 'white' : 'black'),
+                                                backgroundColor: (wednesday ? '#f50057' : grey[200])}}
+                                            id='wedCtrl'
+                                            onClick={this.handleDayChange('wednesday')}
+                                            >W
+                                            </span>
+                                            <span 
+                                            className={classes.dayControl}
+                                            style={{color: (thursday ? 'white' : 'black'),
+                                                backgroundColor: (thursday ? '#f50057' : grey[200])}}
+                                            id='thuCtrl'
+                                            onClick={this.handleDayChange('thursday')}
+                                            >R
+                                            </span>
+                                            <span 
+                                            className={classes.dayControl}
+                                            style={{color: (friday ? 'white' : 'black'),
+                                                backgroundColor: (friday ? '#f50057' : grey[200])}}
+                                            id='friCtrl'
+                                            onClick={this.handleDayChange('friday')}
+                                            >F
+                                            </span>
+                                            <span 
+                                            className={classes.dayControl}
+                                            style={{color: (saturday ? 'white' : 'black'),
+                                                backgroundColor: (saturday ? '#f50057' : grey[200])}}
+                                            id='satCtrl'
+                                            onClick={this.handleDayChange('saturday')}
+                                            >S
+                                            </span>
+                                            <span 
+                                            className={classes.dayControl}
+                                            style={{color: (sunday ? 'white' : 'black'),
+                                                backgroundColor: (sunday ? '#f50057' : grey[200])}}
+                                            id='sunCtrl'
+                                            onClick={this.handleDayChange('sunday')} 
+                                            >U
+                                            </span>
+                                        </Typography>
+                                    </Grid>
+
+
+                                    {/* ---  Full-width row  --- */}
+                                    <Grid item xs={12}
+                                        style={{
+                                            paddingTop:0,
+                                        }}
+                                    >
                                         <TextField
                                             style={{
                                                 width: '180px',

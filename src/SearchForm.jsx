@@ -12,19 +12,19 @@ import InputLabel from '@material-ui/core/InputLabel'
 import MenuItem from '@material-ui/core/MenuItem'
 import FormControl from '@material-ui/core/FormControl'
 import Select from '@material-ui/core/Select'
-import FormLabel from '@material-ui/core/FormLabel';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-// import FormHelperText from '@material-ui/core/FormHelperText';
-import Checkbox from '@material-ui/core/Checkbox';
+import FormLabel from '@material-ui/core/FormLabel'
+import FormGroup from '@material-ui/core/FormGroup'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+// import FormHelperText from '@material-ui/core/FormHelperText'
+import Checkbox from '@material-ui/core/Checkbox'
 import TextField from '@material-ui/core/TextField'
 
 import Grid from '@material-ui/core/Grid'
 
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ExpansionPanel from '@material-ui/core/ExpansionPanel'
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails'
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary'
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 
 import Icon from '@material-ui/core/Icon'
 import Button from '@material-ui/core/Button'
@@ -124,6 +124,19 @@ const styles = theme => ({
     leftIcon: {
         marginRight: theme.spacing.unit,
     },
+    modal: {
+        display: 'block', /* Hidden by default */
+        position: 'fixed', /* Stay in place */
+        zIndex: 10000000, /* Sit on top */
+        width: '100%', /* Full width */
+        height: '100%', /* Full height */
+        overflow: 'auto', /* Enable scroll if needed */
+        // backgroundColor: 'rgb(0,0,0)', /* Fallback color */
+        backgroundColor: 'rgba(0,0,0,0.4)', /* Black w/ opacity */
+        top: 0,
+        left: 0,
+        // transform: `translate(-50%, -$50%)`,
+    }
 })
 
 class Search extends Component {
@@ -312,6 +325,7 @@ class Search extends Component {
 
         return (
           <React.Fragment>
+<div id="testModal" className={classes.modal_DELETE_TO_ACTIVATE}>
             <div className={classes.root}>
                 <Paper className={classes.base} elevation={1}>
 
@@ -322,7 +336,6 @@ class Search extends Component {
                         {/* <Grid item xs={12}>
                         <Typography variant='overline' align='center'>When is the space needed?</Typography>
                         </Grid> */}
-
                         {/* ----------------------------------------------------- */}
                         {/* Hide filter controls inside an expansion panel */}
                         <ExpansionPanel
@@ -339,6 +352,7 @@ class Search extends Component {
                                     </Typography> */}
 
                                 <Button variant="contained" color="secondary" className={classes.button}
+                                style={{width:180}}
                                 onClick={this.handleClick}
                                 id='toggleFilters'
                                 >
@@ -637,9 +651,11 @@ class Search extends Component {
                             </ExpansionPanelDetails>
                         </ExpansionPanel>
                         {/* ----------------------------------------------------- */}
+
                         </Grid>
                 </Paper>
             </div>
+</div>
                 <MainGallery
                     onClick={this.props.onClick}
                     spaces={this.state.spaces}

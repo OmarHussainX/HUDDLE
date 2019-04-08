@@ -144,7 +144,7 @@ const styles = theme => ({
         width: '25px',
         minWidth: '25px',
         padding:'5px',
-        marginRight: '5px',
+        marginRight: '3px',
         borderRadius: '3px',
         backgroundColor: grey[200],
         textAlign: 'center',
@@ -477,6 +477,66 @@ class Search extends Component {
 
 
                                     {/* ---  Full-width row  --- */}
+                                    <Grid item xs={12}
+                                        style={{
+                                            paddingTop:0,
+                                        }}
+                                    >
+                                        <TextField
+                                            style={{
+                                                width: '180px',
+                                                marginTop:0,
+                                            }}
+                                            id="address-search-input"
+                                            label="Address"
+                                            className={classes.textField}
+                                            name='streetInput'
+                                            margin="normal"
+                                            onChange={this.handleChange}
+                                            value={this.state.streetInput}
+                                        />
+                                        <TextField
+                                            style={{
+                                                width: '100px',
+                                                marginTop:0,
+                                            }}
+                                            id="city-search-input"
+                                            label="City"
+                                            className={classes.textField}
+                                            name='cityInput'
+                                            margin="normal"
+                                            onChange={this.handleChange}
+                                            value={this.state.cityInput}
+                                        />
+                                        {(citiesWithQuadrants.includes(this.state.cityInput.toLowerCase())) &&
+                                        (<FormControl className={classes.formControl}
+                                            style={{
+                                                width: '90px',
+                                                minWidth: '90px',
+                                                marginTop:0,
+                                            }}
+                                        >
+                                            <InputLabel htmlFor="quadrantID">
+                                                Quadrant
+                                            </InputLabel>
+                                            <Select
+                                                inputProps={{
+                                                    name: 'quadrantInput',
+                                                    id: 'quadrantID',
+                                                }}
+                                                onChange={this.handleChange}
+                                                value={this.state.quadrantInput}
+                                            >
+                                                <MenuItem value={'NW'}>NW</MenuItem>
+                                                <MenuItem value={'SW'}>SW</MenuItem>
+                                                <MenuItem value={'NE'}>NE</MenuItem>
+                                                <MenuItem value={'SE'}>SE</MenuItem>
+                                            </Select>
+                                        </FormControl>)}
+                                    </Grid>
+
+
+                                    {/* ---  Full-width row  --- */}
                                     <Grid item xs={12}>
                                         <Typography>
                                             <span 
@@ -537,66 +597,6 @@ class Search extends Component {
                                             >U
                                             </span>
                                         </Typography>
-                                    </Grid>
-
-
-                                    {/* ---  Full-width row  --- */}
-                                    <Grid item xs={12}
-                                        style={{
-                                            paddingTop:0,
-                                        }}
-                                    >
-                                        <TextField
-                                            style={{
-                                                width: '180px',
-                                                marginTop:0,
-                                            }}
-                                            id="address-search-input"
-                                            label="Address"
-                                            className={classes.textField}
-                                            name='streetInput'
-                                            margin="normal"
-                                            onChange={this.handleChange}
-                                            value={this.state.streetInput}
-                                        />
-                                        <TextField
-                                            style={{
-                                                width: '100px',
-                                                marginTop:0,
-                                            }}
-                                            id="city-search-input"
-                                            label="City"
-                                            className={classes.textField}
-                                            name='cityInput'
-                                            margin="normal"
-                                            onChange={this.handleChange}
-                                            value={this.state.cityInput}
-                                        />
-                                        {(citiesWithQuadrants.includes(this.state.cityInput.toLowerCase())) &&
-                                        (<FormControl className={classes.formControl}
-                                            style={{
-                                                width: '90px',
-                                                minWidth: '90px',
-                                                marginTop:0,
-                                            }}
-                                        >
-                                            <InputLabel htmlFor="quadrantID">
-                                                Quadrant
-                                            </InputLabel>
-                                            <Select
-                                                inputProps={{
-                                                    name: 'quadrantInput',
-                                                    id: 'quadrantID',
-                                                }}
-                                                onChange={this.handleChange}
-                                                value={this.state.quadrantInput}
-                                            >
-                                                <MenuItem value={'NW'}>NW</MenuItem>
-                                                <MenuItem value={'SW'}>SW</MenuItem>
-                                                <MenuItem value={'NE'}>NE</MenuItem>
-                                                <MenuItem value={'SE'}>SE</MenuItem>
-                                            </Select>
-                                        </FormControl>)}
                                     </Grid>
 
 

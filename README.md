@@ -24,7 +24,7 @@ As the user specifies filtering criteria, the set of spaces is scored and sorted
 
 This approach is far superior to a more traditional all or nothing search, where depending on one's search criteria, no matches may be found.
 
-While there may not be a 100% match for the user's requirements, with the UI making the filtering criteria set clear, and the scoring system, it is very easy for the user to understand what spaces match their needs the best. It also makes it very easy for the user to gauge whether there are certain filter parameters they may not be as concerned with, in order to find a better match. 
+While there may not be a 100% match for the user's requirements, with the UI making the filters that have been set coupled with the scoring system, it is very easy for the user to understand what spaces match their needs the best. It also makes it very easy for the user to gauge whether there are certain filter parameters they may not be as concerned with, in order to find a better match. 
 
 The filtering/scoring system was developed using TDD in JS, and was written in a very general way, such that it would be very easy to add additional filtering criteria.
 
@@ -42,7 +42,7 @@ __Filtering controls exposed:__
 
 <p>&nbsp;</p>
 
-__As search criteris are set, spaces are scored and re-sorted:__
+__As search criteria are set, spaces are scored and re-sorted:__
 <p align="center"><img src="public/images/screenshots/huddle3.png" width="400" /></p>
 
 <p>&nbsp;</p>
